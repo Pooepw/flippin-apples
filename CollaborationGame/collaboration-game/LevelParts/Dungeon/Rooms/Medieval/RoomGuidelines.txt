@@ -1,0 +1,1 @@
+Medieval Rooms will be at most 40 x 40 with an opening on any side that is 2 tiles wide (or tall).

@@ -1,0 +1,4 @@
+res://LevelParts/Dungeon/Rooms/Medieval/medieval_room_4_way.tscn
+res://LevelParts/Dungeon/Rooms/Medieval/medieval_room_nw.tscn
+res://LevelParts/Dungeon/Rooms/Medieval/medieval_room_nwe.tscn
+res://LevelParts/Dungeon/Rooms/Medieval/medieval_room_n.tscn

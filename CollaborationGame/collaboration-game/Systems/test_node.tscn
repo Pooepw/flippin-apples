@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0nl0hevuq4wv"]
+
+[ext_resource type="Script" path="res://Systems/test_node.gd" id="1_4csnm"]
+
+[node name="TestNode" type="Node"]
+script = ExtResource("1_4csnm")
+
+[node name="FileTest" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 21.0
+offset_right = 103.0
+offset_bottom = 52.0
+text = "Test File"
+
+[node name="GenDungeonTest" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 106.0
+offset_right = 174.0
+offset_bottom = 137.0
+text = "generate dungeon"
+
+[connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
+[connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]

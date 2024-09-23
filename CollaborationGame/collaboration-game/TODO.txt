@@ -1,0 +1,34 @@
+Dungeon Generation
+- set up a way to contain dungeons in a text format DONE
+- set up a way to read files to put them into an array DONE
+- set up a way to turn a bunch of string arrays of room paths into dictionaries
+containing the different rooms separated by amount of openings DONE
+- set up a room node to have the ability to see openings DONE
+- set up a starting room to start generation DONE
+- in the starting room, create a function to call a recursive function within 
+each room to generate a dungeon DONE
+- put the rooms' references into a grid to turn them into a dungeon DONE
+- test the room placement function (create a way to do so) DONE
+- fix room placement by checking adjacent rooms and selecting a room that fits 
+the perfectly or closes off the connections. DONE BUT IN A DIFFERENT WAY
+- put together doors to tack onto each room. they will be placed and then removed 
+when the opening condition is met (usually and probably for now just killing all
+the enemies in the room)
+
+Characters
+- put together template player class to be extended by other character classes
+- insert the inputs for the character, including:
+	- the weapon input, including left and right click if the weapon is special
+	- the movement input
+	- the ui input
+- set up the stats for the player classes including:
+	- whatever levelable stats there are
+	- basic bar stats: health, energy/stamina, mana, etc.
+	- inventory slots and current weapon equipped
+
+Weapons
+- make a ranged, melee, and magic template for weapons using a base weapon class.
+
+System
+- put together input in an elegant way. this will be in the form of an inputhandler
+- make a soundhandler with 2 channels: 1 for sounds and one for music. 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgiilu6dywfoo"]
+
+[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_v4wev"]
+[ext_resource type="Texture2D" uid="uid://cve8ptbyi2w2u" path="res://icon.svg" id="2_4xlra"]
+
+[node name="TestRoom4Way" type="Node2D"]
+script = ExtResource("1_v4wev")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_4xlra")

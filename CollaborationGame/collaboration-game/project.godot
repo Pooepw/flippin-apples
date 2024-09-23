@@ -1,0 +1,25 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Collaboration Game"
+run/main_scene="res://Systems/test_node.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalRandomNumberGenerator="*res://Systems/random_number_generator.tscn"
+DungeonGenerator="*res://Systems/dungeon_generator.tscn"
+FileReader="*res://Systems/file_reader.tscn"
+RoomSetup="*res://Systems/room_setup.tscn"
+Player="*res://Systems/player.tscn"
+InputHandler="*res://Systems/input_handler.tscn"

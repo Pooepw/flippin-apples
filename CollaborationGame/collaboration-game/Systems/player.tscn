@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2tw6aa16gfcl"]
+
+[ext_resource type="Script" path="res://Systems/player.gd" id="1_nydu1"]
+[ext_resource type="Texture2D" uid="uid://dc3o4wunaj0fs" path="res://LevelParts/Dungeon/Rooms/Templates/815.png" id="2_loxu6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ofua1"]
+radius = 19.0
+height = 68.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_nydu1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ofua1")
+
+[node name="815" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_loxu6")
+
+[node name="Camera2D" type="Camera2D" parent="."]

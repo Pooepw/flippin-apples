@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://k1xhswc16w84"]
+
+[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/starting_room.gd" id="1_mmeli"]
+
+[node name="StartingRoom" type="Node2D"]
+script = ExtResource("1_mmeli")

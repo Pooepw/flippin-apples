@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw1wkeatwkn5w"]
+
+[ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="1_pt05u"]
+
+[node name="MedievalSouthBlockOff" type="Node2D"]
+
+[node name="DungeonTiles" parent="." instance=ExtResource("1_pt05u")]
+tile_map_data = PackedByteArray(0, 0, 254, 255, 21, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 21, 0, 0, 0, 2, 0, 2, 0, 0, 0, 255, 255, 21, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 21, 0, 0, 0, 1, 0, 2, 0, 0, 0)

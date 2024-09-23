@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvhikmsqquwol"]
+
+[ext_resource type="Texture2D" uid="uid://c6e13ppgdmr7l" path="res://LevelParts/Dungeon/Rooms/Medieval/dungeons-doors.webp" id="1_t2wut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr4rx"]
+size = Vector2(128, 63)
+
+[node name="MedievalWestDoor" type="StaticBody2D"]
+rotation = 4.71239
+
+[node name="Dungeons-doors" type="Sprite2D" parent="."]
+texture = ExtResource("1_t2wut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gr4rx")

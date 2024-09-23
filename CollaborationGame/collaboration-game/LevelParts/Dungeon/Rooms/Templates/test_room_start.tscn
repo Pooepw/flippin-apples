@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://kwwjp5f13nfa"]
+
+[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/starting_room.gd" id="1_o4qg0"]
+[ext_resource type="Texture2D" uid="uid://dc3o4wunaj0fs" path="res://LevelParts/Dungeon/Rooms/Templates/815.png" id="2_goaj2"]
+
+[node name="TestRoomStart" type="Node2D"]
+script = ExtResource("1_o4qg0")
+dungeon_type = "medieval"
+
+[node name="815" type="Sprite2D" parent="."]
+position = Vector2(-5, 1)
+texture = ExtResource("2_goaj2")

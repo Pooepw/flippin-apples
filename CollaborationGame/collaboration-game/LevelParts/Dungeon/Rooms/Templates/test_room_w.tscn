@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://t7bewdnkrre3"]
+
+[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_he2wp"]
+[ext_resource type="Texture2D" uid="uid://dx1p6jgik1bsk" path="res://iconyellow.png" id="2_3eysp"]
+
+[node name="TestRoomW" type="Node2D"]
+script = ExtResource("1_he2wp")
+north_room_closed = true
+south_room_closed = true
+east_room_closed = true
+
+[node name="Iconyellow" type="Sprite2D" parent="."]
+texture = ExtResource("2_3eysp")
