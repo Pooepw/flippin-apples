@@ -25,6 +25,7 @@ Characters
 	- whatever levelable stats there are
 	- basic bar stats: health, energy/stamina, mana, etc.
 	- inventory slots and current weapon equipped
+- put together a mob generator with an expandable pool of mobs
 
 Weapons
 - make a ranged, melee, and magic template for weapons using a base weapon class.

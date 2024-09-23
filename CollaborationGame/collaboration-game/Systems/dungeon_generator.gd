@@ -1,13 +1,18 @@
 extends Node
 
+var dungeon_level = 0
+
 var current_dungeon = []
 var current_dungeon_type = ""
 var size = 0
+
 const ROOM_SPACING = 2560
 var north_block_off
 var south_block_off
 var east_block_off
 var west_block_off
+
+var display_exit_prompt = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +34,7 @@ func generate_dungeon(start_node, max_distance):
 	space_out_rooms()
 	print (current_dungeon)
 	Player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
+	dungeon_level += 1
 	#current_dungeon[max_distance][max_distemp_starttance] = new_dungeon
 	#new_dungeon.grid_location = Vector2(max_distance, max_distance)
 	#put_rooms(new_dungeon)

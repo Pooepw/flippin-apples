@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name player
+
 # direction of the character's movement
 var direction = Vector2(0, 0)
 

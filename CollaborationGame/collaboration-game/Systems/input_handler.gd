@@ -21,7 +21,11 @@ func _input(event: InputEvent) -> void:
 					KEY_D:
 						Player.direction.x = 1
 						Player.d_pressed = true
-				#Player.moving = true
+					KEY_Z:
+						if DungeonGenerator.display_exit_prompt:
+							DungeonGenerator.clear_dungeon()
+							
+							
 			if not event.pressed:
 				match event.keycode:
 					KEY_A:

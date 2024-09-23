@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4gwikt6tulgs"]
+
+[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Medieval/medieval_dungeon_exit.gd" id="1_lu1ll"]
+[ext_resource type="Texture2D" uid="uid://5o1t3p5o31bh" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/stair.webp" id="1_v486i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1mc"]
+size = Vector2(56, 56)
+
+[node name="MedievalDungeonExit" type="Node2D"]
+script = ExtResource("1_lu1ll")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v486i")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mv1mc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = -37.0
+text = "Press 'Z' to exit"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
