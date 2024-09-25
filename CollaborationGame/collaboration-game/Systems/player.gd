@@ -6,7 +6,7 @@ class_name player
 var direction = Vector2(0, 0)
 
 # this is here for testing for now
-var speed = 500
+var speed = 2000
 
 # booleans that help with making movement much smoother. 
 var w_pressed = false

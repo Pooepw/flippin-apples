@@ -7,6 +7,9 @@ var current_dungeon_type = ""
 var size = 0
 
 const ROOM_SPACING = 2560
+
+# these are the medieval block offs. they should probably eventually go into room
+# setup
 var north_block_off
 var south_block_off
 var east_block_off
@@ -30,6 +33,7 @@ func generate_dungeon(start_node, max_distance):
 	current_dungeon_type = temp_start.dungeon_type
 	temp_start.queue_free()
 	place_room(start, Vector2(max_distance, max_distance))
+	place_exit()
 	fix_rooms(current_dungeon_type)
 	space_out_rooms()
 	print (current_dungeon)
@@ -135,8 +139,223 @@ func close_off(room_reference, direction):
 			#room_reference.west_room_closed = true
 	var instanced_block_off = block_off.instantiate()
 	room_reference.add_child(instanced_block_off)
-			
 
+func place_exit():
+	match current_dungeon_type:
+		"medieval":
+			var direction_choice = GlobalRandomNumberGenerator.rng.randi_range(1, 4)
+			var exit_room_choice
+			#var open_direction
+			#match direction_choice:
+				#1: exit_room_choice = (RoomSetup.medieval_exits["N"]
+				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["N"].size() - 1)])
+				#2: exit_room_choice = (RoomSetup.medieval_exits["S"]
+				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["S"].size() - 1)])
+				#3: exit_room_choice = (RoomSetup.medieval_exits["E"]
+				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["E"].size() - 1)])
+				#4: exit_room_choice = (RoomSetup.medieval_exits["W"]
+				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["W"].size() - 1)])
+			match direction_choice:
+				# start from the NE
+				1:
+					exit_room_choice = find_exit_space(0, size - 1, 1, -1)
+				# start from the NW
+				2:
+					exit_room_choice = find_exit_space(0, 0, 1, 1)
+				# start from the SW
+				3:
+					exit_room_choice = find_exit_space(size - 1, 0, -1, 1)
+				# start from the SE
+				4:
+					exit_room_choice = find_exit_space(size - 1, size - 1, -1, -1)
+			var exit = exit_room_choice[0]
+			var exit_position = exit_room_choice[1]
+			var exit_instance = exit.instantiate()
+			current_dungeon[exit_position.x][exit_position.y] = exit_instance
+			add_child(exit_instance)
+		_:
+			pass
+			
+func find_exit_space(starting_x, starting_y, x_increment, y_increment):
+	var exit_space = 0
+	var ending_x = size - 1 if starting_x == 0 else 0
+	var ending_y = size - 1 if starting_y == 0 else 0
+	for row in range(starting_x, ending_x, x_increment):
+		for column in range(starting_y, ending_y, y_increment):
+			if current_dungeon[row][column] is int:
+				var north_room = 0 if row - 1 < 0 else current_dungeon[row - 1][column]
+				var south_room = 0 if row + 1 >= size else current_dungeon[row + 1][column]
+				var east_room = 0 if column + 1 >= size else current_dungeon[row][column + 1]
+				var west_room = 0 if column - 1 < 0 else current_dungeon[row][column - 1]
+				if north_room is not int:
+					var exits = RoomSetup.medieval_exits
+					exit_space = exits["N"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["N"].size() - 1)]
+					if north_room.south_room_closed:
+						replace_room("south", north_room)
+					return [exit_space, Vector2(row, column)]
+				if south_room is not int:
+					var exits = RoomSetup.medieval_exits
+					exit_space = exits["S"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["S"].size() - 1)]
+					if south_room.north_room_closed:
+						replace_room("north", south_room)
+					return  [exit_space, Vector2(row, column)]
+				if east_room is not int:
+					var exits = RoomSetup.medieval_exits
+					exit_space = exits["E"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["E"].size() - 1)]
+					if east_room.west_room_closed:
+						replace_room("west", east_room)
+					return  [exit_space, Vector2(row, column)]
+				if west_room is not int:
+					var exits = RoomSetup.medieval_exits
+					exit_space = exits["W"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["W"].size() - 1)]
+					if west_room.east_room_closed:
+						replace_room("east", west_room)
+					return  [exit_space, Vector2(row, column)]
+	return exit_space
+
+func replace_room(new_opening, room_to_replace):
+	var north_open = not room_to_replace.north_room_closed
+	var south_open = not room_to_replace.south_room_closed
+	var east_open = not room_to_replace.east_room_closed
+	var west_open = not room_to_replace.west_room_closed
+	var openings = (
+		1 if north_open else 0 + 
+		1 if south_open else 0 +
+		1 if east_open else 0 +
+		1 if west_open else 0
+	)
+	var replacement_room
+	var potential_replacements = []
+	var real_potential_replacements = []
+	if openings == 3:
+		replacement_room = (RoomSetup.medieval_north[4][GlobalRandomNumberGenerator.rng.
+		randi_range(0, RoomSetup.medieval_north[4].size() - 1)])
+	else:
+		match new_opening:
+			"north":
+				if openings == 2:
+					if south_open:
+						potential_replacements.append_array(RoomSetup.medieval_north[3])
+						potential_replacements.append_array(RoomSetup.medieval_north[4])
+					elif east_open:
+						potential_replacements.append_array(RoomSetup.medieval_west[3])
+						potential_replacements.append_array(RoomSetup.medieval_west[4])
+					elif west_open:
+						potential_replacements.append_array(RoomSetup.medieval_east[3])
+						potential_replacements.append_array(RoomSetup.medieval_east[4])
+				elif openings == 1:
+					if south_open:
+						potential_replacements.append_array(RoomSetup.medieval_north[2])
+						potential_replacements.append_array(RoomSetup.medieval_north[3])
+						potential_replacements.append_array(RoomSetup.medieval_north[4])
+					elif east_open:
+						potential_replacements.append_array(RoomSetup.medieval_west[2])
+						potential_replacements.append_array(RoomSetup.medieval_west[3])
+						potential_replacements.append_array(RoomSetup.medieval_west[4])
+					elif west_open:
+						potential_replacements.append_array(RoomSetup.medieval_east[2])
+						potential_replacements.append_array(RoomSetup.medieval_east[3])
+						potential_replacements.append_array(RoomSetup.medieval_east[4])
+				for open_room in potential_replacements:
+					var temp_room = open_room.instantiate()
+					if not temp_room.north_room_closed:
+						real_potential_replacements.push_back(open_room)
+					temp_room.queue_free()
+			"south":
+				if openings == 2:
+					if north_open:
+						potential_replacements.append_array(RoomSetup.medieval_south[3])
+						potential_replacements.append_array(RoomSetup.medieval_south[4])
+					elif east_open:
+						potential_replacements.append_array(RoomSetup.medieval_west[3])
+						potential_replacements.append_array(RoomSetup.medieval_west[4])
+					elif west_open:
+						potential_replacements.append_array(RoomSetup.medieval_east[3])
+						potential_replacements.append_array(RoomSetup.medieval_east[4])
+				elif openings == 1:
+					if north_open:
+						potential_replacements.append_array(RoomSetup.medieval_south[2])
+						potential_replacements.append_array(RoomSetup.medieval_south[3])
+						potential_replacements.append_array(RoomSetup.medieval_south[4])
+					elif east_open:
+						potential_replacements.append_array(RoomSetup.medieval_west[2])
+						potential_replacements.append_array(RoomSetup.medieval_west[3])
+						potential_replacements.append_array(RoomSetup.medieval_west[4])
+					elif west_open:
+						potential_replacements.append_array(RoomSetup.medieval_east[2])
+						potential_replacements.append_array(RoomSetup.medieval_east[3])
+						potential_replacements.append_array(RoomSetup.medieval_east[4])
+				for open_room in potential_replacements:
+					var temp_room = open_room.instantiate()
+					if not temp_room.south_room_closed:
+						real_potential_replacements.push_back(open_room)
+					temp_room.queue_free()
+			"east":
+				if openings == 2:
+					if north_open:
+						potential_replacements.append_array(RoomSetup.medieval_south[3])
+						potential_replacements.append_array(RoomSetup.medieval_south[4])
+					elif south_open:
+						potential_replacements.append_array(RoomSetup.medieval_north[3])
+						potential_replacements.append_array(RoomSetup.medieval_north[4])
+					elif west_open:
+						potential_replacements.append_array(RoomSetup.medieval_east[3])
+						potential_replacements.append_array(RoomSetup.medieval_east[4])
+				elif openings == 1:
+					if north_open:
+						potential_replacements.append_array(RoomSetup.medieval_south[2])
+						potential_replacements.append_array(RoomSetup.medieval_south[3])
+						potential_replacements.append_array(RoomSetup.medieval_south[4])
+					elif south_open:
+						potential_replacements.append_array(RoomSetup.medieval_north[2])
+						potential_replacements.append_array(RoomSetup.medieval_north[3])
+						potential_replacements.append_array(RoomSetup.medieval_north[4])
+					elif west_open:
+						potential_replacements.append_array(RoomSetup.medieval_east[2])
+						potential_replacements.append_array(RoomSetup.medieval_east[3])
+						potential_replacements.append_array(RoomSetup.medieval_east[4])
+				for open_room in potential_replacements:
+					var temp_room = open_room.instantiate()
+					if not temp_room.east_room_closed:
+						real_potential_replacements.push_back(open_room)
+					temp_room.queue_free()
+			"west":
+				if openings == 2:
+					if north_open:
+						potential_replacements.append_array(RoomSetup.medieval_south[3])
+						potential_replacements.append_array(RoomSetup.medieval_south[4])
+					elif south_open:
+						potential_replacements.append_array(RoomSetup.medieval_north[3])
+						potential_replacements.append_array(RoomSetup.medieval_north[4])
+					elif east_open:
+						potential_replacements.append_array(RoomSetup.medieval_west[3])
+						potential_replacements.append_array(RoomSetup.medieval_west[4])
+				elif openings == 1:
+					if north_open:
+						potential_replacements.append_array(RoomSetup.medieval_south[2])
+						potential_replacements.append_array(RoomSetup.medieval_south[3])
+						potential_replacements.append_array(RoomSetup.medieval_south[4])
+					elif south_open:
+						potential_replacements.append_array(RoomSetup.medieval_north[2])
+						potential_replacements.append_array(RoomSetup.medieval_north[3])
+						potential_replacements.append_array(RoomSetup.medieval_north[4])
+					elif east_open:
+						potential_replacements.append_array(RoomSetup.medieval_west[2])
+						potential_replacements.append_array(RoomSetup.medieval_west[3])
+						potential_replacements.append_array(RoomSetup.medieval_west[4])
+				for open_room in potential_replacements:
+					var temp_room = open_room.instantiate()
+					if not temp_room.west_room_closed:
+						real_potential_replacements.push_back(open_room)
+					temp_room.queue_free()
+		replacement_room = real_potential_replacements[GlobalRandomNumberGenerator.rng.randi_range(0, real_potential_replacements.size() - 1)]
+	var room_location = room_to_replace.grid_location
+	remove_child(room_to_replace)
+	room_to_replace.queue_free()
+	var new_room = replacement_room.instantiate()
+	current_dungeon[room_location.x][room_location.y] = new_room
+	add_child(new_room)
+	
 func space_out_rooms():
 	for row in size:
 		for column in size:
