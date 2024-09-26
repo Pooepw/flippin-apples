@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs187mur3o387"
-path="res://.godot/imported/iconred.png-84c30a6fe82ac74c6ecad81c31e8e7fe.ctex"
+uid="uid://bdbne5g6j71p0"
+path="res://.godot/imported/iconpurple.png-0aa4a5960b542b1fc8072cc9d497bbc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://iconred.png"
-dest_files=["res://.godot/imported/iconred.png-84c30a6fe82ac74c6ecad81c31e8e7fe.ctex"]
+source_file="res://LevelParts/Dungeon/Rooms/Templates/iconpurple.png"
+dest_files=["res://.godot/imported/iconpurple.png-0aa4a5960b542b1fc8072cc9d497bbc0.ctex"]
 
 [params]
 

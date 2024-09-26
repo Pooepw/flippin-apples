@@ -13,7 +13,7 @@ config_version=5
 config/name="Collaboration Game"
 run/main_scene="res://Systems/test_node.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://LevelParts/Dungeon/Rooms/Templates/icon.svg"
 
 [autoload]
 

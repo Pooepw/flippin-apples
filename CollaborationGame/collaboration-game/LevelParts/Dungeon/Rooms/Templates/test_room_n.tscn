@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://de2t13hbjyn7j"]
 
-[ext_resource type="Texture2D" uid="uid://dx1p6jgik1bsk" path="res://iconyellow.png" id="1_2v4he"]
+[ext_resource type="Texture2D" uid="uid://dx1p6jgik1bsk" path="res://LevelParts/Dungeon/Rooms/Templates/iconyellow.png" id="1_2v4he"]
 [ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_wykc3"]
 
 [node name="TestRoomN" type="Node2D"]
