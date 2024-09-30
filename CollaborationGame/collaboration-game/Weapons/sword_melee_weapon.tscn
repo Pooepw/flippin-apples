@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cr7t74sl5nrs4"]
+
+[node name="SwordMeleeWeapon" type="Node2D"]
