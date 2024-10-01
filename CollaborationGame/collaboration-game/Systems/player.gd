@@ -5,7 +5,10 @@ class_name player
 # direction of the character's movement
 var direction = Vector2(0, 0)
 
-# this is here for testing for now
+# character stats
+var hp = 100
+var mana = 100
+var stamina = 100
 var speed = 2000
 
 # booleans that help with making movement much smoother. 
