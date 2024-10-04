@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsn2vyuguvg0l"]
+
+[ext_resource type="Script" path="res://NPCs/Mobs/mob.gd" id="1_3tn5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8gwf"]
+
+[node name="Mob" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3tn5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k8gwf")

@@ -1,13 +1,7 @@
-extends Node
+extends Area2D
 
-
-var current_mob_pool
-var all_mobs
-
-var floor_bonus = 0
-var cycle_bonus = 0
-
-
+var triggered_spawns = false
+var open_doors = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,3 +11,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is player:
+		open_doors = false
+		triggered_spawns = true
