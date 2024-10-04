@@ -1,1 +1,2 @@
 please place any character assets here
+characters should be less than 128x128 pixels
