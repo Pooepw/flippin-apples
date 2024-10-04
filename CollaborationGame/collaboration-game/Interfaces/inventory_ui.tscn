@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://vc64svkrp7h5"]
+
+[ext_resource type="Texture2D" uid="uid://dwaj6wh8n1gyw" path="res://Interfaces/UIAssets/inventory.png" id="1_iha0j"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 547.0
+offset_right = 713.0
+offset_bottom = 648.0
+texture = ExtResource("1_iha0j")
+
+[node name="WeaponOne" type="TextureRect" parent="Bar"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 551.0
+offset_right = 455.0
+offset_bottom = 591.0
+
+[node name="WeaponTwo" type="TextureRect" parent="Bar"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 551.0
+offset_right = 556.0
+offset_bottom = 591.0
+
+[node name="WeaponThre" type="TextureRect" parent="Bar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
