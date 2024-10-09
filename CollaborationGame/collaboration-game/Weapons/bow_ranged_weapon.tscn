@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://8c862jjrbdvj"]
+[gd_scene load_steps=2 format=3 uid="uid://8c862jjrbdvj"]
+
+[ext_resource type="Script" path="res://Weapons/bow_ranged_weapon.gd" id="1_a2i1r"]
 
 [node name="BowRangedWeapon" type="Node2D"]
+script = ExtResource("1_a2i1r")

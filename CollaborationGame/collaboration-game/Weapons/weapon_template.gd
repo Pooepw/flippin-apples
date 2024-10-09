@@ -6,5 +6,5 @@ class_name weapon
 func _ready() -> void:
 	pass # Replace with function body.
 
-func attack():
+func handle_attack():
 	pass
