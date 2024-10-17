@@ -17,6 +17,14 @@ var current_stamina = stamina
 var stamina_regen = 2
 var speed = 2000
 
+# weapon stats
+var equipped_weapon
+var weapon_inventory = []
+var inventory_size = 0
+var weapon_count = 0
+var current_slot = 0
+const default_weapon = "clear"
+
 # booleans that help with making movement much smoother. 
 var w_pressed = false
 var s_pressed = false
@@ -34,4 +42,18 @@ func _physics_process(delta) -> void:
 	#if moving:
 	move_and_collide(direction * speed * delta)
 
-	
+func equip_weapon(inventory_slot):
+	if inventory_slot >= 0 and inventory_slot < inventory_size:
+		equipped_weapon = weapon_inventory[inventory_slot]
+
+func pickup_weapon(new_weapon):
+	if weapon_count < inventory_size:
+		var weapon_slot = 0
+		while weapon_inventory[weapon_slot] is weapon:
+			weapon_slot += 1
+		weapon_inventory[weapon_slot] = new_weapon
+		weapon_count += 1
+	else:
+		equipped_weapon.drop_weapon()
+		# need to create weapon drop code
+		equipped_weapon = new_weapon

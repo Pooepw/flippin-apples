@@ -8,3 +8,6 @@ func _ready() -> void:
 
 func handle_attack():
 	pass
+
+func drop_weapon():
+	pass
