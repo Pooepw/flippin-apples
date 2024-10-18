@@ -54,6 +54,10 @@ func pickup_weapon(new_weapon):
 		weapon_inventory[weapon_slot] = new_weapon
 		weapon_count += 1
 	else:
-		equipped_weapon.drop_weapon()
+		drop_weapon(current_slot)
 		# need to create weapon drop code
 		equipped_weapon = new_weapon
+
+func drop_weapon(inventory_slot):
+	weapon_inventory[inventory_slot].place_weapon_on_floor()
+	

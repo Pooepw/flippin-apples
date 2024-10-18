@@ -4,3 +4,5 @@
 
 [node name="WeaponTemplate" type="Node2D"]
 script = ExtResource("1_3m24t")
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]

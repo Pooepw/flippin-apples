@@ -2,12 +2,15 @@ extends Node2D
 
 class_name weapon
 
+var weapon_icon
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	weapon_icon = get_node("WeaponIcon")
+	weapon_icon.visible = false
 
 func handle_attack():
 	pass
 
-func drop_weapon():
-	pass
+func place_weapon_on_floor():
+	weapon_icon.visible = true

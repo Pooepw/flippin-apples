@@ -11,3 +11,5 @@ script = ExtResource("1_7ihn5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_kpvo3")
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]

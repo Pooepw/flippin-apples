@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name mob
 
 var health = 0
-
+var direction = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
