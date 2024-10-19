@@ -36,4 +36,5 @@ shape = SubResource("CapsuleShape2D_sbfua")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cja3b")
-frame_progress = 0.99836
+autoplay = "default"
+frame_progress = 0.856378

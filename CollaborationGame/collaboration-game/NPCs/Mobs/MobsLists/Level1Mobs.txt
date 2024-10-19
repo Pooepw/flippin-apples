@@ -1,0 +1,1 @@
+res://NPCs/Mobs/bowl_plant/bowl_plant.tscn

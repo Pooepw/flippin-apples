@@ -4,6 +4,7 @@ class_name mob
 
 var health = 0
 var direction = Vector2(0,0)
+var mob_spawner_parent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,5 +14,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if health == 0:
-		MobGenerator.mob_count -= 1
-		queue_free()
+		die()
+
+func die():
+	mob_spawner_parent.mob_count -= 1
+	queue_free()
