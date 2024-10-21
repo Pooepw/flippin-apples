@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name mob_spawner_class
+
 var num_mobs_to_spawn = 0
 
 var mob_count = 0
@@ -15,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if spawning_mobs and spawn_timer.is_stopped() and num_mobs_to_spawn > 0:
+	if spawn_timer.is_stopped() and num_mobs_to_spawn > 0:
 		spawn_timer.start(SPAWN_TIME)
 		
 
@@ -32,3 +34,6 @@ func spawn_mob():
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_mob()
+
+func start_spawning():
+	spawn_timer.start(SPAWN_TIME)

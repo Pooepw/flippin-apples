@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name mob
 
-var health = 0
+@export var health: int
 var direction = Vector2(0,0)
 var mob_spawner_parent
 

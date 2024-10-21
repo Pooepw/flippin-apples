@@ -13,7 +13,6 @@ var cycle_bonus = 0
 func _ready() -> void:
 	current_mob_pool.append_array(FileReader.open_and_read_file("res://NPCs/Mobs/MobsLists/Level1Mobs.txt"))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func add_to_pool(mob_pool: String):
+	var pool = FileReader.open_and_read_file(mob_pool)
+	current_mob_pool.append_array(pool)

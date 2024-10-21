@@ -15,6 +15,9 @@ var south_block_off
 var east_block_off
 var west_block_off
 
+# mob spawner node to place inside of rooms
+var mob_spawner
+
 var display_exit_prompt = false
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +26,7 @@ func _ready() -> void:
 	south_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_south_block_off.tscn")
 	east_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_east_block_off.tscn")
 	west_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_west_block_off.tscn")
+	mob_spawner = load("res://Systems/mob_spawner.tscn")
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
@@ -35,13 +39,12 @@ func generate_dungeon(start_node, max_distance):
 	place_room(start, Vector2(max_distance, max_distance))
 	place_exit()
 	fix_rooms(current_dungeon_type)
+	decorate_rooms()
 	space_out_rooms()
 	print (current_dungeon)
 	Player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
 	dungeon_level += 1
-	#current_dungeon[max_distance][max_distemp_starttance] = new_dungeon
-	#new_dungeon.grid_location = Vector2(max_distance, max_distance)
-	#put_rooms(new_dungeon)
+	
 	
 func generate_grid(max_distance):
 	size = max_distance * 2
@@ -145,29 +148,20 @@ func place_exit():
 		"medieval":
 			var direction_choice = GlobalRandomNumberGenerator.rng.randi_range(1, 4)
 			var exit_room_choice
-			#var open_direction
-			#match direction_choice:
-				#1: exit_room_choice = (RoomSetup.medieval_exits["N"]
-				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["N"].size() - 1)])
-				#2: exit_room_choice = (RoomSetup.medieval_exits["S"]
-				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["S"].size() - 1)])
-				#3: exit_room_choice = (RoomSetup.medieval_exits["E"]
-				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["E"].size() - 1)])
-				#4: exit_room_choice = (RoomSetup.medieval_exits["W"]
-				#[GlobalRandomNumberGenerator.rng.randi_range(0, RoomSetup.medieval_exits["W"].size() - 1)])
+			var exits = RoomSetup.medieval_exits
 			match direction_choice:
 				# start from the NE
 				1:
-					exit_room_choice = find_exit_space(0, size - 1, 1, -1)
+					exit_room_choice = find_exit_space(0, size - 1, 1, -1, exits)
 				# start from the NW
 				2:
-					exit_room_choice = find_exit_space(0, 0, 1, 1)
+					exit_room_choice = find_exit_space(0, 0, 1, 1, exits)
 				# start from the SW
 				3:
-					exit_room_choice = find_exit_space(size - 1, 0, -1, 1)
+					exit_room_choice = find_exit_space(size - 1, 0, -1, 1, exits)
 				# start from the SE
 				4:
-					exit_room_choice = find_exit_space(size - 1, size - 1, -1, -1)
+					exit_room_choice = find_exit_space(size - 1, size - 1, -1, -1, exits)
 			var exit = exit_room_choice[0]
 			var exit_position = exit_room_choice[1]
 			var exit_instance = exit.instantiate()
@@ -176,7 +170,7 @@ func place_exit():
 		_:
 			pass
 			
-func find_exit_space(starting_x, starting_y, x_increment, y_increment):
+func find_exit_space(starting_x, starting_y, x_increment, y_increment, exits):
 	var exit_space = 0
 	var ending_x = size - 1 if starting_x == 0 else 0
 	var ending_y = size - 1 if starting_y == 0 else 0
@@ -188,26 +182,22 @@ func find_exit_space(starting_x, starting_y, x_increment, y_increment):
 				var east_room = 0 if column + 1 >= size else current_dungeon[row][column + 1]
 				var west_room = 0 if column - 1 < 0 else current_dungeon[row][column - 1]
 				if north_room is not int:
-					var exits = RoomSetup.medieval_exits
-					exit_space = exits["N"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["N"].size() - 1)]
+					exit_space = exits["S"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["S"].size() - 1)]
 					if north_room.south_room_closed:
 						replace_room("south", north_room)
 					return [exit_space, Vector2(row, column)]
 				if south_room is not int:
-					var exits = RoomSetup.medieval_exits
-					exit_space = exits["S"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["S"].size() - 1)]
+					exit_space = exits["N"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["N"].size() - 1)]
 					if south_room.north_room_closed:
 						replace_room("north", south_room)
 					return  [exit_space, Vector2(row, column)]
 				if east_room is not int:
-					var exits = RoomSetup.medieval_exits
-					exit_space = exits["E"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["E"].size() - 1)]
+					exit_space = exits["W"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["W"].size() - 1)]
 					if east_room.west_room_closed:
 						replace_room("west", east_room)
 					return  [exit_space, Vector2(row, column)]
 				if west_room is not int:
-					var exits = RoomSetup.medieval_exits
-					exit_space = exits["W"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["W"].size() - 1)]
+					exit_space = exits["E"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["E"].size() - 1)]
 					if west_room.east_room_closed:
 						replace_room("east", west_room)
 					return  [exit_space, Vector2(row, column)]
@@ -355,7 +345,32 @@ func replace_room(new_opening, room_to_replace):
 	var new_room = replacement_room.instantiate()
 	current_dungeon[room_location.x][room_location.y] = new_room
 	add_child(new_room)
-	
+
+func decorate_rooms():
+	for row in size:
+		for column in size:
+			var selected_room = current_dungeon[row][column]
+			if not selected_room is int and not selected_room is starting_room:
+				var attribute = select_attribute()
+				if not attribute is String:
+					selected_room.add_child(attribute)
+					if attribute is mob_spawner_class:
+						attribute.start_spawning()
+
+# gives a room a thing to spawn between nothing, mobs, or treasure
+func select_attribute():
+	var choice = GlobalRandomNumberGenerator.rng.randi_range(1, 3)
+	match choice:
+		1:
+			return "nothing"
+		2:
+			var spawner = mob_spawner.instantiate()
+			spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
+			return spawner
+		3: 
+			# replace this with the treasure room attribute later
+			return "nothing"
+
 func space_out_rooms():
 	for row in size:
 		for column in size:
