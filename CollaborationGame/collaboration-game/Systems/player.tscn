@@ -24,7 +24,8 @@ texture = ExtResource("2_loxu6")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="InventoryUI" parent="." instance=ExtResource("3_3kyen")]
-offset_left = -563.0
-offset_top = -324.0
-offset_right = -563.0
-offset_bottom = -324.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
