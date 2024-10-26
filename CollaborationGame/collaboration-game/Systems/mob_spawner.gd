@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if spawn_timer.is_stopped() and num_mobs_to_spawn > 0:
+	if spawn_timer.is_stopped() and num_mobs_to_spawn > 0 and spawning_mobs:
 		spawn_timer.start(SPAWN_TIME)
 		
 
@@ -36,4 +36,5 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_mob()
 
 func start_spawning():
-	spawn_timer.start(SPAWN_TIME)
+	print("spawning mobs")
+	spawning_mobs = true

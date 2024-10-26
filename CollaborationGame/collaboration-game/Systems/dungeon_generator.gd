@@ -17,6 +17,7 @@ var west_block_off
 
 # mob spawner node to place inside of rooms
 var mob_spawner
+var activator_node
 
 var display_exit_prompt = false
 
@@ -27,6 +28,7 @@ func _ready() -> void:
 	east_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_east_block_off.tscn")
 	west_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_west_block_off.tscn")
 	mob_spawner = load("res://Systems/mob_spawner.tscn")
+	activator_node = load("res://LevelParts/activation_area.tscn")
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
@@ -354,8 +356,9 @@ func decorate_rooms():
 				var attribute = select_attribute()
 				if not attribute is String:
 					selected_room.add_child(attribute)
-					if attribute is mob_spawner_class:
-						attribute.start_spawning()
+					selected_room.room_aspect = attribute
+					var activator = activator_node.instantiate()
+					selected_room.add_child(activator)
 
 # gives a room a thing to spawn between nothing, mobs, or treasure
 func select_attribute():

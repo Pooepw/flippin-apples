@@ -9,6 +9,8 @@ class_name room
 
 var grid_location = Vector2(0, 0)
 
+var room_aspect
+
 func close_off(side):
 	side = true
 
@@ -16,6 +18,9 @@ func rooms_closed():
 	return (north_room_closed and south_room_closed 
 	and east_room_closed and west_room_closed)
 
+func activate_room_aspect():
+	if room_aspect is mob_spawner_class:
+		room_aspect.start_spawning()
 
 #func put_room():
 	#if not north_room_closed:
