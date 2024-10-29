@@ -42,6 +42,7 @@ func generate_dungeon(start_node, max_distance):
 	place_exit()
 	fix_rooms(current_dungeon_type)
 	decorate_rooms()
+	place_doors()
 	space_out_rooms()
 	print (current_dungeon)
 	Player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
@@ -373,6 +374,17 @@ func select_attribute():
 		3: 
 			# replace this with the treasure room attribute later
 			return "nothing"
+
+func place_doors():
+	for row in size:
+		for column in size:
+			var selected_room = current_dungeon[row][column]
+			if not selected_room is int and not selected_room is starting_room:
+				var doors = RoomSetup.medieval_doors.instantiate()
+				doors.process_mode = Node.PROCESS_MODE_DISABLED
+				doors.visible = false
+				selected_room.add_child(doors)
+				selected_room.doors_node = doors
 
 func space_out_rooms():
 	for row in size:

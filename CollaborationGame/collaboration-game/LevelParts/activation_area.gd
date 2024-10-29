@@ -12,4 +12,5 @@ func activate_room():
 
 
 func _on_body_entered(body: Node2D) -> void:
-	activate_room()
+	if body is player:
+		activate_room()

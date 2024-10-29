@@ -9,6 +9,7 @@ var medieval_south = {1: [], 2: [], 3:[], 4:[]}
 var medieval_east = {1: [], 2: [], 3:[], 4:[]}
 var medieval_west = {1: [], 2: [], 3:[], 4:[]}
 var medieval_exits = {"N": [], "S": [], "E": [], "W": []}
+var medieval_doors = preload("res://LevelParts/Dungeon/Rooms/Medieval/medieval_doors.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

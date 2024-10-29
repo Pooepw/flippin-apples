@@ -5,23 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://c4m1i3nv6kijv" path="res://LevelParts/Dungeon/Rooms/Medieval/medieval_east_door.tscn" id="3_p06vf"]
 
 [node name="MedievalDoors4" type="Node2D"]
+z_index = 1
 
-[node name="MedievalNSDoor" parent="." instance=ExtResource("1_8ou5d")]
+[node name="MedievalNorthDoor" parent="." instance=ExtResource("1_8ou5d")]
 position = Vector2(0, -1249)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
-[node name="MedievalNSDoor2" parent="." instance=ExtResource("1_8ou5d")]
+[node name="MedievalSouthDoor" parent="." instance=ExtResource("1_8ou5d")]
 position = Vector2(0, 1313)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="MedievalWestDoor" parent="." instance=ExtResource("2_erk1b")]
 position = Vector2(-1265, 0)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="MedievalEastDoor" parent="." instance=ExtResource("3_p06vf")]
 position = Vector2(1329, 0)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
