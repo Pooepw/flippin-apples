@@ -13,4 +13,8 @@ func activate_room():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is player:
-		activate_room()
+		get_node("Timer").start()
+
+
+func _on_timer_timeout() -> void:
+	activate_room()
