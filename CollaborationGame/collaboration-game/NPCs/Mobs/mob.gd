@@ -7,9 +7,11 @@ class_name mob
 var direction = Vector2(0,0)
 var mob_spawner_parent
 
-enum MOVE_MODES {BASIC, PROJECTOR, SPECIAL}
+enum MOVE_MODES {BASIC, PROJECTOR, STILL_PROJECTOR, SPECIAL}
 @export var move_mode: MOVE_MODES
 @export var projector_closeness: int
+
+# projectile things
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +33,9 @@ func _physics_process(delta: float) -> void:
 			else:
 				#put in projection function later
 				pass
+		MOVE_MODES.STILL_PROJECTOR:
+			# put in projection function later
+			pass
 		MOVE_MODES.SPECIAL:
 			special_movement(delta)
 

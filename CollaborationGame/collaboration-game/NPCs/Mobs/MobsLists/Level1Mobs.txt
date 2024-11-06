@@ -1,1 +1,2 @@
 res://NPCs/Mobs/bowl_plant/bowl_plant.tscn
+res://NPCs/Mobs/pin_shooter/pin_shooter.tscn
