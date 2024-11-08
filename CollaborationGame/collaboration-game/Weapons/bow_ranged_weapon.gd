@@ -45,4 +45,8 @@ func _physics_process(delta: float) -> void:
 # apply bow stats to the projectile by making an instance of the projectile and 
 # applying the different stats of the bow to the projectile.
 func fire():
-	var edited_projectile_damage = bow_damage * (charge / charge_time)
+	var projectile_instance = projectile_node.instantiate()
+	projectile_instance.direction = Player.global_position.direction_to(get_global_mouse_position())
+	var edited_projectile_damage = bow_damage + projectile_instance.damage * (charge / charge_time)
+	projectile_instance.actual_damage = edited_projectile_damage
+	Player.add_child(projectile_instance)
