@@ -15,7 +15,7 @@ var mana_regen = 1
 var stamina = 100
 var current_stamina = stamina
 var stamina_regen = 2
-var speed = 2000
+var speed = 1000
 
 # weapon stats
 var equipped_weapon

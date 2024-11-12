@@ -35,6 +35,8 @@ animations = [{
 }]
 
 [node name="PinShooter" type="CharacterBody2D"]
+collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_s33f5")
 health = 5
 move_mode = 2
@@ -45,4 +47,5 @@ shape = SubResource("CapsuleShape2D_di0ud")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, 2)
 sprite_frames = SubResource("SpriteFrames_3ayh6")
+autoplay = "default"
 frame_progress = 0.0777557

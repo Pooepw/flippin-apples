@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if spawn_timer.is_stopped() and num_mobs_to_spawn > 0 and spawning_mobs:
 		spawn_timer.start(SPAWN_TIME)
 		

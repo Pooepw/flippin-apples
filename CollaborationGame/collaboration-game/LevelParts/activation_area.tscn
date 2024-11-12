@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://LevelParts/activation_area.gd" id="1_epahb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cq4u"]
-size = Vector2(2553, 2558)
+size = Vector2(2400, 2400)
 
 [node name="ActivationArea" type="Area2D"]
 collision_layer = 0
@@ -15,6 +15,7 @@ position = Vector2(32.5, 0)
 shape = SubResource("RectangleShape2D_2cq4u")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

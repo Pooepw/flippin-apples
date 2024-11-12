@@ -4,35 +4,37 @@
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 67.0
 
 [node name="Bar" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 410.0
-offset_top = 547.0
-offset_right = 713.0
-offset_bottom = 648.0
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 67.0
 texture = ExtResource("1_iha0j")
+stretch_mode = 2
 
-[node name="WeaponOne" type="TextureRect" parent="Bar"]
+[node name="Weapon1" type="TextureRect" parent="Bar"]
 layout_mode = 0
-offset_left = 415.0
-offset_top = 551.0
-offset_right = 455.0
-offset_bottom = 591.0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 54.0
+stretch_mode = 2
 
-[node name="WeaponTwo" type="TextureRect" parent="Bar"]
+[node name="Weapon2" type="TextureRect" parent="Bar"]
 layout_mode = 0
-offset_left = 516.0
-offset_top = 551.0
-offset_right = 556.0
-offset_bottom = 591.0
+offset_left = 78.0
+offset_top = 14.0
+offset_right = 118.0
+offset_bottom = 54.0
+stretch_mode = 2
 
-[node name="WeaponThre" type="TextureRect" parent="Bar"]
+[node name="Weapon3" type="TextureRect" parent="Bar"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 147.0
+offset_top = 14.0
+offset_right = 187.0
+offset_bottom = 54.0
+stretch_mode = 2

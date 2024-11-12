@@ -6,7 +6,7 @@ var current_dungeon = []
 var current_dungeon_type = ""
 var size = 0
 
-const ROOM_SPACING = 2560
+const ROOM_SPACING = 2624
 
 # these are the medieval block offs. they should probably eventually go into room
 # setup
@@ -368,9 +368,9 @@ func select_attribute():
 		1:
 			return "nothing"
 		2:
-			var spawner = mob_spawner.instantiate()
-			spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
-			return spawner
+			#var spawner = mob_spawner.instantiate()
+			#spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
+			return "spawner"
 		3: 
 			# replace this with the treasure room attribute later
 			return "nothing"
@@ -396,12 +396,6 @@ func space_out_rooms():
 func clear_dungeon():
 	for row in size:
 		for column in size:
-			if not current_dungeon[row][column] == 0:
+			if not current_dungeon[row][column] is int:
 				current_dungeon[row][column].queue_free()
 	current_dungeon.clear()
-
-					#for room_openings in list:
-						#for option in list[room_openings]:
-							#var instanced_option = option.instantiate()
-							#var new_room_location = room_reference.grid_location + Vector(0, -1)
-							#if new_room_location.current_dungeon[new_room_location.x][new_room_location.y] :
