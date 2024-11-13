@@ -7,7 +7,7 @@ var weapon_icon
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	weapon_icon = get_node("WeaponIcon")
-	weapon_icon.visible = false
+	weapon_icon.visible = true
 
 func handle_attack():
 	pass

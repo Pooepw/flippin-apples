@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://vc64svkrp7h5"]
+[gd_scene load_steps=3 format=3 uid="uid://vc64svkrp7h5"]
 
 [ext_resource type="Texture2D" uid="uid://dwaj6wh8n1gyw" path="res://Interfaces/UIAssets/inventory.png" id="1_iha0j"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ucp4p"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
@@ -15,26 +17,27 @@ offset_bottom = 67.0
 texture = ExtResource("1_iha0j")
 stretch_mode = 2
 
-[node name="Weapon1" type="TextureRect" parent="Bar"]
+[node name="Weapon1" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 14.0
-offset_right = 52.0
-offset_bottom = 54.0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 48.0
+offset_bottom = 51.0
+texture = SubResource("PlaceholderTexture2D_ucp4p")
 stretch_mode = 2
 
-[node name="Weapon2" type="TextureRect" parent="Bar"]
+[node name="Weapon2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 14.0
-offset_right = 118.0
-offset_bottom = 54.0
+offset_left = 77.0
+offset_top = 10.0
+offset_right = 117.0
+offset_bottom = 50.0
 stretch_mode = 2
 
-[node name="Weapon3" type="TextureRect" parent="Bar"]
+[node name="Weapon3" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 14.0
-offset_right = 187.0
-offset_bottom = 54.0
+offset_left = 145.0
+offset_top = 11.0
+offset_right = 185.0
+offset_bottom = 51.0
 stretch_mode = 2

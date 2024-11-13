@@ -6,10 +6,10 @@
 script = ExtResource("1_4csnm")
 
 [node name="FileTest" type="Button" parent="."]
-offset_left = 31.0
-offset_top = 21.0
-offset_right = 103.0
-offset_bottom = 52.0
+offset_left = 26.0
+offset_top = 27.0
+offset_right = 98.0
+offset_bottom = 58.0
 text = "Test File"
 
 [node name="GenDungeonTest" type="Button" parent="."]
@@ -19,5 +19,13 @@ offset_right = 174.0
 offset_bottom = 137.0
 text = "generate dungeon"
 
+[node name="InventoryTest" type="Button" parent="."]
+offset_left = 25.0
+offset_top = 188.0
+offset_right = 251.0
+offset_bottom = 219.0
+text = "Attach Weapon to Inventory"
+
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]
+[connection signal="pressed" from="InventoryTest" to="." method="_on_inventory_test_pressed"]

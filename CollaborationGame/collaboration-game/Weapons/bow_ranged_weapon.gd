@@ -12,7 +12,6 @@ class_name bow
 # the bow damage is the amount of damage the bow adds to the projectile.
 # the projectile speed is the amount of speed the projectile will be released 
 # with. 
-@export var projectile_string: String
 @export var charge_time: int 
 @export var bow_damage: int
 @export var projectile_speed: int
@@ -28,7 +27,8 @@ var charging = false
 
 # sets up the projectiles to be instantiated and flung
 func _ready() -> void:
-	projectile_node = load(projectile_string)
+	super()
+	projectile_node = load(projectile_scene)
 
 
 # _physics_process is constantly being called. for bow, this has to be charging

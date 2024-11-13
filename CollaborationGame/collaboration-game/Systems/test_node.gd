@@ -15,3 +15,10 @@ func _on_file_test_pressed() -> void:
 
 func _on_gen_dungeon_test_pressed() -> void:
 	DungeonGenerator.generate_dungeon("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn", 3)
+
+
+func _on_inventory_test_pressed() -> void:
+	var test_weapon = load("res://Weapons/test_weapon_3.tscn")
+	var test_weapon_instance = test_weapon.instantiate()
+	Player.weapon_inventory_node.add_child(test_weapon_instance)
+	Player.weapon_inventory_node.add_to_inventory(test_weapon_instance)

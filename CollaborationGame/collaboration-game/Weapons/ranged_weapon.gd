@@ -8,6 +8,7 @@ var projectile
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	projectile = load(projectile_scene)
 
 func fire():

@@ -6,6 +6,7 @@ var swinging = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	hitbox = get_node("Hitbox")
 	hitbox.monitoring = false
 

@@ -8,6 +8,7 @@ var shockwave_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	strike_area = get_node("StrikeArea")
 	strike_area.monitoring = false
 	shockwave_area = get_node("ShockwaveArea")
