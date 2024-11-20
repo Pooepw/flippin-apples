@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbwb4aw0ad5oc"]
+
+[ext_resource type="PackedScene" uid="uid://bkjtkhrak82g4" path="res://Systems/inventory_system.tscn" id="1_ks3pv"]
+[ext_resource type="PackedScene" uid="uid://do1i8kwta3aps" path="res://Interfaces/player_stats.tscn" id="2_5vdhi"]
+
+[node name="PlayerInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventorySystem" parent="." instance=ExtResource("1_ks3pv")]
+
+[node name="PlayerStats" parent="." instance=ExtResource("2_5vdhi")]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 72.0
+offset_right = 1.0
+offset_bottom = 72.0

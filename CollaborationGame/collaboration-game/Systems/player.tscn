@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Systems/player.gd" id="1_nydu1"]
 [ext_resource type="Texture2D" uid="uid://dd60gtjj8w1gy" path="res://Systems/tset2.png" id="2_x6f1y"]
-[ext_resource type="PackedScene" uid="uid://bkjtkhrak82g4" path="res://Systems/inventory_system.tscn" id="3_vory7"]
+[ext_resource type="PackedScene" uid="uid://cbwb4aw0ad5oc" path="res://Interfaces/player_interface.tscn" id="3_26olf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3pnc"]
 radius = 15.0
@@ -18,7 +18,7 @@ script = ExtResource("1_nydu1")
 position = Vector2(640, 360)
 shape = SubResource("CapsuleShape2D_v3pnc")
 
-[node name="815" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_x6f1y")
@@ -26,4 +26,4 @@ texture = ExtResource("2_x6f1y")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="InventorySystem" parent="." instance=ExtResource("3_vory7")]
+[node name="PlayerInterface" parent="." instance=ExtResource("3_26olf")]

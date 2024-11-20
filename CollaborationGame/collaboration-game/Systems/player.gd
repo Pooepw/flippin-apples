@@ -28,16 +28,24 @@ var s_pressed = false
 var a_pressed = false
 var d_pressed = false
 
+var player_sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	weapon_inventory_node = get_node("InventorySystem")
+	weapon_inventory_node = get_node("PlayerInteface/InventorySystem")
+	player_sprite = get_node("Sprite")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
 	#if moving:
 	move_and_collide(direction * speed * delta)
+	# this may seem unintuitive, but if the player stops moving, the flip_h should
+	# be retained
+	if direction.x > 0:
+		player_sprite.flip_h = true
+	elif direction.x < 0:
+		player_sprite.flip_h = false
 
 #func equip_weapon(inventory_slot):
 	#if inventory_slot >= 0 and inventory_slot < inventory_size:
