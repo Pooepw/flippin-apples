@@ -6,21 +6,13 @@
 
 [node name="PlayerStats" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_xx8t1")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.35
-anchor_bottom = 0.117
-offset_right = -35.0
-offset_bottom = 15.76
-value = 60.0
+offset_right = 700.0
+offset_bottom = 100.0
 texture_under = ExtResource("2_5d3dj")
 texture_progress = ExtResource("3_0ikq1")

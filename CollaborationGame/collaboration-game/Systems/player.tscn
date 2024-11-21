@@ -24,6 +24,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_x6f1y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+position = Vector2(640, 360)
 
 [node name="PlayerInterface" parent="." instance=ExtResource("3_26olf")]

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var inventory = []
 var inventory_size = 3 # this will probably change based on character class
@@ -11,6 +11,7 @@ func _ready() -> void:
 	for int in range(0, inventory_size - 1):
 		inventory.push_back(0)
 	inventory_ui = get_node("InventoryUI")
+	
 
 func add_to_inventory(new_weapon):
 	if inventory[slot_number] is int:
@@ -18,11 +19,11 @@ func add_to_inventory(new_weapon):
 	else:
 		inventory[slot_number].queue_free()
 		inventory[slot_number] = new_weapon
+	var weapon_texture = new_weapon.weapon_icon.get_texture()
 	match slot_number:
 		0:
-			print(inventory_ui.get_node("Weapon1").get_texture())
-			inventory_ui.get_node("Weapon1").set_texture(new_weapon.weapon_icon.get_texture())
+			inventory_ui.get_node("Weapon1").set_texture(weapon_texture)
 		1:
-			inventory_ui.get_node("Weapon2").texture = new_weapon.weapon_icon.texture
+			inventory_ui.get_node("Weapon2").set_texture(weapon_texture)
 		2:
-			inventory_ui.get_node("Weapon3").texture = new_weapon.weapon_icon.texture
+			inventory_ui.get_node("Weapon3").set_texture(weapon_texture)

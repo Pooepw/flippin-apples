@@ -28,11 +28,14 @@ var s_pressed = false
 var a_pressed = false
 var d_pressed = false
 
+# node access
 var player_sprite
+var player_interface
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	weapon_inventory_node = get_node("PlayerInteface/InventorySystem")
+	player_interface = get_node("PlayerInterface")
+	weapon_inventory_node = player_interface.inventory_system
 	player_sprite = get_node("Sprite")
 
 

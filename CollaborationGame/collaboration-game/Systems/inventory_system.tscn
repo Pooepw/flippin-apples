@@ -3,7 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://vc64svkrp7h5" path="res://Interfaces/inventory_ui.tscn" id="1_co2i3"]
 [ext_resource type="Script" path="res://Systems/inventory_system.gd" id="1_ugmhp"]
 
-[node name="InventorySystem" type="Node2D"]
+[node name="InventorySystem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_ugmhp")
 
 [node name="InventoryUI" parent="." instance=ExtResource("1_co2i3")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_bottom = 0.0
+grow_vertical = 1
