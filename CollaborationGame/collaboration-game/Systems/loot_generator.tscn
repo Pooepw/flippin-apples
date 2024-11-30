@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxss3q0qn6hrj"]
+
+[ext_resource type="Script" path="res://Systems/loot_generator.gd" id="1_n3p21"]
+
+[node name="LootGenerator" type="Node2D"]
+script = ExtResource("1_n3p21")

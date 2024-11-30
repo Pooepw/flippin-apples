@@ -32,8 +32,9 @@ func _ready() -> void:
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
+	LootGenerator.add_loot_list(FileReader.open_and_read_file
+	("res://LevelParts/Dungeon/Rooms/Medieval/LootLists/BaseMedievalLootList.txt"))
 	generate_grid(max_distance)
-	#place_room(start_node, Vector2(max_distance, max_distance))
 	var start = load(start_node)
 	var temp_start = start.instantiate()
 	current_dungeon_type = temp_start.dungeon_type
@@ -47,7 +48,6 @@ func generate_dungeon(start_node, max_distance):
 	print (current_dungeon)
 	Player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
 	dungeon_level += 1
-	
 	
 func generate_grid(max_distance):
 	size = max_distance * 2
@@ -372,7 +372,7 @@ func select_attribute():
 			#spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
 			return "spawner"
 		3: 
-			# replace this with the treasure room attribute later
+			var loot = LootGenerator.generate_loot()
 			return "nothing"
 
 func place_doors():

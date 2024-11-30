@@ -1,0 +1,1 @@
+res://Weapons/test_weapon_3.tscn

@@ -14,12 +14,15 @@ func _ready() -> void:
 	
 
 func add_to_inventory(new_weapon):
+	var weapon_instance = new_weapon.instantiate()
+	Player.add_child(weapon_instance)
+	weapon_instance.weapon_icon.visible = false
 	if inventory[slot_number] is int:
-		inventory[slot_number] = new_weapon
+		inventory[slot_number] = weapon_instance
 	else:
 		inventory[slot_number].queue_free()
-		inventory[slot_number] = new_weapon
-	var weapon_texture = new_weapon.weapon_icon.get_texture()
+		inventory[slot_number] = weapon_instance
+	var weapon_texture = weapon_instance.weapon_icon.get_texture()
 	match slot_number:
 		0:
 			inventory_ui.get_node("Weapon1").set_texture(weapon_texture)
