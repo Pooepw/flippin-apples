@@ -25,6 +25,7 @@ Player="*res://Systems/player.tscn"
 InputHandler="*res://Systems/input_handler.tscn"
 MobGenerator="*res://Systems/mob_generator.tscn"
 LootGenerator="*res://Systems/loot_generator.tscn"
+AudioController="*res://Systems/audio_controller.tscn"
 
 [display]
 

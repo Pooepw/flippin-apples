@@ -4,9 +4,3 @@
 
 [node name="AudioController" type="Node"]
 script = ExtResource("1_sv6hd")
-
-[node name="SoundFX" type="AudioStreamPlayer" parent="."]
-bus = &"Sounds"
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
