@@ -10,3 +10,10 @@ script = ExtResource("1_1nclc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4d56h")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

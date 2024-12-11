@@ -15,15 +15,17 @@ motion_mode = 1
 script = ExtResource("1_nydu1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(640, 360)
 shape = SubResource("CapsuleShape2D_v3pnc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(640, 360)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_x6f1y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 360)
 
 [node name="PlayerInterface" parent="." instance=ExtResource("3_26olf")]
+z_index = 1
+offset_left = -644.0
+offset_top = -362.0
+offset_right = -644.0
+offset_bottom = -362.0

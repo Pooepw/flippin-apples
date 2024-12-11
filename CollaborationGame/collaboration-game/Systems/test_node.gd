@@ -19,5 +19,5 @@ func _on_gen_dungeon_test_pressed() -> void:
 
 func _on_inventory_test_pressed() -> void:
 	var test_weapon = load("res://Weapons/test_weapon_3.tscn")
-	#var test_weapon_instance = test_weapon.instantiate()
-	Player.player_interface.set_weapon_slot(test_weapon)
+	var test_weapon_instance = test_weapon.instantiate()
+	Player.equip_weapon(test_weapon_instance)

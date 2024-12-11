@@ -9,7 +9,10 @@ func _ready() -> void:
 	weapon_icon = get_node("WeaponIcon")
 	weapon_icon.visible = true
 
-func handle_attack():
+func start_attack():
+	pass
+
+func end_attack():
 	pass
 
 func place_weapon_on_floor():

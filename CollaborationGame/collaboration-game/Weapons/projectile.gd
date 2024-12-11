@@ -7,9 +7,11 @@ extends CharacterBody2D
 var actual_damage: int
 var direction: Vector2
 
+var projectile_sprite
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	projectile_sprite = get_node("ProjectileSprite")
 
 
 func _physics_process(delta: float) -> void:
@@ -18,3 +20,12 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(direction * speed * delta)
 	if collision:
 		projectile_health -= 1
+
+
+func _on_live_timer_timeout() -> void:
+	queue_free()
+
+func set_up_movement(to_position):
+	position = Player.global_position
+	direction = position.direction_to(to_position)
+	set_rotation(position.angle_to_point(to_position))

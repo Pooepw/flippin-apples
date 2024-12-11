@@ -37,7 +37,7 @@ func _ready() -> void:
 	player_interface = get_node("PlayerInterface")
 	weapon_inventory_node = player_interface.inventory_system
 	player_sprite = get_node("Sprite")
-
+	equipped_weapon = default_weapon
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
@@ -50,9 +50,14 @@ func _physics_process(delta) -> void:
 	elif direction.x < 0:
 		player_sprite.flip_h = false
 
-#func equip_weapon(inventory_slot):
-	#if inventory_slot >= 0 and inventory_slot < inventory_size:
-		#equipped_weapon = weapon_inventory[inventory_slot]
+func weapon_equipped():
+	return not equipped_weapon is String
+
+# new_weapon is the instance of the weapon
+func equip_weapon(new_weapon):
+	equipped_weapon = new_weapon
+	add_child(new_weapon)
+	player_interface.set_weapon_slot(new_weapon)
 #
 #func pickup_weapon(new_weapon):
 	#if weapon_count < inventory_size:
