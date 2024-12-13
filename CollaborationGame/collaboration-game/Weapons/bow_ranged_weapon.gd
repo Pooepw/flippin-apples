@@ -49,7 +49,7 @@ func fire():
 	projectile_instance.set_up_movement(get_global_mouse_position())
 	var edited_projectile_damage = bow_damage + projectile_instance.damage * (charge / charge_time)
 	projectile_instance.actual_damage = edited_projectile_damage
-	Player.get_parent().add_child(projectile_instance)
+	ProjectileHandler.add_child(projectile_instance)
 	projectile_instance.get_node("LiveTimer").start()
 
 func start_attack():
