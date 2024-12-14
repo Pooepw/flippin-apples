@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name projectile
+
 @export var damage: int
 @export var speed: int
 @export var projectile_health: int
@@ -8,10 +10,13 @@ var actual_damage: int
 var direction: Vector2
 
 var projectile_sprite
+var emitter
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	projectile_sprite = get_node("ProjectileSprite")
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -19,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	var collision = move_and_collide(direction * speed * delta)
 	if collision:
-		projectile_health -= 1
+		CollisionHandler.handle_collision(self, collision)
 
 
 func _on_live_timer_timeout() -> void:

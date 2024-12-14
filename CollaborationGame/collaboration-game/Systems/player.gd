@@ -17,6 +17,10 @@ var current_stamina = stamina
 var stamina_regen = 2
 var speed = 1000
 
+var recently_damaged = false
+var invincibility_timer
+var invincibility_time = 0.1
+
 # weapon stats
 var equipped_weapon
 var weapon_inventory_node
@@ -38,6 +42,7 @@ func _ready() -> void:
 	weapon_inventory_node = player_interface.inventory_system
 	player_sprite = get_node("Sprite")
 	equipped_weapon = default_weapon
+	invincibility_timer = get_node("InvincibilityFrames")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
@@ -73,4 +78,8 @@ func equip_weapon(new_weapon):
 #
 #func drop_weapon(inventory_slot):
 	#weapon_inventory[inventory_slot].place_weapon_on_floor()
-	
+
+# the player will gain invincibility from taking damage, then this will take it 
+# away
+func _on_invincibility_frames_timeout() -> void:
+	recently_damaged = false

@@ -29,3 +29,7 @@ offset_left = -644.0
 offset_top = -362.0
 offset_right = -644.0
 offset_bottom = -362.0
+
+[node name="InvincibilityFrames" type="Timer" parent="."]
+
+[connection signal="timeout" from="InvincibilityFrames" to="." method="_on_invincibility_frames_timeout"]

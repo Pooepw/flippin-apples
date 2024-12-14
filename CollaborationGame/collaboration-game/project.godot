@@ -27,6 +27,7 @@ MobGenerator="*res://Systems/mob_generator.tscn"
 LootGenerator="*res://Systems/loot_generator.tscn"
 AudioController="*res://Systems/audio_controller.tscn"
 ProjectileHandler="*res://Systems/projectile_handler.tscn"
+CollisionHandler="*res://Systems/collision_handler.tscn"
 
 [display]
 
@@ -35,6 +36,15 @@ window/size/viewport_height=720
 window/size/transparent=true
 window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_3="Walls"
+2d_physics/layer_5="Enemy Projectiles"
+2d_physics/layer_6="Enemies"
+2d_physics/layer_7="Player Projectiles"
+2d_physics/layer_11="Exits"
 
 [rendering]
 

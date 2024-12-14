@@ -4,12 +4,14 @@ class_name mob
 
 @export var health: int
 @export var move_speed: int
-var direction = Vector2(0,0)
-var mob_spawner_parent
+@export var contact_damage: int
 
 enum MOVE_MODES {BASIC, PROJECTOR, STILL_PROJECTOR, SPECIAL}
 @export var move_mode: MOVE_MODES
 @export var projector_closeness: int
+
+var direction = Vector2(0,0)
+var mob_spawner_parent
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
