@@ -8,4 +8,6 @@ script = ExtResource("1_g7ide")
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

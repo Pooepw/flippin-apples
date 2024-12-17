@@ -1,7 +1,8 @@
 extends ranged_weapon
 
 # one of the ranged weapon classes. actual bow weapons may use this or extend from
-# it to establish special abilities.
+# it to establish special abilities. if the bow is basic, it uses the basic
+# attack from this class.
 
 # (to make this class extendable)
 class_name bow

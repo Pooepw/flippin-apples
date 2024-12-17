@@ -47,6 +47,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
 	#if moving:
+	
 	move_and_collide(direction * speed * delta)
 	# this may seem unintuitive, but if the player stops moving, the flip_h should
 	# be retained
