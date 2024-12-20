@@ -50,15 +50,4 @@ func end_attack():
 func fire():
 	current_ammo -= 1
 	var projectile_instance = projectile_node.instantiate()
-	projectile_instance.emitter = "player"
-	# gdi godot
-	projectile_instance.set_collision_layer_value(1, false)
-	projectile_instance.set_collision_mask_value(1, false)
-	projectile_instance.set_collision_layer_value(7, true)
-	projectile_instance.set_collision_mask_value(3, true)
-	projectile_instance.set_collision_mask_value(5, true)
-	projectile_instance.set_collision_mask_value(6, true)
-	projectile_instance.set_up_movement(get_global_mouse_position())
-	projectile_instance.actual_damage = projectile_instance.damage
-	ProjectileHandler.add_child(projectile_instance)
-	projectile_instance.get_node("LiveTimer").start()
+	projectile_instance.fire_self(get_global_mouse_position(), player)
