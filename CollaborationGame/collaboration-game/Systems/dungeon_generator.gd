@@ -204,6 +204,35 @@ func find_exit_space(starting_x, starting_y, x_increment, y_increment, exits):
 					if west_room.east_room_closed:
 						replace_room("east", west_room)
 					return  [exit_space, Vector2(row, column)]
+	if exit_space is int:
+		var north_room = 0 if starting_x - 1 < 0 else current_dungeon[starting_x - 1][starting_y]
+		var south_room = 0 if starting_x + 1 >= size else current_dungeon[starting_x + 1][starting_y]
+		var east_room = 0 if starting_y + 1 >= size else current_dungeon[starting_x][starting_y + 1]
+		var west_room = 0 if starting_y - 1 < 0 else current_dungeon[starting_x][starting_y - 1]
+		if north_room is not int:
+			exit_space = exits["S"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["S"].size() - 1)]
+			current_dungeon[starting_x][starting_y].queue_free()
+			if north_room.south_room_closed:
+				replace_room("south", north_room)
+			return [exit_space, Vector2(starting_x, starting_y)]
+		if south_room is not int:
+			exit_space = exits["N"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["N"].size() - 1)]
+			current_dungeon[starting_x][starting_y].queue_free()
+			if south_room.north_room_closed:
+				replace_room("north", south_room)
+			return  [exit_space, Vector2(starting_x, starting_y)]
+		if east_room is not int:
+			exit_space = exits["W"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["W"].size() - 1)]
+			current_dungeon[starting_x][starting_y].queue_free()
+			if east_room.west_room_closed:
+				replace_room("west", east_room)
+			return  [exit_space, Vector2(starting_x, starting_y)]
+		if west_room is not int:
+			exit_space = exits["E"][GlobalRandomNumberGenerator.rng.randi_range(0, exits["E"].size() - 1)]
+			current_dungeon[starting_x][starting_y].queue_free()
+			if west_room.east_room_closed:
+				replace_room("east", west_room)
+			return  [exit_space, Vector2(starting_x, starting_y)]
 	return exit_space
 
 func replace_room(new_opening, room_to_replace):
