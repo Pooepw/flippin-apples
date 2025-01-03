@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnlvlfuhkidma"]
+
+[ext_resource type="Script" path="res://LevelParts/Dungeon/fog.gd" id="1_w6k3k"]
+
+[sub_resource type="Gradient" id="Gradient_f5huq"]
+offsets = PackedFloat32Array(0, 0.50137, 0.931507)
+colors = PackedColorArray(0.597656, 0.596621, 0.580821, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6x2xq"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qoi4n"]
+width = 2500
+height = 2500
+color_ramp = SubResource("Gradient_f5huq")
+noise = SubResource("FastNoiseLite_6x2xq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3b1g"]
+size = Vector2(2499, 2500)
+
+[node name="Fog" type="Area2D"]
+collision_layer = 0
+collision_mask = 1024
+script = ExtResource("1_w6k3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_qoi4n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 4)
+shape = SubResource("RectangleShape2D_g3b1g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

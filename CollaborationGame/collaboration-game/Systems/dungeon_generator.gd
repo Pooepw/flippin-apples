@@ -19,6 +19,8 @@ var west_block_off
 var mob_spawner
 var activator_node
 
+var fog_node
+
 var display_exit_prompt = false
 
 # Called when the node enters the scene tree for the first time.
@@ -29,6 +31,7 @@ func _ready() -> void:
 	west_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_west_block_off.tscn")
 	mob_spawner = load("res://Systems/mob_spawner.tscn")
 	activator_node = load("res://LevelParts/activation_area.tscn")
+	fog_node = load("res://LevelParts/Dungeon/fog.tscn")
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
@@ -383,6 +386,8 @@ func decorate_rooms():
 		for column in size:
 			var selected_room = current_dungeon[row][column]
 			if not selected_room is int and not selected_room is starting_room:
+				var fog_instance = fog_node.instantiate()
+				selected_room.add_child(fog_instance)
 				var attribute = select_attribute()
 				if not attribute is String:
 					selected_room.add_child(attribute)
