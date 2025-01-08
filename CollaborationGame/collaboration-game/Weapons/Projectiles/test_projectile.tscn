@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2yojxyfb7p3v"]
 
-[ext_resource type="Script" path="res://Weapons/projectile.gd" id="1_auvly"]
+[ext_resource type="Script" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_auvly"]
 [ext_resource type="Texture2D" uid="uid://dix3jvcmwxx1m" path="res://Weapons/Projectiles/test_projectile.png" id="1_de8rm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu6pf"]

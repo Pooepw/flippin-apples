@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://drylk4xuflulk"]
 
-[ext_resource type="Script" path="res://Weapons/bow_ranged_weapon.gd" id="1_8cq0b"]
+[ext_resource type="Script" path="res://Weapons/WeaponTemplates/bow_ranged_weapon.gd" id="1_8cq0b"]
 [ext_resource type="Texture2D" uid="uid://c2xs67j8csk2r" path="res://Weapons/testweapon3.png" id="2_qbrwk"]
 
 [node name="TestWeapon3" type="Node2D"]

@@ -26,10 +26,17 @@ var projectile_node
 var charge = 0
 var charging = false
 
+# sprite node access (on the character)
+# sprites for bows will contain an idle frame and 3 charging frames with the
+# last frame being the fully charged form
+var charge_frames
+
+
 # sets up the projectiles to be instantiated and flung
 func _ready() -> void:
 	super()
 	projectile_node = load(projectile_scene)
+	charge_frames = get_node("AttackStates")
 
 
 # _physics_process is constantly being called. for bow, this has to be charging
@@ -42,7 +49,16 @@ func _physics_process(delta: float) -> void:
 	if not charge == 0 and not charging: 
 		fire()
 		charge = 0
-		
+	if charging:
+		if charge < charge_time / 2:
+			charge_frames.frame = 1
+		elif charge >= charge_time / 2 and not charge == charge_time:
+			charge_frames.frame = 2
+		else:
+			charge_frames.frame = 3
+	else:
+		charge_frames.frame = 0
+
 # apply bow stats to the projectile by making an instance of the projectile and 
 # applying the different stats of the bow to the projectile.
 func fire():

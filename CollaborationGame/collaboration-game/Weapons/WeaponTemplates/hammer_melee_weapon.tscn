@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbitmc31tj7t5"]
 
-[ext_resource type="Script" path="res://Weapons/hammer_melee_weapon.gd" id="1_vnn57"]
+[ext_resource type="Script" path="res://Weapons/WeaponTemplates/hammer_melee_weapon.gd" id="1_vnn57"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ksvm3"]
 radius = 23.0
@@ -25,5 +25,7 @@ shape = SubResource("CircleShape2D_wn2ya")
 one_shot = true
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="AttackStates" type="AnimatedSprite2D" parent="."]
 
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout_do_attack"]
