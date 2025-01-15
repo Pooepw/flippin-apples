@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://pvvg0mq8cbms"]
+[gd_scene load_steps=3 format=3 uid="uid://pvvg0mq8cbms"]
+
+[ext_resource type="Script" path="res://LevelParts/StartingTown/stash_chest.gd" id="1_thcoj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6wec"]
 radius = 17.0
 
 [node name="StashChest" type="Node2D"]
+script = ExtResource("1_thcoj")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -11,3 +14,15 @@ collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_e6wec")
+
+[node name="StashUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemList" type="ItemList" parent="StashUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+item_count = 1

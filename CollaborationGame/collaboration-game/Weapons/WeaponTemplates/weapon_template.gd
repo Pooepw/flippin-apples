@@ -2,6 +2,7 @@ extends Node2D
 
 class_name weapon
 
+@export var weapon_name: String
 var weapon_icon
 
 # Called when the node enters the scene tree for the first time.

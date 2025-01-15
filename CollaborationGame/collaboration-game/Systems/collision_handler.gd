@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 # collision that results from the call
 func handle_collision(mover, collision_instance: KinematicCollision2D):
 	var collider = collision_instance.get_collider()
+	print (collider)
 	# cases for collision: 
 	# player vs. contact enemy - only enemies have contact damage, but this 
 	# check will still apply to ranged enemies; they will simply have 0 contact 
@@ -36,3 +37,6 @@ func handle_collision(mover, collision_instance: KinematicCollision2D):
 		if mover.emitter == "player" and collider.emitter == "mob":
 			mover.projectile_health -= 1
 			collider.projectile_health -= 1
+	# projectile vs room
+	if mover is projectile and collider is TileMapLayer:
+		mover.queue_free()
