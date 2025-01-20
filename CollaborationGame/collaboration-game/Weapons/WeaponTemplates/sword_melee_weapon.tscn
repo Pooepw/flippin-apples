@@ -17,3 +17,5 @@ shape = SubResource("RectangleShape2D_kpvo3")
 [node name="SwingTimer" type="Timer" parent="."]
 
 [node name="AttackStates" type="AnimatedSprite2D" parent="."]
+
+[node name="HitBoxFrames" type="AnimatedSprite2D" parent="."]

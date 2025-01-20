@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 func start_attack():
 	if swing_timer.paused:
 		swing_timer.start(swing_time)
+		
 	
 func end_attack():
 	if swing_timer.time_left == 0:
