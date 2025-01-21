@@ -18,4 +18,10 @@ shape = SubResource("RectangleShape2D_kpvo3")
 
 [node name="AttackStates" type="AnimatedSprite2D" parent="."]
 
-[node name="HitBoxFrames" type="AnimatedSprite2D" parent="."]
+[node name="HitboxFrames" type="AnimatedSprite2D" parent="."]
+
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout_do_attack"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
