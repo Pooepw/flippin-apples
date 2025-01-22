@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://djj04auisy6ju"]
 
-[ext_resource type="Texture2D" uid="uid://cmel76brui0fm" path="res://Weapons/Animations/Swords/test_sword_states.png" id="1_jpkco"]
+[ext_resource type="Texture2D" uid="uid://cmel76brui0fm" path="res://Weapons/Assets/Swords/test_sword_states.png" id="1_jpkco"]
 [ext_resource type="Script" path="res://Weapons/WeaponTemplates/sword_melee_weapon.gd" id="1_nmv0v"]
-[ext_resource type="Texture2D" uid="uid://bsm5xelb0fwqw" path="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame6.png" id="2_gd52b"]
-[ext_resource type="Texture2D" uid="uid://dpi2hev1h4nfw" path="res://Weapons/Animations/Swords/sword_icon.png" id="2_q4a05"]
-[ext_resource type="Texture2D" uid="uid://c3tbl7vvfvfpc" path="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame5.png" id="3_fs5se"]
-[ext_resource type="Texture2D" uid="uid://ca2noklrux447" path="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame4.png" id="4_wpuga"]
-[ext_resource type="Texture2D" uid="uid://dp3vrlv30cr1p" path="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame3.png" id="5_jcxfs"]
-[ext_resource type="Texture2D" uid="uid://dvsqtx44arvmh" path="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame2.png" id="6_kfr65"]
-[ext_resource type="Texture2D" uid="uid://b7y4p6njwwupr" path="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame1.png" id="7_p3f2d"]
+[ext_resource type="Texture2D" uid="uid://bsm5xelb0fwqw" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame6.png" id="2_gd52b"]
+[ext_resource type="Texture2D" uid="uid://dpi2hev1h4nfw" path="res://Weapons/Assets/Swords/Icons/sword_icon.png" id="2_q4a05"]
+[ext_resource type="Texture2D" uid="uid://c3tbl7vvfvfpc" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame5.png" id="3_fs5se"]
+[ext_resource type="Texture2D" uid="uid://ca2noklrux447" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame4.png" id="4_wpuga"]
+[ext_resource type="Texture2D" uid="uid://dp3vrlv30cr1p" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame3.png" id="5_jcxfs"]
+[ext_resource type="Texture2D" uid="uid://dvsqtx44arvmh" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame2.png" id="6_kfr65"]
+[ext_resource type="Texture2D" uid="uid://b7y4p6njwwupr" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame1.png" id="7_p3f2d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xnmto"]
 atlas = ExtResource("1_jpkco")

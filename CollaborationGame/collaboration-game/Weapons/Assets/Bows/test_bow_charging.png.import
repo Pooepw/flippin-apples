@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1wjewetnq4qv"
-path="res://.godot/imported/test_projectile_trail.png-dea115912fea2e89ede17468cc931796.ctex"
+uid="uid://btortiy6i7cyn"
+path="res://.godot/imported/test_bow_charging.png-d0d0b4d846e65d1314ab7706735049c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Projectiles/test_projectile_trail.png"
-dest_files=["res://.godot/imported/test_projectile_trail.png-dea115912fea2e89ede17468cc931796.ctex"]
+source_file="res://Weapons/Assets/Bows/test_bow_charging.png"
+dest_files=["res://.godot/imported/test_bow_charging.png-d0d0b4d846e65d1314ab7706735049c5.ctex"]
 
 [params]
 

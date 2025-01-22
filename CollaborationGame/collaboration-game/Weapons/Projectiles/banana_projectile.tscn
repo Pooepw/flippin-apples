@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7topwimxk10"]
+
+[ext_resource type="Script" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_8sgrj"]
+[ext_resource type="Texture2D" uid="uid://cx2q6r2y0hj2i" path="res://Weapons/Projectiles/Assets/banana_bullet.png" id="2_3vi6q"]
+
+[node name="BananaProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_8sgrj")
+damage = 3
+speed = 500
+projectile_health = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-6, -4, -6, -3, -7, -3, -7, -2, -8, -2, -8, 1, -1, 1, -1, 0, 1, 0, 1, 1, 6, 1, 6, -2, 5, -2, 5, -3, 3, -3, 3, -4)
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_3vi6q")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+gravity = Vector2(0, 0)
+color = Color(0.978998, 1, 0.633145, 1)

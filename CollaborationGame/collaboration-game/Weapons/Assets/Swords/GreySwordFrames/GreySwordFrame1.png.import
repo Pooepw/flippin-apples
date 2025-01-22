@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btortiy6i7cyn"
-path="res://.godot/imported/test_bow_charging.png-f5ddb427997e10a9775a53d6b4e6c5b6.ctex"
+uid="uid://b7y4p6njwwupr"
+path="res://.godot/imported/GreySwordFrame1.png-ac172705dc7ce431ac4b7a58de4c0f25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Animations/Bows/test_bow_charging.png"
-dest_files=["res://.godot/imported/test_bow_charging.png-f5ddb427997e10a9775a53d6b4e6c5b6.ctex"]
+source_file="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame1.png"
+dest_files=["res://.godot/imported/GreySwordFrame1.png-ac172705dc7ce431ac4b7a58de4c0f25.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7y4p6njwwupr"
-path="res://.godot/imported/GreySwordFrame1.png-ebf4a3b1c34679d321c67f3d27d4794d.ctex"
+uid="uid://dix3jvcmwxx1m"
+path="res://.godot/imported/test_projectile.png-035f111bdf23e35710bb022bab3d23aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrame1.png"
-dest_files=["res://.godot/imported/GreySwordFrame1.png-ebf4a3b1c34679d321c67f3d27d4794d.ctex"]
+source_file="res://Weapons/Projectiles/Assets/test_projectile.png"
+dest_files=["res://.godot/imported/test_projectile.png-035f111bdf23e35710bb022bab3d23aa.ctex"]
 
 [params]
 

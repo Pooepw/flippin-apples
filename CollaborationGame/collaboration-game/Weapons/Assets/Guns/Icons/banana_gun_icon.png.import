@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bthqsc3darb17"
-path="res://.godot/imported/GreySwordFrames.png-d7ce27f966afa313c1daecd035bc5024.ctex"
+uid="uid://ddu50r8fx2fos"
+path="res://.godot/imported/banana_gun_icon.png-c5998a6643d149cf6db963864b34d9f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Animations/Swords/GreySwordFrames/GreySwordFrames.png"
-dest_files=["res://.godot/imported/GreySwordFrames.png-d7ce27f966afa313c1daecd035bc5024.ctex"]
+source_file="res://Weapons/Assets/Guns/Icons/banana_gun_icon.png"
+dest_files=["res://.godot/imported/banana_gun_icon.png-c5998a6643d149cf6db963864b34d9f3.ctex"]
 
 [params]
 

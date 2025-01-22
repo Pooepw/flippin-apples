@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpi2hev1h4nfw"
-path="res://.godot/imported/sword_icon.png-9bc1c1ac7edc0fbcfac03dd81d37a84b.ctex"
+uid="uid://c1wjewetnq4qv"
+path="res://.godot/imported/test_projectile_trail.png-863e500b578f90cd24a4c07a0de8288f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Animations/Swords/sword_icon.png"
-dest_files=["res://.godot/imported/sword_icon.png-9bc1c1ac7edc0fbcfac03dd81d37a84b.ctex"]
+source_file="res://Weapons/Projectiles/Assets/test_projectile_trail.png"
+dest_files=["res://.godot/imported/test_projectile_trail.png-863e500b578f90cd24a4c07a0de8288f.ctex"]
 
 [params]
 
