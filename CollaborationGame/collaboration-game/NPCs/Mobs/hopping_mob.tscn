@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw87u8ulxti5v"]
+
+[ext_resource type="Script" path="res://NPCs/Mobs/hopping_mob.gd" id="1_qg857"]
+
+[node name="HoppingMob" type="CharacterBody2D"]
+script = ExtResource("1_qg857")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HopTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]
