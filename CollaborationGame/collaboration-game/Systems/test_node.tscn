@@ -26,6 +26,14 @@ offset_right = 251.0
 offset_bottom = 219.0
 text = "Attach Weapon to Inventory"
 
+[node name="MobSpawnTest" type="Button" parent="."]
+offset_left = 27.0
+offset_top = 262.0
+offset_right = 125.0
+offset_bottom = 293.0
+text = "spawn test mob"
+
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]
 [connection signal="pressed" from="InventoryTest" to="." method="_on_inventory_test_pressed"]
+[connection signal="pressed" from="MobSpawnTest" to="." method="_on_mob_spawn_test_pressed"]

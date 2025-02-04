@@ -10,4 +10,8 @@ script = ExtResource("1_qg857")
 [node name="HopTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="StopTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]
+[connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]

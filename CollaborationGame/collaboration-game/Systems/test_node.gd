@@ -21,3 +21,10 @@ func _on_inventory_test_pressed() -> void:
 	var test_weapon = load("res://Weapons/banana_gun_test_gun.tscn")
 	var test_weapon_instance = test_weapon.instantiate()
 	Player.equip_weapon(test_weapon_instance)
+
+
+func _on_mob_spawn_test_pressed() -> void:
+	var test_mob = load("res://NPCs/Mobs/test_hopper.tscn")
+	var test_mob_instance = test_mob.instantiate()
+	test_mob_instance.position = Vector2(0,0)
+	MobGenerator.add_child(test_mob_instance)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://kl6101md6u4w"]
+
+[ext_resource type="Script" path="res://NPCs/Mobs/circling_mob.gd" id="1_5nn3p"]
+[ext_resource type="Texture2D" uid="uid://owx3c5ab6gyx" path="res://NPCs/Mobs/bowl_plant/bowl_plant1.png" id="2_fk1fb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iw4w4"]
+
+[node name="TestRevolver" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_5nn3p")
+direction_rotation_amount = 0.03
+health = 2
+move_speed = 300
+move_mode = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iw4w4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fk1fb")
