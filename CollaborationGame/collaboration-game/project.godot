@@ -115,4 +115,5 @@ Pause={
 
 [rendering]
 
+limits/time/time_rollover_secs=256.0
 viewport/transparent_background=true
