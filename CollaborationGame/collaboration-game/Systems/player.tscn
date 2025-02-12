@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2tw6aa16gfcl"]
 
 [ext_resource type="Script" path="res://Systems/player.gd" id="1_nydu1"]
-[ext_resource type="Texture2D" uid="uid://dd60gtjj8w1gy" path="res://Systems/tset2.png" id="2_x6f1y"]
+[ext_resource type="Texture2D" uid="uid://b2pre15i6cg7n" path="res://Systems/test_player.png" id="2_5y17c"]
 [ext_resource type="PackedScene" uid="uid://cbwb4aw0ad5oc" path="res://Interfaces/player_interface.tscn" id="3_26olf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3pnc"]
@@ -19,7 +19,7 @@ shape = SubResource("CapsuleShape2D_v3pnc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_x6f1y")
+texture = ExtResource("2_5y17c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
