@@ -5,6 +5,8 @@ var dungeon_level = 0
 var current_dungeon = []
 var current_dungeon_type = ""
 var size = 0
+var current_room
+var dungeon_loaded = false
 
 const ROOM_SPACING = 2624
 
@@ -50,7 +52,9 @@ func generate_dungeon(start_node, max_distance):
 	space_out_rooms()
 	print (current_dungeon)
 	Player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
+	current_room = Vector2(max_distance, max_distance)
 	dungeon_level += 1
+	dungeon_loaded = true
 	
 func generate_grid(max_distance):
 	size = max_distance * 2

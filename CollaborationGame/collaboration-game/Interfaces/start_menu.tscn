@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://eevh1wsev4jk"]
+[gd_scene load_steps=14 format=3 uid="uid://eevh1wsev4jk"]
 
 [ext_resource type="Texture2D" uid="uid://7q5htk7bwr6w" path="res://Interfaces/UIAssets/StartMenu/new_game_neutral.png" id="1_g1o33"]
 [ext_resource type="Shader" path="res://Interfaces/start_menu.gdshader" id="1_lhfoo"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dqjnf1hfydkrt" path="res://Interfaces/UIAssets/StartMenu/quit_neutral.png" id="7_xppla"]
 [ext_resource type="Texture2D" uid="uid://b05n4ev1njgtc" path="res://Interfaces/UIAssets/StartMenu/continue_neutral.png" id="8_6vp8y"]
 [ext_resource type="Texture2D" uid="uid://cmfotbpmsno2r" path="res://Interfaces/UIAssets/StartMenu/continue_pressed.png" id="9_7jl51"]
+[ext_resource type="Texture2D" uid="uid://vee3sswdriax" path="res://Interfaces/UIAssets/StartMenu/continue_hovered.png" id="12_t1aeq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yd2fo"]
 shader = ExtResource("1_lhfoo")
@@ -70,4 +71,4 @@ offset_right = 1133.0
 offset_bottom = 467.0
 texture_normal = ExtResource("8_6vp8y")
 texture_pressed = ExtResource("9_7jl51")
-texture_hover = ExtResource("7_xppla")
+texture_hover = ExtResource("12_t1aeq")

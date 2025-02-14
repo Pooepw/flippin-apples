@@ -8,7 +8,7 @@ var inventory_ui
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for int in range(0, inventory_size - 1):
+	for space in range(0, inventory_size - 1):
 		inventory.push_back("clear")
 	inventory_ui = get_node("InventoryUI")
 	

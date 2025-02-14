@@ -35,7 +35,7 @@ func set_up_movement(to_position):
 	direction = position.direction_to(to_position)
 	set_rotation(position.angle_to_point(to_position))
 
-func fire_self(to_position, emitted_by, damage: int = damage): 
+func fire_self(to_position, emitted_by, edited_damage: int = damage): 
 	set_up_movement(to_position)
 	emitter = emitted_by
 	# gdi godot
@@ -45,6 +45,6 @@ func fire_self(to_position, emitted_by, damage: int = damage):
 	set_collision_mask_value(3, true)
 	set_collision_mask_value(5, true)
 	set_collision_mask_value(6, true)
-	actual_damage = damage
+	actual_damage = edited_damage
 	ProjectileHandler.add_child(self)
 	get_node("LiveTimer").start()

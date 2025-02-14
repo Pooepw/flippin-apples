@@ -6,14 +6,16 @@
 offsets = PackedFloat32Array(0, 0.50137, 0.931507)
 colors = PackedColorArray(0.597656, 0.596621, 0.580821, 1, 0, 0, 0, 1, 1, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6x2xq"]
-noise_type = 2
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2w581"]
+noise_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qoi4n"]
 width = 2500
 height = 2500
+seamless = true
+seamless_blend_skirt = 1.0
 color_ramp = SubResource("Gradient_f5huq")
-noise = SubResource("FastNoiseLite_6x2xq")
+noise = SubResource("FastNoiseLite_2w581")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3b1g"]
 size = Vector2(2499, 2500)
