@@ -8,7 +8,7 @@ func _ready() -> void:
 	exit_prompt.visible = false 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if DungeonGenerator.display_exit_prompt:
 		exit_prompt.visible = true
 

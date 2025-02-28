@@ -1,20 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://eevh1wsev4jk"]
+[gd_scene load_steps=15 format=3 uid="uid://eevh1wsev4jk"]
 
+[ext_resource type="Script" path="res://Interfaces/start_menu.gd" id="1_daj2a"]
 [ext_resource type="Texture2D" uid="uid://7q5htk7bwr6w" path="res://Interfaces/UIAssets/StartMenu/new_game_neutral.png" id="1_g1o33"]
-[ext_resource type="Shader" path="res://Interfaces/start_menu.gdshader" id="1_lhfoo"]
 [ext_resource type="Texture2D" uid="uid://diobqp8dfih7i" path="res://Interfaces/UIAssets/StartMenu/new_game_pressed.png" id="2_23ctp"]
-[ext_resource type="Texture2D" uid="uid://dumshm7sk7aq2" path="res://Interfaces/UIAssets/StartMenu/bgtile.png" id="2_f4c5p"]
 [ext_resource type="Texture2D" uid="uid://1686n8vbs1fk" path="res://Interfaces/UIAssets/StartMenu/new_game_hovered.png" id="3_gl47n"]
 [ext_resource type="Texture2D" uid="uid://g2pgoaeqqpa6" path="res://Interfaces/UIAssets/StartMenu/options_neutral.png" id="4_utu65"]
 [ext_resource type="Texture2D" uid="uid://dgja8eild4s4m" path="res://Interfaces/UIAssets/StartMenu/options_pressed.png" id="5_m60ml"]
 [ext_resource type="Texture2D" uid="uid://4ud70v8567ky" path="res://Interfaces/UIAssets/StartMenu/options_hovered.png" id="6_ycqas"]
 [ext_resource type="Texture2D" uid="uid://dqjnf1hfydkrt" path="res://Interfaces/UIAssets/StartMenu/quit_neutral.png" id="7_xppla"]
+[ext_resource type="Texture2D" uid="uid://bsh4af1e4msx0" path="res://Interfaces/UIAssets/StartMenu/quit_pressed.png" id="8_5e8xr"]
 [ext_resource type="Texture2D" uid="uid://b05n4ev1njgtc" path="res://Interfaces/UIAssets/StartMenu/continue_neutral.png" id="8_6vp8y"]
+[ext_resource type="Texture2D" uid="uid://bhyynhrqxebwp" path="res://Interfaces/UIAssets/StartMenu/quit_hovered.png" id="9_6x45f"]
 [ext_resource type="Texture2D" uid="uid://cmfotbpmsno2r" path="res://Interfaces/UIAssets/StartMenu/continue_pressed.png" id="9_7jl51"]
+[ext_resource type="PackedScene" uid="uid://cipixt0hef1on" path="res://Interfaces/UIAssets/StartMenu/main_menu_background.tscn" id="11_868aq"]
 [ext_resource type="Texture2D" uid="uid://vee3sswdriax" path="res://Interfaces/UIAssets/StartMenu/continue_hovered.png" id="12_t1aeq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yd2fo"]
-shader = ExtResource("1_lhfoo")
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -23,17 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_yd2fo")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_f4c5p")
-stretch_mode = 1
+script = ExtResource("1_daj2a")
 
 [node name="Start" type="TextureButton" parent="."]
 layout_mode = 0
@@ -62,6 +51,8 @@ offset_top = 470.0
 offset_right = 1133.0
 offset_bottom = 670.0
 texture_normal = ExtResource("7_xppla")
+texture_pressed = ExtResource("8_5e8xr")
+texture_hover = ExtResource("9_6x45f")
 
 [node name="Continue" type="TextureButton" parent="."]
 layout_mode = 0
@@ -72,3 +63,11 @@ offset_bottom = 467.0
 texture_normal = ExtResource("8_6vp8y")
 texture_pressed = ExtResource("9_7jl51")
 texture_hover = ExtResource("12_t1aeq")
+
+[node name="MainMenuBackground" parent="." instance=ExtResource("11_868aq")]
+position = Vector2(5, -15)
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

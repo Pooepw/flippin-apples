@@ -5,12 +5,6 @@ extends Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 # a function that handles collisions by applying damage to the collider
 # mover is the object called move_and_collide while collision_instance is the 
 # collision that results from the call
