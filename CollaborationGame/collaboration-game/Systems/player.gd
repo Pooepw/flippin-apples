@@ -40,7 +40,7 @@ var player_interface
 func _ready() -> void:
 	player_interface = get_node("PlayerInterface")
 	weapon_inventory_node = player_interface.inventory_system
-	player_sprite = get_node("Sprite")
+	player_sprite = get_node("AnimatedSprite2D")
 	equipped_weapon = default_weapon
 	invincibility_timer = get_node("InvincibilityFrames")
 
@@ -49,14 +49,16 @@ func _physics_process(delta) -> void:
 	#if moving:
 	
 	move_and_collide(direction * speed * delta)
-	# this may seem unintuitive, but if the player stops moving, the flip_h should
-	# be retained
+	if not direction == Vector2(0,0):
+		player_sprite.play()
+	else:
+		player_sprite.stop()
 	if direction.x > 0:
-		player_sprite.flip_h = true
+		player_sprite.flip_h = false
 		if equipped_weapon is not String:
 			equipped_weapon.get_node("AttackStates").flip_h = true
 	elif direction.x < 0:
-		player_sprite.flip_h = false
+		player_sprite.flip_h = true
 		if equipped_weapon is not String:
 			equipped_weapon.get_node("AttackStates").flip_h = false
 
