@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cenyfxo687pgl"]
 
-[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_onptp"]
+[ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_onptp"]
 [ext_resource type="Texture2D" uid="uid://cve8ptbyi2w2u" path="res://LevelParts/Dungeon/Rooms/Templates/icon.svg" id="2_mvj51"]
 
 [node name="TestRoomS" type="Node2D"]

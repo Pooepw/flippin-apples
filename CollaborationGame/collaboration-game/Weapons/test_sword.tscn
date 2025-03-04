@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://djj04auisy6ju"]
 
 [ext_resource type="Texture2D" uid="uid://cmel76brui0fm" path="res://Weapons/Assets/Swords/test_sword_states.png" id="1_jpkco"]
-[ext_resource type="Script" path="res://Weapons/WeaponTemplates/sword_melee_weapon.gd" id="1_nmv0v"]
+[ext_resource type="Script" uid="uid://cxuot0i6ko3jf" path="res://Weapons/WeaponTemplates/sword_melee_weapon.gd" id="1_nmv0v"]
 [ext_resource type="Texture2D" uid="uid://bsm5xelb0fwqw" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame6.png" id="2_gd52b"]
 [ext_resource type="Texture2D" uid="uid://dpi2hev1h4nfw" path="res://Weapons/Assets/Swords/Icons/sword_icon.png" id="2_q4a05"]
 [ext_resource type="Texture2D" uid="uid://c3tbl7vvfvfpc" path="res://Weapons/Assets/Swords/GreySwordFrames/GreySwordFrame5.png" id="3_fs5se"]

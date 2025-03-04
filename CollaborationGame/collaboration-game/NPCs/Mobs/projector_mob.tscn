@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqrvwv0ad261g"]
 
-[ext_resource type="Script" path="res://NPCs/Mobs/projector_mob.gd" id="1_f0ure"]
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_f0ure"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mg6s"]
 

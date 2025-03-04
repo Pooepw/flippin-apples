@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=4 uid="uid://cxbubah0er3ss"]
 
-[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_e3xjb"]
+[ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_e3xjb"]
 [ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="2_4jpbn"]
 
 [node name="MedievalRoomS" type="Node2D"]

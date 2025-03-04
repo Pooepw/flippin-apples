@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://grcrlakexo5v"]
 
-[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_3ofl0"]
+[ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_3ofl0"]
 
 [node name="TestRoomSE" type="Node2D"]
 script = ExtResource("1_3ofl0")

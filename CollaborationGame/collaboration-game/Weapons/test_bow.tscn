@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bgppbyybyu8sx"]
 
-[ext_resource type="Script" path="res://Weapons/WeaponTemplates/bow_ranged_weapon.gd" id="1_acuar"]
+[ext_resource type="Script" uid="uid://cemeu3k87dlmv" path="res://Weapons/WeaponTemplates/bow_ranged_weapon.gd" id="1_acuar"]
 [ext_resource type="Texture2D" uid="uid://c6tlf0p4mjeq8" path="res://Weapons/Assets/Bows/Icons/test_weapon_icon.png" id="2_cbhfq"]
 [ext_resource type="Texture2D" uid="uid://btortiy6i7cyn" path="res://Weapons/Assets/Bows/test_bow_charging.png" id="2_cg2hn"]
 

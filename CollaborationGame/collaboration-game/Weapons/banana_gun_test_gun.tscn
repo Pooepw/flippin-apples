@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckayo7wauppp2"]
 
-[ext_resource type="Script" path="res://Weapons/WeaponTemplates/gun_ranged_weapon.gd" id="1_gb3fr"]
+[ext_resource type="Script" uid="uid://dqlj5o0sn3upp" path="res://Weapons/WeaponTemplates/gun_ranged_weapon.gd" id="1_gb3fr"]
 [ext_resource type="Texture2D" uid="uid://ddu50r8fx2fos" path="res://Weapons/Assets/Guns/Icons/banana_gun_icon.png" id="2_drlgw"]
 [ext_resource type="Texture2D" uid="uid://csxkmijuj28my" path="res://Weapons/Assets/Guns/banana_gun_states.png" id="3_y41vy"]
 

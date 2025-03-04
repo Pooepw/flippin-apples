@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsn2vyuguvg0l"]
 
-[ext_resource type="Script" path="res://NPCs/Mobs/mob.gd" id="1_3tn5l"]
+[ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_3tn5l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k8gwf"]
 

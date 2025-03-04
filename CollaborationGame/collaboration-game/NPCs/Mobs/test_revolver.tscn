@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kl6101md6u4w"]
 
-[ext_resource type="Script" path="res://NPCs/Mobs/circling_mob.gd" id="1_5nn3p"]
+[ext_resource type="Script" uid="uid://d2e1rylrheukc" path="res://NPCs/Mobs/circling_mob.gd" id="1_5nn3p"]
 [ext_resource type="Texture2D" uid="uid://owx3c5ab6gyx" path="res://NPCs/Mobs/bowl_plant/bowl_plant1.png" id="2_fk1fb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iw4w4"]

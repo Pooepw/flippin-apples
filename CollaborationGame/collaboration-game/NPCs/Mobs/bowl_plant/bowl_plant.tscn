@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://mjvj506vmqfp"]
 
-[ext_resource type="Script" path="res://NPCs/Mobs/mob.gd" id="1_8ebus"]
+[ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_8ebus"]
 [ext_resource type="Texture2D" uid="uid://owx3c5ab6gyx" path="res://NPCs/Mobs/bowl_plant/bowl_plant1.png" id="2_5dr7l"]
 [ext_resource type="Texture2D" uid="uid://dsly4grgu21ki" path="res://NPCs/Mobs/bowl_plant/bowl_plant2.png" id="3_4vsfn"]
 [ext_resource type="Texture2D" uid="uid://c8vs8ecitr5np" path="res://NPCs/Mobs/bowl_plant/bowl_plant3.png" id="4_yanuw"]

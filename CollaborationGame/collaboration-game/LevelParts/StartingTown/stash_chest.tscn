@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pvvg0mq8cbms"]
 
-[ext_resource type="Script" path="res://LevelParts/StartingTown/stash_chest.gd" id="1_thcoj"]
+[ext_resource type="Script" uid="uid://drju05x531ht5" path="res://LevelParts/StartingTown/stash_chest.gd" id="1_thcoj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6wec"]
 radius = 17.0

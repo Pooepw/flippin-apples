@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://do1i8kwta3aps"]
 
-[ext_resource type="Script" path="res://Interfaces/player_stats.gd" id="1_xx8t1"]
+[ext_resource type="Script" uid="uid://bns05respptnm" path="res://Interfaces/player_stats.gd" id="1_xx8t1"]
 [ext_resource type="Texture2D" uid="uid://bdloe18xstufq" path="res://Interfaces/UIAssets/HealthBarBg.png" id="2_5d3dj"]
 [ext_resource type="Texture2D" uid="uid://btugl0iono7vq" path="res://Interfaces/UIAssets/HealthBarFill.png" id="3_0ikq1"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://by7g1ga8t4t5g"]
 
-[ext_resource type="Script" path="res://Weapons/WeaponTemplates/gun_ranged_weapon.gd" id="1_g7ide"]
+[ext_resource type="Script" uid="uid://dqlj5o0sn3upp" path="res://Weapons/WeaponTemplates/gun_ranged_weapon.gd" id="1_g7ide"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1savr"]
 

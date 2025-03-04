@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7topwimxk10"]
 
-[ext_resource type="Script" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_8sgrj"]
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_8sgrj"]
 [ext_resource type="Texture2D" uid="uid://cx2q6r2y0hj2i" path="res://Weapons/Projectiles/Assets/banana_bullet.png" id="2_3vi6q"]
 
 [node name="BananaProjectile" type="CharacterBody2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dv2rnax8c1xln"]
 
-[ext_resource type="Script" path="res://Systems/mob_generator.gd" id="1_pnn1q"]
+[ext_resource type="Script" uid="uid://c8lqp1x3xqdpk" path="res://Systems/mob_generator.gd" id="1_pnn1q"]
 
 [node name="MobGenerator" type="Node"]
 script = ExtResource("1_pnn1q")

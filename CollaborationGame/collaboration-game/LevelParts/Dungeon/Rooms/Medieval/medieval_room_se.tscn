@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://cu36iuap74fn2"]
 
 [ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="1_7vetn"]
-[ext_resource type="Script" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_imj31"]
+[ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_imj31"]
 
 [node name="MedievalRoomSE" type="Node2D"]
 script = ExtResource("1_imj31")
