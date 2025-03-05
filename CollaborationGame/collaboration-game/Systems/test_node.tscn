@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0nl0hevuq4wv"]
+[gd_scene load_steps=3 format=3 uid="uid://d0nl0hevuq4wv"]
 
 [ext_resource type="Script" uid="uid://d0orlbfckbxs4" path="res://Systems/test_node.gd" id="1_4csnm"]
+[ext_resource type="PackedScene" uid="uid://bqj40cdq5m1p4" path="res://LevelParts/StartingTown/town_area.tscn" id="2_1syxa"]
 
 [node name="TestNode" type="Node"]
 script = ExtResource("1_4csnm")
@@ -32,6 +33,9 @@ offset_top = 262.0
 offset_right = 125.0
 offset_bottom = 293.0
 text = "spawn test mob"
+
+[node name="TownArea" parent="." instance=ExtResource("2_1syxa")]
+position = Vector2(1209, 600)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]
