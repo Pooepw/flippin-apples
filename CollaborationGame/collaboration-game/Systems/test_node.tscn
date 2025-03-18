@@ -35,7 +35,8 @@ offset_bottom = 293.0
 text = "spawn test mob"
 
 [node name="TownArea" parent="." instance=ExtResource("2_1syxa")]
-position = Vector2(1209, 600)
+y_sort_enabled = true
+position = Vector2(1123, 569)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]

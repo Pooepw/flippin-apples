@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://bhxu85h48kqe"]
+[gd_scene load_steps=4 format=3 uid="uid://bhxu85h48kqe"]
+
+[ext_resource type="Texture2D" uid="uid://b3t88ckv2ttem" path="res://LevelParts/StartingTown/TileMapLayers/temple_x3.webp" id="1_2g2t7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3s2j"]
+size = Vector2(513, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly6ik"]
+size = Vector2(45.5, 185.25)
 
 [node name="DungeonEntrance" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-1.5, -92.5)
+texture = ExtResource("1_2g2t7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-211.5, 4.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(210.5, -158.5)
+shape = SubResource("RectangleShape2D_f3s2j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(94, 51.25)
+shape = SubResource("RectangleShape2D_ly6ik")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(322, 53.625)
+shape = SubResource("RectangleShape2D_ly6ik")
