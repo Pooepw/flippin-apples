@@ -51,7 +51,7 @@ func generate_dungeon(start_node, max_distance):
 	place_doors()
 	space_out_rooms()
 	print (current_dungeon)
-	Player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
+	PlayerHandler.current_player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
 	current_room = Vector2(max_distance, max_distance)
 	dungeon_level += 1
 	dungeon_loaded = true

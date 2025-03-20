@@ -9,6 +9,7 @@ size = Vector2(513, 239)
 size = Vector2(45.5, 185.25)
 
 [node name="DungeonEntrance" type="Node2D"]
+position = Vector2(0, 42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

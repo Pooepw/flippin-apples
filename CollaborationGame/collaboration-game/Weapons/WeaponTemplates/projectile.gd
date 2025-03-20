@@ -31,7 +31,7 @@ func _on_live_timer_timeout() -> void:
 	queue_free()
 
 func set_up_movement(to_position):
-	position = Player.global_position
+	position = PlayerHandler.current_player.global_position
 	direction = position.direction_to(to_position)
 	set_rotation(position.angle_to_point(to_position))
 

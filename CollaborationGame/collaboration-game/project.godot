@@ -21,13 +21,13 @@ GlobalRandomNumberGenerator="*res://Systems/random_number_generator.tscn"
 DungeonGenerator="*res://Systems/dungeon_generator.tscn"
 FileReader="*res://Systems/file_reader.tscn"
 RoomSetup="*res://Systems/room_setup.tscn"
-Player="*res://Systems/player.tscn"
 InputHandler="*res://Systems/input_handler.tscn"
 MobGenerator="*res://Systems/mob_generator.tscn"
 LootGenerator="*res://Systems/loot_generator.tscn"
 AudioController="*res://Systems/audio_controller.tscn"
 ProjectileHandler="*res://Systems/projectile_handler.tscn"
 CollisionHandler="*res://Systems/collision_handler.tscn"
+PlayerHandler="*res://Systems/player_handler.tscn"
 
 [display]
 

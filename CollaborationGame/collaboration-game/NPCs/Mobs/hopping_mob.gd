@@ -20,7 +20,7 @@ func special_movement(delta):
 
 
 func _on_hop_timer_timeout() -> void:
-	direction = global_position.direction_to(Player.global_position)
+	direction = global_position.direction_to(PlayerHandler.current_player.global_position)
 	print("start hop")
 	move_speed = ordinary_move_speed
 	stop_timer.start(1)

@@ -9,17 +9,17 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			match event.keycode:
 				KEY_A:
-					Player.direction.x = -1
-					Player.a_pressed = true
+					PlayerHandler.current_player.direction.x = -1
+					PlayerHandler.current_player.a_pressed = true
 				KEY_W:
-					Player.direction.y = -1
-					Player.w_pressed = true
+					PlayerHandler.current_player.direction.y = -1
+					PlayerHandler.current_player.w_pressed = true
 				KEY_S:
-					Player.direction.y = 1
-					Player.s_pressed = true
+					PlayerHandler.current_player.direction.y = 1
+					PlayerHandler.current_player.s_pressed = true
 				KEY_D:
-					Player.direction.x = 1
-					Player.d_pressed = true
+					PlayerHandler.current_player.direction.x = 1
+					PlayerHandler.current_player.d_pressed = true
 				KEY_Z:
 					if DungeonGenerator.display_exit_prompt:
 						DungeonGenerator.clear_dungeon()
@@ -28,24 +28,24 @@ func _input(event: InputEvent) -> void:
 		if not event.pressed:
 			match event.keycode:
 				KEY_A:
-					Player.direction.x = 0 if not Player.d_pressed else 1
-					Player.a_pressed = false
+					PlayerHandler.current_player.direction.x = 0 if not PlayerHandler.current_player.d_pressed else 1
+					PlayerHandler.current_player.a_pressed = false
 				KEY_W:
-					Player.direction.y = 0 if not Player.s_pressed else 1
-					Player.w_pressed = false
+					PlayerHandler.current_player.direction.y = 0 if not PlayerHandler.current_player.s_pressed else 1
+					PlayerHandler.current_player.w_pressed = false
 				KEY_S:
-					Player.direction.y = 0 if not Player.w_pressed else -1
-					Player.s_pressed = false
+					PlayerHandler.current_player.direction.y = 0 if not PlayerHandler.current_player.w_pressed else -1
+					PlayerHandler.current_player.s_pressed = false
 				KEY_D:
-					Player.direction.x = 0 if not Player.a_pressed else -1
-					Player.d_pressed = false
+					PlayerHandler.current_player.direction.x = 0 if not PlayerHandler.current_player.a_pressed else -1
+					PlayerHandler.current_player.d_pressed = false
 				
 	if event is InputEventMouseButton:
 		if event.pressed:
 			match event.button_index:
 				1:
-					if Player.weapon_equipped():
-						Player.equipped_weapon.start_attack()
+					if PlayerHandler.current_player.weapon_equipped():
+						PlayerHandler.current_player.equipped_weapon.start_attack()
 						print("fire")
 				4:
 					#insert weapon swapping (leftward)
@@ -56,9 +56,9 @@ func _input(event: InputEvent) -> void:
 		if not event.pressed:
 			match event.button_index:
 				1:
-					if Player.weapon_equipped():
-						Player.equipped_weapon.end_attack()
+					if PlayerHandler.current_player.weapon_equipped():
+						PlayerHandler.current_player.equipped_weapon.end_attack()
 						print("stop fire")
 				
-			#if Player.direction == Vector2(0, 0):
-				#Player.moving = false
+			#if PlayerHandler.current_player.direction == Vector2(0, 0):
+				#PlayerHandler.current_player.moving = false

@@ -21,10 +21,10 @@ func _physics_process(delta: float) -> void:
 	# will be important for understanding player damage
 	match move_mode:
 		MOVE_MODES.BASIC:
-			move_and_collide(global_position.direction_to(Player.global_position) * delta * move_speed)
+			move_and_collide(global_position.direction_to(PlayerHandler.current_player.global_position) * delta * move_speed)
 		MOVE_MODES.PROJECTOR:
-			if global_position.distance_to(Player.global_position) > projector_closeness:
-				move_and_collide(global_position.direction_to(Player.global_position) * delta * move_speed)
+			if global_position.distance_to(PlayerHandler.current_player.global_position) > projector_closeness:
+				move_and_collide(global_position.direction_to(PlayerHandler.current_player.global_position) * delta * move_speed)
 			else:
 				#put in projection function later
 				project()
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func special_movement(delta):
 	# overwrite this function in a new mob class that uses mob as a base.
-	move_and_collide(global_position.direction_to(Player.global_position) * delta * move_speed)
+	move_and_collide(global_position.direction_to(PlayerHandler.current_player.global_position) * delta * move_speed)
 
 func project():
 	# written in projector mob but needed here too to be called

@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_cast_timer_timeout() -> void:
-	Player.current_mana -= mana_cost
+	PlayerHandler.current_player.current_mana -= mana_cost
 	var projectile_instance = projectile_node.instantiate()
 	projectile_instance.fire_self(get_global_mouse_position(), player)
 	cast_started = false
