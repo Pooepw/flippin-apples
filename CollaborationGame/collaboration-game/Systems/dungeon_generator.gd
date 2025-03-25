@@ -9,6 +9,7 @@ var current_room
 var dungeon_loaded = false
 
 const ROOM_SPACING = 2624
+const AWAY_POINT = 100000
 
 # these are the medieval block offs. they should probably eventually go into room
 # setup
@@ -24,6 +25,7 @@ var activator_node
 var fog_node
 
 var display_exit_prompt = false
+var display_enter_prompt = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,7 +53,7 @@ func generate_dungeon(start_node, max_distance):
 	place_doors()
 	space_out_rooms()
 	print (current_dungeon)
-	PlayerHandler.current_player.position = Vector2(max_distance * ROOM_SPACING, max_distance * ROOM_SPACING)
+	PlayerHandler.current_player.global_position = Vector2(max_distance * ROOM_SPACING + AWAY_POINT, max_distance * ROOM_SPACING)
 	current_room = Vector2(max_distance, max_distance)
 	dungeon_level += 1
 	dungeon_loaded = true
@@ -429,7 +431,7 @@ func space_out_rooms():
 		for column in size:
 			var selected_room = current_dungeon[row][column]
 			if selected_room is not int:
-				selected_room.position = Vector2(column * ROOM_SPACING, row * ROOM_SPACING)
+				selected_room.position = Vector2(column * ROOM_SPACING + AWAY_POINT, row * ROOM_SPACING)
 
 func clear_dungeon():
 	for row in size:

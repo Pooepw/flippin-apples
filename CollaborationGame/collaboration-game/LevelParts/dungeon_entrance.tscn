@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhxu85h48kqe"]
+[gd_scene load_steps=6 format=3 uid="uid://bhxu85h48kqe"]
 
 [ext_resource type="Texture2D" uid="uid://b3t88ckv2ttem" path="res://LevelParts/StartingTown/TileMapLayers/temple_x3.webp" id="1_2g2t7"]
+[ext_resource type="Script" uid="uid://c4c777vk0hl0d" path="res://LevelParts/dungeon_entrance.gd" id="1_f3s2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3s2j"]
 size = Vector2(513, 239)
@@ -8,7 +9,11 @@ size = Vector2(513, 239)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ly6ik"]
 size = Vector2(45.5, 185.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rovvn"]
+size = Vector2(183, 66)
+
 [node name="DungeonEntrance" type="Node2D"]
+script = ExtResource("1_f3s2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -31,3 +36,23 @@ shape = SubResource("RectangleShape2D_ly6ik")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(322, 53.625)
 shape = SubResource("RectangleShape2D_ly6ik")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5, 60)
+shape = SubResource("RectangleShape2D_rovvn")
+
+[node name="EntryText" type="RichTextLabel" parent="."]
+offset_left = -87.0
+offset_top = -7.0
+offset_right = 87.0
+offset_bottom = 44.0
+text = "Enter the Dungeon
+Press \"Z\""
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered_enter_dungeon"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

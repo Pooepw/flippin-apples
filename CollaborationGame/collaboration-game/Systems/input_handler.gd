@@ -23,6 +23,9 @@ func _input(event: InputEvent) -> void:
 				KEY_Z:
 					if DungeonGenerator.display_exit_prompt:
 						DungeonGenerator.clear_dungeon()
+					if DungeonGenerator.display_enter_prompt:
+						DungeonGenerator.generate_dungeon(
+							("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn"), 3)
 						
 						
 		if not event.pressed:
