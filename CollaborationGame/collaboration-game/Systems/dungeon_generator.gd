@@ -23,6 +23,7 @@ var mob_spawner
 var activator_node
 
 var fog_node
+var current_dungeon_map
 
 var display_exit_prompt = false
 var display_enter_prompt = false
@@ -42,10 +43,8 @@ func generate_dungeon(start_node, max_distance):
 	LootGenerator.add_loot_list(FileReader.open_and_read_file
 	("res://LevelParts/Dungeon/Rooms/Medieval/LootLists/BaseMedievalLootList.txt"))
 	generate_grid(max_distance)
-	var start = load(start_node)
-	var temp_start = start.instantiate()
-	current_dungeon_type = temp_start.dungeon_type
-	temp_start.queue_free()
+	start_map()
+	var start = start_dungeon(start_node)
 	place_room(start, Vector2(max_distance, max_distance))
 	place_exit()
 	fix_rooms(current_dungeon_type)
@@ -64,6 +63,18 @@ func generate_grid(max_distance):
 		current_dungeon.push_back([])
 		for column in size:
 			current_dungeon[row].push_back(0)
+			
+func start_map():
+	var map_scene = load("res://Interfaces/dungeon_map.tscn")
+	current_dungeon_map = map_scene.instantiate()
+	PlayerHandler.current_player.add_child(current_dungeon_map)
+
+func start_dungeon(start_node):
+	var start = load(start_node)
+	var temp_start = start.instantiate()
+	current_dungeon_type = temp_start.dungeon_type
+	temp_start.queue_free()
+	return start
 
 func put_rooms(room_reference):
 	if (not room_reference.north_room_closed and not room_reference.grid_location.x - 1 < 0
@@ -109,6 +120,7 @@ func place_room(room_to_place, position):
 	new_room.grid_location = Vector2(position.x, position.y)
 	add_child(new_room)
 	put_rooms(new_room)
+	current_dungeon_map.add_node(position.x, position.y, new_room.get_node("TextureRect"))
 
 func fix_rooms(dungeon_type):
 	match dungeon_type:
@@ -432,6 +444,7 @@ func space_out_rooms():
 			var selected_room = current_dungeon[row][column]
 			if selected_room is not int:
 				selected_room.position = Vector2(column * ROOM_SPACING + AWAY_POINT, row * ROOM_SPACING)
+	current_dungeon_map.space_out_map()
 
 func clear_dungeon():
 	for row in size:
