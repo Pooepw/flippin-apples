@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="1_2742y"]
 [ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_m1aw5"]
 [ext_resource type="PackedScene" uid="uid://d4gwikt6tulgs" path="res://LevelParts/Dungeon/Rooms/Medieval/medieval_dungeon_exit.tscn" id="3_drf18"]
-[ext_resource type="Texture2D" uid="uid://dy06q52xdllvs" path="res://Interfaces/UIAssets/MapInterface/1_way.png" id="4_wr8ft"]
+[ext_resource type="Texture2D" uid="uid://byvti5e22ye4b" path="res://Interfaces/UIAssets/MapInterface/1_way_e.png" id="4_wr8ft"]
 
 [node name="MedievalExitRoomE" type="Node2D"]
 script = ExtResource("1_m1aw5")
@@ -17,9 +17,7 @@ tile_map_data = PackedByteArray("AAAUAAAAAgABAAEAAAAUAP//AgABAAEAAAATAAAAAQABAAI
 [node name="MedievalDungeonExit" parent="." instance=ExtResource("3_drf18")]
 position = Vector2(-847, -140)
 
-[node name="MapIcon" type="TextureRect" parent="."]
-offset_top = 46.0
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 46.0
-offset_bottom = 92.0
-rotation = 4.71239
+offset_bottom = 46.0
 texture = ExtResource("4_wr8ft")

@@ -24,6 +24,7 @@ var activator_node
 
 var fog_node
 var current_dungeon_map
+var map_active = false
 
 var display_exit_prompt = false
 var display_enter_prompt = false
@@ -51,6 +52,7 @@ func generate_dungeon(start_node, max_distance):
 	decorate_rooms()
 	place_doors()
 	space_out_rooms()
+	make_map()
 	print (current_dungeon)
 	PlayerHandler.current_player.global_position = Vector2(max_distance * ROOM_SPACING + AWAY_POINT, max_distance * ROOM_SPACING)
 	current_room = Vector2(max_distance, max_distance)
@@ -120,7 +122,6 @@ func place_room(room_to_place, position):
 	new_room.grid_location = Vector2(position.x, position.y)
 	add_child(new_room)
 	put_rooms(new_room)
-	current_dungeon_map.add_node(position.x, position.y, new_room.get_node("TextureRect"))
 
 func fix_rooms(dungeon_type):
 	match dungeon_type:
@@ -444,7 +445,14 @@ func space_out_rooms():
 			var selected_room = current_dungeon[row][column]
 			if selected_room is not int:
 				selected_room.position = Vector2(column * ROOM_SPACING + AWAY_POINT, row * ROOM_SPACING)
-	current_dungeon_map.space_out_map()
+
+func make_map():
+	map_active = true
+	for row in size:
+		for column in size:
+			var selected_room = current_dungeon[row][column]
+			if selected_room is not int:
+				current_dungeon_map.add_node(row, column, selected_room.get_node("TextureRect"))
 
 func clear_dungeon():
 	for row in size:
@@ -452,3 +460,15 @@ func clear_dungeon():
 			if not current_dungeon[row][column] is int:
 				current_dungeon[row][column].queue_free()
 	current_dungeon.clear()
+
+func _process(_delta: float) -> void:
+	if map_active:
+		track_player()
+
+func track_player():
+	var player_position = (Vector2(((PlayerHandler.current_player.global_position.x - AWAY_POINT) / ROOM_SPACING)
+		, PlayerHandler.current_player.global_position.y / ROOM_SPACING) + Vector2(0.5, 0.5))
+	var player_location_x = (int)(player_position.x)
+	var player_location_y = (int)(player_position.y)
+	current_dungeon_map.player_location = Vector2(player_location_x, player_location_y)
+	

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_dswaa"]
 [ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="1_oicuq"]
 [ext_resource type="PackedScene" uid="uid://d4gwikt6tulgs" path="res://LevelParts/Dungeon/Rooms/Medieval/medieval_dungeon_exit.tscn" id="3_eqi0y"]
-[ext_resource type="Texture2D" uid="uid://dy06q52xdllvs" path="res://Interfaces/UIAssets/MapInterface/1_way.png" id="4_0dd56"]
+[ext_resource type="Texture2D" uid="uid://cgwshvn2b71dm" path="res://Interfaces/UIAssets/MapInterface/1_way_n.png" id="4_0dd56"]
 
 [node name="MedievalExitRoomS" type="Node2D"]
 script = ExtResource("1_dswaa")
@@ -18,9 +18,6 @@ tile_map_data = PackedByteArray("AAD3//f/AQABAAAAAAD3//j/AgABAAEAAAD3//n/AAABAAE
 position = Vector2(714, 891)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 46.0
-offset_top = 46.0
-offset_right = 92.0
-offset_bottom = 92.0
-rotation = 3.14159
+offset_right = 46.0
+offset_bottom = 46.0
 texture = ExtResource("4_0dd56")

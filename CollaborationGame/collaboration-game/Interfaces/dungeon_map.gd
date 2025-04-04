@@ -2,36 +2,31 @@ extends Control
 
 const SPACING = 50
 const DUNGEON_SIZE = 6
+const BASE_POSITION = Vector2(3, 3)
+const BASE_PLAYER_POSITION = Vector2(7, 7)
 
 var node_array = []
 var map_nodes
+var player_icon
+var player_location = Vector2(0,0)
 
 func _ready() -> void:
-	node_array.append([])
-	node_array.append([])
-	node_array.append([])
-	node_array.append([])
-	node_array.append([])
-	node_array.append([])
+	for n in DUNGEON_SIZE:
+		node_array.append([])
 	for row in node_array:
-		row.append(0)
-		row.append(0)
-		row.append(0)
-		row.append(0)
-		row.append(0)
-		row.append(0)
-	map_nodes = get_node("BaseMap/MapNodes")
+		for col in DUNGEON_SIZE:
+			row.append(0)
+	print(node_array)
+	map_nodes = get_node("BaseMap")
+	player_icon = get_node("BaseMap/PlayerIcon")
+
+func _process(delta: float) -> void:
+	player_icon.position = BASE_PLAYER_POSITION + (player_location * SPACING)
 
 func add_node(x, y, node):
-	if node_array[x][y] == 0:
+	if node_array[x][y] is int:
 		var duplicate_node = node.duplicate()
 		node_array[x][y] = duplicate_node
 		map_nodes.add_child(duplicate_node)
+		node_array[x][y].position = BASE_PLAYER_POSITION + Vector2(y, x) * SPACING
 		
-func space_out_map():
-	for row in DUNGEON_SIZE:
-		for col in DUNGEON_SIZE:
-			if not node_array[row][col] is int:
-				node_array[row][col].position.x *= SPACING
-				node_array[row][col].position.y *= SPACING
-				
