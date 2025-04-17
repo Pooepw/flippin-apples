@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnsev0eq8jp3w"]
+
+[ext_resource type="Texture2D" uid="uid://d4aqrcg3bq52y" path="res://Interfaces/UIAssets/DialogueInterface/dialogue_box.png" id="1_0v7dq"]
+[ext_resource type="Script" uid="uid://b61t3rxwbsfw1" path="res://Interfaces/dialogue_interface.gd" id="1_llps4"]
+[ext_resource type="Texture2D" uid="uid://bkat1hsctpvl1" path="res://Interfaces/UIAssets/DialogueInterface/character_square.png" id="2_q32up"]
+[ext_resource type="Texture2D" uid="uid://bchk7wutk8kur" path="res://Interfaces/UIAssets/DialogueInterface/default_character.png" id="3_llps4"]
+
+[node name="DialogueInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_llps4")
+
+[node name="DialogueBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 461.0
+offset_right = 1013.0
+offset_bottom = 671.0
+texture = ExtResource("1_0v7dq")
+
+[node name="CharacterBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 441.0
+offset_right = 294.0
+offset_bottom = 641.0
+texture = ExtResource("2_q32up")
+
+[node name="Character" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 447.0
+offset_right = 288.0
+offset_bottom = 635.0
+texture = ExtResource("3_llps4")
+
+[node name="DialogueText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 465.0
+offset_right = 1009.0
+offset_bottom = 667.0
+text = "Hello! I am the ultimate gamer! You will die today! hahahahahahahahahaha"
+autowrap_mode = 1

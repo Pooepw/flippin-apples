@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbwb4aw0ad5oc"]
+[gd_scene load_steps=5 format=3 uid="uid://cbwb4aw0ad5oc"]
 
 [ext_resource type="PackedScene" uid="uid://bkjtkhrak82g4" path="res://Systems/inventory_system.tscn" id="1_ks3pv"]
 [ext_resource type="Script" uid="uid://dqxa0pn8nixxc" path="res://Interfaces/player_interface.gd" id="1_kw1cf"]
 [ext_resource type="PackedScene" uid="uid://do1i8kwta3aps" path="res://Interfaces/player_stats.tscn" id="2_5vdhi"]
+[ext_resource type="PackedScene" uid="uid://dnsev0eq8jp3w" path="res://Interfaces/dialogue_interface.tscn" id="4_am7gi"]
 
 [node name="PlayerInterface" type="Control"]
 layout_mode = 3
@@ -22,3 +23,10 @@ grow_vertical = 0
 
 [node name="PlayerStats" parent="." instance=ExtResource("2_5vdhi")]
 layout_mode = 1
+
+[node name="DialogueInterface" parent="." instance=ExtResource("4_am7gi")]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 17.0
+offset_right = 16.0
+offset_bottom = 17.0

@@ -36,6 +36,7 @@ var d_pressed = false
 var player_sprite
 var player_interface
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_interface = get_node("PlayerInterface")
