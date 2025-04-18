@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://bqj40cdq5m1p4"]
+[gd_scene load_steps=14 format=4 uid="uid://bqj40cdq5m1p4"]
 
 [ext_resource type="Texture2D" uid="uid://dn6rtmubem3p1" path="res://LevelParts/StartingTown/TileMapLayers/grasstiles_64x64.webp" id="1_ij6fq"]
 [ext_resource type="Texture2D" uid="uid://2f0k2llfft2w" path="res://LevelParts/StartingTown/TileMapLayers/path_turns.png" id="1_no3ju"]
 [ext_resource type="PackedScene" uid="uid://bhxu85h48kqe" path="res://LevelParts/dungeon_entrance.tscn" id="4_ff142"]
 [ext_resource type="Texture2D" uid="uid://flsd6b0fcg3" path="res://LevelParts/StartingTown/TileMapLayers/stones-t-wall_64x128.webp" id="4_xd81s"]
+[ext_resource type="PackedScene" uid="uid://cvmq3qjowlwp8" path="res://NPCs/PeacefulNPCs/test_npc.tscn" id="6_0nf4y"]
 [ext_resource type="Texture2D" uid="uid://b3i6r67y8pqs0" path="res://LevelParts/StartingTown/TileMapLayers/all-buildings.webp" id="6_gggwb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4oegb"]
@@ -128,3 +129,6 @@ position = Vector2(-703, -700)
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD8/wIAAAAAAAAAAADl/wIAAAAAAAUAAADs/wIAAAAAAAAAAADY/wwAAAAFAAUAAADR/wwAAAAAAAAAAADK/wwAAAAAAAUAAADJ/x8AAAAAAAUAAADN/x8AAAAAAAUAAADR/x8AAAAAAAUAAADV/x8AAAAAAAUAAADZ/x8AAAAAAAUAAAANAAwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kteab")
+
+[node name="TestNPC" parent="." instance=ExtResource("6_0nf4y")]
+position = Vector2(367, -383)

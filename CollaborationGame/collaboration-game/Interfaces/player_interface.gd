@@ -8,7 +8,7 @@ var dialogue_interface
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inventory_system = get_node("InventorySystem")
-	player_stats = get_node("player_stats")
+	player_stats = get_node("PlayerStats")
 	dialogue_interface = get_node("DialogueInterface")
 	dialogue_interface.visible = false
 
