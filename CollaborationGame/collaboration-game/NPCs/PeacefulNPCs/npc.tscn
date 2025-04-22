@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh3oy88qd63qm"]
+
+[ext_resource type="Script" uid="uid://i5bxxa346jet" path="res://NPCs/PeacefulNPCs/npc.gd" id="1_cc48y"]
+[ext_resource type="Texture2D" uid="uid://p747un3chqpq" path="res://Interfaces/UIAssets/DialogueInterface/dialogue_marker.png" id="2_3nq5c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cc48y"]
+radius = 20.025
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_cc48y")
+
+[node name="DialogueIcon" type="Sprite2D" parent="."]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_cc48y")
+
+[node name="DialoguePrompt" type="Sprite2D" parent="."]
+position = Vector2(0, -103)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3nq5c")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered_activate_dialogue"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited_deactivate_dialogue"]

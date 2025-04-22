@@ -28,6 +28,7 @@ AudioController="*res://Systems/audio_controller.tscn"
 ProjectileHandler="*res://Systems/projectile_handler.tscn"
 CollisionHandler="*res://Systems/collision_handler.tscn"
 PlayerHandler="*res://Systems/player_handler.tscn"
+NpcDialogueHandler="*res://Systems/npc_dialogue_handler.tscn"
 
 [display]
 

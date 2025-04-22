@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dcxugvcpawoeq"]
+[gd_scene load_steps=2 format=3 uid="uid://dcxugvcpawoeq"]
+
+[ext_resource type="Script" uid="uid://kfny0bheuph8" path="res://Systems/npc_dialogue_handler.gd" id="1_t45s1"]
 
 [node name="NPCDialogueHandler" type="Node"]
+script = ExtResource("1_t45s1")

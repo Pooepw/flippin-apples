@@ -37,7 +37,10 @@ func play_lines():
 		while not dialogue_passed:
 			pass
 		dialogue_passed = false
+	clear_lines()
 
+func clear_lines():
+	text_queue.clear()
 
 # changes the text speed to the ones listed above (may need to change fast speed)
 func change_text_speed(fast_on):

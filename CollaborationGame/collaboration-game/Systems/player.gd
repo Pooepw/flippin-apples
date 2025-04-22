@@ -41,8 +41,11 @@ var player_interface
 func _ready() -> void:
 	player_interface = get_node("PlayerInterface")
 	weapon_inventory_node = player_interface.inventory_system
+	NpcDialogueHandler.dialogue_node_access = player_interface.dialogue_interface
+	
 	player_sprite = get_node("AnimatedSprite2D")
 	equipped_weapon = default_weapon
+	
 	invincibility_timer = get_node("InvincibilityFrames")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
