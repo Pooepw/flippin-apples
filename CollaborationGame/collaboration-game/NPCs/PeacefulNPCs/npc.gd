@@ -13,9 +13,10 @@ func _ready() -> void:
 
 func _on_interaction_area_body_entered_activate_dialogue(body: Node2D) -> void:
 	if body is player:
+		print("dialogue near")
 		prompt.visible = true
 		NpcDialogueHandler.dialogue_on = true
-		NpcDialogueHandler.pass_lines(lines)
+		NpcDialogueHandler.set_up_lines(lines)
 		if not is_default_npc:
 			NpcDialogueHandler.change_npc_icon(character_icon.texture)
 
@@ -23,7 +24,6 @@ func _on_interaction_area_body_entered_activate_dialogue(body: Node2D) -> void:
 func _on_interaction_area_body_exited_deactivate_dialogue(body: Node2D) -> void:
 	if body is player:
 		prompt.visible = false
-		NpcDialogueHandler.dialogue_on = false
-		NpcDialogueHandler.clear_lines()
+		NpcDialogueHandler.end_dialogue()
 		if not is_default_npc:
 			NpcDialogueHandler.change_npc_icon(NpcDialogueHandler.default_icon)

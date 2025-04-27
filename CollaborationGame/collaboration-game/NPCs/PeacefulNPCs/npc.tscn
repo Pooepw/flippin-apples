@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://p747un3chqpq" path="res://Interfaces/UIAssets/DialogueInterface/dialogue_marker.png" id="2_3nq5c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cc48y"]
-radius = 20.025
+radius = 47.1699
 
 [node name="NPC" type="Node2D"]
 script = ExtResource("1_cc48y")
@@ -12,6 +12,8 @@ script = ExtResource("1_cc48y")
 [node name="DialogueIcon" type="Sprite2D" parent="."]
 
 [node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_cc48y")

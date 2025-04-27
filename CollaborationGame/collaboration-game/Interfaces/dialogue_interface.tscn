@@ -44,5 +44,6 @@ offset_left = 317.0
 offset_top = 465.0
 offset_right = 1009.0
 offset_bottom = 667.0
-text = "Hello! I am the ultimate gamer! You will die today! hahahahahahahahahaha"
 autowrap_mode = 1
+
+[connection signal="end_dialogue_line" from="." to="." method="_on_end_dialogue_line"]

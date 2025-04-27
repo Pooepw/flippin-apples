@@ -26,8 +26,10 @@ func _input(event: InputEvent) -> void:
 					if DungeonGenerator.display_enter_prompt:
 						DungeonGenerator.generate_dungeon(
 							("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn"), 3)
-					if NpcDialogueHandler.dialogue_on:
-						NpcDialogueHandler.play_lines()
+					if NpcDialogueHandler.dialogue_on and not NpcDialogueHandler.in_dialogue:
+						NpcDialogueHandler.start_dialogue()
+					elif NpcDialogueHandler.in_dialogue:
+						NpcDialogueHandler.end_line()
 						
 						
 		if not event.pressed:
