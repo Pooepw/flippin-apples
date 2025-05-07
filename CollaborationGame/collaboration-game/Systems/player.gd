@@ -58,11 +58,11 @@ func _physics_process(delta) -> void:
 	else:
 		player_sprite.stop()
 	if direction.x > 0:
-		player_sprite.flip_h = false
+		player_sprite.set_animation("RightFacing")
 		if equipped_weapon is not String:
 			equipped_weapon.get_node("AttackStates").flip_h = true
 	elif direction.x < 0:
-		player_sprite.flip_h = true
+		player_sprite.set_animation("LeftFacing")
 		if equipped_weapon is not String:
 			equipped_weapon.get_node("AttackStates").flip_h = false
 
