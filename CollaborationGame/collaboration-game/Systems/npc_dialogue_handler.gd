@@ -25,6 +25,7 @@ func start_dialogue():
 
 func end_dialogue():
 	clear_lines()
+	lines_to_add.clear()
 	in_dialogue = false
 	dialogue_on = false
 

@@ -10,6 +10,10 @@ var current_text
 var text_queue = []
 var dialogue_passed = false
 
+enum NPC_TYPE {BASIC, DIALOGUE, TRADING, SPECIAL_DIALOGUE}
+
+var current_npc_type
+
 signal end_dialogue_line
 
 func _ready() -> void:
@@ -48,6 +52,7 @@ func set_lines_of_dialogue(dialogue_lines):
 
 func clear_lines():
 	text_queue.clear()
+	print(text_queue)
 	current_text = 0
 	text_node.text = ""
 

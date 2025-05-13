@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccf5va4nxpvw"]
+
+[ext_resource type="Script" uid="uid://i5bxxa346jet" path="res://NPCs/PeacefulNPCs/npc.gd" id="1_ed4v3"]
+
+[node name="TradingNPC" type="Node2D"]
+script = ExtResource("1_ed4v3")
+metadata/_custom_type_script = "uid://i5bxxa346jet"

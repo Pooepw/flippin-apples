@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name npc
+
 @export var lines: Array[String]
 @export var is_default_npc: bool
 
