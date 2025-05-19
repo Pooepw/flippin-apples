@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3krv6n0ceeml"]
+
+[ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_1lwgc"]
+[ext_resource type="Texture2D" uid="uid://dguicjgno867f" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube1.png" id="2_howuq"]
+[ext_resource type="Texture2D" uid="uid://b8b86s4y561ab" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube2.png" id="3_pvfut"]
+[ext_resource type="Texture2D" uid="uid://m0qmkkpeixri" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube3.png" id="4_g0q8o"]
+[ext_resource type="Texture2D" uid="uid://i786xm1ujnxs" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube4.png" id="5_dy4g6"]
+[ext_resource type="Texture2D" uid="uid://wun1nxb07jba" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube5.png" id="6_66rd2"]
+[ext_resource type="Texture2D" uid="uid://b2yw0yw6s54in" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube6.png" id="7_gfbpt"]
+[ext_resource type="Texture2D" uid="uid://mkyajsohv7d8" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube7.png" id="8_gag4h"]
+[ext_resource type="Texture2D" uid="uid://c66lul6h1eb60" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube8.png" id="9_xbfd7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oia5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_howuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pvfut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g0q8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dy4g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_66rd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gfbpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gag4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xbfd7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7uvdl"]
+radius = 38.1182
+
+[node name="FleshCube" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_1lwgc")
+health = 10
+move_speed = 20
+contact_damage = 3
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_oia5c")
+autoplay = "default"
+frame_progress = 0.0340658
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_7uvdl")
