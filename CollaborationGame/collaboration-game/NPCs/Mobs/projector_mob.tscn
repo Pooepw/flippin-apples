@@ -5,8 +5,18 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mg6s"]
 
 [node name="ProjectorMob" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_f0ure")
 move_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0mg6s")
+
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]

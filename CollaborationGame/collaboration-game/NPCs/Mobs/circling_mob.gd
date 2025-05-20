@@ -11,3 +11,4 @@ func _ready() -> void:
 func special_movement(delta):
 	direction = direction.rotated(direction_rotation_amount)
 	move_and_collide(direction * move_speed * delta)
+	
