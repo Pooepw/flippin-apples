@@ -4,12 +4,12 @@ class_name ranged_weapon
 
 # projectile node access to cast over and over again
 @export var projectile_scene: String
-var projectile
+var projectile_node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	projectile = load(projectile_scene)
+	projectile_node = load(projectile_scene)
 
 func fire():
 	pass

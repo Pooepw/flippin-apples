@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4cjl3fegutqq"]
+
+[ext_resource type="Script" uid="uid://qrg7bmofy8c8" path="res://NPCs/Mobs/hopping_mob.gd" id="1_mbavj"]
+[ext_resource type="Texture2D" uid="uid://bym1kgs4hys1f" path="res://NPCs/Mobs/ShapeDungeon/Assets/StarHopper/starhopper1.png" id="2_o5dem"]
+[ext_resource type="Texture2D" uid="uid://svlbycbdh3my" path="res://NPCs/Mobs/ShapeDungeon/Assets/StarHopper/starhopper2.png" id="3_4jo4k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5dem"]
+radius = 36.1248
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_weoxh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o5dem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4jo4k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StarHopper" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_mbavj")
+ordinary_move_speed = 1000
+health = 60
+contact_damage = 10
+move_mode = 3
+metadata/_custom_type_script = "uid://qrg7bmofy8c8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o5dem")
+
+[node name="HopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_weoxh")
+autoplay = "default"
+frame_progress = 0.522206
+
+[connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]
+[connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]

@@ -28,7 +28,7 @@ func handle_collision(mover, collision_instance: KinematicCollision2D):
 	# if the projectiles are from different emitters, they should be able to harm 
 	# each other. this means they should both lose one projectile health.
 	if mover is projectile and collider is projectile:
-		if mover.emitter == "player" and collider.emitter == "mob":
+		if mover.emitter is player and collider.emitter is projector_mob:
 			mover.projectile_health -= 1
 			collider.projectile_health -= 1
 	# projectile vs room

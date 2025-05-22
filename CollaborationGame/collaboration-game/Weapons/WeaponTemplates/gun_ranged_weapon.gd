@@ -17,7 +17,6 @@ var reload_timer
 var firing = false
 var previously_firing = false
 
-var projectile_node
 var attack_states
 
 var current_ammo = 0
@@ -27,7 +26,6 @@ var fire_timer = 0
 func _ready() -> void:
 	super()
 	reload_timer = get_node("ReloadTimer")
-	projectile_node = load(projectile_scene)
 	attack_states = get_node("AttackStates")
 	current_ammo = max_ammo
 

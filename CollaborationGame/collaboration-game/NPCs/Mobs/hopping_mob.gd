@@ -28,4 +28,4 @@ func _on_hop_timer_timeout() -> void:
 func _on_stop_timer_timeout() -> void:
 	print("start stop")
 	move_speed = 0
-	hop_timer.start(3)
+	hop_timer.start(1)

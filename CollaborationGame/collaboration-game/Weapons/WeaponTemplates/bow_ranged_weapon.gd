@@ -22,7 +22,6 @@ class_name bow
 # projectile's stats.
 # charging is used to check if the bow should be charging up. this will be set
 # by the input handler. 
-var projectile_node
 var charge = 0
 var charging = false
 
@@ -35,7 +34,6 @@ var charge_frames
 # sets up the projectiles to be instantiated and flung
 func _ready() -> void:
 	super()
-	projectile_node = load(projectile_scene)
 	charge_frames = get_node("AttackStates")
 
 
