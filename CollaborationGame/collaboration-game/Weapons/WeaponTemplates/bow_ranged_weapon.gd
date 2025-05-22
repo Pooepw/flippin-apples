@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 func fire():
 	var projectile_instance = projectile_node.instantiate()
 	var edited_projectile_damage = bow_damage + projectile_instance.damage * (charge / charge_time)
-	projectile_instance.fire_self(get_global_mouse_position(), player, edited_projectile_damage)
+	projectile_instance.fire_self(get_global_mouse_position(), PlayerHandler.current_player, edited_projectile_damage)
 
 func start_attack():
 	print("charging")

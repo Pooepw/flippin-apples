@@ -18,5 +18,9 @@ shape = SubResource("CapsuleShape2D_0mg6s")
 
 [node name="FireTimer" type="Timer" parent="."]
 
+[node name="IdleSprite" type="Sprite2D" parent="."]
+
+[node name="AttackingAnimation" type="AnimatedSprite2D" parent="."]
+
 [connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
 [connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]

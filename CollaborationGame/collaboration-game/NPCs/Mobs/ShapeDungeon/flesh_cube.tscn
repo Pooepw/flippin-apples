@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3krv6n0ceeml"]
+[gd_scene load_steps=13 format=3 uid="uid://d3krv6n0ceeml"]
 
 [ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_1lwgc"]
 [ext_resource type="Texture2D" uid="uid://dguicjgno867f" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube1.png" id="2_howuq"]
+[ext_resource type="Texture2D" uid="uid://udoc3qebov4b" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cubeparticles.png" id="2_pvfut"]
 [ext_resource type="Texture2D" uid="uid://b8b86s4y561ab" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube2.png" id="3_pvfut"]
 [ext_resource type="Texture2D" uid="uid://m0qmkkpeixri" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube3.png" id="4_g0q8o"]
 [ext_resource type="Texture2D" uid="uid://i786xm1ujnxs" path="res://NPCs/Mobs/ShapeDungeon/Assets/Cube/cube4.png" id="5_dy4g6"]
@@ -50,12 +51,18 @@ collision_layer = 32
 motion_mode = 1
 script = ExtResource("1_1lwgc")
 health = 10
-move_speed = 20
+move_speed = 200
 contact_damage = 3
 metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 6
+texture = ExtResource("2_pvfut")
+emission_shape = 1
+emission_sphere_radius = 46.8
+gravity = Vector2(0, 20)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -1)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_oia5c")
 autoplay = "default"

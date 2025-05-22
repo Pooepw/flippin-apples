@@ -74,4 +74,4 @@ func end_attack():
 func fire():
 	current_ammo -= 1
 	var projectile_instance = projectile_node.instantiate()
-	projectile_instance.fire_self(get_global_mouse_position(), player)
+	projectile_instance.fire_self(get_global_mouse_position(), PlayerHandler.current_player)

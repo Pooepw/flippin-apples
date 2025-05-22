@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6spj2tynuh6o"]
+
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_6fpsh"]
+[ext_resource type="Texture2D" uid="uid://c7m5pvccnlynj" path="res://NPCs/Mobs/ShapeDungeon/Assets/ProjectorSphere/projectorsphere1.png" id="2_gaukm"]
+[ext_resource type="Texture2D" uid="uid://c7f8nreg2kfq8" path="res://NPCs/Mobs/ShapeDungeon/Assets/ProjectorSphere/projectorsphere2.png" id="3_tohnv"]
+[ext_resource type="Texture2D" uid="uid://ct1piojlv7hr1" path="res://NPCs/Mobs/ShapeDungeon/Assets/ProjectorSphere/projectorsphereidle.png" id="4_tohnv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tohnv"]
+size = Vector2(86, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ikvi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gaukm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tohnv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tohnv"]
+radius = 374.589
+
+[node name="ProjectorSphere" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_6fpsh")
+projectile_string = "res://NPCs/Mobs/ShapeDungeon/projector_sphere_projectile.tscn"
+fire_time = 2.0
+health = 30
+move_mode = 2
+metadata/_custom_type_script = "uid://gfi6hr38duho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tohnv")
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("4_tohnv")
+
+[node name="AttackingAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8ikvi")
+autoplay = "default"
+
+[node name="VisionRange" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+shape = SubResource("CircleShape2D_tohnv")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

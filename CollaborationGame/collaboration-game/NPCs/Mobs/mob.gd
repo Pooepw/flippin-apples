@@ -29,8 +29,7 @@ func _physics_process(delta: float) -> void:
 				#put in projection function later
 				project()
 		MOVE_MODES.STILL_PROJECTOR:
-			# put in projection function later
-			project()
+			pass
 		MOVE_MODES.SPECIAL:
 			special_movement(delta)
 

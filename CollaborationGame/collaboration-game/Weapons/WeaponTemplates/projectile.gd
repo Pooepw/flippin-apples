@@ -31,20 +31,26 @@ func _on_live_timer_timeout() -> void:
 	queue_free()
 
 func set_up_movement(to_position):
-	position = PlayerHandler.current_player.global_position
+	position = emitter.global_position
 	direction = position.direction_to(to_position)
 	set_rotation(position.angle_to_point(to_position))
 
 func fire_self(to_position, emitted_by, edited_damage: int = damage): 
-	set_up_movement(to_position)
 	emitter = emitted_by
+	set_up_movement(to_position)
 	# gdi godot
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
-	set_collision_layer_value(7, true)
-	set_collision_mask_value(3, true)
-	set_collision_mask_value(5, true)
-	set_collision_mask_value(6, true)
+	if emitter is player:
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
+		set_collision_layer_value(7, true)
+		set_collision_mask_value(3, true)
+		set_collision_mask_value(5, true)
+		set_collision_mask_value(6, true)
+	else:
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(7, true)
+		set_collision_mask_value(3, true)
+		set_collision_layer_value(5, true)
 	actual_damage = edited_damage
 	ProjectileHandler.add_child(self)
 	get_node("LiveTimer").start()
