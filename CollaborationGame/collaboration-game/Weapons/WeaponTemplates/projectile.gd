@@ -6,6 +6,8 @@ class_name projectile
 @export var speed: int
 @export var projectile_health: int
 
+
+
 var actual_damage: int
 var direction: Vector2
 
@@ -31,15 +33,18 @@ func _on_live_timer_timeout() -> void:
 	queue_free()
 
 func set_up_movement(to_position):
-	position = emitter.global_position
 	direction = position.direction_to(to_position)
 	set_rotation(position.angle_to_point(to_position))
 
 func fire_self(to_position, emitted_by, edited_damage: int = damage): 
-	emitter = emitted_by
+	if emitted_by is player:
+		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
+	else: 
+		emitter = CollisionHandler.EMITTER_TYPES.MOB
+	position = emitted_by.global_position
 	set_up_movement(to_position)
 	# gdi godot
-	if emitter is player:
+	if emitter == CollisionHandler.EMITTER_TYPES.PLAYER:
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
 		set_collision_layer_value(7, true)
@@ -50,6 +55,7 @@ func fire_self(to_position, emitted_by, edited_damage: int = damage):
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(7, true)
 		set_collision_mask_value(3, true)
+		set_collision_layer_value(5, true)
 		set_collision_layer_value(5, true)
 	actual_damage = edited_damage
 	ProjectileHandler.add_child(self)

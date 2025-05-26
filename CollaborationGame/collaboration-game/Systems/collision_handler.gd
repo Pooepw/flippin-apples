@@ -1,5 +1,8 @@
 extends Node2D
 
+enum EMITTER_TYPES {PLAYER, MOB}
+enum COLLIDER_TYPES {PLAYER, MOB, TILEMAP}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,12 +26,12 @@ func handle_collision(mover, collision_instance: KinematicCollision2D):
 	# to the enemy. calculably, this is the damage - enemy resistance and knockback
 	# - enemy knockback resistance. also, the projectile loses one of its hits.
 	if mover is projectile and collider is mob:
-		pass
+		collider.health -= mover.damage
 	# projectile vs projectile - 
 	# if the projectiles are from different emitters, they should be able to harm 
 	# each other. this means they should both lose one projectile health.
 	if mover is projectile and collider is projectile:
-		if mover.emitter is player and collider.emitter is projector_mob:
+		if mover.emitter == EMITTER_TYPES.PLAYER and collider.emitter == EMITTER_TYPES.MOB:
 			mover.projectile_health -= 1
 			collider.projectile_health -= 1
 	# projectile vs room

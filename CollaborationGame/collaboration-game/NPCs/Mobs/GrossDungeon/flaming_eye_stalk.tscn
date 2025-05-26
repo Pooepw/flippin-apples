@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://dc07q714u3otg"]
+
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_t57ap"]
+[ext_resource type="Texture2D" uid="uid://by346u40nwhua" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkopen1.png" id="2_hqw2d"]
+[ext_resource type="Texture2D" uid="uid://b1r8drb4mxwld" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalklowclose2.png" id="3_pvgbm"]
+[ext_resource type="Texture2D" uid="uid://dwutd3qtj18gd" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkmidclose3.png" id="4_hgtmv"]
+[ext_resource type="Texture2D" uid="uid://lct1mtoet8k5" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkclosed2.png" id="5_325la"]
+[ext_resource type="Texture2D" uid="uid://kibaffhd2sxv" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkmidclose1.png" id="6_p68lj"]
+[ext_resource type="Texture2D" uid="uid://bnh40yyrk47wb" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkopen3.png" id="7_8l7w7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqw2d"]
+radius = 39.0
+height = 98.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqw2d"]
+size = Vector2(884, 773)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jf41v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hqw2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pvgbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hgtmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_325la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p68lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pvgbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8l7w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pvgbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p68lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_325la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hgtmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pvgbm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FlamingEyeStalk" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_t57ap")
+projectile_string = "res://NPCs/Mobs/GrossDungeon/flaming_eye_stalk_projectile.tscn"
+fire_time = 0.3
+health = 30
+move_speed = 240
+contact_damage = 3
+move_mode = 1
+projector_closeness = 20
+metadata/_custom_type_script = "uid://gfi6hr38duho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5.53)
+shape = SubResource("CapsuleShape2D_hqw2d")
+
+[node name="VisionRange" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+shape = SubResource("RectangleShape2D_hqw2d")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hqw2d")
+
+[node name="AttackingAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jf41v")
+autoplay = "default"
+frame_progress = 0.80572
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://gruj2acdm23n"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_1r4fg"]
+[ext_resource type="Texture2D" uid="uid://btvith5wdw5ki" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkprojectiles.png" id="2_3833e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i28bw"]
+radius = 15.0
+
+[node name="FlamingEyeStalkProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_1r4fg")
+damage = 10
+speed = 160
+projectile_health = 3
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i28bw")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("2_3833e")
+emission_shape = 1
+emission_sphere_radius = 13.55
+gravity = Vector2(0, 10)
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
