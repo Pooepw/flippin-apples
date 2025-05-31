@@ -421,8 +421,8 @@ func select_attribute():
 		1:
 			return "nothing"
 		2:
-			#var spawner = mob_spawner.instantiate()
-			#spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
+			var spawner = mob_spawner.instantiate()
+			spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
 			return "spawner"
 		3: 
 			var loot = LootGenerator.generate_loot()

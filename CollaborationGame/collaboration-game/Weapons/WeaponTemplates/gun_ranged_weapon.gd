@@ -17,8 +17,6 @@ var reload_timer
 var firing = false
 var previously_firing = false
 
-var attack_states
-
 var current_ammo = 0
 var fire_timer = 0
 

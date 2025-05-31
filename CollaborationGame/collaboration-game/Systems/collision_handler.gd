@@ -37,3 +37,9 @@ func handle_collision(mover, collision_instance: KinematicCollision2D):
 	# projectile vs room
 	if mover is projectile and collider is TileMapLayer:
 		mover.queue_free()
+
+
+func handle_melee_strike(melee_area, collider, damage):
+	if ((melee_area.emitter == EMITTER_TYPES.PLAYER and collider is mob)
+	or (melee_area.emitter == EMITTER_TYPES.MOB and collider is player)):
+		collider.health -= damage

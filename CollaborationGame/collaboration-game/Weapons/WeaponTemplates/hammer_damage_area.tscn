@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bchpj14858j11"]
+
+[ext_resource type="Script" uid="uid://4fikxlklk74k" path="res://Weapons/WeaponTemplates/hammer_damage_area.gd" id="1_a2o7s"]
+
+[node name="HammerDamageArea" type="Node2D"]
+script = ExtResource("1_a2o7s")
+
+[node name="ShockwaveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockwaveArea"]
+
+[node name="Shockwave" type="AnimatedSprite2D" parent="ShockwaveArea"]
+z_index = -1
+position = Vector2(-2.86102e-06, -6.4373e-06)
+scale = Vector2(1.08, 0.965)
+autoplay = "default"
+
+[node name="StrikeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StrikeArea"]
+
+[node name="Strike" type="Sprite2D" parent="StrikeArea"]
+z_index = -1
+
+[node name="StrikeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShockwaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_body_entered"]
+[connection signal="body_entered" from="StrikeArea" to="." method="_on_strike_area_body_entered"]
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout_shock"]
+[connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shock_timer_timout_die"]

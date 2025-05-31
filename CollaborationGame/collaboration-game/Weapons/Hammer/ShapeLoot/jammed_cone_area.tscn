@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://l2wwwj2xxyfy"]
+
+[ext_resource type="Script" uid="uid://4fikxlklk74k" path="res://Weapons/WeaponTemplates/hammer_damage_area.gd" id="1_b2ldu"]
+[ext_resource type="Texture2D" uid="uid://dgt7n1r2ymubl" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave1.png" id="2_vq3ik"]
+[ext_resource type="Texture2D" uid="uid://baj2kf3pxxs84" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave2.png" id="3_3d5pe"]
+[ext_resource type="Texture2D" uid="uid://b5pj54his6mbw" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave3.png" id="4_2yy3i"]
+[ext_resource type="Texture2D" uid="uid://cmj5gyettpksb" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave4.png" id="5_ok08u"]
+[ext_resource type="Texture2D" uid="uid://bc5uwsdbvo63n" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave5.png" id="6_aghup"]
+[ext_resource type="Texture2D" uid="uid://bj8aehbypvkcu" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave6.png" id="7_cc6q4"]
+[ext_resource type="Texture2D" uid="uid://gka1ylcf3x4n" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave.png" id="8_3d5pe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq3ik"]
+size = Vector2(428, 387)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ddk8j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vq3ik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3d5pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2yy3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ok08u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aghup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cc6q4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d5pe"]
+size = Vector2(69, 81)
+
+[node name="JammedConeArea" type="Node2D"]
+script = ExtResource("1_b2ldu")
+strike_time = 0.4
+shock_time = 1.0
+metadata/_custom_type_script = "uid://4fikxlklk74k"
+
+[node name="ShockwaveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockwaveArea"]
+shape = SubResource("RectangleShape2D_vq3ik")
+
+[node name="Shockwave" type="AnimatedSprite2D" parent="ShockwaveArea"]
+z_index = -1
+position = Vector2(-2.86102e-06, -6.4373e-06)
+scale = Vector2(1.08, 0.965)
+sprite_frames = SubResource("SpriteFrames_ddk8j")
+autoplay = "default"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShockwaveArea"]
+amount = 30
+texture = ExtResource("8_3d5pe")
+emission_shape = 3
+emission_rect_extents = Vector2(232, 194)
+gravity = Vector2(0, 10)
+
+[node name="StrikeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StrikeArea"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_3d5pe")
+
+[node name="Strike" type="Sprite2D" parent="StrikeArea"]
+z_index = -1
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("8_3d5pe")
+
+[node name="StrikeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShockwaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_body_entered"]
+[connection signal="body_entered" from="StrikeArea" to="." method="_on_strike_area_body_entered"]
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout_shock"]
+[connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shock_timer_timout_die"]
