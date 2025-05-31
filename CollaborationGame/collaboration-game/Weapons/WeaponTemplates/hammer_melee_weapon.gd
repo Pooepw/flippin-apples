@@ -40,12 +40,14 @@ func start_attack():
 	attacking = true
 
 func end_attack():
-	#attacking = false
 	if attack_ready:
 		attack_ready = false
 		do_attack()
-		
-
+	else:
+		attack_states.frame = 0
+		charging = false
+		charge_timer.stop()
+	attacking = false
 
 func _on_charge_timer_timeout_do_attack():
 	print ("charged")

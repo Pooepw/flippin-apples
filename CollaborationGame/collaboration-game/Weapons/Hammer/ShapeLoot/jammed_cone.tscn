@@ -31,6 +31,7 @@ reach = 230
 hammer_damage_node = "res://Weapons/Hammer/ShapeLoot/jammed_cone_area.tscn"
 stamina_cost = 1
 damage = 10
+weapon_name = "Jammed Cone"
 metadata/_custom_type_script = "uid://bnng8de4igxvp"
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]

@@ -41,6 +41,7 @@ position = Vector2(1123, 569)
 
 [node name="ProjectorSphere" parent="." instance=ExtResource("3_0ua5v")]
 position = Vector2(477, 2794)
+fire_time = 0.2
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]
