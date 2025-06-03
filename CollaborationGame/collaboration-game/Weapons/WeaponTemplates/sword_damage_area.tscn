@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnxct53xrfgs7"]
+
+[ext_resource type="Script" uid="uid://b4j74ufotlsdp" path="res://Weapons/WeaponTemplates/sword_damage_area.gd" id="1_njfrl"]
+
+[node name="SwordDamageArea" type="Node2D"]
+script = ExtResource("1_njfrl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="SwingArea" type="Area2D" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
