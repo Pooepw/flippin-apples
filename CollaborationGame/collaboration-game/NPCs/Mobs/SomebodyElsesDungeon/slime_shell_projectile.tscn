@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5tpokpvb5xre"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_8v0ba"]
+[ext_resource type="Texture2D" uid="uid://cxk76t8exdyyf" path="res://NPCs/Mobs/SomebodyElsesDungeon/SlimeShellBys4m_ur4i/SlimeShellProjectileTrail.png" id="2_anjju"]
+[ext_resource type="Texture2D" uid="uid://cxnd4qrwe0qmv" path="res://NPCs/Mobs/SomebodyElsesDungeon/SlimeShellBys4m_ur4i/SlimeShellProjectile.png" id="3_swxxo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anjju"]
+radius = 7.0
+
+[node name="SlimeShellProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_8v0ba")
+damage = 10
+speed = 500
+projectile_health = 3
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("2_anjju")
+emission_shape = 1
+emission_sphere_radius = 11.67
+gravity = Vector2(0, 0)
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_swxxo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_anjju")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

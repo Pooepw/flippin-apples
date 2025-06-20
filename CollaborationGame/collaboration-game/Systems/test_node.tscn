@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0nl0hevuq4wv"]
+[gd_scene load_steps=7 format=3 uid="uid://d0nl0hevuq4wv"]
 
 [ext_resource type="Script" uid="uid://d0orlbfckbxs4" path="res://Systems/test_node.gd" id="1_4csnm"]
 [ext_resource type="PackedScene" uid="uid://bqj40cdq5m1p4" path="res://LevelParts/StartingTown/town_area.tscn" id="2_1syxa"]
 [ext_resource type="PackedScene" uid="uid://c6spj2tynuh6o" path="res://NPCs/Mobs/ShapeDungeon/projector_sphere.tscn" id="3_0ua5v"]
 [ext_resource type="PackedScene" uid="uid://c302o0sfwj5is" path="res://NPCs/Mobs/SomebodyElsesDungeon/tentacle_monster.tscn" id="4_il20k"]
+[ext_resource type="PackedScene" uid="uid://b2uxw5mfth3r4" path="res://NPCs/Mobs/SomebodyElsesDungeon/slime_shell.tscn" id="5_krwa8"]
+[ext_resource type="PackedScene" uid="uid://b71ql1j2ir6v" path="res://NPCs/Mobs/SomebodyElsesDungeon/zombie_axeman.tscn" id="6_qtefg"]
 
 [node name="TestNode" type="Node"]
 script = ExtResource("1_4csnm")
@@ -46,6 +48,12 @@ fire_time = 0.2
 
 [node name="TentacleMonster" parent="." instance=ExtResource("4_il20k")]
 position = Vector2(2219, 1810)
+
+[node name="SlimeShell" parent="." instance=ExtResource("5_krwa8")]
+position = Vector2(1787, 2301)
+
+[node name="ZombieAxeman" parent="." instance=ExtResource("6_qtefg")]
+position = Vector2(786, 2013)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]

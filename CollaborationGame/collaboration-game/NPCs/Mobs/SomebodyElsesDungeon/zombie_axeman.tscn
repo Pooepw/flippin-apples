@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b71ql1j2ir6v"]
+
+[ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_pj4ff"]
+[ext_resource type="Texture2D" uid="uid://cq6p5ew66osh3" path="res://NPCs/Mobs/SomebodyElsesDungeon/ZombieAxemanByKenney/ZombieAxeManFrames/ZombieAxeManWalk1.png" id="2_rrnli"]
+[ext_resource type="Texture2D" uid="uid://cmnurhv0cd0v" path="res://NPCs/Mobs/SomebodyElsesDungeon/ZombieAxemanByKenney/ZombieAxeManFrames/ZombieAxeManWalk2.png" id="3_g4aum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrnli"]
+size = Vector2(54, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_up732"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rrnli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g4aum")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ZombieAxeman" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_pj4ff")
+health = 10
+move_speed = 100
+contact_damage = 10
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rrnli")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_up732")
+autoplay = "default"
+frame_progress = 0.378855

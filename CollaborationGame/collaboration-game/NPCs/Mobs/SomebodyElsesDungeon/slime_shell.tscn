@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2uxw5mfth3r4"]
+
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_p4oke"]
+[ext_resource type="Texture2D" uid="uid://b13obpulfk12h" path="res://NPCs/Mobs/SomebodyElsesDungeon/SlimeShellBys4m_ur4i/SlimeShellFrames/SlimeShellIdle.png" id="2_28bnf"]
+[ext_resource type="Texture2D" uid="uid://d4k4hfbdwbuc0" path="res://NPCs/Mobs/SomebodyElsesDungeon/SlimeShellBys4m_ur4i/SlimeShellFrames/SlimeShellFiring1.png" id="3_uir1y"]
+[ext_resource type="Texture2D" uid="uid://k0m7371vkiby" path="res://NPCs/Mobs/SomebodyElsesDungeon/SlimeShellBys4m_ur4i/SlimeShellFrames/SlimeShellFiring2.png" id="4_al3dc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uir1y"]
+radius = 24.0832
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsgwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uir1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_al3dc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_al3dc"]
+radius = 389.032
+
+[node name="SlimeShell" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_p4oke")
+projectile_string = "res://NPCs/Mobs/SomebodyElsesDungeon/slime_shell_projectile.tscn"
+fire_time = 1.0
+health = 20
+contact_damage = 3
+move_mode = 2
+metadata/_custom_type_script = "uid://gfi6hr38duho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uir1y")
+
+[node name="IdleSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_28bnf")
+
+[node name="AttackingAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gsgwq")
+autoplay = "default"
+frame_progress = 0.308362
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="VisionRange" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+shape = SubResource("CircleShape2D_al3dc")
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
