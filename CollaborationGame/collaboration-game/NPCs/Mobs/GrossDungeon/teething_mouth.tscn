@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7vwjpmgwlg2t"]
+
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_o54y1"]
+[ext_resource type="Texture2D" uid="uid://bhtk7wvjk25vs" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/teethingmouthidle1.png" id="2_di4qi"]
+[ext_resource type="Texture2D" uid="uid://dcl6bs1vl7jux" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/teethingmouthidle2.png" id="3_i514s"]
+[ext_resource type="Texture2D" uid="uid://b6qj8mix7g4kc" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/teethingmouthfiring1.png" id="4_rfb15"]
+[ext_resource type="Texture2D" uid="uid://dro76dd1did0c" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/teethingmouthfiring2.png" id="5_mladd"]
+[ext_resource type="Texture2D" uid="uid://co7qm5pfcpx07" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/teethingmouthfiring3.png" id="6_enxfs"]
+[ext_resource type="Texture2D" uid="uid://hfhji71nu0p6" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/teethingmouthfiring4.png" id="7_3o0ja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o54y1"]
+size = Vector2(74, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_di4qi"]
+radius = 354.09
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvsdw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_di4qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i514s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r72xw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rfb15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mladd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rfb15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_enxfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rfb15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3o0ja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TeethingMouth" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_o54y1")
+projectile_string = "res://NPCs/Mobs/GrossDungeon/teething_mouth_projectile.tscn"
+fire_time = 2.0
+health = 20
+contact_damage = 3
+move_mode = 2
+metadata/_custom_type_script = "uid://gfi6hr38duho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o54y1")
+
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+shape = SubResource("CircleShape2D_di4qi")
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="IdleSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yvsdw")
+autoplay = "default"
+frame_progress = 0.0115735
+
+[node name="AttackingAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_r72xw")
+autoplay = "default"
+frame_progress = 0.905244
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

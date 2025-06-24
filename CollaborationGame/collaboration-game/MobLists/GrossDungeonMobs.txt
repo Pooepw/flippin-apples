@@ -1,0 +1,2 @@
+res://NPCs/Mobs/GrossDungeon/flaming_eye_stalk.tscn
+res://NPCs/Mobs/GrossDungeon/teething_mouth.tscn

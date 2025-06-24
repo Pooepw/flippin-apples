@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4e7kfhn0436h"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_hlmwm"]
+[ext_resource type="Texture2D" uid="uid://cnrrscn5qxmvl" path="res://NPCs/Mobs/GrossDungeon/TeethingMouth/TeethingMouthProjectile.png" id="2_tjk3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5tv"]
+size = Vector2(14, 16.5)
+
+[node name="TeethingMouthProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_hlmwm")
+damage = 3
+speed = 340
+projectile_health = 2
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 1
+emission_sphere_radius = 7.46
+gravity = Vector2(0, 0)
+color = Color(0.460938, 0.0803634, 0.121718, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_bp5tv")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_tjk3k")
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

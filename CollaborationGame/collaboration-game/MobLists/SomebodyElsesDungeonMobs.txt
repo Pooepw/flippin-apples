@@ -1,0 +1,3 @@
+res://NPCs/Mobs/SomebodyElsesDungeon/slime_shell.tscn
+res://NPCs/Mobs/SomebodyElsesDungeon/tentacle_monster.tscn
+res://NPCs/Mobs/SomebodyElsesDungeon/zombie_axeman.tscn

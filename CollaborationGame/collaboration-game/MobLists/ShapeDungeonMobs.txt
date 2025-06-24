@@ -1,0 +1,4 @@
+res://NPCs/Mobs/ShapeDungeon/flesh_cube.tscn
+res://NPCs/Mobs/ShapeDungeon/projector_sphere.tscn
+res://NPCs/Mobs/ShapeDungeon/rotating_rectangle.tscn
+res://NPCs/Mobs/ShapeDungeon/star_hopper.tscn
