@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://khg611ri8jxx"]
+
+[ext_resource type="Script" uid="uid://b3mxog73g2f21" path="res://NPCs/Mobs/GrossDungeon/hopping_arm.gd" id="1_5ibnp"]
+[ext_resource type="Texture2D" uid="uid://co8p5vx1rvl0y" path="res://NPCs/Mobs/GrossDungeon/HoppingArm/HoppingArmHop.png" id="2_aavf6"]
+[ext_resource type="Texture2D" uid="uid://b6gol3ipcgqlu" path="res://NPCs/Mobs/GrossDungeon/HoppingArm/HoppingArmIdle1.png" id="3_dgoqd"]
+[ext_resource type="Texture2D" uid="uid://1tljxttwjpgw" path="res://NPCs/Mobs/GrossDungeon/HoppingArm/HoppingArmIdle2.png" id="4_ynfj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgoqd"]
+size = Vector2(32, 59)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8xmg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dgoqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ynfj3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="HoppingArm" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_5ibnp")
+ordinary_move_speed = 200
+hop_time = 3
+health = 3
+contact_damage = 3
+move_mode = 3
+metadata/_custom_type_script = "uid://qrg7bmofy8c8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_dgoqd")
+
+[node name="HopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HopSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_aavf6")
+
+[node name="IdleSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p8xmg")
+autoplay = "default"
+frame_progress = 0.892651
+
+[connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]
+[connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]

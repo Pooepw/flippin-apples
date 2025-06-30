@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://baoe7fbukhx1"]
+
+[ext_resource type="Script" uid="uid://c336fxt1uogva" path="res://NPCs/Mobs/pulsing_mob.gd" id="1_h75rx"]
+
+[node name="PulsingHeart" type="CharacterBody2D"]
+script = ExtResource("1_h75rx")
+move_mode = 3
+metadata/_custom_type_script = "uid://c336fxt1uogva"
+
+[node name="PulseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RecedeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PulseArea" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="RecedeArea" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="PulseSprite" type="Sprite2D" parent="."]
+
+[node name="RecedeSprite" type="Sprite2D" parent="."]
