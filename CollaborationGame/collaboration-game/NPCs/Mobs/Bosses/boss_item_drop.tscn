@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mhc3exhpbyai"]
+
+[ext_resource type="Script" uid="uid://u80ruhhmxtrw" path="res://NPCs/Mobs/Bosses/boss_item_drop.gd" id="1_fvsnr"]
+
+[node name="BossItemDrop" type="Node2D"]
+script = ExtResource("1_fvsnr")
