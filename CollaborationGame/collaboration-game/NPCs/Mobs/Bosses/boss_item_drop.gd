@@ -1,25 +1,32 @@
 extends Node2D
 
-enum power_status {ENABLED, DISABLED, NOT_OBTAINED}
+enum power_status {ENABLED, DISABLED}
 
-var gross_state
-var shape_state
-var somebody_state
-var you_state
-
-func change_power_status(status, state):
-	state = status
+enum powers {GROSS, SHAPE, SOMEBODY, YOU}
 	
-func _physics_process(delta: float) -> void:
-	if gross_state == power_status.ENABLED:
-		#player move 1.2x speed and 1.5x health
-		pass
-	if shape_state == power_status.ENABLED:
-		#player stamina and mana 1.5x
-		pass
-	if somebody_state == power_status.ENABLED:
-		#player damage 1.5x
-		pass
-	if you_state == power_status.ENABLED:
-		#player divine shield active (write code for this)
-		pass
+func update_status(power, status) -> void:
+	if status == power_status.ENABLED:
+		match power:
+			powers.GROSS:
+				PlayerHandler.current_player.hp_mult_bonus = 1.5
+				PlayerHandler.current_player.speed_mult_bonus = 1.2
+			powers.SHAPE:
+				PlayerHandler.current_player.mana_mult_bonus = 1.5
+				PlayerHandler.current_player.stamina_mult_bonus = 1.5
+			powers.SOMEBODY:
+				PlayerHandler.current_player.damage_mult = 1.5
+			powers.YOU:
+				PlayerHandler.current_player.one_time_invincibility = true
+	
+	if status == power_status.DISABLED:
+		match power:
+			powers.GROSS:
+				PlayerHandler.current_player.hp_mult_bonus = 1.0
+				PlayerHandler.current_player.speed_mult_bonus = 1.0
+			powers.SHAPE:
+				PlayerHandler.current_player.mana_mult_bonus = 1.0
+				PlayerHandler.current_player.stamina_mult_bonus = 1.0
+			powers.SOMEBODY:
+				PlayerHandler.current_player.damage_mult = 1.0
+			powers.YOU:
+				PlayerHandler.current_player.one_time_invincibility = false

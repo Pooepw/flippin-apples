@@ -8,23 +8,29 @@ var direction = Vector2(0, 0)
 # character stats
 var hp = 100
 var current_hp = hp
+var hp_mult_bonus = 1.0
 var hp_regen = 0
 var mana = 100
 var current_mana = mana
+var mana_mult_bonus = 1.0
 var mana_regen = 1
 var stamina = 100
 var current_stamina = stamina
+var stamina_mult_bonus = 1.0
 var stamina_regen = 2
 var speed = 1000
+var speed_mult = 1.0
 
 var recently_damaged = false
 var invincibility_timer
 var invincibility_time = 0.1
+var one_time_invincibility_active = false
 
 # weapon stats
 var equipped_weapon
 var weapon_inventory_node
 const default_weapon = "clear"
+var damage_mult = 1.0
 
 # booleans that help with making movement much smoother. 
 var w_pressed = false
