@@ -5,7 +5,6 @@ class_name wand
 @export var projectile_scene: String
 
 var projectile_node
-var attack_states
 
 
 # Called when the node enters the scene tree for the first time.
