@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuj0w5xniqt10"
-path="res://.godot/imported/eye_strand_bow_charge1.png-2e468fa988b502b26ff3fe71f9ea3222.ctex"
+path="res://.godot/imported/eye_strand_bow_charge1.png-d1b7abd37555eebb85aea6ab10fa287b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Assets/Guns/GrossDungeon/EyeStrandBow/eye_strand_bow_charge1.png"
-dest_files=["res://.godot/imported/eye_strand_bow_charge1.png-2e468fa988b502b26ff3fe71f9ea3222.ctex"]
+source_file="res://Weapons/Assets/Bows/EyeStrandBow/eye_strand_bow_charge1.png"
+dest_files=["res://.godot/imported/eye_strand_bow_charge1.png-d1b7abd37555eebb85aea6ab10fa287b.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n5eweq7a2vx2"
-path="res://.godot/imported/the_nose_reload3.png-0a8f89facade55f42de5743992da9a40.ctex"
+path="res://.godot/imported/the_nose_reload3.png-4907971cd2ef6fead9a905eda0ee354f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Assets/Guns/GrossDungeon/TheNose/the_nose_reload3.png"
-dest_files=["res://.godot/imported/the_nose_reload3.png-0a8f89facade55f42de5743992da9a40.ctex"]
+source_file="res://Weapons/Assets/Guns/TheNose/the_nose_reload3.png"
+dest_files=["res://.godot/imported/the_nose_reload3.png-4907971cd2ef6fead9a905eda0ee354f.ctex"]
 
 [params]
 

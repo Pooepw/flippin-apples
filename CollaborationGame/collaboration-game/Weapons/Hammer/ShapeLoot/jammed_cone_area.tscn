@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://l2wwwj2xxyfy"]
 
 [ext_resource type="Script" uid="uid://4fikxlklk74k" path="res://Weapons/WeaponTemplates/hammer_damage_area.gd" id="1_b2ldu"]
-[ext_resource type="Texture2D" uid="uid://dgt7n1r2ymubl" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave1.png" id="2_vq3ik"]
-[ext_resource type="Texture2D" uid="uid://baj2kf3pxxs84" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave2.png" id="3_3d5pe"]
-[ext_resource type="Texture2D" uid="uid://b5pj54his6mbw" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave3.png" id="4_2yy3i"]
-[ext_resource type="Texture2D" uid="uid://cmj5gyettpksb" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave4.png" id="5_ok08u"]
-[ext_resource type="Texture2D" uid="uid://bc5uwsdbvo63n" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave5.png" id="6_aghup"]
-[ext_resource type="Texture2D" uid="uid://bj8aehbypvkcu" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave6.png" id="7_cc6q4"]
-[ext_resource type="Texture2D" uid="uid://gka1ylcf3x4n" path="res://Weapons/Assets/Hammers/Icons/ShapeLoot/JammedConeShockwave.png" id="8_3d5pe"]
+[ext_resource type="Texture2D" uid="uid://dgt7n1r2ymubl" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave1.png" id="2_vq3ik"]
+[ext_resource type="Texture2D" uid="uid://baj2kf3pxxs84" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave2.png" id="3_3d5pe"]
+[ext_resource type="Texture2D" uid="uid://b5pj54his6mbw" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave3.png" id="4_2yy3i"]
+[ext_resource type="Texture2D" uid="uid://cmj5gyettpksb" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave4.png" id="5_ok08u"]
+[ext_resource type="Texture2D" uid="uid://bc5uwsdbvo63n" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave5.png" id="6_aghup"]
+[ext_resource type="Texture2D" uid="uid://bj8aehbypvkcu" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave6.png" id="7_cc6q4"]
+[ext_resource type="Texture2D" uid="uid://gka1ylcf3x4n" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeShockwave.png" id="8_3d5pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq3ik"]
 size = Vector2(428, 387)

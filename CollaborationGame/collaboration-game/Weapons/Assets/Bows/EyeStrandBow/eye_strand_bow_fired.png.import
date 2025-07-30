@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da348jtanauch"
-path="res://.godot/imported/eye_strand_bow_fired.png-49c88b9ec9e90efdde658b798fd90160.ctex"
+path="res://.godot/imported/eye_strand_bow_fired.png-f54d355645203cbce774a8a561215971.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Assets/Guns/GrossDungeon/EyeStrandBow/eye_strand_bow_fired.png"
-dest_files=["res://.godot/imported/eye_strand_bow_fired.png-49c88b9ec9e90efdde658b798fd90160.ctex"]
+source_file="res://Weapons/Assets/Bows/EyeStrandBow/eye_strand_bow_fired.png"
+dest_files=["res://.godot/imported/eye_strand_bow_fired.png-f54d355645203cbce774a8a561215971.ctex"]
 
 [params]
 

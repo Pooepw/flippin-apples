@@ -12,8 +12,10 @@ one_shot = true
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 
-[node name="AttackStates" type="AnimatedSprite2D" parent="."]
+[node name="FiringSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1savr")
 speed_scale = 0.0
+
+[node name="IdleSprites" type="AnimatedSprite2D" parent="."]
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

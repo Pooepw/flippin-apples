@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4lafuiqua376"]
+
+[ext_resource type="Script" uid="uid://dqlj5o0sn3upp" path="res://Weapons/WeaponTemplates/gun_ranged_weapon.gd" id="1_ppx75"]
+[ext_resource type="Texture2D" uid="uid://dla5inbm4fap7" path="res://Weapons/Assets/Guns/StarterSling/sling_idle1.png" id="2_56yc0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2svjx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_56yc0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StarterSling" type="Node2D"]
+script = ExtResource("1_ppx75")
+max_ammo = 3
+metadata/_custom_type_script = "uid://dqlj5o0sn3upp"
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="AttackStates" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2svjx")
+speed_scale = 0.0
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

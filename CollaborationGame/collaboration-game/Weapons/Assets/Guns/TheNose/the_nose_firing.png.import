@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do3i7vctwmgc3"
-path="res://.godot/imported/the_nose_firing.png-dab61f8ec68bf36e2aeed955c6fc4a3b.ctex"
+path="res://.godot/imported/the_nose_firing.png-11940d1664e2610bbe0b39db05cc28e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Assets/Guns/GrossDungeon/TheNose/the_nose_firing.png"
-dest_files=["res://.godot/imported/the_nose_firing.png-dab61f8ec68bf36e2aeed955c6fc4a3b.ctex"]
+source_file="res://Weapons/Assets/Guns/TheNose/the_nose_firing.png"
+dest_files=["res://.godot/imported/the_nose_firing.png-11940d1664e2610bbe0b39db05cc28e4.ctex"]
 
 [params]
 
