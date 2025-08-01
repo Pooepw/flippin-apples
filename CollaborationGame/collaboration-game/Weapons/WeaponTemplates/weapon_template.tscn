@@ -8,3 +8,7 @@ script = ExtResource("1_3m24t")
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 
 [node name="AttackStates" type="AnimatedSprite2D" parent="."]
+
+[node name="FiringSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="IdleSprite" type="AnimatedSprite2D" parent="."]
