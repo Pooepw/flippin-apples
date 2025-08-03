@@ -2,8 +2,7 @@ extends Node2D
 
 class_name sword_damage_area
 
-@export var strike_time: float
-@export var shock_time: float
+@export var afterslash_duration: float
 
 var emitter
 
@@ -24,7 +23,7 @@ func project_wave(to_position, outward_distance, emitted_by, damage):
 	ProjectileHandler.add_child(self)
 
 func set_up_hit_area():
-	swing_area = get_node("ShockwaveArea")
+	swing_area = get_node("SwingArea")
 	if emitter == CollisionHandler.EMITTER_TYPES.PLAYER:
 		swing_area.set_collision_layer_value(1, false)
 		swing_area.set_collision_mask_value(1, false)

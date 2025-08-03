@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://chvqijf47a78j"]
+
+[ext_resource type="Script" uid="uid://dk6tjk0qx1hkl" path="res://Weapons/WeaponTemplates/staff_template.gd" id="1_skktp"]
+
+[node name="StaffTemplate" type="Node2D"]
+script = ExtResource("1_skktp")
+metadata/_custom_type_script = "uid://dtuq3q13tukja"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]

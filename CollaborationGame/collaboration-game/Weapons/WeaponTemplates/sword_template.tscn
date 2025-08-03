@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cftq64f0dlw2v"]
+
+[ext_resource type="Script" uid="uid://b50fsef7fxxi6" path="res://Weapons/WeaponTemplates/sword_template.gd" id="1_lm74q"]
+
+[node name="SwordTemplate" type="Node2D"]
+script = ExtResource("1_lm74q")
+metadata/_custom_type_script = "uid://b4kpd5js3xf31"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

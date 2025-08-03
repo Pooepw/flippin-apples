@@ -1,0 +1,87 @@
+[gd_scene load_steps=17 format=3 uid="uid://diasufny2ew5f"]
+
+[ext_resource type="Script" uid="uid://bfc8pufieq4bd" path="res://Weapons/WeaponTemplates/gun_template.gd" id="1_arbic"]
+[ext_resource type="Texture2D" uid="uid://c1ab6x4yg0xfs" path="res://Weapons/Assets/Guns/AUG/aug_idle1.png" id="2_8tidg"]
+[ext_resource type="Texture2D" uid="uid://cpxg6pqvijddc" path="res://Weapons/Assets/Guns/AUG/aug_reloading0.png" id="2_ghcx0"]
+[ext_resource type="Texture2D" uid="uid://djj6a0j8nhago" path="res://Weapons/Assets/Guns/AUG/aug_idle2.png" id="3_gysvo"]
+[ext_resource type="Texture2D" uid="uid://c2ubu032smsr5" path="res://Weapons/Assets/Guns/AUG/aug_reloading1.png" id="3_ksyju"]
+[ext_resource type="Texture2D" uid="uid://7mcqu602c8ai" path="res://Weapons/Assets/Guns/AUG/aug_reloading2.png" id="4_pxf5h"]
+[ext_resource type="Texture2D" uid="uid://dbirbewdufug6" path="res://Weapons/Assets/Guns/AUG/aug_reloading3.png" id="5_wmmix"]
+[ext_resource type="Texture2D" uid="uid://cie11qegwdejx" path="res://Weapons/Assets/Guns/AUG/aug_reloading4.png" id="6_ie2bo"]
+[ext_resource type="Texture2D" uid="uid://dxujwsafcq1ta" path="res://Weapons/Assets/Guns/AUG/aug_reloading5.png" id="7_tt7pd"]
+[ext_resource type="Texture2D" uid="uid://bweegd5fwrog2" path="res://Weapons/Assets/Guns/AUG/aug_reloading6.png" id="8_8q5bq"]
+[ext_resource type="Texture2D" uid="uid://dij0ejugxolyf" path="res://Weapons/Assets/Guns/AUG/aug_reloading7.png" id="9_2wr5f"]
+[ext_resource type="Texture2D" uid="uid://c4o2jv5uj7gxe" path="res://Weapons/Assets/Guns/AUG/aug_reloading8.png" id="10_ur6jy"]
+[ext_resource type="Texture2D" uid="uid://c7ind4wghe3vi" path="res://Weapons/Assets/Guns/AUG/aug_firing1.png" id="11_jk6wi"]
+[ext_resource type="Texture2D" uid="uid://b5p0dxyvdhtny" path="res://Weapons/Assets/Guns/AUG/aug_firing2.png" id="12_wq8d6"]
+[ext_resource type="Texture2D" uid="uid://cp61xqoqpxoip" path="res://Weapons/Assets/Guns/AUG/aug_firing3.png" id="13_vq1ss"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iibxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ghcx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ksyju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pxf5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wmmix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ie2bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tt7pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8q5bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2wr5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ur6jy")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_jk6wi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wq8d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vq1ss")
+}],
+"loop": true,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8tidg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gysvo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="AUG" type="Node2D"]
+script = ExtResource("1_arbic")
+metadata/_custom_type_script = "uid://bfc8pufieq4bd"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iibxu")
+animation = &"Idle"

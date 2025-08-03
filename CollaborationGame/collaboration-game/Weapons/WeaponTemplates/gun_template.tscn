@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://clk2nv4i2mpvw"]
+
+[ext_resource type="Script" uid="uid://bfc8pufieq4bd" path="res://Weapons/WeaponTemplates/gun_template.gd" id="1_j2v8h"]
+
+[node name="GunTemplate" type="Node2D"]
+script = ExtResource("1_j2v8h")
+metadata/_custom_type_script = "uid://dtuq3q13tukja"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]

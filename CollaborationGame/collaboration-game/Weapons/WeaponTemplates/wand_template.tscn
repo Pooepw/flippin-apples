@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://lbptbgsit4j4"]
+
+[ext_resource type="Script" uid="uid://sc7jlbb7o6dr" path="res://Weapons/WeaponTemplates/wand_template.gd" id="1_cjw7g"]
+
+[node name="WandTemplate" type="Node2D"]
+script = ExtResource("1_cjw7g")
+metadata/_custom_type_script = "uid://b4kpd5js3xf31"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
