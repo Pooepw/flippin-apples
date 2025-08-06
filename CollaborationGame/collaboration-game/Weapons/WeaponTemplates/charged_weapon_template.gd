@@ -26,8 +26,8 @@ func handle_charge():
 func begin_charge():
 	weapon_sprites.play("Charging")
 
-func _on_charge_animation_finished() -> void:
-	charged = true
-
 func start_attack():
 	begin_charge()
+
+func end_attack():
+	weapon_sprites.play("Firing")

@@ -2,14 +2,13 @@ extends weapon2
 
 class_name sword_type
 
+@export var projectile_reach: int
+
 func start_attack():
 	super()
 	
 
-func _on_weapon_sprites_animation_finished() -> void:
-	if weapon_sprites.animation == "Firing":
-		emit_attack()
-
 func emit_attack():
-	super()
+	var emission_instance = weapon_emission.instantiate()
+	emission_instance.project_wave(get_global_mouse_position(), projectile_reach, get_parent(), damage)
 	

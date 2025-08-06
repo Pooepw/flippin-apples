@@ -8,16 +8,25 @@ var direction = Vector2(0, 0)
 # character stats
 var hp = 100
 var current_hp = hp
+var can_regen_health = true
 var hp_mult_bonus = 1.0
 var hp_regen = 0
+var hp_regen_timer
+
 var mana = 100
 var current_mana = mana
+var can_regen_mana = true
 var mana_mult_bonus = 1.0
-var mana_regen = 1
+var mana_regen = 0.3
+var mana_regen_timer
+
 var stamina = 100
 var current_stamina = stamina
+var can_regen_stamina = true
 var stamina_mult_bonus = 1.0
 var stamina_regen = 2
+var stam_regen_timer
+
 var speed = 1000
 var speed_mult = 1.0
 
@@ -53,6 +62,10 @@ func _ready() -> void:
 	equipped_weapon = default_weapon
 	
 	invincibility_timer = get_node("InvincibilityFrames")
+	
+	hp_regen_timer = get_node("HealthRegenTimer")
+	mana_regen_timer = get_node("ManaRegenTimer")
+	stam_regen_timer = get_node("StaminaRegenTimer")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
@@ -65,11 +78,63 @@ func _physics_process(delta) -> void:
 		player_sprite.stop()
 	if direction.x > 0:
 		player_sprite.set_animation("RightFacing")
-		if equipped_weapon is not String:
-			equipped_weapon.get_node("AttackStates").flip_h = true
+		#if equipped_weapon is not String:
+			#equipped_weapon.get_node("AttackStates").flip_h = true
 	elif direction.x < 0:
 		player_sprite.set_animation("LeftFacing")
+	regenerate_resources()
 
+# called every frame to regenerate the player's resources of hp, mana and stamina
+func regenerate_resources():
+	if can_regen_health:
+		if current_hp < hp:
+			var new_hp = current_hp + hp_regen
+			current_hp = new_hp if new_hp < hp else hp
+	if can_regen_mana:
+		if current_mana < mana:
+			var new_mana = current_mana + mana_regen
+			current_mana = new_mana if new_mana < mana else mana
+			print (current_mana)
+	if can_regen_stamina:
+		if current_stamina < stamina:
+			var new_stamina = current_stamina + stamina_regen
+			current_stamina = new_stamina if new_stamina < stamina else stamina
+
+# starts the regen timer of choice; to be used by weapons or post invincibility
+func start_regen_wait(timer: String):
+	match timer:
+		"Mana":
+			can_regen_mana = false
+			if mana_regen_timer.is_stopped():
+				mana_regen_timer.start(2)
+			else:
+				mana_regen_timer.stop()
+				mana_regen_timer.start(2)
+		"Stamina":
+			can_regen_stamina = false
+			if stam_regen_timer.is_stopped():
+				stam_regen_timer.start(5)
+			else:
+				stam_regen_timer.stop()
+				stam_regen_timer.start(5)
+		"Health":
+			can_regen_health = false
+			if hp_regen_timer.is_stopped():
+				hp_regen_timer.start(5)
+			else:
+				hp_regen_timer.stop()
+				hp_regen_timer.start(5)
+
+# these three are called when the associated timer stops, enabling the resource
+# to regenerate
+func _can_regen_mana():
+	can_regen_mana = true
+
+func _can_regen_stamina():
+	can_regen_stamina = true
+
+func _can_regen_health():
+	can_regen_health = true
 
 func weapon_equipped():
 	return not equipped_weapon is String

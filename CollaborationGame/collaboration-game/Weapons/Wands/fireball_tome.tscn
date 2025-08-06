@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn364o5e703xw"]
+
+[ext_resource type="Script" uid="uid://sc7jlbb7o6dr" path="res://Weapons/WeaponTemplates/wand_template.gd" id="1_1hvc8"]
+[ext_resource type="Texture2D" uid="uid://nhgm8b6uqyf1" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_firing1.png" id="2_jjna0"]
+[ext_resource type="Texture2D" uid="uid://bnhh0q4vg51u0" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_icon.png" id="2_lgp4b"]
+[ext_resource type="Texture2D" uid="uid://de1cqsusjtg7b" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_idle2.png" id="2_px808"]
+[ext_resource type="Texture2D" uid="uid://dsh14w6kgvy2n" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_idle.png" id="3_7rewr"]
+[ext_resource type="Texture2D" uid="uid://b2igddh3i26h0" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_firing2.png" id="3_lgp4b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hvc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jjna0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lgp4b")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_px808")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7rewr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="FireballTome" type="Node2D"]
+script = ExtResource("1_1hvc8")
+mana_cost = 8
+weapon_name = "Fireball Tome"
+weapon_emission_node = "res://Weapons/Wands/fireball_tome_projectile.tscn"
+damage = 5
+metadata/_custom_type_script = "uid://sc7jlbb7o6dr"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_lgp4b")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1hvc8")
+animation = &"Firing"
+autoplay = "Idle"
+frame = 1
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprite_animation_end"]

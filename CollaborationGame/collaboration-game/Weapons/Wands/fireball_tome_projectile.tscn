@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck1av8y1twiiq"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_ioods"]
+[ext_resource type="Texture2D" uid="uid://cbw28mbwsowbp" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_proj.png" id="2_k6i60"]
+[ext_resource type="Texture2D" uid="uid://h88miiv651x1" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_proj_trail.png" id="3_tv7wi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv7wi"]
+size = Vector2(25, 19)
+
+[node name="FireballTomeProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ioods")
+speed = 300
+projectile_health = 1
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tv7wi")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+texture = ExtResource("2_k6i60")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("3_tv7wi")
+emission_shape = 1
+emission_sphere_radius = 7.9
+gravity = Vector2(0, 1)
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

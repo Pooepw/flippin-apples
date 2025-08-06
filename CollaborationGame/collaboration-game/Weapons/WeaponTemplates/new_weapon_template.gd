@@ -7,6 +7,7 @@ class_name weapon2
 # projectile or a shockwave of some kind. the var itself is a node string to load.
 @export var weapon_name: String
 @export var weapon_emission_node: String
+@export var damage: int
 
 # state changes shown by firing and idle sprites. weapon icon is for UI.
 var weapon_sprites
@@ -14,6 +15,7 @@ var weapon_icon
 
 # weapon emission node to be instanced
 var weapon_emission
+var firing = false
 
 # sets up the weapon sprites
 func _ready() -> void:
@@ -27,18 +29,24 @@ func _ready() -> void:
 # flip the weapon's orientation depending on direction
 func _physics_process(delta: float) -> void:
 	if PlayerHandler.current_player.direction.x < 0:
-		weapon_sprites.flip_h = false
-	if PlayerHandler.current_player.direction.x > 0:
 		weapon_sprites.flip_h = true
+	if PlayerHandler.current_player.direction.x > 0:
+		weapon_sprites.flip_h = false
 
 func swap_sprite(to_sprite):
 	weapon_sprites.play(to_sprite)
 
 func emit_attack():
-	var emission_instance = weapon_emission.instantiate()
+	pass
+
+func _on_weapon_sprites_animation_finished() -> void:
+	if weapon_sprites.animation == "Firing":
+		emit_attack()
 
 func start_attack():
+	firing = true
 	swap_sprite("Firing")
 
 func end_attack():
+	firing = false
 	swap_sprite("Idle")

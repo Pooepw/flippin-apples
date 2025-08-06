@@ -132,4 +132,16 @@ sprite_frames = SubResource("SpriteFrames_thkm1")
 animation = &"LeftFacing"
 frame_progress = 0.891957
 
+[node name="ManaRegenTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StaminaRegenTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HealthRegenTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="InvincibilityFrames" to="." method="_on_invincibility_frames_timeout"]
+[connection signal="timeout" from="ManaRegenTimer" to="." method="_can_regen_mana"]
+[connection signal="timeout" from="StaminaRegenTimer" to="." method="_can_regen_stamina"]
+[connection signal="timeout" from="HealthRegenTimer" to="." method="_can_regen_health"]
