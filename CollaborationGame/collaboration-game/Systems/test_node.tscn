@@ -36,7 +36,7 @@ text = "spawn test mob"
 
 [node name="TownArea" parent="." instance=ExtResource("2_1syxa")]
 y_sort_enabled = true
-position = Vector2(1123, 569)
+position = Vector2(1330, -985)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]

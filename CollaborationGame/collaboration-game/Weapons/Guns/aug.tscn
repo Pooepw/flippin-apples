@@ -60,9 +60,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_vq1ss")
 }],
-"loop": true,
+"loop": false,
 "name": &"Firing",
-"speed": 5.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -78,10 +78,16 @@ animations = [{
 
 [node name="AUG" type="Node2D"]
 script = ExtResource("1_arbic")
+mag_size = 30
+weapon_name = "AUG"
+weapon_emission_node = "res://Weapons/Guns/aug_projectile.tscn"
+damage = 20
 metadata/_custom_type_script = "uid://bfc8pufieq4bd"
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 
 [node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iibxu")
-animation = &"Idle"
+animation = &"Firing"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_animation_finished"]

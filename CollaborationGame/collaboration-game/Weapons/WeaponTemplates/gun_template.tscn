@@ -9,3 +9,5 @@ metadata/_custom_type_script = "uid://dtuq3q13tukja"
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 
 [node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_animation_finished"]

@@ -1,31 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4lafuiqua376"]
+[gd_scene load_steps=8 format=3 uid="uid://blldaxflrqrr8"]
 
-[ext_resource type="Script" uid="uid://dqlj5o0sn3upp" path="res://Weapons/WeaponTemplates/gun_ranged_weapon.gd" id="1_ppx75"]
+[ext_resource type="Script" uid="uid://bfc8pufieq4bd" path="res://Weapons/WeaponTemplates/gun_template.gd" id="1_ppx75"]
+[ext_resource type="Texture2D" uid="uid://c8ufq0oqxjnp" path="res://Weapons/Assets/Guns/StarterSling/sling_reload.png" id="2_2svjx"]
 [ext_resource type="Texture2D" uid="uid://dla5inbm4fap7" path="res://Weapons/Assets/Guns/StarterSling/sling_idle1.png" id="2_56yc0"]
+[ext_resource type="Texture2D" uid="uid://dpkkg3my77f4u" path="res://Weapons/Assets/Guns/StarterSling/sling_firing1.png" id="4_1cmxb"]
+[ext_resource type="Texture2D" uid="uid://bg4r03brmv6xb" path="res://Weapons/Assets/Guns/StarterSling/sling_firing2.png" id="5_2xyby"]
+[ext_resource type="Texture2D" uid="uid://seugthoxpj7b" path="res://Weapons/Assets/Guns/StarterSling/sling_idle2.png" id="6_2xyby"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2svjx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppx75"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_2svjx")
+}, {
+"duration": 1.0,
 "texture": ExtResource("2_56yc0")
 }],
+"loop": false,
+"name": &"Charging",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1cmxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2xyby")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_56yc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2xyby")
+}],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 5.0
 }]
 
 [node name="StarterSling" type="Node2D"]
 script = ExtResource("1_ppx75")
-max_ammo = 3
-metadata/_custom_type_script = "uid://dqlj5o0sn3upp"
-
-[node name="ReloadTimer" type="Timer" parent="."]
-one_shot = true
+mag_size = 3
+weapon_name = "Starter Sling"
+weapon_emission_node = "res://Weapons/Guns/starter_sling_projectile.tscn"
+damage = 3
+metadata/_custom_type_script = "uid://bfc8pufieq4bd"
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 
-[node name="AttackStates" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2svjx")
-speed_scale = 0.0
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ppx75")
+animation = &"Firing"
+frame = 1
+frame_progress = 1.0
 
-[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_animation_finished"]

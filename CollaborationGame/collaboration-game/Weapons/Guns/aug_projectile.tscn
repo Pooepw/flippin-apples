@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2tiy4pe0sgvm"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_eq8pl"]
+[ext_resource type="Texture2D" uid="uid://b8v6bspyklsea" path="res://Weapons/Assets/Guns/AUG/aug_bullet.png" id="2_kuf1j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuf1j"]
+radius = 4.0
+
+[node name="AUGProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_eq8pl")
+speed = 10000
+projectile_health = 1
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kuf1j")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_kuf1j")
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]
