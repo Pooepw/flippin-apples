@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7g7ohdfm1m67"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_oeibl"]
+[ext_resource type="Texture2D" uid="uid://77317gq01ptn" path="res://Weapons/Assets/Guns/TheNose/the_nose_projectile.png" id="2_5wmhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wmhh"]
+size = Vector2(24, 14)
+
+[node name="TheNoseProjectile" type="Area2D"]
+input_pickable = false
+script = ExtResource("1_oeibl")
+speed = 700
+projectile_health = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5wmhh")
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_5wmhh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 1
+emission_sphere_radius = 10.12
+gravity = Vector2(0, 0)
+scale_amount_max = 3.0
+color = Color(0.333754, 1, 0.321616, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

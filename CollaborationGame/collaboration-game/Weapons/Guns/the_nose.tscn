@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm845ccedmyi1"]
+
+[ext_resource type="Script" uid="uid://bfc8pufieq4bd" path="res://Weapons/WeaponTemplates/gun_template.gd" id="1_x0jqr"]
+[ext_resource type="Texture2D" uid="uid://cw5fi40kvxcie" path="res://Weapons/Assets/Guns/TheNose/the_nose_icon.png" id="2_bg8te"]
+[ext_resource type="Texture2D" uid="uid://dxbdgwoa447ye" path="res://Weapons/Assets/Guns/TheNose/the_nose_reload4.png" id="2_e5whk"]
+[ext_resource type="Texture2D" uid="uid://n5eweq7a2vx2" path="res://Weapons/Assets/Guns/TheNose/the_nose_reload3.png" id="3_xy3jb"]
+[ext_resource type="Texture2D" uid="uid://ddiseviffe1c0" path="res://Weapons/Assets/Guns/TheNose/the_nose_reload2.png" id="4_bg8te"]
+[ext_resource type="Texture2D" uid="uid://kvqhvbxpdbnj" path="res://Weapons/Assets/Guns/TheNose/the_nose_reload1.png" id="5_ogefm"]
+[ext_resource type="Texture2D" uid="uid://do3i7vctwmgc3" path="res://Weapons/Assets/Guns/TheNose/the_nose_firing.png" id="6_xy3jb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0jqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e5whk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xy3jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bg8te")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ogefm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e5whk")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_xy3jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xy3jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xy3jb")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xy3jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e5whk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="TheNose" type="Node2D"]
+script = ExtResource("1_x0jqr")
+mag_size = 20
+weapon_name = "The Nose"
+weapon_emission_node = "res://Weapons/Guns/the_nose_projectile.tscn"
+damage = 3
+metadata/_custom_type_script = "uid://bfc8pufieq4bd"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_bg8te")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x0jqr")
+animation = &"Firing"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_animation_finished"]

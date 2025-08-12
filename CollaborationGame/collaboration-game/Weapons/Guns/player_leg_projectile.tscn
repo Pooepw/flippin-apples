@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://qd2mq2muj6vv"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_n8rbh"]
+[ext_resource type="Texture2D" uid="uid://cl8evqphfqp61" path="res://Weapons/Assets/Guns/PlayersLeg/player's_leg_projectile.png" id="2_1klf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1klf6"]
+radius = 35.0
+
+[node name="PlayerLegProjectile" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_n8rbh")
+damage = 50
+speed = 200
+projectile_health = 6
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1klf6")
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_1klf6")
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

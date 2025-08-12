@@ -23,7 +23,7 @@ func _ready() -> void:
 	weapon_icon.visible = true
 	
 	weapon_sprites = get_node("WeaponSprites")
-	
+	weapon_sprites.play("Idle")
 	weapon_emission = load(weapon_emission_node)
 
 # flip the weapon's orientation depending on direction

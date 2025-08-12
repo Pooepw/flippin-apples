@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://blldaxflrqrr8"]
+[gd_scene load_steps=9 format=3 uid="uid://blldaxflrqrr8"]
 
 [ext_resource type="Script" uid="uid://bfc8pufieq4bd" path="res://Weapons/WeaponTemplates/gun_template.gd" id="1_ppx75"]
 [ext_resource type="Texture2D" uid="uid://c8ufq0oqxjnp" path="res://Weapons/Assets/Guns/StarterSling/sling_reload.png" id="2_2svjx"]
 [ext_resource type="Texture2D" uid="uid://dla5inbm4fap7" path="res://Weapons/Assets/Guns/StarterSling/sling_idle1.png" id="2_56yc0"]
+[ext_resource type="Texture2D" uid="uid://ym85vc5c5mek" path="res://Weapons/Assets/Guns/StarterSling/sling_icon.png" id="2_exwbj"]
 [ext_resource type="Texture2D" uid="uid://dpkkg3my77f4u" path="res://Weapons/Assets/Guns/StarterSling/sling_firing1.png" id="4_1cmxb"]
 [ext_resource type="Texture2D" uid="uid://bg4r03brmv6xb" path="res://Weapons/Assets/Guns/StarterSling/sling_firing2.png" id="5_2xyby"]
 [ext_resource type="Texture2D" uid="uid://seugthoxpj7b" path="res://Weapons/Assets/Guns/StarterSling/sling_idle2.png" id="6_2xyby"]
@@ -52,6 +53,7 @@ damage = 3
 metadata/_custom_type_script = "uid://bfc8pufieq4bd"
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_exwbj")
 
 [node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ppx75")

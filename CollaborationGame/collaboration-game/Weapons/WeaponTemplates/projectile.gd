@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 class_name projectile
 
@@ -24,9 +24,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if projectile_health == 0:
 		queue_free()
-	var collision = move_and_collide(direction * speed * delta)
-	if collision:
-		CollisionHandler.handle_collision(self, collision)
+	position += direction * speed * delta
 
 
 func _on_live_timer_timeout() -> void:
@@ -60,3 +58,7 @@ func fire_self(to_position, emitted_by, edited_damage: int = damage):
 	actual_damage = edited_damage
 	ProjectileHandler.add_child(self)
 	get_node("LiveTimer").start()
+
+func _on_body_entered(body: Node2D):
+	CollisionHandler.handle_collision(self, body)
+		

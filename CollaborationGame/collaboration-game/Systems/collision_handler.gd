@@ -11,8 +11,7 @@ func _ready() -> void:
 # a function that handles collisions by applying damage to the collider
 # mover is the object called move_and_collide while collision_instance is the 
 # collision that results from the call
-func handle_collision(mover, collision_instance: KinematicCollision2D):
-	var collider = collision_instance.get_collider()
+func handle_collision(mover, collider):
 	print (collider)
 	# cases for collision: 
 	# player vs. contact enemy - only enemies have contact damage, but this 
