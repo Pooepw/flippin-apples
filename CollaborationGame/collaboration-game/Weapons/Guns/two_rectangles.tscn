@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://eggf42luq5c4"]
+
+[ext_resource type="Script" uid="uid://bfc8pufieq4bd" path="res://Weapons/WeaponTemplates/gun_template.gd" id="1_0jeer"]
+[ext_resource type="Texture2D" uid="uid://bijhaclqjf3yc" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_reload1.png" id="2_jyhqs"]
+[ext_resource type="Texture2D" uid="uid://cj6vt3asglgfc" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_icon.png" id="2_txvwm"]
+[ext_resource type="Texture2D" uid="uid://dr5twpj265ilb" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_reload2.png" id="3_eyolb"]
+[ext_resource type="Texture2D" uid="uid://d3pw2m7d4c7gc" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_reload3.png" id="4_rr7hn"]
+[ext_resource type="Texture2D" uid="uid://b5fc0bketajuv" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_reload4.png" id="5_kxidl"]
+[ext_resource type="Texture2D" uid="uid://bwwsi7a6lbdp1" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_fire1.png" id="6_4jvk3"]
+[ext_resource type="Texture2D" uid="uid://yvo5c3tffm6l" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_fire2.png" id="7_qjlof"]
+[ext_resource type="Texture2D" uid="uid://b05svsfwo5b2k" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_fire3.png" id="8_5byhw"]
+[ext_resource type="Texture2D" uid="uid://83oq0n5r2o0r" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_fire4.png" id="9_txvwm"]
+[ext_resource type="Texture2D" uid="uid://dn6pc8ukdmlys" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_idle2.png" id="10_5byhw"]
+[ext_resource type="Texture2D" uid="uid://mrmokrclvnxx" path="res://Weapons/Assets/Guns/TwoRectangles/two_rectangles_idle.png" id="11_txvwm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jeer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jyhqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eyolb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rr7hn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kxidl")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5byhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_txvwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4jvk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qjlof")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_5byhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_txvwm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="TwoRectangles" type="Node2D"]
+script = ExtResource("1_0jeer")
+mag_size = 10
+weapon_name = "Two Rectangles"
+weapon_emission_node = "res://Weapons/Guns/two_rectangles_projectile.tscn"
+damage = 40
+metadata/_custom_type_script = "uid://bfc8pufieq4bd"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_txvwm")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_0jeer")
+animation = &"Firing"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_animation_finished"]

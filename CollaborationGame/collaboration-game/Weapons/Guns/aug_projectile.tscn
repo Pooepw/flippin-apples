@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuf1j"]
 radius = 4.0
 
-[node name="AUGProjectile" type="CharacterBody2D"]
-motion_mode = 1
+[node name="AUGProjectile" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_eq8pl")
 speed = 10000
 projectile_health = 1
@@ -17,10 +17,12 @@ metadata/_custom_type_script = "uid://da42yxe8ay78s"
 shape = SubResource("CircleShape2D_kuf1j")
 
 [node name="LiveTimer" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_kuf1j")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

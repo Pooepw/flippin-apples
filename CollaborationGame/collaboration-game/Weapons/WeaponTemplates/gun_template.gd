@@ -35,9 +35,10 @@ func _on_weapon_animation_finished():
 		print("firing")
 		if current_bullets > 0:
 			emit_attack()
-			weapon_sprites.play("Firing")
-		else:
-			begin_charge()
+			if current_bullets == 0:
+				begin_charge()
+			else:
+				weapon_sprites.play("Firing")
 	elif weapon_sprites.get_animation() == "Charging":
 		reload()
 
