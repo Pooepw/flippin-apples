@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgsr8ud2smo5j"]
+
+[ext_resource type="Script" uid="uid://sc7jlbb7o6dr" path="res://Weapons/WeaponTemplates/wand_template.gd" id="1_q81ys"]
+[ext_resource type="Texture2D" uid="uid://c7to0x2key5bx" path="res://Weapons/Assets/Wands/WireWand/wire_wand_idle1.png" id="2_5t2yg"]
+[ext_resource type="Texture2D" uid="uid://5u0625s32dq0" path="res://Weapons/Assets/Wands/WireWand/wire_wand_icon.png" id="2_ns560"]
+[ext_resource type="Texture2D" uid="uid://c325fe5n115ul" path="res://Weapons/Assets/Wands/WireWand/wire_wand_firing1.png" id="2_oswxn"]
+[ext_resource type="Texture2D" uid="uid://d0sg0ahbjimgo" path="res://Weapons/Assets/Wands/WireWand/wire_wand_firing2.png" id="3_ns560"]
+[ext_resource type="Texture2D" uid="uid://c0g7dcqrvlxi1" path="res://Weapons/Assets/Wands/WireWand/wire_wand_idle2.png" id="3_yisxp"]
+[ext_resource type="Texture2D" uid="uid://p4bflkqosalk" path="res://Weapons/Assets/Wands/WireWand/wire_wand_firing3.png" id="4_vtkuw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q81ys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oswxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ns560")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vtkuw")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5t2yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yisxp")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="WireWand" type="Node2D"]
+script = ExtResource("1_q81ys")
+mana_cost = 10
+weapon_name = "Wire Wand"
+weapon_emission_node = "res://Weapons/Wands/wire_wand_projectile.tscn"
+damage = 10
+metadata/_custom_type_script = "uid://sc7jlbb7o6dr"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_ns560")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q81ys")
+animation = &"Idle"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprite_animation_end"]

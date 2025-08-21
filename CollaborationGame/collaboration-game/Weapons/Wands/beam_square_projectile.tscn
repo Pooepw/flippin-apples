@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://8qrr231uj2nw"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_qni50"]
+[ext_resource type="Texture2D" uid="uid://cha5yhocwn5h" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_proj.png" id="2_amgxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amgxk"]
+size = Vector2(116, 22)
+
+[node name="BeamSquareProjectile" type="Area2D"]
+script = ExtResource("1_qni50")
+speed = 1600
+projectile_health = 4
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-30, -1)
+shape = SubResource("RectangleShape2D_amgxk")
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_amgxk")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture = ExtResource("2_amgxk")
+lifetime = 0.1
+gravity = Vector2(0, 0)
+angular_velocity_min = 24.13
+angular_velocity_max = 24.13
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

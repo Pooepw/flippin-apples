@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2sk3q1l0w4k7"]
+
+[ext_resource type="Script" uid="uid://sc7jlbb7o6dr" path="res://Weapons/WeaponTemplates/wand_template.gd" id="1_ukb7i"]
+[ext_resource type="Texture2D" uid="uid://c42vfcb6ho66m" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_fire4.png" id="2_61hef"]
+[ext_resource type="Texture2D" uid="uid://bvv7cp2o5wep2" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_icon.png" id="2_ay4os"]
+[ext_resource type="Texture2D" uid="uid://s25p0hhixlhb" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_fire1.png" id="3_ay4os"]
+[ext_resource type="Texture2D" uid="uid://x2yekcmen4s4" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_fire2.png" id="4_3helu"]
+[ext_resource type="Texture2D" uid="uid://4op4a2o6fsjv" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_fire3.png" id="5_i048w"]
+[ext_resource type="Texture2D" uid="uid://ck1xy8twnrolj" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_idle1.png" id="6_doapa"]
+[ext_resource type="Texture2D" uid="uid://bgyvvkr8goikd" path="res://Weapons/Assets/Wands/BeamSquare/beam_square_idle2.png" id="7_fiwpy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ukb7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_61hef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ay4os")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3helu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i048w")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_doapa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fiwpy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="BeamSquare" type="Node2D"]
+script = ExtResource("1_ukb7i")
+mana_cost = 20
+weapon_name = "Beam Square"
+weapon_emission_node = "res://Weapons/Wands/beam_square_projectile.tscn"
+damage = 60
+metadata/_custom_type_script = "uid://sc7jlbb7o6dr"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_ay4os")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_ukb7i")
+animation = &"Firing"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprite_animation_end"]

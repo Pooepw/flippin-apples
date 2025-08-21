@@ -44,6 +44,7 @@ metadata/_custom_type_script = "uid://sc7jlbb7o6dr"
 texture = ExtResource("2_lgp4b")
 
 [node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_1hvc8")
 animation = &"Firing"
 autoplay = "Idle"

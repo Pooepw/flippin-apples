@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyf0bpi61643i"]
+
+[ext_resource type="Script" uid="uid://sc7jlbb7o6dr" path="res://Weapons/WeaponTemplates/wand_template.gd" id="1_lijto"]
+[ext_resource type="Texture2D" uid="uid://de3cec2fuhq3v" path="res://Weapons/Assets/Wands/SunflowerStalk/sunflower_stalk_icon.png" id="2_k3vt0"]
+[ext_resource type="Texture2D" uid="uid://cogdnudhj5vtu" path="res://Weapons/Assets/Wands/SunflowerStalk/sunflower_stalk_firing1.png" id="2_o1bmt"]
+[ext_resource type="Texture2D" uid="uid://dcce88glgmrm6" path="res://Weapons/Assets/Wands/SunflowerStalk/sunflower_stalk_firing2.png" id="3_6mkhf"]
+[ext_resource type="Texture2D" uid="uid://cyjhhbl0v11t7" path="res://Weapons/Assets/Wands/SunflowerStalk/sunflower_stalk_idle1.png" id="4_ayhc2"]
+[ext_resource type="Texture2D" uid="uid://djbd7m6hbjlee" path="res://Weapons/Assets/Wands/SunflowerStalk/sunflower_stalk_idle2.png" id="5_k3vt0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lijto"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o1bmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6mkhf")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ayhc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k3vt0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[node name="SunflowerStalk" type="Node2D"]
+script = ExtResource("1_lijto")
+mana_cost = 2
+weapon_name = "Sunflower Stalk"
+weapon_emission_node = "res://Weapons/Wands/sunflower_stalk_projectile.tscn"
+damage = 2
+metadata/_custom_type_script = "uid://sc7jlbb7o6dr"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_k3vt0")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lijto")
+animation = &"Firing"
+frame = 1
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprite_animation_end"]

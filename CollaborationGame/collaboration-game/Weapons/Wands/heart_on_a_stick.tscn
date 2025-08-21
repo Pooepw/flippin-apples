@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://d6a2hfrov43t"]
+
+[ext_resource type="Script" uid="uid://sc7jlbb7o6dr" path="res://Weapons/WeaponTemplates/wand_template.gd" id="1_rb6a4"]
+[ext_resource type="Texture2D" uid="uid://ddjtero07xl4r" path="res://Weapons/Assets/Wands/HeartOnAStick/heart_on_a_stick_firing.png" id="2_glbxr"]
+[ext_resource type="Texture2D" uid="uid://dsygb5pry6mvf" path="res://Weapons/Assets/Wands/HeartOnAStick/heart_on_a_stick_icon.png" id="2_jsgmo"]
+[ext_resource type="Texture2D" uid="uid://dq6ky677fjrw7" path="res://Weapons/Assets/Wands/HeartOnAStick/heart_on_a_stick_idle1.png" id="3_jsgmo"]
+[ext_resource type="Texture2D" uid="uid://3kcc0dfos5wk" path="res://Weapons/Assets/Wands/HeartOnAStick/heart_on_a_stick_idle2.png" id="4_foe8i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rb6a4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_glbxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_glbxr")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jsgmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_foe8i")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="HeartOnAStick" type="Node2D"]
+script = ExtResource("1_rb6a4")
+mana_cost = 3
+weapon_name = "Heart On A Stick"
+weapon_emission_node = "res://Weapons/Wands/heart_on_a_stick_projectile.tscn"
+damage = 3
+metadata/_custom_type_script = "uid://sc7jlbb7o6dr"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_jsgmo")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rb6a4")
+animation = &"Idle"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprite_animation_end"]
