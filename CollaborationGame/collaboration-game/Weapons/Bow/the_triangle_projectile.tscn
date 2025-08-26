@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cop650f102a10"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_w2gp2"]
+[ext_resource type="Texture2D" uid="uid://be8fqyv7hv8eg" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_projectile.png" id="2_0tmsg"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0tmsg"]
+points = PackedVector2Array(-9, 11, -9, -7, 11, 1)
+
+[node name="TheTriangleProjectile" type="Area2D"]
+script = ExtResource("1_w2gp2")
+speed = 3333
+projectile_health = 3
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_0tmsg")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0tmsg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

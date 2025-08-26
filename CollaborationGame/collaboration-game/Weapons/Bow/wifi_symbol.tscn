@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjuxnqu3pwhlv"]
+
+[ext_resource type="Script" uid="uid://dfutre4w0b3i7" path="res://Weapons/WeaponTemplates/bow_template.gd" id="1_bgxck"]
+[ext_resource type="Texture2D" uid="uid://c4dq76d0l2hkh" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_firing0.png" id="2_ntmcb"]
+[ext_resource type="Texture2D" uid="uid://ctkf0hqgcqwqh" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_firing1.png" id="3_4g46c"]
+[ext_resource type="Texture2D" uid="uid://gplklcnok6uw" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_firing2.png" id="4_ekmc2"]
+[ext_resource type="Texture2D" uid="uid://d3onldpb7qt0q" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_firing3.png" id="5_e0y5b"]
+[ext_resource type="Texture2D" uid="uid://ofysmcfithxy" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_idle1.png" id="6_e0y5b"]
+[ext_resource type="Texture2D" uid="uid://dm0qjspum5b8u" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_idle2.png" id="7_e8jtn"]
+[ext_resource type="Texture2D" uid="uid://b6cw8idopfqki" path="res://Weapons/Assets/Bows/WifiSymbol/wifi_symbol_idle3.png" id="8_whhsf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgxck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ntmcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4g46c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ekmc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e0y5b")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ntmcb")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_e0y5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e8jtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_whhsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e8jtn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}]
+
+[node name="WifiSymbol" type="Node2D"]
+script = ExtResource("1_bgxck")
+energy_cost = 50
+weapon_name = "Wifi Symbol"
+weapon_emission_node = "res://Weapons/Bow/wifi_symbol_projectile.tscn"
+damage = 200
+metadata/_custom_type_script = "uid://dfutre4w0b3i7"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_bgxck")
+animation = &"Charging"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

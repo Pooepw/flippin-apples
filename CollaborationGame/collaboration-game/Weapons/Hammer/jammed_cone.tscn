@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfpvy6eajsqcd"]
+
+[ext_resource type="Script" uid="uid://7nitaes3njty" path="res://Weapons/WeaponTemplates/hammer_template.gd" id="1_xvu43"]
+[ext_resource type="Texture2D" uid="uid://cxjh6hobdyebf" path="res://Weapons/Assets/Hammers/JammedCone/JammedCone.png" id="2_vma20"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vma20"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Charging",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="JammedCone" type="Node2D"]
+script = ExtResource("1_xvu43")
+metadata/_custom_type_script = "uid://7nitaes3njty"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_vma20")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vma20")
+animation = &"Charging"

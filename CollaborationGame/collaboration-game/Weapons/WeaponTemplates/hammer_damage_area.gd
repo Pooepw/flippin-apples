@@ -15,8 +15,10 @@ var strike_area
 var shock_timer
 var strike_timer
 
+var real_strike_time
+var real_shock_time
 
-func project_wave(to_position, outward_distance, emitted_by, damage): 
+func project_wave(to_position, outward_distance, emitted_by, charge, damage): 
 	if emitted_by is player:
 		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
 	else: 
@@ -28,7 +30,9 @@ func project_wave(to_position, outward_distance, emitted_by, damage):
 	set_up_hit_areas()
 	damage_dealt = damage
 	ProjectileHandler.add_child(self)
-	strike_timer.start(strike_time)
+	real_strike_time = strike_time * charge
+	real_shock_time = shock_time if charge == 1 else 0
+	strike_timer.start(real_strike_time)
 	
 func set_up_nodes():
 	shock_area = get_node("ShockwaveArea")
@@ -69,7 +73,10 @@ func set_up_hit_areas():
 func _on_strike_timer_timeout_shock():
 	print("strike_ended")
 	strike_area.monitoring = false
-	shock_timer.start(shock_time)
+	if real_shock_time > 0:
+		shock_timer.start(shock_time)
+	else: 
+		queue_free()
 	
 func _on_shock_timer_timout_die():
 	queue_free()
@@ -77,7 +84,6 @@ func _on_shock_timer_timout_die():
 
 func _on_shockwave_area_body_entered(body: Node2D) -> void:
 	CollisionHandler.handle_melee_strike(self, body, damage_dealt / 2)
-	
 
 func _on_strike_area_body_entered(body: Node2D) -> void:
 	CollisionHandler.handle_melee_strike(self, body, damage_dealt)

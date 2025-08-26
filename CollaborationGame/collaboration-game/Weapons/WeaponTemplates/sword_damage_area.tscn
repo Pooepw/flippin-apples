@@ -9,5 +9,7 @@ script = ExtResource("1_njfrl")
 
 [node name="SwingArea" type="Area2D" parent="."]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="SlashTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
+[connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]

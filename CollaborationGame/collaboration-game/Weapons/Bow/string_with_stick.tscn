@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cd5eeaq2if5js"]
+
+[ext_resource type="Script" uid="uid://dfutre4w0b3i7" path="res://Weapons/WeaponTemplates/bow_template.gd" id="1_42y0u"]
+[ext_resource type="Texture2D" uid="uid://dwjt2rtttsouh" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_icon.png" id="2_1ul54"]
+[ext_resource type="Texture2D" uid="uid://bh6axhe0anq0a" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_idle1.png" id="3_bry7i"]
+[ext_resource type="Texture2D" uid="uid://d2ogn1o4hr6iw" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_fired.png" id="3_m3jci"]
+[ext_resource type="Texture2D" uid="uid://d2syjr6ihy0fg" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_charging1.png" id="3_o7n7t"]
+[ext_resource type="Texture2D" uid="uid://ypff8el000r1" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_charging2.png" id="4_440lj"]
+[ext_resource type="Texture2D" uid="uid://b28jggp4e36xa" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_idle2.png" id="4_m3jci"]
+[ext_resource type="Texture2D" uid="uid://bpdos8tdnl7ms" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_charging3.png" id="5_76lcp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42y0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o7n7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_440lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_76lcp")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_m3jci")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bry7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m3jci")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="StringWithStick" type="Node2D"]
+script = ExtResource("1_42y0u")
+energy_cost = 3
+weapon_name = "String With Stick"
+weapon_emission_node = "res://Weapons/Bow/string_with_stick_projectile.tscn"
+damage = 10
+metadata/_custom_type_script = "uid://dfutre4w0b3i7"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ul54")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_42y0u")
+animation = &"Charging"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cku88vtrb5xhu"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_khko7"]
+[ext_resource type="Texture2D" uid="uid://301h854imidy" path="res://Weapons/Assets/Bows/StringStick/stick_w_string_projectile.png" id="2_2600e"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2600e"]
+a = Vector2(18, 0)
+b = Vector2(-14, 0)
+
+[node name="StringWithStickProjectile" type="Area2D"]
+script = ExtResource("1_khko7")
+speed = 1000
+projectile_health = 1
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_2600e")
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_2600e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

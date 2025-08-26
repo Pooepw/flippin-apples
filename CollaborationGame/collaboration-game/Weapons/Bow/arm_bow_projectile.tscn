@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://p5hm4mlp2yf6"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_1mmnk"]
+[ext_resource type="Texture2D" uid="uid://bo3b16rgmrd4c" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_projectile.png" id="2_txv5t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txv5t"]
+size = Vector2(50, 12)
+
+[node name="ArmBowProjectile" type="Area2D"]
+script = ExtResource("1_1mmnk")
+speed = 2000
+projectile_health = 6
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_txv5t")
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_txv5t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

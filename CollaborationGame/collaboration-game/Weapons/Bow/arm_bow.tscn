@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk3t30gncj8pl"]
+
+[ext_resource type="Script" uid="uid://dfutre4w0b3i7" path="res://Weapons/WeaponTemplates/bow_template.gd" id="1_kaw64"]
+[ext_resource type="Texture2D" uid="uid://dwls6btxp056h" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_icon.png" id="2_r3srs"]
+[ext_resource type="Texture2D" uid="uid://e05kesw40yxj" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_idle1.png" id="3_3l2sw"]
+[ext_resource type="Texture2D" uid="uid://daowaxpslkgtq" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_charge4.png" id="3_bgvqe"]
+[ext_resource type="Texture2D" uid="uid://ddfrbgvyfgr66" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_charge1.png" id="3_eq8pp"]
+[ext_resource type="Texture2D" uid="uid://cnh3ky68ahq4p" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_idle2.png" id="4_bgvqe"]
+[ext_resource type="Texture2D" uid="uid://cvj3wy4ce2bgd" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_charge2.png" id="4_lbybi"]
+[ext_resource type="Texture2D" uid="uid://8meti5um4qn1" path="res://Weapons/Assets/Bows/ArmBow/arm_bow_charge3.png" id="5_2hqi6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3srs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eq8pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lbybi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2hqi6")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bgvqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bgvqe")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3l2sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bgvqe")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="ArmBow" type="Node2D"]
+script = ExtResource("1_kaw64")
+energy_cost = 10
+weapon_name = "Arm Bow"
+weapon_emission_node = "res://Weapons/Bow/arm_bow_projectile.tscn"
+damage = 50
+metadata/_custom_type_script = "uid://dfutre4w0b3i7"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_r3srs")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r3srs")
+animation = &"Charging"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

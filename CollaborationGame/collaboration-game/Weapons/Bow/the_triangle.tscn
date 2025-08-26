@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://deq8805cwlc5"]
+
+[ext_resource type="Script" uid="uid://dfutre4w0b3i7" path="res://Weapons/WeaponTemplates/bow_template.gd" id="1_j3rcn"]
+[ext_resource type="Texture2D" uid="uid://c6dfwakuxxi7j" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_icon.png" id="2_lhrc6"]
+[ext_resource type="Texture2D" uid="uid://byh1bdvnj3110" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_charge1.png" id="3_c5air"]
+[ext_resource type="Texture2D" uid="uid://eo7m4b8l07l6" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_idle1.png" id="3_ul535"]
+[ext_resource type="Texture2D" uid="uid://ckd153qr0vfnv" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_idle2.png" id="4_c5air"]
+[ext_resource type="Texture2D" uid="uid://xc44mt7ujkco" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_charge2.png" id="4_n1g0r"]
+[ext_resource type="Texture2D" uid="uid://qwnvfik8f6kh" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_charge3.png" id="5_kv34x"]
+[ext_resource type="Texture2D" uid="uid://b7jjj3ux0e8g4" path="res://Weapons/Assets/Bows/TheTriangle/the_triangle_charge4.png" id="6_a6h8k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhrc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c5air")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n1g0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kv34x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a6h8k")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c5air")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ul535")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c5air")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="TheTriangle" type="Node2D"]
+script = ExtResource("1_j3rcn")
+energy_cost = 3
+weapon_name = "The Triangle"
+weapon_emission_node = "res://Weapons/Bow/the_triangle_projectile.tscn"
+damage = 33
+metadata/_custom_type_script = "uid://dfutre4w0b3i7"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_lhrc6")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.67, 0.67)
+sprite_frames = SubResource("SpriteFrames_lhrc6")
+animation = &"Charging"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

@@ -94,7 +94,6 @@ func regenerate_resources():
 		if current_mana < mana:
 			var new_mana = current_mana + mana_regen
 			current_mana = new_mana if new_mana < mana else mana
-			print (current_mana)
 	if can_regen_stamina:
 		if current_stamina < stamina:
 			var new_stamina = current_stamina + stamina_regen
@@ -154,7 +153,7 @@ func equip_weapon(new_weapon):
 		#weapon_count += 1
 	#else:
 		#drop_weapon(current_slot)
-		## need to create weapon drop code
+		# need to create weapon drop code
 		#equipped_weapon = new_weapon
 #
 #func drop_weapon(inventory_slot):
