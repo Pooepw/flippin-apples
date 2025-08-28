@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvqikq4i2fj4b"]
+
+[ext_resource type="Script" uid="uid://4fikxlklk74k" path="res://Weapons/WeaponTemplates/hammer_damage_area.gd" id="1_suxi5"]
+[ext_resource type="Texture2D" uid="uid://dgmu7m4iimvgl" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_particle.png" id="2_qs2gd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suxi5"]
+size = Vector2(331, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs2gd"]
+size = Vector2(331, 32)
+
+[node name="ToothShattererAttack" type="Node2D"]
+script = ExtResource("1_suxi5")
+strike_time = 0.5
+shock_time = 2.0
+metadata/_custom_type_script = "uid://4fikxlklk74k"
+
+[node name="ShockwaveArea" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockwaveArea"]
+position = Vector2(166, -33)
+shape = SubResource("RectangleShape2D_suxi5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShockwaveArea/CollisionShape2D"]
+amount = 20
+texture = ExtResource("2_qs2gd")
+emission_shape = 3
+emission_rect_extents = Vector2(155.395, 12.135)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.6
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ShockwaveArea"]
+position = Vector2(166, 33)
+shape = SubResource("RectangleShape2D_suxi5")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="ShockwaveArea/CollisionShape2D2"]
+amount = 20
+texture = ExtResource("2_qs2gd")
+emission_shape = 3
+emission_rect_extents = Vector2(155.395, 12.135)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.6
+
+[node name="StrikeArea" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StrikeArea"]
+position = Vector2(166, 0)
+shape = SubResource("RectangleShape2D_qs2gd")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="StrikeArea/CollisionShape2D"]
+amount = 400
+texture = ExtResource("2_qs2gd")
+emission_shape = 3
+emission_rect_extents = Vector2(159.405, 12.135)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.6
+
+[node name="StrikeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShockwaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_body_entered"]
+[connection signal="body_entered" from="StrikeArea" to="." method="_on_strike_area_body_entered"]
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout_shock"]
+[connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shock_timer_timout_die"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://c54kcam6taby8"]
+
+[ext_resource type="Script" uid="uid://7nitaes3njty" path="res://Weapons/WeaponTemplates/hammer_template.gd" id="1_1lm7p"]
+[ext_resource type="Texture2D" uid="uid://kqpst3idifwk" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_icon.png" id="2_y8ykv"]
+[ext_resource type="Texture2D" uid="uid://bxwf171o3hg6v" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_idle.png" id="3_4mlha"]
+[ext_resource type="Texture2D" uid="uid://bn0wt3enqhq8p" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_swing_0.png" id="3_hbgbb"]
+[ext_resource type="Texture2D" uid="uid://ce2ah0kqwne3" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_swing_2.png" id="3_irevm"]
+[ext_resource type="Texture2D" uid="uid://dsm31n85q4hui" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_swing_1.png" id="4_irevm"]
+[ext_resource type="Texture2D" uid="uid://cvonj843nlxdr" path="res://Weapons/Assets/Hammers/ToothShatterer/tooth_shatterer_idle2.png" id="4_mq0dn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3238q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hbgbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_irevm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mq0dn")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_irevm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_irevm")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4mlha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mq0dn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="ToothShatterer" type="Node2D"]
+script = ExtResource("1_1lm7p")
+energy_cost = 20
+projectile_reach = 100
+weapon_name = "Tooth Shatterer"
+weapon_emission_node = "res://Weapons/Hammer/tooth_shatterer_attack.tscn"
+damage = 30
+metadata/_custom_type_script = "uid://7nitaes3njty"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_y8ykv")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3238q")
+animation = &"Idle"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]
