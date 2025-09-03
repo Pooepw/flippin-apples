@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7txbk6qu33xs"
-path="res://.godot/imported/sick_oval_idle.png-232db0a2642b00291e5292591784ef7d.ctex"
+uid="uid://b87k7lx1yo1v6"
+path="res://.godot/imported/forearm_icon.png-8decff779e5a6206cc71c28b2d62ee10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Assets/Swords/WeaponFrames/ShapeDungeon/sick_oval_idle.png"
-dest_files=["res://.godot/imported/sick_oval_idle.png-232db0a2642b00291e5292591784ef7d.ctex"]
+source_file="res://Weapons/Assets/Swords/HollowedForearmBone/forearm_icon.png"
+dest_files=["res://.godot/imported/forearm_icon.png-8decff779e5a6206cc71c28b2d62ee10.ctex"]
 
 [params]
 

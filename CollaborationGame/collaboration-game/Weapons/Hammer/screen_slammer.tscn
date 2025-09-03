@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://bypytk4oelg0q"]
+
+[ext_resource type="Script" uid="uid://7nitaes3njty" path="res://Weapons/WeaponTemplates/hammer_template.gd" id="1_fgrjq"]
+[ext_resource type="Texture2D" uid="uid://beh1qdbwrgeai" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_icon.png" id="2_77ulx"]
+[ext_resource type="Texture2D" uid="uid://beqvx1yrwg54r" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_idle1.png" id="3_dxt2e"]
+[ext_resource type="Texture2D" uid="uid://bdrdyljvlr71a" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_charge1.png" id="3_n3hpi"]
+[ext_resource type="Texture2D" uid="uid://b0r5u727nfch4" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_charge2.png" id="4_f3ckc"]
+[ext_resource type="Texture2D" uid="uid://h8g1s8ip6na7" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_idle2.png" id="4_nb38g"]
+[ext_resource type="Texture2D" uid="uid://bpurahfd3nmhs" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_charge3.png" id="5_cpdul"]
+[ext_resource type="Texture2D" uid="uid://dbaanpee44btu" path="res://Weapons/Assets/Hammers/ScreenSlammer/screen_slammer_swing.png" id="6_f3ckc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77ulx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n3hpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f3ckc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cpdul")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f3ckc")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dxt2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nb38g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[node name="ScreenSlammer" type="Node2D"]
+script = ExtResource("1_fgrjq")
+energy_cost = 21
+projectile_reach = 100
+weapon_name = "Screen Slammer"
+weapon_emission_node = "res://Weapons/Hammer/screen_slammer_attack.tscn"
+damage = 40
+metadata/_custom_type_script = "uid://7nitaes3njty"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_77ulx")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_77ulx")
+animation = &"Charging"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

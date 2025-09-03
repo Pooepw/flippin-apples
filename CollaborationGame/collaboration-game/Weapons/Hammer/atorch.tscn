@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0wkotbyexpqa"]
+
+[ext_resource type="Script" uid="uid://7nitaes3njty" path="res://Weapons/WeaponTemplates/hammer_template.gd" id="1_pcry2"]
+[ext_resource type="Texture2D" uid="uid://d0kb71w7b0i5t" path="res://Weapons/Assets/Hammers/ATorch?/torch_icon.png" id="2_hlgyk"]
+[ext_resource type="Texture2D" uid="uid://dp8wwyakhg0he" path="res://Weapons/Assets/Hammers/ATorch?/torch_charge1.png" id="3_lloks"]
+[ext_resource type="Texture2D" uid="uid://btfjm10enj8c0" path="res://Weapons/Assets/Hammers/ATorch?/torch_charge2.png" id="4_en0xq"]
+[ext_resource type="Texture2D" uid="uid://dupl6xto42404" path="res://Weapons/Assets/Hammers/ATorch?/torch_charge3.png" id="5_bqe5g"]
+[ext_resource type="Texture2D" uid="uid://cio6g2x7rdgvj" path="res://Weapons/Assets/Hammers/ATorch?/torch_idle1.png" id="6_tvrvi"]
+[ext_resource type="Texture2D" uid="uid://bv7gl17mrxuug" path="res://Weapons/Assets/Hammers/ATorch?/torch_idle2.png" id="7_7iuay"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4g5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lloks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_en0xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bqe5g")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tvrvi")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tvrvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7iuay")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="atorch" type="Node2D"]
+script = ExtResource("1_pcry2")
+energy_cost = 7
+projectile_reach = 300
+weapon_name = "a torch"
+weapon_emission_node = "res://Weapons/Hammer/atorch_attack.tscn"
+damage = 14
+metadata/_custom_type_script = "uid://7nitaes3njty"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_hlgyk")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_b4g5g")
+animation = &"Firing"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

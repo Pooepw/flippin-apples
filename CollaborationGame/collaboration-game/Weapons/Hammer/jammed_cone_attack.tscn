@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3nn6pvf5tv0l"]
+
+[ext_resource type="Script" uid="uid://4fikxlklk74k" path="res://Weapons/WeaponTemplates/hammer_damage_area.gd" id="1_oq1u8"]
+[ext_resource type="Texture2D" uid="uid://bbbtccf56eyom" path="res://Weapons/Assets/Hammers/JammedCone/jammed_cone_particle.png" id="2_fbo1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oq1u8"]
+radius = 256.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbo1r"]
+size = Vector2(80, 80)
+
+[node name="JammedConeAttack" type="Node2D"]
+script = ExtResource("1_oq1u8")
+strike_time = 1.33
+shock_time = 2.66
+metadata/_custom_type_script = "uid://4fikxlklk74k"
+
+[node name="ShockwaveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockwaveArea"]
+shape = SubResource("CircleShape2D_oq1u8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShockwaveArea"]
+amount = 32
+texture = ExtResource("2_fbo1r")
+emission_shape = 3
+emission_rect_extents = Vector2(200, 200)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 44.69
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+linear_accel_min = -14.53
+linear_accel_max = 15.64
+scale_amount_min = 0.4
+
+[node name="StrikeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StrikeArea"]
+shape = SubResource("RectangleShape2D_fbo1r")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StrikeArea"]
+amount = 16
+texture = ExtResource("2_fbo1r")
+emission_shape = 3
+emission_rect_extents = Vector2(35, 35)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.5
+scale_amount_max = 0.9
+
+[node name="StrikeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShockwaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_body_entered"]
+[connection signal="body_entered" from="StrikeArea" to="." method="_on_strike_area_body_entered"]
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout_shock"]
+[connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shock_timer_timout_die"]

@@ -1,33 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfpvy6eajsqcd"]
+[gd_scene load_steps=9 format=3 uid="uid://c1wm7ywdisp2b"]
 
 [ext_resource type="Script" uid="uid://7nitaes3njty" path="res://Weapons/WeaponTemplates/hammer_template.gd" id="1_xvu43"]
 [ext_resource type="Texture2D" uid="uid://cxjh6hobdyebf" path="res://Weapons/Assets/Hammers/JammedCone/JammedCone.png" id="2_vma20"]
+[ext_resource type="Texture2D" uid="uid://2lb1u1r041gu" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeWeaponFiring.png" id="3_22ydd"]
+[ext_resource type="Texture2D" uid="uid://du1mpdf2x1fi" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeWeaponIdle2.png" id="3_30dvx"]
+[ext_resource type="Texture2D" uid="uid://148te4mk67x5" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeWeaponIdle.png" id="4_22ydd"]
+[ext_resource type="Texture2D" uid="uid://vgr6vdaknr13" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeWeapon1.png" id="4_uk706"]
+[ext_resource type="Texture2D" uid="uid://bnr65ewny672o" path="res://Weapons/Assets/Hammers/JammedCone/JammedConeWeapon2.png" id="5_xaxgv"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vma20"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_to3vn"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_22ydd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uk706")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xaxgv")
+}],
+"loop": false,
 "name": &"Charging",
-"speed": 5.0
+"speed": 2.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_22ydd")
+}],
+"loop": false,
 "name": &"Firing",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_30dvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_22ydd")
+}],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="JammedCone" type="Node2D"]
 script = ExtResource("1_xvu43")
+energy_cost = 26
+projectile_reach = 180
+weapon_name = "Jammed Cone"
+weapon_emission_node = "res://Weapons/Hammer/jammed_cone_attack.tscn"
+damage = 20
 metadata/_custom_type_script = "uid://7nitaes3njty"
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 texture = ExtResource("2_vma20")
 
 [node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_vma20")
-animation = &"Charging"
+scale = Vector2(0.66, 0.66)
+sprite_frames = SubResource("SpriteFrames_to3vn")
+animation = &"Firing"
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

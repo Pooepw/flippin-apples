@@ -26,6 +26,7 @@ func project_wave(to_position, outward_distance, emitted_by, damage):
 		emitter = CollisionHandler.EMITTER_TYPES.MOB
 	position = emitted_by.global_position
 	direction = position.direction_to(to_position)
+	rotation = position.angle_to(to_position)
 	position += direction * outward_distance
 	set_up_hit_area()
 	damage_dealt = damage
@@ -36,7 +37,9 @@ func _physics_process(delta: float) -> void:
 	if direction is Vector2 and current_speed > 0:
 		position += direction * delta * current_speed
 		var future_speed = current_speed - SWING_DECELERATION * delta
-		current_speed =  future_speed if future_speed > 0 else 0
+		current_speed = future_speed if future_speed > 0 else 0
+	if current_speed == 0 and slash_timer.is_stopped():
+		slash_timer.start(afterslash_duration)
 
 func set_up_hit_area():
 	swing_area = get_node("SwingArea")

@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://gmcbpi855blm"]
+
+[ext_resource type="Script" uid="uid://7nitaes3njty" path="res://Weapons/WeaponTemplates/hammer_template.gd" id="1_id1he"]
+[ext_resource type="Texture2D" uid="uid://75nchhd1x1hq" path="res://Weapons/Assets/Hammers/BigRock/big_rock_icon.png" id="2_vtb0c"]
+[ext_resource type="Texture2D" uid="uid://myny40qm8mlp" path="res://Weapons/Assets/Hammers/BigRock/big_rock_idle1.png" id="3_3bhsc"]
+[ext_resource type="Texture2D" uid="uid://c65su3apcoly4" path="res://Weapons/Assets/Hammers/BigRock/big_rock_charging1.png" id="3_fysh2"]
+[ext_resource type="Texture2D" uid="uid://c0b18qwb0d3qg" path="res://Weapons/Assets/Hammers/BigRock/big_rock_slam2.png" id="3_iuvto"]
+[ext_resource type="Texture2D" uid="uid://d32rtve31nxf" path="res://Weapons/Assets/Hammers/BigRock/big_rock_slam.png" id="4_b7gfy"]
+[ext_resource type="Texture2D" uid="uid://y66vuj24qhd1" path="res://Weapons/Assets/Hammers/BigRock/big_rock_idle2.png" id="4_q65et"]
+[ext_resource type="Texture2D" uid="uid://dp4cjw5befm4x" path="res://Weapons/Assets/Hammers/BigRock/big_rock_charging2.png" id="4_qhsp2"]
+[ext_resource type="Texture2D" uid="uid://bu15iph770g5x" path="res://Weapons/Assets/Hammers/BigRock/big_rock_charging3.png" id="5_vcn3g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtb0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fysh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qhsp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vcn3g")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_iuvto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b7gfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iuvto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b7gfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iuvto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b7gfy")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3bhsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q65et")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}]
+
+[node name="BigRock" type="Node2D"]
+script = ExtResource("1_id1he")
+energy_cost = 3
+projectile_reach = 100
+weapon_name = "Big Rock"
+weapon_emission_node = "res://Weapons/Hammer/big_rock_attack.tscn"
+damage = 8
+metadata/_custom_type_script = "uid://7nitaes3njty"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_vtb0c")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vtb0c")
+animation = &"Charging"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

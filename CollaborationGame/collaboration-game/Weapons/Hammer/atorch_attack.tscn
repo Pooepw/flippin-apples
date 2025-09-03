@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3kh8e2bwowbk"]
+
+[ext_resource type="Script" uid="uid://4fikxlklk74k" path="res://Weapons/WeaponTemplates/hammer_damage_area.gd" id="1_rypkv"]
+[ext_resource type="Texture2D" uid="uid://btpdig8q5plwf" path="res://Weapons/Assets/Hammers/ATorch?/torch_particle.png" id="2_5qcls"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rypkv"]
+points = PackedVector2Array(-331, -351, 332, -346, 409, 266, -49, 411, -439, 270)
+
+[sub_resource type="Gradient" id="Gradient_5qcls"]
+offsets = PackedFloat32Array(0, 0.170418, 0.44373, 1)
+colors = PackedColorArray(0, 1, 0.187129, 1, 0.412398, 1, 0.469232, 1, 0, 0.112424, 0.790774, 1, 1, 0.364938, 0.275162, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rypkv"]
+radius = 49.2544
+
+[sub_resource type="Gradient" id="Gradient_0qrjo"]
+offsets = PackedFloat32Array(0, 0.18328, 0.337621, 0.488746, 0.562701, 0.768489, 1)
+colors = PackedColorArray(1, 0, 0.058392, 1, 0, 0.662919, 1, 1, 0.833234, 0.484934, 0, 1, 0, 1, 0.0972943, 1, 0.915625, 0, 0.991513, 1, 1, 0.967899, 0, 1, 1, 1, 1, 1)
+
+[node name="atorchAttack" type="Node2D"]
+script = ExtResource("1_rypkv")
+strike_time = 1.4
+shock_time = 2.8
+metadata/_custom_type_script = "uid://4fikxlklk74k"
+
+[node name="ShockwaveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockwaveArea"]
+shape = SubResource("ConvexPolygonShape2D_rypkv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShockwaveArea"]
+amount = 80
+texture = ExtResource("2_5qcls")
+speed_scale = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 400)
+gravity = Vector2(-20, 10)
+angle_min = -305.7
+angle_max = 312.7
+scale_amount_min = 0.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_5qcls")
+hue_variation_min = -0.49
+hue_variation_max = 0.65
+
+[node name="Sprite2D" type="Sprite2D" parent="ShockwaveArea"]
+scale = Vector2(25, 25)
+
+[node name="StrikeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StrikeArea"]
+shape = SubResource("CircleShape2D_rypkv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StrikeArea"]
+texture = ExtResource("2_5qcls")
+emission_shape = 1
+emission_sphere_radius = 39.05
+gravity = Vector2(2, -2)
+angle_min = -258.4
+angle_max = 506.8
+scale_amount_min = 0.2
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_0qrjo")
+
+[node name="StrikeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShockwaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_body_entered"]
+[connection signal="body_entered" from="StrikeArea" to="." method="_on_strike_area_body_entered"]
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout_shock"]
+[connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shock_timer_timout_die"]
