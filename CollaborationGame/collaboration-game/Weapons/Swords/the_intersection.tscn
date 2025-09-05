@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx60wmn3nhgba"]
+
+[ext_resource type="Script" uid="uid://b50fsef7fxxi6" path="res://Weapons/WeaponTemplates/sword_template.gd" id="1_vac7c"]
+[ext_resource type="Texture2D" uid="uid://b3o5ck5vhwe7h" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_icon.png" id="2_cuvck"]
+[ext_resource type="Texture2D" uid="uid://d1yhb4enkj0ob" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_idle1.png" id="2_t2lg1"]
+[ext_resource type="Texture2D" uid="uid://dgyo810g6ex5j" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_swing1.png" id="2_vlqim"]
+[ext_resource type="Texture2D" uid="uid://bq6oeontyqfsr" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_swing2.png" id="3_cuvck"]
+[ext_resource type="Texture2D" uid="uid://tx8rqg86gyu2" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_idle1.5.png" id="3_eqglo"]
+[ext_resource type="Texture2D" uid="uid://bfim7ed0guxq" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_idle2.png" id="4_5a56a"]
+[ext_resource type="Texture2D" uid="uid://bt38ipo0bqolj" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_swing3.png" id="4_18uoy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vac7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vlqim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cuvck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_18uoy")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t2lg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eqglo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5a56a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eqglo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}]
+
+[node name="TheIntersection" type="Node2D"]
+script = ExtResource("1_vac7c")
+projectile_reach = 100
+energy_cost = 16
+weapon_name = "The Intersection"
+weapon_emission_node = "res://Weapons/Swords/the_intersection_attack.tscn"
+damage = 25
+metadata/_custom_type_script = "uid://b50fsef7fxxi6"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_cuvck")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_vac7c")
+animation = &"Idle"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

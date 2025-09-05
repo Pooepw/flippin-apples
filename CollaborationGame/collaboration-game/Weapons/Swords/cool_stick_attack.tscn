@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://iju71a481kho"]
+
+[ext_resource type="Script" uid="uid://b4j74ufotlsdp" path="res://Weapons/WeaponTemplates/sword_damage_area.gd" id="1_fd5t2"]
+[ext_resource type="Texture2D" uid="uid://3chsp2eel7ts" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_attack.png" id="2_o4wp8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70i0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o4wp8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CoolStickAttack" type="Node2D"]
+script = ExtResource("1_fd5t2")
+afterslash_duration = 0.7
+start_speed = 50
+deceleration = 50
+metadata/_custom_type_script = "uid://b4j74ufotlsdp"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_70i0q")
+
+[node name="SwingArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwingArea"]
+polygon = PackedVector2Array(6, 0, 7, 19, 5, 30, -2, 40, -16, 46, -28, 49, -19, 53, 8, 53, 31, 43, 43, 23, 43, 9, 36, -23, 29, -32, 20, -42, 5, -48, -15, -53, -28, -51, -36, -49, -33, -45, -23, -42, -11, -34, -2, -23, 4, -7)
+
+[node name="SlashTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
+[connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]

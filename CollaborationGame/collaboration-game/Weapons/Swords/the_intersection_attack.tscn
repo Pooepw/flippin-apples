@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfp37piqanw0b"]
+
+[ext_resource type="Script" uid="uid://b4j74ufotlsdp" path="res://Weapons/WeaponTemplates/sword_damage_area.gd" id="1_nx6jk"]
+[ext_resource type="Texture2D" uid="uid://dp13jt2nefmaa" path="res://Weapons/Assets/Swords/TheIntersection/the_intersection_attack.png" id="2_a5ral"]
+
+[node name="TheIntersectionAttack" type="Node2D"]
+script = ExtResource("1_nx6jk")
+afterslash_duration = 2.5
+start_speed = 144
+deceleration = 36
+metadata/_custom_type_script = "uid://b4j74ufotlsdp"
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_a5ral")
+
+[node name="SwingArea" type="Area2D" parent="."]
+scale = Vector2(1.6, 1.6)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwingArea"]
+polygon = PackedVector2Array(-22, -44.2, -22, -42.2, -22.6, -41, -23.7, -41, -24.2, -39.8, -23, -38.6, -23, -37, -16.3, -37, -12.3, -34, -10.5, -34, -6.5, -28, -5.8, -28, -1.8, -14, -1, -14, -1, -10, 0, -10, 0, -3, 0.900002, -3, 0, 4.9, 0, 12, -4, 22.8, -4, 25.6, -6, 27.6, -6, 29.4, -9, 31.5, -9, 33, -12.7, 33, -14, 36.8, -14, 38.4, -12.4, 40, -9.6, 40, -7, 37.4, -7, 36.6, -5, 36, -2.6, 36, 8.4, 26, 9.6, 26, 14.6, 16, 15.8, 16, 17.9, 4, 19, 4, 19, -6.2, 17, -11.2, 17, -15.3, 14, -20.4, 14, -22.4, 10, -26.4, 10, -28.5, -2, -37.5, -2, -38.7, -7.8, -41, -13.6, -41, -14, -41.4, -14, -42.8)
+
+[node name="SlashTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
+[connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]

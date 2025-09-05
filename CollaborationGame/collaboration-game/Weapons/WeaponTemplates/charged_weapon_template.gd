@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		charge = (float)(weapon_sprites.frame + 1)/(float)(charge_frames)
 
 func begin_charge():
-	weapon_sprites.play("Charging")
+	swap_sprite("Charging")
 
 func start_attack():
 	if weapon_sprites.animation == "Idle":
@@ -30,10 +30,10 @@ func start_attack():
 func end_attack():
 	if weapon_sprites.animation == "Charging":
 		emit_attack()
-		weapon_sprites.play("Firing")
+		swap_sprite("Firing")
 	
 
 func _on_weapon_sprites_animation_finished() -> void:
 	if weapon_sprites.animation == "Firing":
-		weapon_sprites.play("Idle")
+		swap_sprite("Idle")
 	

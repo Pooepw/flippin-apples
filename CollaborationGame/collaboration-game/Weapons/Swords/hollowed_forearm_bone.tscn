@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddj1kf7t35xx"]
+
+[ext_resource type="Script" uid="uid://b50fsef7fxxi6" path="res://Weapons/WeaponTemplates/sword_template.gd" id="1_7owk5"]
+[ext_resource type="Texture2D" uid="uid://b87k7lx1yo1v6" path="res://Weapons/Assets/Swords/HollowedForearmBone/forearm_icon.png" id="2_o7gja"]
+[ext_resource type="Texture2D" uid="uid://d25ldkd55jhvo" path="res://Weapons/Assets/Swords/HollowedForearmBone/hollowed_forearm_bone_swing1.png" id="3_81f0t"]
+[ext_resource type="Texture2D" uid="uid://umjixkgv4bh2" path="res://Weapons/Assets/Swords/HollowedForearmBone/hollowed_forearm_bone_swing1.5.png" id="4_aemfn"]
+[ext_resource type="Texture2D" uid="uid://bbb48wexu3n72" path="res://Weapons/Assets/Swords/HollowedForearmBone/hollowed_forearm_bone_swing2.png" id="5_ad2cl"]
+[ext_resource type="Texture2D" uid="uid://dydbuqi7uauvt" path="res://Weapons/Assets/Swords/HollowedForearmBone/hollowed_forearm_bone_idle.png" id="6_j523r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7gja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_81f0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aemfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ad2cl")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_j523r")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="HollowedForearmBone" type="Node2D"]
+script = ExtResource("1_7owk5")
+projectile_reach = 100
+energy_cost = 20
+weapon_name = "Hollowed Forearm Bone"
+weapon_emission_node = "res://Weapons/Swords/hollowed_forearm_bone_attack.tscn"
+damage = 33
+metadata/_custom_type_script = "uid://b50fsef7fxxi6"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_o7gja")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_o7gja")
+animation = &"Idle"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

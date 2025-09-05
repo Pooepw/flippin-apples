@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgd6nr00ka77y"]
+
+[ext_resource type="Script" uid="uid://b4j74ufotlsdp" path="res://Weapons/WeaponTemplates/sword_damage_area.gd" id="1_ldqt7"]
+[ext_resource type="Texture2D" uid="uid://8p8ruv25o4x0" path="res://Weapons/Assets/Swords/HollowedForearmBone/forearm_attack.png" id="2_2rbbi"]
+[ext_resource type="Texture2D" uid="uid://c33c2ahivsh65" path="res://Weapons/Assets/Swords/HollowedForearmBone/forearm_particles.png" id="3_h1tnt"]
+
+[node name="HollowedForearmBoneAttack" type="Node2D"]
+script = ExtResource("1_ldqt7")
+afterslash_duration = 1.0
+start_speed = 98
+deceleration = 60
+metadata/_custom_type_script = "uid://b4j74ufotlsdp"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_h1tnt")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 40)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angle_min = -180.0
+angle_max = 180.0
+
+[node name="SwingArea" type="Area2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwingArea"]
+polygon = PackedVector2Array(-7, -54, -7, -52.7, -9, -52, -11.5, -52, -14.5, -48, -16, -48, -16, -41.8, -14, -37.8, -14, -35.4, -12, -34.4, -12, -33.1, -4.1, -32, -4.9, -19, -6, -19, -5, 13, -5, 27, -6, 27, -6, 30.4, -9.2, 32, -11.5, 32, -14.5, 36, -16, 36, -16, 38, -17, 38, -17, 45, -16, 45, -16, 47.6, -14, 48.6, -14, 49.6, -11.2, 51, -5.7, 51, 0, 47.6, 0, 47, 0.599998, 47, 3.6, 50, 11.5, 50, 13.5, 47, 15, 47, 15, 41.6, 13, 39.6, 13, 37.5, 8, 33.5, 8, 27.1, 9.9, 12, 11, 12, 10, -21, 10, -31.6, 14.4, -36, 15.8, -36, 16.8, -40, 18, -40, 18, -50.6, 16, -51.6, 16, -53, 6.6, -53, 3.6, -50, 3, -50, 3, -51.6, 1, -52.6, 1, -54)
+
+[node name="SlashTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_2rbbi")
+
+[connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
+[connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]

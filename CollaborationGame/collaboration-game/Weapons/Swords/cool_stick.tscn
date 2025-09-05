@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cygpgv3q2w5y1"]
+
+[ext_resource type="Script" uid="uid://b50fsef7fxxi6" path="res://Weapons/WeaponTemplates/sword_template.gd" id="1_hmam7"]
+[ext_resource type="Texture2D" uid="uid://d3yhsf1ypqftj" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_swing1.png" id="2_a3eve"]
+[ext_resource type="Texture2D" uid="uid://be0fbodsostnk" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_idle2.png" id="2_ik3fp"]
+[ext_resource type="Texture2D" uid="uid://j0yhybfr07dt" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_icon.png" id="2_owlqa"]
+[ext_resource type="Texture2D" uid="uid://d2l45omy4tb70" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_idle.png" id="3_jqrhf"]
+[ext_resource type="Texture2D" uid="uid://bc8nlcld5mlm2" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_swing2.png" id="3_owlqa"]
+[ext_resource type="Texture2D" uid="uid://bgkb1sgvt54v7" path="res://Weapons/Assets/Swords/CoolStick/cool_stick_swing3.png" id="4_0d7g0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmam7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a3eve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_owlqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0d7g0")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ik3fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jqrhf")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[node name="CoolStick" type="Node2D"]
+script = ExtResource("1_hmam7")
+projectile_reach = 100
+energy_cost = 5
+weapon_name = "Cool Stick"
+weapon_emission_node = "res://Weapons/Swords/cool_stick_attack.tscn"
+damage = 5
+metadata/_custom_type_script = "uid://b50fsef7fxxi6"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_owlqa")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hmam7")
+animation = &"Firing"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

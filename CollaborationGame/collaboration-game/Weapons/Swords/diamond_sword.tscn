@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7e3qhg2xy15j"]
+
+[ext_resource type="Script" uid="uid://b50fsef7fxxi6" path="res://Weapons/WeaponTemplates/sword_template.gd" id="1_28y74"]
+[ext_resource type="Texture2D" uid="uid://c6tcekpsyisvb" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_icon.png" id="2_edxj2"]
+[ext_resource type="Texture2D" uid="uid://bcpfaw57habx1" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_swing1.png" id="3_ec7gc"]
+[ext_resource type="Texture2D" uid="uid://cf364jrrlvwrx" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_swing2.png" id="4_5h6b4"]
+[ext_resource type="Texture2D" uid="uid://ck3luufy7mvu4" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_swing3.png" id="5_77ox5"]
+[ext_resource type="Texture2D" uid="uid://blq7e6t34kr4k" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_idle1.png" id="6_rwn5w"]
+[ext_resource type="Texture2D" uid="uid://jjujqw24l8l5" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_idle2.png" id="7_o1dpl"]
+[ext_resource type="Texture2D" uid="uid://wbegboqx78op" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_idle3.png" id="8_j15w4"]
+[ext_resource type="Texture2D" uid="uid://b7gxq5n7cwd6d" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_idle4.png" id="9_oeib3"]
+[ext_resource type="Texture2D" uid="uid://ldlutrgiqbui" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_idle5.png" id="10_u5yqh"]
+[ext_resource type="Texture2D" uid="uid://bqxnhor7u6lvv" path="res://Weapons/Assets/Swords/DiamondSword/diamond_sword_idle6.png" id="11_k4hj5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edxj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ec7gc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5h6b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_77ox5")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_rwn5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o1dpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j15w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oeib3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u5yqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k4hj5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="DiamondSword" type="Node2D"]
+script = ExtResource("1_28y74")
+projectile_reach = 100
+energy_cost = 5
+weapon_name = "Diamond Sword"
+weapon_emission_node = "res://Weapons/Swords/diamond_sword_attack.tscn"
+damage = 7
+metadata/_custom_type_script = "uid://b50fsef7fxxi6"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_edxj2")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_edxj2")
+animation = &"Firing"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

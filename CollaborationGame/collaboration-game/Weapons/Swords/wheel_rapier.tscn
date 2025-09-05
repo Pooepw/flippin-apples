@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://dhp21jytu72j4"]
+
+[ext_resource type="Script" uid="uid://b50fsef7fxxi6" path="res://Weapons/WeaponTemplates/sword_template.gd" id="1_sc3ex"]
+[ext_resource type="Texture2D" uid="uid://ce8h24tg6qvb4" path="res://Weapons/Assets/Swords/WheelRapier/wheel_rapier_icon.png" id="2_6jjpa"]
+[ext_resource type="Texture2D" uid="uid://clsygn0brvcu5" path="res://Weapons/Assets/Swords/WheelRapier/wheel_rapier_swing1.png" id="3_34kic"]
+[ext_resource type="Texture2D" uid="uid://1fk5ah5kwb2p" path="res://Weapons/Assets/Swords/WheelRapier/wheel_rapier_idle1.png" id="3_c4dfk"]
+[ext_resource type="Texture2D" uid="uid://yc6fe50s2bjd" path="res://Weapons/Assets/Swords/WheelRapier/wheel_rapier_swing2.png" id="4_cyp3o"]
+[ext_resource type="Texture2D" uid="uid://drwnwjyttyo47" path="res://Weapons/Assets/Swords/WheelRapier/wheel_rapier_idle2.png" id="4_iugyj"]
+[ext_resource type="Texture2D" uid="uid://cgvtv0wlf5dh4" path="res://Weapons/Assets/Swords/WheelRapier/wheel_rapier_swing3.png" id="5_a46fw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jjpa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_34kic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cyp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a46fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cyp3o")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c4dfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iugyj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="WheelRapier" type="Node2D"]
+script = ExtResource("1_sc3ex")
+projectile_reach = 100
+energy_cost = 8
+weapon_name = "Wheel Rapier"
+weapon_emission_node = "res://Weapons/Swords/wheel_rapier_attack.tscn"
+damage = 15
+metadata/_custom_type_script = "uid://b50fsef7fxxi6"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_6jjpa")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6jjpa")
+animation = &"Firing"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]
