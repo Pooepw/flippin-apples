@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgn68dd8l4mub"]
+
+[ext_resource type="Script" uid="uid://b6htfdcpg65g3" path="res://Weapons/Staves/antenna_shocker_attack.gd" id="1_v0y7x"]
+[ext_resource type="Texture2D" uid="uid://b5kijj3f2rolo" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack1.png" id="2_185sh"]
+[ext_resource type="Texture2D" uid="uid://bboyuboywkmjn" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack2.png" id="3_d65hg"]
+[ext_resource type="Texture2D" uid="uid://qm7ptbo77mhu" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack3.png" id="4_pn36q"]
+[ext_resource type="Texture2D" uid="uid://dkxsc8hcyh3by" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack21.png" id="5_pwkif"]
+[ext_resource type="Texture2D" uid="uid://bclbkah7v2dnj" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack22.png" id="6_3vtkd"]
+[ext_resource type="Texture2D" uid="uid://du80pnsjifma4" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack23.png" id="7_0pw12"]
+[ext_resource type="Texture2D" uid="uid://x5wpm5bboqnu" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_attack24.png" id="8_me5vf"]
+
+[sub_resource type="Gradient" id="Gradient_pwkif"]
+colors = PackedColorArray(0.213812, 0.664186, 0.796078, 1, 0.593744, 0, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0y7x"]
+radius = 78.1601
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v0y7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_185sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d65hg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pn36q")
+}],
+"loop": false,
+"name": &"Drop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pwkif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3vtkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0pw12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_me5vf")
+}],
+"loop": false,
+"name": &"Strike",
+"speed": 9.0
+}]
+
+[node name="AntennaShockerAttack" type="Node2D"]
+script = ExtResource("1_v0y7x")
+metadata/_custom_type_script = "uid://u4hlhq7vgeit"
+
+[node name="ShockParticles" type="CPUParticles2D" parent="."]
+amount = 30
+texture = ExtResource("3_d65hg")
+emission_shape = 1
+emission_sphere_radius = 93.95
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 2.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+color = Color(0.0287017, 1, 0.932798, 1)
+color_ramp = SubResource("Gradient_pwkif")
+
+[node name="ShockArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShockArea"]
+shape = SubResource("CircleShape2D_v0y7x")
+
+[node name="ShockerFrames" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v0y7x")
+animation = &"Drop"
+
+[node name="ShockTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="ShockArea" to="." method="_on_shock_area_body_entered"]
+[connection signal="animation_finished" from="ShockerFrames" to="." method="_on_shocker_frames_animation_finished"]
+[connection signal="timeout" from="ShockTimer" to="." method="_on_shock_timer_timeout"]

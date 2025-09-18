@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk3fj7osp4jm2"]
+
+[ext_resource type="Script" uid="uid://bmwm7dl563yhk" path="res://Weapons/Staves/antenna_shocker.gd" id="1_8agtt"]
+[ext_resource type="Texture2D" uid="uid://236r43eyi2il" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_icon.png" id="2_2g2sj"]
+[ext_resource type="Texture2D" uid="uid://dlo2rqi6sj2gp" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_firing2.png" id="2_jd3p1"]
+[ext_resource type="Texture2D" uid="uid://bppn40u61ekc3" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_firing1.png" id="3_2g2sj"]
+[ext_resource type="Texture2D" uid="uid://b3ndhxvnoyuw8" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_firing3.png" id="4_odgw7"]
+[ext_resource type="Texture2D" uid="uid://dd1jf7qi5on5o" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_idle1.png" id="5_w1yf1"]
+[ext_resource type="Texture2D" uid="uid://dyj8obl4t7ulv" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_idle2.png" id="6_0d481"]
+[ext_resource type="Texture2D" uid="uid://bunuignjgekan" path="res://Weapons/Assets/Staves/AntennaShocker/antenna_shocker_idle3.png" id="7_0vnlj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7seqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jd3p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2g2sj")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_odgw7")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w1yf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0d481")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0vnlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0d481")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}]
+
+[node name="AntennaShocker" type="Node2D"]
+script = ExtResource("1_8agtt")
+mana_cost = 20
+weapon_name = "Antenna Shocker"
+weapon_emission_node = "res://Weapons/Staves/antenna_shocker_attack.tscn"
+damage = 40
+metadata/_custom_type_script = "uid://dk6tjk0qx1hkl"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_2g2sj")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7seqs")
+animation = &"Charging"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

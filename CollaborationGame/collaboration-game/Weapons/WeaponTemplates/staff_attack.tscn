@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnfk5koddf6ua"]
+
+[ext_resource type="Script" uid="uid://u4hlhq7vgeit" path="res://Weapons/WeaponTemplates/staff_attack.gd" id="1_na5c3"]
+
+[node name="StaffAttack" type="Node2D"]
+script = ExtResource("1_na5c3")
