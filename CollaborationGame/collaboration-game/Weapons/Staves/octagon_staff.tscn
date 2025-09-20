@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0uyeg8o5p676"]
+
+[ext_resource type="Script" uid="uid://twweqhs83ly" path="res://Weapons/Staves/octagon_staff.gd" id="1_k85m1"]
+[ext_resource type="Texture2D" uid="uid://biahyvnwb1172" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_idle1.png" id="2_ja67x"]
+[ext_resource type="Texture2D" uid="uid://c77cf5bywmo40" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_icon.png" id="2_qgmod"]
+[ext_resource type="Texture2D" uid="uid://mib6ckig5tqx" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_cast1.png" id="3_k85m1"]
+[ext_resource type="Texture2D" uid="uid://clglbovkeubir" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_idle2.png" id="3_qgmod"]
+[ext_resource type="Texture2D" uid="uid://d2t8simn5vts1" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_cast2.png" id="4_djdpi"]
+[ext_resource type="Texture2D" uid="uid://del2q34431p3w" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_cast3.png" id="5_4sg1v"]
+[ext_resource type="Texture2D" uid="uid://duqvnhuittr77" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_cast4.png" id="6_kbfp0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8fju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k85m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_djdpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4sg1v")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kbfp0")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ja67x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qgmod")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="OctagonStaff" type="Node2D"]
+script = ExtResource("1_k85m1")
+mana_cost = 80
+weapon_name = "Octagon Staff"
+weapon_emission_node = "res://Weapons/Staves/octagon_staff_attack.tscn"
+damage = 80
+metadata/_custom_type_script = "uid://dk6tjk0qx1hkl"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_qgmod")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a8fju")
+animation = &"Firing"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

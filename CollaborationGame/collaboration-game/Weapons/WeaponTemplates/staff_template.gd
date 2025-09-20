@@ -14,6 +14,4 @@ func emit_attack():
 	do_attack()
 
 func do_attack():
-	## insert the attack of the specific weapon
-	## (you have to extend this script)
 	pass

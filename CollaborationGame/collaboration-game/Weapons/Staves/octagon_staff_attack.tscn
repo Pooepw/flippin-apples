@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy8kykn0d0kr3"]
+
+[ext_resource type="Script" uid="uid://b4twwiv7hrln6" path="res://Weapons/Staves/octagon_staff_attack.gd" id="1_d0pkn"]
+[ext_resource type="Texture2D" uid="uid://1on0tdfra3fo" path="res://Weapons/Assets/Staves/OctagonStaff/octagon_staff_attack.png" id="2_d0pkn"]
+
+[node name="OctagonStaffAttack" type="Node2D"]
+script = ExtResource("1_d0pkn")
+metadata/_custom_type_script = "uid://u4hlhq7vgeit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d0pkn")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+polygon = PackedVector2Array(3, -21, -3, -21, -3, -19.8, -15, -16.8, -15, -16, -27.7, -16, -34.7, -20, -36.3, -20, -44, -15.6, -44, -14.7, -53, -11.7, -60, -15.1, -60, 15.1, -53.7, 11, -52.3, 11, -40, 17.6, -40, 19, -37, 19, -37, 20.5, -30, 17.7, -30, 17, -27, 17, -27, 16, -14, 16, -3, 19.6, -3, 21.3, 15, 16.8, 15, 16, 27.7, 16, 34.7, 20, 36.3, 20, 44, 15.6, 44, 14.6, 53, 11.7, 53.8, 12, 55.6, 12, 58.6, 15, 60, 15, 60, -15.2, 53.7, -11, 52.3, -11, 40, -17.7, 40, -19, 37, -19, 37, -20.6, 27.8, -16, 14, -16, 3, -19.7)
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
