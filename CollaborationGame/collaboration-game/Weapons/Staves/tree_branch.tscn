@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://bkn6ya1uaaf55"]
+
+[ext_resource type="Script" uid="uid://c74jcskeb31iu" path="res://Weapons/Staves/tree_branch.gd" id="1_4bvom"]
+[ext_resource type="Texture2D" uid="uid://dha1jxc6phe0m" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_icon.png" id="2_qr7yf"]
+[ext_resource type="Texture2D" uid="uid://crugikkqihthl" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_charging1.png" id="3_4bvom"]
+[ext_resource type="Texture2D" uid="uid://cieod8crkg78r" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_fire.png" id="3_4m7wk"]
+[ext_resource type="Texture2D" uid="uid://jupsemc3joqh" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_fire2.png" id="4_3fkwn"]
+[ext_resource type="Texture2D" uid="uid://bu4fxvr8gno8p" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_charging2.png" id="4_ltmc3"]
+[ext_resource type="Texture2D" uid="uid://dh1rh7vgw65nw" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_fire3.png" id="5_7v3op"]
+[ext_resource type="Texture2D" uid="uid://b1toe8ay2mgs5" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_charging3.png" id="5_gfrkv"]
+[ext_resource type="Texture2D" uid="uid://om0vyudokhl0" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_charging4.png" id="6_muvhl"]
+[ext_resource type="Texture2D" uid="uid://bbb28fbrhpvw" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_idle.png" id="6_q8xpo"]
+[ext_resource type="Texture2D" uid="uid://crm16jit3ak4m" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_idle2.png" id="7_33slv"]
+[ext_resource type="Texture2D" uid="uid://dlx52steor4q" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_charged.png" id="7_d2qt1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7w1ic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4bvom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ltmc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gfrkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_muvhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d2qt1")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4m7wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3fkwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7v3op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4m7wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3fkwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7v3op")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_q8xpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_33slv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[node name="TreeBranch" type="Node2D"]
+script = ExtResource("1_4bvom")
+mana_cost = 10
+weapon_name = "Tree Branch"
+weapon_emission_node = "res://Weapons/Staves/tree_branch_attack.tscn"
+damage = 8
+metadata/_custom_type_script = "uid://dk6tjk0qx1hkl"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_qr7yf")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7w1ic")
+animation = &"Charging"
+frame = 4
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

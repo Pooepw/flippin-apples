@@ -11,3 +11,9 @@ func perform_attack(emitted_by, damage):
 func set_up_hit_area():
 	# will probably need this for things
 	pass
+
+func set_up_emitter(emitted_by):
+	if emitted_by is player:
+		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
+	else: 
+		emitter = CollisionHandler.EMITTER_TYPES.MOB

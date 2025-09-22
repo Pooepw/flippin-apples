@@ -10,6 +10,7 @@ enum DIRECTIONS {NS, EW, NESW, NWSE}
 var direction_timer
 
 func _ready() -> void:
+	super()
 	direction_timer = get_node("DirectionTimer")
 	match move_direction:
 		DIRECTIONS.NS:
@@ -23,7 +24,7 @@ func _ready() -> void:
 	direction_timer.start(move_time)
 
 func special_movement(delta):
-	move_and_collide(direction * delta * move_speed)
+	move_and_collide(direction * delta * current_speed)
 
 
 func _on_direction_timer_timeout() -> void:

@@ -16,6 +16,7 @@ var pulse_sprite
 var recede_sprite
 
 func _ready():
+	super()
 	pulse_timer = get_node("PulseTimer")
 	recede_timer = get_node("RecedeTimer")
 	

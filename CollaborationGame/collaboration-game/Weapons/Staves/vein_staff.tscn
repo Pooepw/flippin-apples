@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://3apqoxoxb044"]
+
+[ext_resource type="Script" uid="uid://d1p1f4p033n0m" path="res://Weapons/Staves/vein_staff.gd" id="1_wmexa"]
+[ext_resource type="Texture2D" uid="uid://c2jql2mqsmux8" path="res://Weapons/Assets/Staves/VeinStaff/vein_staff_cast_1.png" id="2_rtaaw"]
+[ext_resource type="Texture2D" uid="uid://naihlopsch0s" path="res://Weapons/Assets/Staves/VeinStaff/vein_staff_cast_2.png" id="3_wmexa"]
+[ext_resource type="Texture2D" uid="uid://brsdprivnmn5q" path="res://Weapons/Assets/Staves/VeinStaff/vein_staff_idle_3.png" id="4_gj35h"]
+[ext_resource type="Texture2D" uid="uid://dobfa681i488h" path="res://Weapons/Assets/Staves/VeinStaff/vein_staff_cast_3.png" id="4_wmexa"]
+[ext_resource type="Texture2D" uid="uid://ddvdyjmbgf3d6" path="res://Weapons/Assets/Staves/VeinStaff/vein_staff_idle_1.png" id="5_lpqws"]
+[ext_resource type="Texture2D" uid="uid://b5fkov2m8u3hw" path="res://Weapons/Assets/Staves/VeinStaff/vein_staff_idle_2.png" id="6_7ot48"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3eqqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rtaaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wmexa")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wmexa")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gj35h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lpqws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7ot48")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[node name="VeinStaff" type="Node2D"]
+script = ExtResource("1_wmexa")
+mana_cost = 42
+weapon_name = "Vein Staff"
+weapon_emission_node = "res://Weapons/Staves/vein_staff_attack.tscn"
+damage = 24
+metadata/_custom_type_script = "uid://dk6tjk0qx1hkl"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3eqqt")
+animation = &"Idle"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

@@ -12,6 +12,10 @@ enum MOVE_MODES {BASIC, PROJECTOR, STILL_PROJECTOR, SPECIAL}
 
 var direction = Vector2(0,0)
 var mob_spawner_parent = 0
+var current_speed
+
+func _ready() -> void:
+	current_speed = move_speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -22,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	match move_mode:
 		MOVE_MODES.BASIC:
 			direction = global_position.direction_to(PlayerHandler.current_player.global_position)
-			move_and_collide(direction * delta * move_speed)
+			move_and_collide(direction * delta * current_speed)
 		MOVE_MODES.PROJECTOR:
 			#direction = global_position.direction_to(PlayerHandler.current_player.global_position)
 			#if global_position.distance_to(PlayerHandler.current_player.global_position) > projector_closeness:
@@ -37,7 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func special_movement(delta):
 	# overwrite this function in a new mob class that uses mob as a base.
-	move_and_collide(global_position.direction_to(PlayerHandler.current_player.global_position) * delta * move_speed)
+	move_and_collide(global_position.direction_to(PlayerHandler.current_player.global_position) * delta * current_speed)
 
 func project():
 	# written in projector mob but needed here too to be called

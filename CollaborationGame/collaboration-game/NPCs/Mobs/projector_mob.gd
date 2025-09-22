@@ -14,6 +14,7 @@ var attacking_animation_node
 var idle_node
 
 func _ready():
+	super()
 	projectile_node = load(projectile_string)
 	vision_range_node = get_node("VisionRange")
 	fire_timer_node = get_node("FireTimer")
@@ -43,7 +44,7 @@ func _physics_process(delta: float) -> void:
 			attacking_animation_node.visible = true
 			idle_node.visible = false
 			direction = global_position.direction_to(PlayerHandler.current_player.global_position)
-			move_and_collide(direction * move_speed * delta)
+			move_and_collide(direction * current_speed * delta)
 	
 
 func _on_vision_range_body_entered(body: Node2D) -> void:

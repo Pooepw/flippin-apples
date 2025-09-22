@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctywctaaekcqg"]
+
+[ext_resource type="Script" uid="uid://c4y8iocccksly" path="res://Weapons/Staves/stop_sign.gd" id="1_30eou"]
+[ext_resource type="Texture2D" uid="uid://bx0an2o1fhkqw" path="res://Weapons/Assets/Staves/StopSign/stop_sign_icon.png" id="2_30eou"]
+[ext_resource type="Texture2D" uid="uid://o3ngt5ke20hm" path="res://Weapons/Assets/Staves/StopSign/stop_sign_firing0.png" id="2_xqy3e"]
+[ext_resource type="Texture2D" uid="uid://cabiq4hokg2tp" path="res://Weapons/Assets/Staves/StopSign/stop_sign_firing1.png" id="3_30eou"]
+[ext_resource type="Texture2D" uid="uid://h5scoxood3xm" path="res://Weapons/Assets/Staves/StopSign/stop_sign_firing2.png" id="4_6i45x"]
+[ext_resource type="Texture2D" uid="uid://l71xnd41rfhv" path="res://Weapons/Assets/Staves/StopSign/stop_sign_idle1.png" id="5_lh6pb"]
+[ext_resource type="Texture2D" uid="uid://bcu1vjecw2lcj" path="res://Weapons/Assets/Staves/StopSign/stop_sign_idle2.png" id="6_8j4cf"]
+[ext_resource type="Texture2D" uid="uid://d0cew32krcf07" path="res://Weapons/Assets/Staves/StopSign/stop_sign_idle3.png" id="7_quih5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkcum"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xqy3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_30eou")
+}],
+"loop": false,
+"name": &"Charging",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6i45x")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lh6pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8j4cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_quih5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}]
+
+[node name="StopSign" type="Node2D"]
+script = ExtResource("1_30eou")
+mana_cost = 80
+weapon_name = "Stop Sign"
+weapon_emission_node = "res://Weapons/Staves/stop_sign_attack.tscn"
+damage = 1
+metadata/_custom_type_script = "uid://dk6tjk0qx1hkl"
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_30eou")
+
+[node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tkcum")
+animation = &"Charging"
+
+[connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

@@ -28,6 +28,7 @@ var stamina_regen = 2
 var stam_regen_timer
 
 var speed = 1000
+var current_speed = speed
 var speed_mult = 1.0
 
 var recently_damaged = false
@@ -71,7 +72,7 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	#if moving:
 	
-	move_and_collide(direction * speed * delta)
+	move_and_collide(direction * current_speed * delta)
 	if not direction == Vector2(0,0):
 		player_sprite.play()
 	else:

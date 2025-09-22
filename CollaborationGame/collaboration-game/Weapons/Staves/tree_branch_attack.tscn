@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://by1pbb2up1lc5"]
+
+[ext_resource type="Script" uid="uid://bhnwp64e2gtur" path="res://Weapons/Staves/tree_branch_attack.gd" id="1_qrd1b"]
+[ext_resource type="Texture2D" uid="uid://cgbhsxwpy3ado" path="res://Weapons/Assets/Staves/TreeBranch/tree_branch_attack.png" id="2_1hvug"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrd1b"]
+radius = 52.0096
+
+[sub_resource type="Gradient" id="Gradient_r8v78"]
+offsets = PackedFloat32Array(0, 0.202572, 0.469453, 0.752412, 1)
+colors = PackedColorArray(0.713726, 0.131129, 0, 1, 0.000713468, 0.625, 0, 1, 0.837713, 0.848118, 0, 1, 0.581188, 0.924266, 0, 1, 1, 0.741076, 0, 1)
+
+[node name="TreeBranchAttack" type="Node2D"]
+script = ExtResource("1_qrd1b")
+metadata/_custom_type_script = "uid://u4hlhq7vgeit"
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_qrd1b")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 168
+texture = ExtResource("2_1hvug")
+emission_shape = 1
+emission_sphere_radius = 50.81
+gravity = Vector2(0, 0)
+radial_accel_min = 11.17
+radial_accel_max = 11.17
+tangential_accel_max = 25.7
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color = Color(0.778321, 1, 0, 1)
+color_ramp = SubResource("Gradient_r8v78")
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

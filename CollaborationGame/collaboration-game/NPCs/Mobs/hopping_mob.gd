@@ -8,8 +8,10 @@ class_name hopping_mob
 
 var hop_timer
 var stop_timer
+var stopped = false
 
 func _ready() -> void:
+	super()
 	hop_timer = get_node("HopTimer")
 	stop_timer = get_node("StopTimer")
 	print("readied")
@@ -18,13 +20,14 @@ func special_movement(delta):
 	if stop_timer.is_stopped() and hop_timer.is_stopped():
 		print("starting")
 		stop_timer.start(1)
-	move_and_collide(direction * delta * move_speed)
+	move_and_collide(direction * delta * current_speed)
 
 
 func _on_hop_timer_timeout() -> void:
 	direction = global_position.direction_to(PlayerHandler.current_player.global_position)
 	print("start hop")
-	move_speed = ordinary_move_speed
+	if not stopped:
+		move_speed = ordinary_move_speed
 	stop_timer.start(hop_time)
 
 func _on_stop_timer_timeout() -> void:

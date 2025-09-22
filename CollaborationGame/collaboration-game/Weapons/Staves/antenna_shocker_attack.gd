@@ -10,13 +10,8 @@ const SHOCK_TIME = 2
 func perform_attack(emitted_by, damage):
 	shocker_frames = get_node("ShockerFrames")
 	shock_timer = get_node("ShockTimer")
-	shock_area = get_node("ShockArea")
-	shock_area.monitoring = false
 	attack_damage = damage
-	if emitted_by is player:
-		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
-	else: 
-		emitter = CollisionHandler.EMITTER_TYPES.MOB
+	set_up_emitter(emitted_by)
 	set_up_hit_area()
 	ProjectileHandler.add_child(self)
 	position = get_global_mouse_position()
@@ -37,6 +32,7 @@ func _on_shock_timer_timeout() -> void:
 	queue_free()
 
 func set_up_hit_area():
+	shock_area = get_node("ShockArea")
 	if emitter == CollisionHandler.EMITTER_TYPES.PLAYER:
 		shock_area.set_collision_layer_value(1, false)
 		shock_area.set_collision_mask_value(1, false)
@@ -50,6 +46,7 @@ func set_up_hit_area():
 		shock_area.set_collision_mask_value(3, true)
 		shock_area.set_collision_layer_value(5, true)
 		shock_area.set_collision_layer_value(5, true)
+	shock_area.monitoring = false
 
 
 func _on_shock_area_body_entered(body: Node2D) -> void:

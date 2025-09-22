@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://da70woac3lq0n"]
+
+[ext_resource type="Script" uid="uid://cmlm05q261sgn" path="res://Weapons/Staves/vein_staff_attack.gd" id="1_j72gp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j72gp"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnh7a"]
+radius = 52.0384
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lahs"]
+radius = 5.0
+
+[node name="VeinStaffAttack" type="Node2D"]
+script = ExtResource("1_j72gp")
+metadata/_custom_type_script = "uid://u4hlhq7vgeit"
+
+[node name="BlueBlood" type="Area2D" parent="."]
+position = Vector2(-10, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BlueBlood"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(0, 3)
+scale_amount_max = 5.0
+color = Color(0.0329251, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueBlood"]
+shape = SubResource("CircleShape2D_j72gp")
+
+[node name="BlueBloodDetection" type="Area2D" parent="BlueBlood"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueBlood/BlueBloodDetection"]
+shape = SubResource("CircleShape2D_wnh7a")
+
+[node name="RedBlood" type="Area2D" parent="."]
+position = Vector2(10, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="RedBlood"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(0, 3)
+scale_amount_max = 5.0
+color = Color(1, 0, 0.0327544, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedBlood"]
+shape = SubResource("CircleShape2D_7lahs")
+
+[node name="RedBloodDetection" type="Area2D" parent="RedBlood"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedBlood/RedBloodDetection"]
+shape = SubResource("CircleShape2D_wnh7a")
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="BlueBlood" to="." method="_on_blue_blood_body_entered"]
+[connection signal="body_entered" from="BlueBlood/BlueBloodDetection" to="." method="_on_blue_blood_detection_body_entered"]
+[connection signal="body_entered" from="RedBlood" to="." method="_on_red_blood_body_entered"]
+[connection signal="body_entered" from="RedBlood/RedBloodDetection" to="." method="_on_red_blood_detection_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
