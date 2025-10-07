@@ -18,3 +18,6 @@ func generate_weapon_loot():
 	
 func generate_loot():
 	return generate_weapon_loot()
+
+func clear_table():
+	current_loot_list.clear()

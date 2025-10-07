@@ -7,8 +7,8 @@
 radius = 4.98
 height = 16.0
 
-[node name="ProjectorSphereProjectile" type="CharacterBody2D"]
-motion_mode = 1
+[node name="ProjectorSphereProjectile" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_he6gl")
 damage = 10
 speed = 300
@@ -24,3 +24,5 @@ one_shot = true
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_1jt2x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxciruxwwvyd"]
+
+[ext_resource type="Script" uid="uid://5eb1dbcl2tgj" path="res://LevelParts/Dungeon/LevelComponents/weapon_loot.gd" id="1_indm4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_431s1"]
+radius = 44.4072
+
+[node name="WeaponLoot" type="Node2D"]
+script = ExtResource("1_indm4")
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_431s1")
+
+[node name="PickupText" type="RichTextLabel" parent="."]
+offset_left = -51.0
+offset_top = 26.0
+offset_right = 52.0
+offset_bottom = 82.0
+text = "Press \"Z\" to pick up"
+horizontal_alignment = 1
+
+[node name="LootImage" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5tv"]
 size = Vector2(14, 16.5)
 
-[node name="TeethingMouthProjectile" type="CharacterBody2D"]
-motion_mode = 1
+[node name="TeethingMouthProjectile" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_hlmwm")
 damage = 3
 speed = 340
@@ -30,4 +30,5 @@ one_shot = true
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_tjk3k")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

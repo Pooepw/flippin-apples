@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_i28bw"]
 radius = 15.0
 
-[node name="FlamingEyeStalkProjectile" type="CharacterBody2D"]
-motion_mode = 1
+[node name="FlamingEyeStalkProjectile" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_1r4fg")
 damage = 10
 speed = 160
@@ -27,3 +27,5 @@ emission_sphere_radius = 13.55
 gravity = Vector2(0, 10)
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
