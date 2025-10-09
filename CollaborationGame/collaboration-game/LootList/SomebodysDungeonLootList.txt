@@ -1,0 +1,6 @@
+res://Weapons/Bow/wifi_symbol.tscn
+res://Weapons/Guns/aug.tscn
+res://Weapons/Hammer/atorch.tscn
+res://Weapons/Staves/stop_sign.tscn
+res://Weapons/Swords/diamond_sword.tscn
+res://Weapons/Wands/fireball_tome.tscn

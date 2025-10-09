@@ -18,9 +18,13 @@ var south_block_off
 var east_block_off
 var west_block_off
 
+# these will be things to put into rooms
 # mob spawner node to place inside of rooms
 var mob_spawner
 var activator_node
+
+# treasure spawnable
+var weapon_pedestal_node
 
 var fog_node
 var current_dungeon_map
@@ -28,6 +32,8 @@ var map_active = false
 
 var display_exit_prompt = false
 var display_enter_prompt = false
+
+var spawned_treasure = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +44,7 @@ func _ready() -> void:
 	mob_spawner = load("res://Systems/mob_spawner.tscn")
 	activator_node = load("res://LevelParts/activation_area.tscn")
 	fog_node = load("res://LevelParts/Dungeon/fog.tscn")
+	weapon_pedestal_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_pedestal.tscn")
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
@@ -425,8 +432,18 @@ func select_attribute():
 			spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
 			return "spawner"
 		3: 
-			var loot = LootGenerator.generate_loot()
-			return "nothing"
+			if not spawned_treasure:
+				var loot = LootGenerator.generate_loot()
+				loot.visible = false
+				spawned_treasure = true
+				var weapon_pedestal_instance = weapon_pedestal_node.instantiate()
+				var loot_icon = loot.get_node("WeaponIcon").texture
+				weapon_pedestal_instance.get_node("WeaponLootIcon").texture = loot_icon
+				weapon_pedestal_instance.add_child(loot)
+				weapon_pedestal_instance.weapon_loot = loot
+				return weapon_pedestal_instance
+			else:
+				return "nothing"
 
 func place_doors():
 	for row in size:

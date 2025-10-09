@@ -1,0 +1,6 @@
+res://Weapons/Bow/arm_bow.tscn
+res://Weapons/Guns/player_leg.tscn
+res://Weapons/Hammer/screen_slammer.tscn
+res://Weapons/Staves/antenna_shocker.tscn
+res://Weapons/Swords/wheel_rapier.tscn
+res://Weapons/Wands/wire_wand.tscn

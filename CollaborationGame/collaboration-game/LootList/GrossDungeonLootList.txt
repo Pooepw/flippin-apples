@@ -1,0 +1,6 @@
+res://Weapons/Bow/eye_strand_bow.tscn
+res://Weapons/Guns/the_nose.tscn
+res://Weapons/Hammer/tooth_shatterer.tscn
+res://Weapons/Staves/vein_staff.tscn
+res://Weapons/Swords/hollowed_forearm_bone.tscn
+res://Weapons/Wands/heart_on_a_stick.tscn
