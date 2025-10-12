@@ -24,3 +24,4 @@ horizontal_alignment = 1
 [node name="LootImage" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]

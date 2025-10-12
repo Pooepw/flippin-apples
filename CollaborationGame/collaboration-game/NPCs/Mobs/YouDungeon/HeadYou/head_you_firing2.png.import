@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkw0t1j5s8brd"
-path="res://.godot/imported/conceptone-Sheet.webp-408a7dd22adfb80d296b80c37036ab4a.ctex"
+uid="uid://dsmlrx8jlm0ye"
+path="res://.godot/imported/head_you_firing2.png-0199ccbc03b64574830b35b9a8d23a2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Systems/conceptone-Sheet.webp"
-dest_files=["res://.godot/imported/conceptone-Sheet.webp-408a7dd22adfb80d296b80c37036ab4a.ctex"]
+source_file="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_firing2.png"
+dest_files=["res://.godot/imported/head_you_firing2.png-0199ccbc03b64574830b35b9a8d23a2b.ctex"]
 
 [params]
 

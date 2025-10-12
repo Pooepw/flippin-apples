@@ -25,6 +25,7 @@ var activator_node
 
 # treasure spawnable
 var weapon_pedestal_node
+var weapon_loot_node
 
 var fog_node
 var current_dungeon_map
@@ -45,11 +46,12 @@ func _ready() -> void:
 	activator_node = load("res://LevelParts/activation_area.tscn")
 	fog_node = load("res://LevelParts/Dungeon/fog.tscn")
 	weapon_pedestal_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_pedestal.tscn")
+	weapon_loot_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_loot.tscn")
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
 	LootGenerator.add_loot_list(FileReader.open_and_read_file
-	("res://LevelParts/Dungeon/Rooms/Medieval/LootLists/BaseMedievalLootList.txt"))
+	("res://LootList/AllLootList.txt"))
 	generate_grid(max_distance)
 	start_map()
 	var start = start_dungeon(start_node)
@@ -72,7 +74,8 @@ func generate_grid(max_distance):
 		current_dungeon.push_back([])
 		for column in size:
 			current_dungeon[row].push_back(0)
-			
+
+# makes a map
 func start_map():
 	var map_scene = load("res://Interfaces/dungeon_map.tscn")
 	current_dungeon_map = map_scene.instantiate()
@@ -417,6 +420,7 @@ func decorate_rooms():
 				var attribute = select_attribute()
 				if not attribute is String:
 					selected_room.add_child(attribute)
+					attribute.position = selected_room.position
 					selected_room.room_aspect = attribute
 					var activator = activator_node.instantiate()
 					selected_room.add_child(activator)
@@ -434,17 +438,19 @@ func select_attribute():
 		3: 
 			if not spawned_treasure:
 				var loot = LootGenerator.generate_loot()
-				loot.visible = false
+				var weapon_loot_instance = weapon_loot_node.instantiate()
+				weapon_loot_instance.set_up_loot(loot)
 				spawned_treasure = true
 				var weapon_pedestal_instance = weapon_pedestal_node.instantiate()
-				var loot_icon = loot.get_node("WeaponIcon").texture
-				weapon_pedestal_instance.get_node("WeaponLootIcon").texture = loot_icon
-				weapon_pedestal_instance.add_child(loot)
-				weapon_pedestal_instance.weapon_loot = loot
+				weapon_pedestal_instance.add_child(weapon_loot_instance)
+				weapon_pedestal_instance.weapon_loot = weapon_loot_instance
+				print("spawned loot")
 				return weapon_pedestal_instance
 			else:
 				return "nothing"
 
+# currently unused; will place doors on rooms so that the rooms cannot be 
+# escaped from before clearing the mobs
 func place_doors():
 	for row in size:
 		for column in size:
@@ -456,6 +462,7 @@ func place_doors():
 				selected_room.add_child(doors)
 				selected_room.doors_node = doors
 
+# moves the dungeon far away from the town at generation
 func space_out_rooms():
 	for row in size:
 		for column in size:
@@ -463,6 +470,7 @@ func space_out_rooms():
 			if selected_room is not int:
 				selected_room.position = Vector2(column * ROOM_SPACING + AWAY_POINT, row * ROOM_SPACING)
 
+# makes a map out of the dungeon grid for the player to use. 
 func make_map():
 	map_active = true
 	for row in size:
@@ -471,17 +479,22 @@ func make_map():
 			if selected_room is not int:
 				current_dungeon_map.add_node(row, column, selected_room.get_node("TextureRect"))
 
+# called when a floor is finished; this means that the player has reached an
+# exit or the dungeon is being deleted (debugging)
 func clear_dungeon():
 	for row in size:
 		for column in size:
 			if not current_dungeon[row][column] is int:
 				current_dungeon[row][column].queue_free()
 	current_dungeon.clear()
+	spawned_treasure = false
 
+# always be tracking the player
 func _process(_delta: float) -> void:
 	if map_active:
 		track_player()
 
+# used for tracking where the player is on the map
 func track_player():
 	var player_position = (Vector2(((PlayerHandler.current_player.global_position.x - AWAY_POINT) / ROOM_SPACING)
 		, PlayerHandler.current_player.global_position.y / ROOM_SPACING) + Vector2(0.5, 0.5))

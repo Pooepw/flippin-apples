@@ -1,2 +1,4 @@
 res://NPCs/Mobs/GrossDungeon/flaming_eye_stalk.tscn
 res://NPCs/Mobs/GrossDungeon/teething_mouth.tscn
+res://NPCs/Mobs/GrossDungeon/hopping_arm.tscn
+res://NPCs/Mobs/GrossDungeon/pulsing_heart.tscn

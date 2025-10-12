@@ -12,9 +12,8 @@ func pick_loot():
 	return weapon_node
 
 func generate_weapon_loot():
-	var weapon_choice = load(pick_loot())
-	var weapon_instance = weapon_choice.instantiate()
-	return weapon_instance
+	var weapon_choice = pick_loot()
+	return weapon_choice
 	
 func generate_loot():
 	return generate_weapon_loot()
