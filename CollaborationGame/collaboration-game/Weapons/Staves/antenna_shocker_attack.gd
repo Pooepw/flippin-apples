@@ -14,7 +14,7 @@ func perform_attack(emitted_by, damage):
 	set_up_emitter(emitted_by)
 	set_up_hit_area()
 	ProjectileHandler.add_child(self)
-	position = get_global_mouse_position()
+
 	shocker_frames.play("Drop")
 
 func _on_shocker_frames_animation_finished() -> void:

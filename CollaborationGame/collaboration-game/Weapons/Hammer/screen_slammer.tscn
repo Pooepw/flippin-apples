@@ -60,5 +60,7 @@ texture = ExtResource("2_77ulx")
 [node name="WeaponSprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_77ulx")
 animation = &"Charging"
+frame = 2
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="WeaponSprites" to="." method="_on_weapon_sprites_animation_finished"]

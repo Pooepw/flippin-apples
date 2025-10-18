@@ -33,7 +33,7 @@ func project_wave(to_position, outward_distance, emitted_by, charge, damage):
 	damage_dealt = damage
 	ProjectileHandler.add_child(self)
 	real_strike_time = strike_time * charge
-	real_shock_time = shock_time if charge == 1 else 0
+	real_shock_time = shock_time if charge == 1 else 0.0
 	set_area_status(strike_area, true)
 	strike_timer.start(real_strike_time)
 

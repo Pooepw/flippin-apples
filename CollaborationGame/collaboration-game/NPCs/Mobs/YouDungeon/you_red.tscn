@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://clw8gmgb6k7bi"]
+
+[ext_resource type="Script" uid="uid://fs4nfq8tx3te" path="res://NPCs/Mobs/YouDungeon/you_red.gd" id="1_oyvyr"]
+[ext_resource type="Texture2D" uid="uid://v5gara716q6c" path="res://NPCs/Mobs/YouDungeon/RedYou/you_movement_red.png" id="2_fx5dt"]
+[ext_resource type="PackedScene" uid="uid://bypytk4oelg0q" path="res://Weapons/Hammer/screen_slammer.tscn" id="3_fx5dt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kry6j"]
+atlas = ExtResource("2_fx5dt")
+region = Rect2(0, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8ngm"]
+atlas = ExtResource("2_fx5dt")
+region = Rect2(97, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8lge"]
+atlas = ExtResource("2_fx5dt")
+region = Rect2(194, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03iy7"]
+atlas = ExtResource("2_fx5dt")
+region = Rect2(291, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uahc0"]
+atlas = ExtResource("2_fx5dt")
+region = Rect2(388, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtux0"]
+atlas = ExtResource("2_fx5dt")
+region = Rect2(485, 0, 97, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6qu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kry6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8ngm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8lge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03iy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uahc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtux0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyvyr"]
+radius = 12.0
+height = 82.0
+
+[node name="YouRed" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_oyvyr")
+move_time = 5.0
+health = 10
+move_speed = 200
+move_mode = 3
+metadata/_custom_type_script = "uid://tur4i7bvr3h4"
+
+[node name="EnemyBody" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t6qu7")
+
+[node name="DirectionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_oyvyr")
+
+[node name="ScreenSlammer" parent="." instance=ExtResource("3_fx5dt")]
+modulate = Color(1, 0.0320326, 0, 1)
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

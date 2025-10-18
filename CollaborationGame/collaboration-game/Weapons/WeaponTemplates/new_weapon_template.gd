@@ -13,6 +13,11 @@ class_name weapon2
 var weapon_sprites
 var weapon_icon
 
+# ownership of weapon
+enum OWNERS {PLAYER, ENEMY}
+var weapon_owner
+var weapon_owner_node
+
 # weapon emission node to be instanced
 var weapon_emission
 var firing = false
@@ -25,13 +30,24 @@ func _ready() -> void:
 	weapon_sprites = get_node("WeaponSprites")
 	weapon_sprites.play("Idle")
 	weapon_emission = load(weapon_emission_node)
+	if get_parent() is player:
+		weapon_owner = OWNERS.PLAYER
+	else:
+		weapon_owner = OWNERS.ENEMY
+		weapon_owner_node = get_parent()
 
 # flip the weapon's orientation depending on direction
-func _physics_process(delta: float) -> void:
-	if PlayerHandler.current_player.direction.x < 0:
-		weapon_sprites.flip_h = true
-	if PlayerHandler.current_player.direction.x > 0:
-		weapon_sprites.flip_h = false
+func _physics_process(_delta: float) -> void:
+	if weapon_owner == OWNERS.PLAYER:
+		if PlayerHandler.current_player.direction.x < 0:
+			weapon_sprites.flip_h = true
+		if PlayerHandler.current_player.direction.x > 0:
+			weapon_sprites.flip_h = false
+	if weapon_owner == OWNERS.ENEMY:
+		if weapon_owner_node.direction.x < 0:
+			weapon_sprites.flip_h = true
+		if weapon_owner_node.direction.x > 0:
+			weapon_sprites.flip_h = false
 
 func swap_sprite(to_sprite):
 	weapon_sprites.play(to_sprite)

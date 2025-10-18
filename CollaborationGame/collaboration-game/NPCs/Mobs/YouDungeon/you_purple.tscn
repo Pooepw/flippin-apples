@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://br2mys1yiq1xu"]
+
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_rhbrx"]
+[ext_resource type="Texture2D" uid="uid://bjrw5l1glbl2d" path="res://NPCs/Mobs/YouDungeon/PurpleYou/you_movement_purple.png" id="2_p725s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t08le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0bfv"]
+atlas = ExtResource("2_p725s")
+region = Rect2(0, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1gwv"]
+atlas = ExtResource("2_p725s")
+region = Rect2(388, 0, 97, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrd56"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0bfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1gwv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="YouPurple" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_rhbrx")
+metadata/_custom_type_script = "uid://gfi6hr38duho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_t08le")
+
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mrd56")
+frame_progress = 0.130519

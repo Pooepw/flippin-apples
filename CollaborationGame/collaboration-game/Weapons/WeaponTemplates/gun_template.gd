@@ -45,4 +45,9 @@ func _on_weapon_animation_finished():
 func emit_attack():
 	current_bullets -= 1
 	var bullet_instance = weapon_emission.instantiate()
-	bullet_instance.fire_self(get_global_mouse_position(), get_parent(), damage)
+	var target_position
+	if weapon_owner == OWNERS.PLAYER:
+		target_position = get_global_mouse_position()
+	else:
+		target_position = PlayerHandler.current_player.global_position
+	bullet_instance.fire_self(target_position, get_parent(), damage)

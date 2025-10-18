@@ -17,7 +17,7 @@ var mana = 100
 var current_mana = mana
 var can_regen_mana = true
 var mana_mult_bonus = 1.0
-var mana_regen = 0.3
+var mana_regen = 1
 var mana_regen_timer
 
 var stamina = 100

@@ -15,5 +15,7 @@ func set_up_hit_area():
 func set_up_emitter(emitted_by):
 	if emitted_by is player:
 		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
+		position = get_global_mouse_position()
 	else: 
 		emitter = CollisionHandler.EMITTER_TYPES.MOB
+		position = PlayerHandler.current_player.global_position

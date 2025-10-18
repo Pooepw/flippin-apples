@@ -9,7 +9,7 @@ var pick_up_text
 var loot
 var loot_image
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if active:
 		pick_up_text.visible = true
 	if not active and not pick_up_text == null and pick_up_text.visible:

@@ -39,6 +39,7 @@ func handle_collision(mover, collider):
 
 
 func handle_melee_strike(melee_area, collider, damage):
-	if ((melee_area.emitter == EMITTER_TYPES.PLAYER and collider is mob)
-	or (melee_area.emitter == EMITTER_TYPES.MOB and collider is player)):
+	if (melee_area.emitter == EMITTER_TYPES.PLAYER and collider is mob):
 		collider.health -= damage
+	if (melee_area.emitter == EMITTER_TYPES.MOB and collider is player):
+		PlayerHandler.current_player.current_hp -= damage

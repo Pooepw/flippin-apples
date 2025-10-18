@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl6npsb1mbsh8"]
+
+[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_r4vf3"]
+[ext_resource type="Texture2D" uid="uid://1b1aeakrdwu5" path="res://NPCs/Mobs/YouDungeon/BlueYou/you_movement_deep_blue.png" id="2_05lyx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05lyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlvax"]
+atlas = ExtResource("2_05lyx")
+region = Rect2(0, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ejt8"]
+atlas = ExtResource("2_05lyx")
+region = Rect2(97, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8qpe"]
+atlas = ExtResource("2_05lyx")
+region = Rect2(194, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wjls"]
+atlas = ExtResource("2_05lyx")
+region = Rect2(291, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4ccw"]
+atlas = ExtResource("2_05lyx")
+region = Rect2(388, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh2gs"]
+atlas = ExtResource("2_05lyx")
+region = Rect2(485, 0, 97, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgobh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlvax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ejt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8qpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wjls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ccw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh2gs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="YouBlue" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_r4vf3")
+metadata/_custom_type_script = "uid://gfi6hr38duho"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_05lyx")
+
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+
+[node name="FireTimer" type="Timer" parent="."]
+
+[node name="EnemyBody" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mgobh")

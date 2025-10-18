@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://psgxi4xmlbn6"]
+
+[ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_j1oa0"]
+[ext_resource type="Texture2D" uid="uid://ctccixh6dl0m0" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_idle2.png" id="2_4mr8c"]
+[ext_resource type="Texture2D" uid="uid://cek8qagitet4k" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_firing1.5.png" id="2_cuxk2"]
+[ext_resource type="Texture2D" uid="uid://bebm2s2ytu6br" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_idle.png" id="3_8dhwa"]
+[ext_resource type="Texture2D" uid="uid://uap5frrargno" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_firing1.png" id="3_hlocj"]
+[ext_resource type="Texture2D" uid="uid://dsmlrx8jlm0ye" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_firing2.png" id="4_3drkp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j1oa0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cuxk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hlocj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3drkp")
+}],
+"loop": false,
+"name": &"Firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4mr8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8dhwa")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="YouHead" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_j1oa0")
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
+
+[node name="EnemyBody" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j1oa0")
+animation = &"Firing"
+frame = 2
+frame_progress = 1.0
