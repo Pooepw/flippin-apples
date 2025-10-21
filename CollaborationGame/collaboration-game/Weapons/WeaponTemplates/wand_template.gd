@@ -6,12 +6,17 @@ class_name wand_type
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	if mana_cost > PlayerHandler.current_player.current_mana:
-		end_attack()
+	if weapon_owner == OWNERS.PLAYER:
+		if mana_cost > PlayerHandler.current_player.current_mana:
+			end_attack()
 
 func start_attack():
-	if mana_cost < PlayerHandler.current_player.current_mana:
+	if weapon_owner == OWNERS.PLAYER:
+		if mana_cost < PlayerHandler.current_player.current_mana:
+			super()
+	else:
 		super()
+	
 
 
 func _on_weapon_sprite_animation_end():
@@ -27,4 +32,9 @@ func emit_attack():
 	print(PlayerHandler.current_player.current_mana)
 	PlayerHandler.current_player.start_regen_wait("Mana")
 	var emission_instance = weapon_emission.instantiate()
-	emission_instance.fire_self(get_global_mouse_position(), get_parent(), damage)
+	var target_location
+	if weapon_owner == OWNERS.PLAYER:
+		target_location = get_global_mouse_position()
+	else: 
+		target_location = PlayerHandler.current_player.global_position
+	emission_instance.fire_self(target_location, get_parent(), damage)
