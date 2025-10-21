@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl6npsb1mbsh8"]
+[gd_scene load_steps=12 format=3 uid="uid://bl6npsb1mbsh8"]
 
 [ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_r4vf3"]
 [ext_resource type="Texture2D" uid="uid://1b1aeakrdwu5" path="res://NPCs/Mobs/YouDungeon/BlueYou/you_movement_deep_blue.png" id="2_05lyx"]
+[ext_resource type="PackedScene" uid="uid://bgsr8ud2smo5j" path="res://Weapons/Wands/wire_wand.tscn" id="3_nlvax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05lyx"]
 
@@ -71,3 +72,6 @@ shape = SubResource("CapsuleShape2D_05lyx")
 
 [node name="EnemyBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mgobh")
+
+[node name="WireWand" parent="." instance=ExtResource("3_nlvax")]
+modulate = Color(0.146683, 0.296645, 1, 1)

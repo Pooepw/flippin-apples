@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://br2mys1yiq1xu"]
+[gd_scene load_steps=8 format=3 uid="uid://br2mys1yiq1xu"]
 
 [ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_rhbrx"]
 [ext_resource type="Texture2D" uid="uid://bjrw5l1glbl2d" path="res://NPCs/Mobs/YouDungeon/PurpleYou/you_movement_purple.png" id="2_p725s"]
+[ext_resource type="PackedScene" uid="uid://cs66wvjpvm0lm" path="res://Weapons/Guns/player_leg.tscn" id="3_t08le"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t08le"]
 
@@ -44,3 +45,6 @@ shape = SubResource("CapsuleShape2D_t08le")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mrd56")
 frame_progress = 0.130519
+
+[node name="PlayerLeg" parent="." instance=ExtResource("3_t08le")]
+modulate = Color(0.960784, 0, 0.807885, 1)
