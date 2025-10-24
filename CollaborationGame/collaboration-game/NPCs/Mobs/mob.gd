@@ -41,7 +41,8 @@ func _physics_process(delta: float) -> void:
 
 func special_movement(delta):
 	# overwrite this function in a new mob class that uses mob as a base.
-	move_and_collide(global_position.direction_to(PlayerHandler.current_player.global_position) * delta * current_speed)
+	direction = global_position.direction_to(PlayerHandler.current_player.global_position)
+	move_and_collide(direction * delta * current_speed)
 
 func project():
 	# written in projector mob but needed here too to be called

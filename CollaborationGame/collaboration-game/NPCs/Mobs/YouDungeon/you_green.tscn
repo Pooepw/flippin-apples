@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1paatj8valya"]
+[gd_scene load_steps=13 format=3 uid="uid://b1paatj8valya"]
 
-[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_1ouje"]
+[ext_resource type="Script" uid="uid://byx1lk7mbdl5y" path="res://NPCs/Mobs/YouDungeon/you_green.gd" id="1_8p5h2"]
 [ext_resource type="Texture2D" uid="uid://cnnatoq5s4fyf" path="res://NPCs/Mobs/YouDungeon/GreenYou/you_movement_green.png" id="2_tsvdl"]
 [ext_resource type="PackedScene" uid="uid://dk3t30gncj8pl" path="res://Weapons/Bow/arm_bow.tscn" id="3_8p5h2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05lyx"]
+radius = 12.0
+height = 90.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjg4m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p5h2"]
 atlas = ExtResource("2_tsvdl")
@@ -58,8 +62,11 @@ animations = [{
 
 [node name="YouGreen" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_1ouje")
-metadata/_custom_type_script = "uid://gfi6hr38duho"
+script = ExtResource("1_8p5h2")
+health = 10
+move_speed = 200
+move_mode = 3
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_05lyx")
@@ -67,8 +74,8 @@ shape = SubResource("CapsuleShape2D_05lyx")
 [node name="VisionRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
-
-[node name="FireTimer" type="Timer" parent="."]
+scale = Vector2(16.96, 10.08)
+shape = SubResource("RectangleShape2D_gjg4m")
 
 [node name="EnemyBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_goac0")
@@ -77,3 +84,6 @@ frame_progress = 0.87686
 [node name="ArmBow" parent="." instance=ExtResource("3_8p5h2")]
 modulate = Color(0.606104, 1, 0.107698, 1)
 scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
