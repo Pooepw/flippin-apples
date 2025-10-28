@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0nl0hevuq4wv"]
+[gd_scene load_steps=5 format=3 uid="uid://d0nl0hevuq4wv"]
 
 [ext_resource type="Script" uid="uid://d0orlbfckbxs4" path="res://Systems/test_node.gd" id="1_4csnm"]
 [ext_resource type="PackedScene" uid="uid://bqj40cdq5m1p4" path="res://LevelParts/StartingTown/town_area.tscn" id="2_1syxa"]
-[ext_resource type="PackedScene" uid="uid://d3krv6n0ceeml" path="res://NPCs/Mobs/ShapeDungeon/flesh_cube.tscn" id="3_0ua5v"]
 [ext_resource type="PackedScene" uid="uid://clw8gmgb6k7bi" path="res://NPCs/Mobs/YouDungeon/you_red.tscn" id="4_il20k"]
-[ext_resource type="PackedScene" uid="uid://b1paatj8valya" path="res://NPCs/Mobs/YouDungeon/you_green.tscn" id="5_krwa8"]
+[ext_resource type="PackedScene" uid="uid://br2mys1yiq1xu" path="res://NPCs/Mobs/YouDungeon/you_purple.tscn" id="5_krwa8"]
 
 [node name="TestNode" type="Node"]
 script = ExtResource("1_4csnm")
@@ -41,14 +40,11 @@ text = "spawn test mob"
 y_sort_enabled = true
 position = Vector2(1330, -985)
 
-[node name="FleshCube" parent="." instance=ExtResource("3_0ua5v")]
-position = Vector2(1212, 1078)
-
 [node name="YouRed" parent="." instance=ExtResource("4_il20k")]
 position = Vector2(483, -1147)
 
-[node name="YouGreen" parent="." instance=ExtResource("5_krwa8")]
-position = Vector2(-192, -236)
+[node name="YouPurple" parent="." instance=ExtResource("5_krwa8")]
+position = Vector2(2063, 322)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]
