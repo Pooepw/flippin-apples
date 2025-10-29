@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl6npsb1mbsh8"]
+[gd_scene load_steps=13 format=3 uid="uid://bl6npsb1mbsh8"]
 
-[ext_resource type="Script" uid="uid://gfi6hr38duho" path="res://NPCs/Mobs/projector_mob.gd" id="1_r4vf3"]
+[ext_resource type="Script" uid="uid://bwcryc55ir4ge" path="res://NPCs/Mobs/YouDungeon/you_blue.gd" id="1_nlvax"]
 [ext_resource type="Texture2D" uid="uid://1b1aeakrdwu5" path="res://NPCs/Mobs/YouDungeon/BlueYou/you_movement_deep_blue.png" id="2_05lyx"]
 [ext_resource type="PackedScene" uid="uid://bgsr8ud2smo5j" path="res://Weapons/Wands/wire_wand.tscn" id="3_nlvax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_05lyx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ejt8"]
+radius = 593.021
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlvax"]
 atlas = ExtResource("2_05lyx")
@@ -57,9 +60,12 @@ animations = [{
 }]
 
 [node name="YouBlue" type="CharacterBody2D"]
+collision_layer = 32
 motion_mode = 1
-script = ExtResource("1_r4vf3")
-metadata/_custom_type_script = "uid://gfi6hr38duho"
+script = ExtResource("1_nlvax")
+health = 35
+move_speed = 200
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_05lyx")
@@ -67,11 +73,13 @@ shape = SubResource("CapsuleShape2D_05lyx")
 [node name="VisionRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
-
-[node name="FireTimer" type="Timer" parent="."]
+shape = SubResource("CircleShape2D_7ejt8")
 
 [node name="EnemyBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mgobh")
 
 [node name="WireWand" parent="." instance=ExtResource("3_nlvax")]
 modulate = Color(0.146683, 0.296645, 1, 1)
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://psgxi4xmlbn6"]
+[gd_scene load_steps=10 format=3 uid="uid://psgxi4xmlbn6"]
 
-[ext_resource type="Script" uid="uid://dxjjq6v3w8ybe" path="res://NPCs/Mobs/mob.gd" id="1_j1oa0"]
+[ext_resource type="Script" uid="uid://bekyvsiqihavq" path="res://NPCs/Mobs/YouDungeon/you_head.gd" id="1_cuxk2"]
 [ext_resource type="Texture2D" uid="uid://ctccixh6dl0m0" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_idle2.png" id="2_4mr8c"]
 [ext_resource type="Texture2D" uid="uid://cek8qagitet4k" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_firing1.5.png" id="2_cuxk2"]
 [ext_resource type="Texture2D" uid="uid://bebm2s2ytu6br" path="res://NPCs/Mobs/YouDungeon/HeadYou/head_you_idle.png" id="3_8dhwa"]
@@ -35,13 +35,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuxk2"]
+size = Vector2(80, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuxk2"]
+radius = 377.26
+
 [node name="YouHead" type="CharacterBody2D"]
+collision_layer = 32
 motion_mode = 1
-script = ExtResource("1_j1oa0")
+script = ExtResource("1_cuxk2")
+health = 30
+move_mode = 2
 metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="EnemyBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j1oa0")
-animation = &"Firing"
-frame = 2
-frame_progress = 1.0
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cuxk2")
+
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+shape = SubResource("CircleShape2D_cuxk2")
+
+[connection signal="animation_finished" from="EnemyBody" to="." method="_on_enemy_body_animation_finished"]
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
