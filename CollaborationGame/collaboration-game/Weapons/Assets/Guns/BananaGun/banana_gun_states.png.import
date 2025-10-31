@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xs67j8csk2r"
-path="res://.godot/imported/testweapon3.png-85ff567fd2a514ef0367402e62927950.ctex"
+uid="uid://csxkmijuj28my"
+path="res://.godot/imported/banana_gun_states.png-648749d0054c589215d0235da5a6bfab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/testweapon3.png"
-dest_files=["res://.godot/imported/testweapon3.png-85ff567fd2a514ef0367402e62927950.ctex"]
+source_file="res://Weapons/Assets/Guns/BananaGun/banana_gun_states.png"
+dest_files=["res://.godot/imported/banana_gun_states.png-648749d0054c589215d0235da5a6bfab.ctex"]
 
 [params]
 

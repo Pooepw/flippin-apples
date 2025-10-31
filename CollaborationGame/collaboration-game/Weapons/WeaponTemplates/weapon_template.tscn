@@ -1,9 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmris62sr08y5"]
+[gd_scene load_steps=2 format=3 uid="uid://c2mttjaf4h0ig"]
 
-[ext_resource type="Script" uid="uid://bpqpce4ch7axb" path="res://Weapons/WeaponTemplates/weapon_template.gd" id="1_3m24t"]
+[sub_resource type="GDScript" id="GDScript_t66f1"]
+script/source = "extends Node2D
+
+class_name weapon
+
+# weapon name is the name of the weapon
+# weapon emission_node is the \"projectile\" of the weapon. this can be an actual 
+# projectile or a shockwave of some kind. the var itself is a node string to load.
+@export var weapon_name: String
+@export var weapon_emission_node: String
+
+var weapon_icon
+var attack_states
+
+# state changes
+var firing_sprite
+var idle_sprite
+
+# weapon emission node to be instanced
+var weapon_emission
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	weapon_icon = get_node(\"WeaponIcon\")
+	weapon_icon.visible = true
+	
+	firing_sprite = get_node(\"FiringSprite\")
+	firing_sprite.visible = false
+	
+	idle_sprite = get_node(\"IdleSprite\")
+	
+	weapon_emission = load(weapon_emission_node)
+
+func _physics_process(delta: float) -> void:
+	if PlayerHandler.current_player.direction.x < 0:
+		attack_states.flip_h = false
+	if PlayerHandler.current_player.direction.x > 0:
+		attack_states.flip_h = true
+
+func start_attack():
+	pass
+
+func end_attack():
+	pass
+
+func place_weapon_on_floor():
+	weapon_icon.visible = true
+
+func emit_attack():
+	var emission_instance = weapon_emission.instantiate()
+"
 
 [node name="WeaponTemplate" type="Node2D"]
-script = ExtResource("1_3m24t")
+script = SubResource("GDScript_t66f1")
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
 
