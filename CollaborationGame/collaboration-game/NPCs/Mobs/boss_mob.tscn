@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://0uytqn4033pq"]
+[gd_scene load_steps=2 format=3 uid="uid://0uytqn4033pq"]
 
-[node name="BossMob" type="Node2D"]
+[ext_resource type="Script" uid="uid://c6ec3awahgs0k" path="res://NPCs/Mobs/boss_mob.gd" id="1_2ld8x"]
+
+[node name="BossMob" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_2ld8x")
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"

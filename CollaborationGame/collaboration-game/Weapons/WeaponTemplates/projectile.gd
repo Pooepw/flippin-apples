@@ -18,8 +18,6 @@ var emitter
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	projectile_sprite = get_node("ProjectileSprite")
-	
-
 
 func _physics_process(delta: float) -> void:
 	if projectile_health == 0:
