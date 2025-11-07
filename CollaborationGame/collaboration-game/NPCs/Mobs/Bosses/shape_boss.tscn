@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://3tiscrinrok2"]
+
+[ext_resource type="Script" uid="uid://c6ec3awahgs0k" path="res://NPCs/Mobs/boss_mob.gd" id="1_rvfvs"]
+
+[node name="ShapeBoss" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_rvfvs")
+metadata/_custom_type_script = "uid://c6ec3awahgs0k"

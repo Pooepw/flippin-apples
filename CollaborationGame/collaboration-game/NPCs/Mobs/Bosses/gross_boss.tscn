@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5kql3k48qu5n"]
+
+[ext_resource type="Script" uid="uid://bu8wlklrb74hf" path="res://NPCs/Mobs/Bosses/gross_boss.gd" id="1_3odyw"]
+
+[node name="GrossBoss" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_3odyw")
+metadata/_custom_type_script = "uid://c6ec3awahgs0k"

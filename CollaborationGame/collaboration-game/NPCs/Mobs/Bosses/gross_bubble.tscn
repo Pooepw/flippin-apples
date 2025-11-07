@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dagrlfpyfgiqu"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_fnr2j"]
+[ext_resource type="Texture2D" uid="uid://dedgff54t335g" path="res://NPCs/Mobs/BossAttacks/gross_bubble.png" id="2_0pthh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6j3b1"]
+radius = 41.0
+
+[node name="GrossBubble" type="Area2D"]
+script = ExtResource("1_fnr2j")
+damage = 30
+speed = 500
+projectile_health = 3
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6j3b1")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0pthh")
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

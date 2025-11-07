@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpyyf4ldv5kfq"]
+
+[ext_resource type="Script" uid="uid://01ytr8d4ofmh" path="res://NPCs/Mobs/Bosses/gross_boss_attack.gd" id="1_sol27"]
+
+[node name="GrossBossAttack" type="Node2D"]
+script = ExtResource("1_sol27")

@@ -1,0 +1,1 @@
+extends boss_mob
