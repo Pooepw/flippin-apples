@@ -33,13 +33,22 @@ func set_up_movement(to_position):
 	set_rotation(position.angle_to_point(to_position))
 
 func fire_self(to_position, emitted_by, edited_damage: int = damage): 
+	set_up_collision(emitted_by)
+	position = emitted_by.global_position
+	set_up_movement(to_position)
+	actual_damage = edited_damage
+	ProjectileHandler.add_child(self)
+	get_node("LiveTimer").start()
+
+func _on_body_entered(body: Node2D):
+	CollisionHandler.handle_collision(self, body)
+		
+
+func set_up_collision(emitted_by):
 	if emitted_by is player:
 		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
 	else: 
 		emitter = CollisionHandler.EMITTER_TYPES.MOB
-	position = emitted_by.global_position
-	set_up_movement(to_position)
-	# gdi godot
 	if emitter == CollisionHandler.EMITTER_TYPES.PLAYER:
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
@@ -53,10 +62,3 @@ func fire_self(to_position, emitted_by, edited_damage: int = damage):
 		set_collision_mask_value(3, true)
 		set_collision_layer_value(5, true)
 		set_collision_layer_value(5, true)
-	actual_damage = edited_damage
-	ProjectileHandler.add_child(self)
-	get_node("LiveTimer").start()
-
-func _on_body_entered(body: Node2D):
-	CollisionHandler.handle_collision(self, body)
-		

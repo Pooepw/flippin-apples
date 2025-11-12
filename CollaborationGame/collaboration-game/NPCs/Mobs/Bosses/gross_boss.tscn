@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://5kql3k48qu5n"]
+[gd_scene load_steps=3 format=3 uid="uid://5kql3k48qu5n"]
 
 [ext_resource type="Script" uid="uid://bu8wlklrb74hf" path="res://NPCs/Mobs/Bosses/gross_boss.gd" id="1_3odyw"]
+[ext_resource type="PackedScene" uid="uid://cpyyf4ldv5kfq" path="res://NPCs/Mobs/Bosses/gross_boss_attack.tscn" id="2_uleun"]
 
 [node name="GrossBoss" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_3odyw")
 metadata/_custom_type_script = "uid://c6ec3awahgs0k"
+
+[node name="GrossBossAttack" parent="." instance=ExtResource("2_uleun")]
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

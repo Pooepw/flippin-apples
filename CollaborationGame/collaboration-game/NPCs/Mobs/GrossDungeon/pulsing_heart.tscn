@@ -1,11 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://baoe7fbukhx1"]
+[gd_scene load_steps=6 format=3 uid="uid://baoe7fbukhx1"]
 
 [ext_resource type="Script" uid="uid://c336fxt1uogva" path="res://NPCs/Mobs/pulsing_mob.gd" id="1_h75rx"]
+[ext_resource type="Texture2D" uid="uid://c4vqgvwsr4lln" path="res://NPCs/Mobs/GrossDungeon/PulsingHeart/PulsingHeart2.png" id="2_hkkv0"]
+[ext_resource type="Texture2D" uid="uid://dlxrbhg7cc86u" path="res://NPCs/Mobs/GrossDungeon/PulsingHeart/PulsingHeart1.png" id="3_4ypst"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ypst"]
+radius = 20.0
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkkv0"]
+radius = 48.0
+height = 124.0
 
 [node name="PulsingHeart" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("1_h75rx")
 move_mode = 3
 metadata/_custom_type_script = "uid://c336fxt1uogva"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4ypst")
 
 [node name="PulseTimer" type="Timer" parent="."]
 one_shot = true
@@ -14,11 +29,22 @@ one_shot = true
 one_shot = true
 
 [node name="PulseArea" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PulseArea"]
+shape = SubResource("CapsuleShape2D_hkkv0")
 
 [node name="RecedeArea" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecedeArea"]
+shape = SubResource("CapsuleShape2D_4ypst")
 
 [node name="PulseSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hkkv0")
 
 [node name="RecedeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_4ypst")
+
+[connection signal="timeout" from="PulseTimer" to="." method="_on_pulse_timer_timeout"]
+[connection signal="timeout" from="RecedeTimer" to="." method="_on_recede_timer_timeout"]

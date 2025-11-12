@@ -17,6 +17,7 @@ const SCML = 2.0
 const SCMH = 3.0
 
 func _ready():
+	super()
 	multiplicative_boss_health_bonus = GlobalRandomNumberGenerator.rng.randf_range(MHBL, MHBH)
 	size_change_multiplier = GlobalRandomNumberGenerator.rng.randf_range(SCML, SCMH)
 	stat_change_multiplier = GlobalRandomNumberGenerator.rng.randf_range(SCML, SCMH)
