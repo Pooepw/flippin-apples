@@ -5,6 +5,10 @@ class_name projector_mob
 # projectile things
 @export var projectile_string: String
 @export var fire_time: float
+@export var damage_edit: int
+@export var scale_edit: float = 1.0
+@export var projectile_speed_edit: float = 1.0
+
 var projectile_node
 var fire_timer_node
 
@@ -24,7 +28,8 @@ func _ready():
 	
 func project():
 	var projectile_instance = projectile_node.instantiate()
-	projectile_instance.fire_self(PlayerHandler.current_player.global_position, self)
+	var actual_damage = damage_edit if not damage_edit == 0 else projectile_instance.damage
+	projectile_instance.fire_self(PlayerHandler.current_player.global_position, self, actual_damage, scale_edit)
 
 func _physics_process(delta: float) -> void:
 	super(delta)

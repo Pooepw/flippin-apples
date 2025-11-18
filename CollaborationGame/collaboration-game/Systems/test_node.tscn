@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0nl0hevuq4wv"]
+[gd_scene load_steps=4 format=3 uid="uid://d0nl0hevuq4wv"]
 
 [ext_resource type="Script" uid="uid://d0orlbfckbxs4" path="res://Systems/test_node.gd" id="1_4csnm"]
 [ext_resource type="PackedScene" uid="uid://bqj40cdq5m1p4" path="res://LevelParts/StartingTown/town_area.tscn" id="2_1syxa"]
-[ext_resource type="PackedScene" uid="uid://clw8gmgb6k7bi" path="res://NPCs/Mobs/YouDungeon/you_red.tscn" id="4_il20k"]
-[ext_resource type="PackedScene" uid="uid://br2mys1yiq1xu" path="res://NPCs/Mobs/YouDungeon/you_purple.tscn" id="5_krwa8"]
-[ext_resource type="PackedScene" uid="uid://psgxi4xmlbn6" path="res://NPCs/Mobs/YouDungeon/you_head.tscn" id="5_qtefg"]
+[ext_resource type="PackedScene" uid="uid://bxdra82n5mlr3" path="res://Systems/mob_spawner.tscn" id="3_0ua5v"]
 
 [node name="TestNode" type="Node"]
 script = ExtResource("1_4csnm")
@@ -41,14 +39,8 @@ text = "spawn test mob"
 y_sort_enabled = true
 position = Vector2(1330, -985)
 
-[node name="YouRed" parent="." instance=ExtResource("4_il20k")]
-position = Vector2(483, -1147)
-
-[node name="YouPurple" parent="." instance=ExtResource("5_krwa8")]
-position = Vector2(2063, 322)
-
-[node name="YouHead" parent="." instance=ExtResource("5_qtefg")]
-position = Vector2(23, 733)
+[node name="MobSpawner" parent="." instance=ExtResource("3_0ua5v")]
+position = Vector2(-300, 82)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]

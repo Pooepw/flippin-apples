@@ -32,11 +32,13 @@ func set_up_movement(to_position):
 	direction = position.direction_to(to_position)
 	set_rotation(position.angle_to_point(to_position))
 
-func fire_self(to_position, emitted_by, edited_damage: int = damage): 
+func fire_self(to_position, emitted_by, edited_damage: int = damage, edited_scale: float = 1.0, speed_edit: float = 1.0): 
 	set_up_collision(emitted_by)
 	position = emitted_by.global_position
 	set_up_movement(to_position)
 	actual_damage = edited_damage
+	scale *= edited_scale
+	speed *= speed_edit
 	ProjectileHandler.add_child(self)
 	get_node("LiveTimer").start()
 

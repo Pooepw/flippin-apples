@@ -25,7 +25,8 @@ func _on_inventory_test_pressed() -> void:
 
 
 func _on_mob_spawn_test_pressed() -> void:
-	var test_mob = load("res://NPCs/Mobs/test_hopper.tscn")
-	var test_mob_instance = test_mob.instantiate()
-	test_mob_instance.position = Vector2(0,0)
-	MobGenerator.add_child(test_mob_instance)
+	#var test_mob = load("res://NPCs/Mobs/test_hopper.tscn")
+	#var test_mob_instance = test_mob.instantiate()
+	#test_mob_instance.position = Vector2(0,0)
+	#MobGenerator.add_child(test_mob_instance)
+	get_node("MobSpawner").spawn_boss("test")

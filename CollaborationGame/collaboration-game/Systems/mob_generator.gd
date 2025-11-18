@@ -7,7 +7,7 @@ var all_mobs
 var floor_bonus = 0
 var cycle_bonus = 0
 
-
+enum MOB_TYPES {GROSS, SHAPE, SOMEBODY, YOU}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

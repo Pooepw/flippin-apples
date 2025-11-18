@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://bu8wlklrb74hf" path="res://NPCs/Mobs/Bosses/gross_boss.gd" id="1_3odyw"]
 [ext_resource type="PackedScene" uid="uid://cpyyf4ldv5kfq" path="res://NPCs/Mobs/Bosses/gross_boss_attack.tscn" id="2_uleun"]
 
-[node name="GrossBoss" type="CharacterBody2D"]
-motion_mode = 1
+[node name="GrossBoss" type="Node2D"]
 script = ExtResource("1_3odyw")
-metadata/_custom_type_script = "uid://c6ec3awahgs0k"
 
 [node name="GrossBossAttack" parent="." instance=ExtResource("2_uleun")]
 

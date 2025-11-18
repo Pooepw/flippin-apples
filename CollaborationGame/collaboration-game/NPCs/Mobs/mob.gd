@@ -10,12 +10,15 @@ enum MOVE_MODES {BASIC, PROJECTOR, STILL_PROJECTOR, SPECIAL}
 @export var move_mode: MOVE_MODES
 @export var projector_closeness: int
 
+@export var mob_type: MobGenerator.MOB_TYPES
+
 var direction = Vector2(0,0)
 var mob_spawner_parent = 0
 var current_speed
 
 func _ready() -> void:
 	current_speed = move_speed
+	set_up_collision()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -52,3 +55,7 @@ func die():
 	if not mob_spawner_parent is int:
 		mob_spawner_parent.mob_count -= 1
 	queue_free()
+
+func set_up_collision():
+	set_collision_layer_value(1, false)
+	set_collision_layer_value(6, true)

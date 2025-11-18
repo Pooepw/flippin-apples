@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" uid="uid://c6ec3awahgs0k" path="res://NPCs/Mobs/boss_mob.gd" id="1_2ld8x"]
 
-[node name="BossMob" type="CharacterBody2D"]
-motion_mode = 1
+[node name="BossMob" type="Node2D"]
 script = ExtResource("1_2ld8x")
-metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"

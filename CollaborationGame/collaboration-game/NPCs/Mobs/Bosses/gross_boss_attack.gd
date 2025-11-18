@@ -22,6 +22,7 @@ func perform_attack():
 
 func set_up_bubble(bubble, move_direction):
 	bubble.set_up_collision(boss_mob)
+	bubble.global_position = global_position
 	bubble.direction = move_direction
 	bubble.actual_damage = bubble.damage
 	ProjectileHandler.add_child(bubble)
