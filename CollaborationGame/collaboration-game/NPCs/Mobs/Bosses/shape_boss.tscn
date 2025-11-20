@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://3tiscrinrok2"]
+[gd_scene load_steps=2 format=3 uid="uid://3tiscrinrok2"]
+
+[ext_resource type="Script" uid="uid://nc7sbqtowo0i" path="res://NPCs/Mobs/Bosses/shape_boss.gd" id="1_rvfvs"]
 
 [node name="ShapeBoss" type="Node2D"]
+script = ExtResource("1_rvfvs")

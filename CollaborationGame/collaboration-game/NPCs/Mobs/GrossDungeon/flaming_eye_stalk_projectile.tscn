@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://gruj2acdm23n"]
+[gd_scene load_steps=5 format=3 uid="uid://gruj2acdm23n"]
 
 [ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_1r4fg"]
 [ext_resource type="Texture2D" uid="uid://btvith5wdw5ki" path="res://NPCs/Mobs/GrossDungeon/FlamingEyeStalk/flamingeyestalkprojectiles.png" id="2_3833e"]
+[ext_resource type="Texture2D" uid="uid://cbw28mbwsowbp" path="res://Weapons/Assets/Wands/FireballTome/fireball_tome_proj.png" id="3_i28bw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i28bw"]
-radius = 15.0
+radius = 12.0
 
 [node name="FlamingEyeStalkProjectile" type="Area2D"]
 input_pickable = false
@@ -27,5 +28,8 @@ emission_sphere_radius = 13.55
 gravity = Vector2(0, 10)
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
+modulate = Color(0.623637, 1, 0.457608, 1)
+position = Vector2(-3, -1)
+texture = ExtResource("3_i28bw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

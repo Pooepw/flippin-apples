@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://mjy57y2bnlf4"]
+
+[ext_resource type="Script" uid="uid://da42yxe8ay78s" path="res://Weapons/WeaponTemplates/projectile.gd" id="1_lsrt2"]
+[ext_resource type="Texture2D" uid="uid://cbqnb0ick6ci6" path="res://NPCs/Mobs/BossAttacks/shape_beam.png" id="2_vf157"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf157"]
+size = Vector2(80, 46)
+
+[node name="ShapeLaser" type="Area2D"]
+script = ExtResource("1_lsrt2")
+metadata/_custom_type_script = "uid://da42yxe8ay78s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vf157")
+
+[node name="LiveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_vf157")
+
+[connection signal="timeout" from="LiveTimer" to="." method="_on_live_timer_timeout"]

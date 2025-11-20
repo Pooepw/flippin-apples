@@ -17,6 +17,7 @@ collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_h75rx")
 move_mode = 3
+mob_type = 2
 metadata/_custom_type_script = "uid://c336fxt1uogva"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

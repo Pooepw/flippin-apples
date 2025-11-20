@@ -12,7 +12,7 @@ const SPAWN_TIME = 3
 
 var boss_dict = {MobGenerator.MOB_TYPES.GROSS: "res://NPCs/Mobs/Bosses/gross_boss.tscn",
 				   MobGenerator.MOB_TYPES.SHAPE: "",
-				   MobGenerator.MOB_TYPES.SOMEBODY: "",
+				   MobGenerator.MOB_TYPES.SOMEBODY: "res://NPCs/Mobs/Bosses/somebody_boss.tscn",
 				   MobGenerator.MOB_TYPES.YOU: ""}
 
 # Called when the node enters the scene tree for the first time.

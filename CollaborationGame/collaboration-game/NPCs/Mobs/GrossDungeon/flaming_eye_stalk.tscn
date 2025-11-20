@@ -70,6 +70,7 @@ move_speed = 240
 contact_damage = 3
 move_mode = 1
 projector_closeness = 20
+mob_type = 2
 metadata/_custom_type_script = "uid://gfi6hr38duho"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
