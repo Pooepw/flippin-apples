@@ -30,7 +30,7 @@ hop_time = 3
 health = 3
 contact_damage = 3
 move_mode = 3
-mob_type = 2
+mob_type = 1
 metadata/_custom_type_script = "uid://qrg7bmofy8c8"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

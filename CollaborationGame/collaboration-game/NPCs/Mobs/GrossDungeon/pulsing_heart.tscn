@@ -15,9 +15,10 @@ height = 124.0
 [node name="PulsingHeart" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_h75rx")
 move_mode = 3
-mob_type = 2
+mob_type = 1
 metadata/_custom_type_script = "uid://c336fxt1uogva"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

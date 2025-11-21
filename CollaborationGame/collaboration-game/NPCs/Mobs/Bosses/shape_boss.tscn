@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://3tiscrinrok2"]
+[gd_scene load_steps=3 format=3 uid="uid://3tiscrinrok2"]
 
 [ext_resource type="Script" uid="uid://nc7sbqtowo0i" path="res://NPCs/Mobs/Bosses/shape_boss.gd" id="1_rvfvs"]
+[ext_resource type="PackedScene" uid="uid://1uwto5dth3vl" path="res://NPCs/Mobs/Bosses/shape_boss_attack.tscn" id="2_crqoq"]
 
 [node name="ShapeBoss" type="Node2D"]
 script = ExtResource("1_rvfvs")
+
+[node name="ShapeBossAttack" parent="." instance=ExtResource("2_crqoq")]
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
