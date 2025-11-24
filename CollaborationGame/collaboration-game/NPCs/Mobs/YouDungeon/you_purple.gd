@@ -1,5 +1,7 @@
 extends mob
 
+class_name you_purple
+
 var player_leg_node
 var player_leg_frames
 var body
@@ -10,6 +12,7 @@ func _ready() -> void:
 	player_leg_frames = player_leg_node.get_node("WeaponSprites")
 	player_leg_node.start_attack()
 	body = get_node("EnemyBody")
+	set_up_collision()
 
 func _physics_process(delta: float) -> void:
 	super(delta)

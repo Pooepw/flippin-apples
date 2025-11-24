@@ -1,5 +1,7 @@
 extends staff_attack
 
+var attack_damage
+
 var life_timer
 const LIFE_TIME = 8
 
@@ -31,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	red_blood.position += red_blood_direction * RED_SPEED * delta
 
 func perform_attack(emitted_by, damage):
+	attack_damage = damage
 	set_up_emitter(emitted_by)
 	ProjectileHandler.add_child(self)
 	position = PlayerHandler.current_player.global_position
@@ -80,10 +83,10 @@ func _on_life_timer_timeout() -> void:
 	queue_free()
 
 func _on_blue_blood_body_entered(body: Node2D) -> void:
-	CollisionHandler.handle_collision(self, body)
+	CollisionHandler.handle_collision(self, body, attack_damage)
 
 func _on_red_blood_body_entered(body: Node2D) -> void:
-	CollisionHandler.handle_collision(self, body)
+	CollisionHandler.handle_collision(self, body, attack_damage)
 
 func _on_blue_blood_detection_body_entered(body: Node2D) -> void:
 	if not blue_detected:

@@ -11,7 +11,7 @@ func _ready() -> void:
 # a function that handles collisions by applying damage to the collider
 # mover is the object called move_and_collide while collision_instance is the 
 # collision that results from the call
-func handle_collision(mover, collider):
+func handle_collision(mover, collider, special_damage: int = 0):
 	print (collider)
 	# cases for collision: 
 	# player vs. contact enemy - only enemies have contact damage, but this 
@@ -25,7 +25,10 @@ func handle_collision(mover, collider):
 	# to the enemy. calculably, this is the damage - enemy resistance and knockback
 	# - enemy knockback resistance. also, the projectile loses one of its hits.
 	if mover is projectile and collider is mob:
-		collider.health -= mover.damage
+		if special_damage == 0:
+			collider.health -= mover.damage
+		else:
+			collider.health -= special_damage
 	# projectile vs projectile - 
 	# if the projectiles are from different emitters, they should be able to harm 
 	# each other. this means they should both lose one projectile health.

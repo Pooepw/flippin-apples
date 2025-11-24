@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2q536hww072i"]
+
+[ext_resource type="Script" uid="uid://blqrfnpu2srgg" path="res://NPCs/Mobs/Bosses/you_purple_boss.gd" id="1_ctps5"]
+[ext_resource type="Texture2D" uid="uid://bjrw5l1glbl2d" path="res://NPCs/Mobs/YouDungeon/PurpleYou/you_movement_purple.png" id="2_8d8fx"]
+[ext_resource type="PackedScene" uid="uid://diasufny2ew5f" path="res://Weapons/Guns/aug.tscn" id="3_4aw5f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_juwcr"]
+radius = 14.0
+height = 92.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctps5"]
+atlas = ExtResource("2_8d8fx")
+region = Rect2(0, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d8fx"]
+atlas = ExtResource("2_8d8fx")
+region = Rect2(97, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aw5f"]
+atlas = ExtResource("2_8d8fx")
+region = Rect2(194, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juwcr"]
+atlas = ExtResource("2_8d8fx")
+region = Rect2(291, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_820vs"]
+atlas = ExtResource("2_8d8fx")
+region = Rect2(388, 0, 97, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf0a0"]
+atlas = ExtResource("2_8d8fx")
+region = Rect2(485, 0, 97, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_820vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctps5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d8fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4aw5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juwcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_820vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf0a0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="YouPurpleBoss" type="CharacterBody2D"]
+collision_layer = 32
+motion_mode = 1
+script = ExtResource("1_ctps5")
+health = 500
+move_speed = 200
+mob_type = 3
+metadata/_custom_type_script = "uid://c1rlcb4gbpd7n"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_juwcr")
+
+[node name="EnemyBody" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_820vs")
+autoplay = "default"
+
+[node name="PlayerLeg" parent="." instance=ExtResource("3_4aw5f")]
+modulate = Color(1, 0.850784, 0.0226566, 1)
+scale = Vector2(3, 3)
