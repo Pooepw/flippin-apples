@@ -66,6 +66,7 @@ move_time = 5.0
 health = 10
 move_speed = 200
 move_mode = 3
+mob_type = 3
 metadata/_custom_type_script = "uid://tur4i7bvr3h4"
 
 [node name="EnemyBody" type="AnimatedSprite2D" parent="."]

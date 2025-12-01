@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cihlhn5cx2b88"]
+
+[ext_resource type="Script" uid="uid://dj2weseh6q1iq" path="res://LevelParts/Dungeon/LevelComponents/mob_group.gd" id="1_5dhdy"]
+
+[node name="MobGroup" type="Node2D"]
+script = ExtResource("1_5dhdy")

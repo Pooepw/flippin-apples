@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0nl0hevuq4wv"]
+[gd_scene load_steps=4 format=3 uid="uid://d0nl0hevuq4wv"]
 
 [ext_resource type="Script" uid="uid://d0orlbfckbxs4" path="res://Systems/test_node.gd" id="1_4csnm"]
 [ext_resource type="PackedScene" uid="uid://bqj40cdq5m1p4" path="res://LevelParts/StartingTown/town_area.tscn" id="2_1syxa"]
 [ext_resource type="PackedScene" uid="uid://bxdra82n5mlr3" path="res://Systems/mob_spawner.tscn" id="3_0ua5v"]
-[ext_resource type="PackedScene" uid="uid://d2q536hww072i" path="res://NPCs/Mobs/Bosses/you_purple_boss.tscn" id="4_il20k"]
 
 [node name="TestNode" type="Node"]
 script = ExtResource("1_4csnm")
@@ -42,9 +41,6 @@ position = Vector2(1330, -985)
 
 [node name="MobSpawner" parent="." instance=ExtResource("3_0ua5v")]
 position = Vector2(-300, 82)
-
-[node name="YouPurpleBoss" parent="." instance=ExtResource("4_il20k")]
-position = Vector2(-39, 776)
 
 [connection signal="pressed" from="FileTest" to="." method="_on_file_test_pressed"]
 [connection signal="pressed" from="GenDungeonTest" to="." method="_on_gen_dungeon_test_pressed"]

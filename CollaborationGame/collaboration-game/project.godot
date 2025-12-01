@@ -35,6 +35,7 @@ NpcDialogueHandler="*res://Systems/npc_dialogue_handler.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://by65m7kx61mi2"
 
 [input]
 

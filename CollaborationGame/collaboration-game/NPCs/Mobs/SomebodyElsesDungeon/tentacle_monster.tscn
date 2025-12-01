@@ -39,6 +39,7 @@ health = 100
 move_speed = 200
 contact_damage = 3
 move_mode = 3
+mob_type = 2
 metadata/_custom_type_script = "uid://tur4i7bvr3h4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -33,6 +33,7 @@ projectile_string = "res://NPCs/Mobs/ShapeDungeon/projector_sphere_projectile.ts
 fire_time = 2.0
 health = 30
 move_mode = 2
+mob_type = 1
 metadata/_custom_type_script = "uid://gfi6hr38duho"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

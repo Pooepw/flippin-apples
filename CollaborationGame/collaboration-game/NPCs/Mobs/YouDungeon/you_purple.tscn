@@ -36,6 +36,7 @@ motion_mode = 1
 script = ExtResource("1_t08le")
 health = 20
 move_mode = 2
+mob_type = 3
 metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

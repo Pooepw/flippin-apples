@@ -44,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uvdl"]
-radius = 38.1182
+radius = 46.0109
 
 [node name="FleshCube" type="CharacterBody2D"]
 collision_layer = 32
@@ -53,6 +53,7 @@ script = ExtResource("1_1lwgc")
 health = 10
 move_speed = 200
 contact_damage = 3
+mob_type = 1
 metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

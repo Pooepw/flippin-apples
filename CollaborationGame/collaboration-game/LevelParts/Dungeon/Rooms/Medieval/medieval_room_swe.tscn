@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=4 uid="uid://be6pkitb27ggx"]
+[gd_scene load_steps=6 format=4 uid="uid://be6pkitb27ggx"]
 
 [ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_aby0k"]
 [ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="2_fntrl"]
 [ext_resource type="Texture2D" uid="uid://b4o14trtq683k" path="res://Interfaces/UIAssets/MapInterface/t_swe.png" id="3_qr70t"]
+[ext_resource type="PackedScene" uid="uid://cihlhn5cx2b88" path="res://LevelParts/Dungeon/LevelComponents/mob_group.tscn" id="4_aar1c"]
+[ext_resource type="PackedScene" uid="uid://bxdra82n5mlr3" path="res://Systems/mob_spawner.tscn" id="5_4c8cl"]
 
 [node name="MedievalRoomSWE" type="Node2D"]
 script = ExtResource("1_aby0k")
@@ -15,3 +17,17 @@ tile_map_data = PackedByteArray("AAD1//3/AQAAAAIAAAD1//7/AAABAAEAAAD1////AAABAAE
 offset_right = 46.0
 offset_bottom = 46.0
 texture = ExtResource("3_qr70t")
+
+[node name="MobGroup" parent="." instance=ExtResource("4_aar1c")]
+
+[node name="MobSpawner" parent="MobGroup" instance=ExtResource("5_4c8cl")]
+position = Vector2(-326, 398)
+
+[node name="MobSpawner2" parent="MobGroup" instance=ExtResource("5_4c8cl")]
+position = Vector2(309, -64)
+
+[node name="MobSpawner3" parent="MobGroup" instance=ExtResource("5_4c8cl")]
+position = Vector2(238, 993)
+
+[node name="MobSpawner4" parent="MobGroup" instance=ExtResource("5_4c8cl")]
+position = Vector2(-816, 1002)

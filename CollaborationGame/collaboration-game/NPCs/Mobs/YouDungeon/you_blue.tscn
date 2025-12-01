@@ -65,6 +65,7 @@ motion_mode = 1
 script = ExtResource("1_nlvax")
 health = 35
 move_speed = 200
+mob_type = 3
 metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
