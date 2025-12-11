@@ -59,9 +59,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FlamingEyeStalk" type="CharacterBody2D"]
+[node name="FlamingEyeStalk" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_t57ap")
 projectile_string = "res://NPCs/Mobs/GrossDungeon/flaming_eye_stalk_projectile.tscn"
 fire_time = 0.3

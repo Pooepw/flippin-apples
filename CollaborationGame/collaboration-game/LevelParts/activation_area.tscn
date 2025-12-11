@@ -7,7 +7,6 @@ size = Vector2(2400, 2400)
 
 [node name="ActivationArea" type="Area2D"]
 collision_layer = 0
-collision_mask = 4
 script = ExtResource("1_epahb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

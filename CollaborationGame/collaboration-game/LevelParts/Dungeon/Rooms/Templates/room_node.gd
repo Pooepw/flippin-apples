@@ -9,12 +9,42 @@ class_name room
 
 var grid_location = Vector2(0, 0)
 
-var room_aspect
+var room_aspect: DungeonGenerator.ROOM_EFFECTS = DungeonGenerator.ROOM_EFFECTS.NOTHING
 var doors_node
+var mob_spawner_group_node
+
+# treasure spawnable
+var weapon_pedestal_node
+var weapon_loot_node
+var treasure_point_position
+
+func _ready():
+	if not self is starting_room:
+		mob_spawner_group_node = get_node("MobGroup")
+		treasure_point_position = get_node("TreasurePoint").position
+	#get_node("TextureRect").visible = false
+
+
+func set_up_room_aspect():
+	if room_aspect == DungeonGenerator.ROOM_EFFECTS.MOBS:
+		mob_spawner_group_node.set_up_spawns()
+	if room_aspect == DungeonGenerator.ROOM_EFFECTS.TREASURE:
+		weapon_pedestal_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_pedestal.tscn")
+		weapon_loot_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_loot.tscn")
+		var loot = LootGenerator.generate_loot()
+		var weapon_loot_instance = weapon_loot_node.instantiate()
+		weapon_loot_instance.set_up_loot(loot)
+		var weapon_pedestal_instance = weapon_pedestal_node.instantiate()
+		weapon_pedestal_instance.add_child(weapon_loot_instance)
+		weapon_pedestal_instance.weapon_loot = weapon_loot_instance
+		add_child(weapon_pedestal_instance)
+		weapon_pedestal_instance.position = treasure_point_position
+
 
 func activate_room_aspect():
-	if room_aspect is mob_spawner_class:
-		room_aspect.start_spawning()
+	if room_aspect == DungeonGenerator.ROOM_EFFECTS.MOBS:
+		print("spawning mobs")
+		mob_spawner_group_node.activate_spawners()
 		activate_doors()
 		
 func activate_doors():
@@ -32,3 +62,4 @@ func activate_doors():
 	if west_room_closed:
 		var west_door = doors_node.get_node("MedievalWestDoor")
 		west_door.visible = false
+ 

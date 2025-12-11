@@ -59,9 +59,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="YouBlue" type="CharacterBody2D"]
+[node name="YouBlue" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_nlvax")
 health = 35
 move_speed = 200

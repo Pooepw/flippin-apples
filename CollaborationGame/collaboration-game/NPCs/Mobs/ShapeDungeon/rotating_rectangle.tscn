@@ -38,13 +38,13 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="RotatingRectangle" type="CharacterBody2D"]
+[node name="RotatingRectangle" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_17ifl")
-direction_rotation_amount = 0.02
+direction_rotation_amount = 0.06
 health = 10
-move_speed = 300
+move_speed = 600
 contact_damage = 3
 move_mode = 3
 mob_type = 1
@@ -65,3 +65,5 @@ angle_max = 150.0
 sprite_frames = SubResource("SpriteFrames_5hu22")
 autoplay = "default"
 frame_progress = 0.761229
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

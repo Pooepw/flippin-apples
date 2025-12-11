@@ -1,0 +1,16 @@
+res://NPCs/Mobs/GrossDungeon/flaming_eye_stalk.tscn
+res://NPCs/Mobs/GrossDungeon/teething_mouth.tscn
+res://NPCs/Mobs/GrossDungeon/hopping_arm.tscn
+res://NPCs/Mobs/GrossDungeon/pulsing_heart.tscn
+res://NPCs/Mobs/ShapeDungeon/flesh_cube.tscn
+res://NPCs/Mobs/ShapeDungeon/projector_sphere.tscn
+res://NPCs/Mobs/ShapeDungeon/rotating_rectangle.tscn
+res://NPCs/Mobs/ShapeDungeon/star_hopper.tscn
+res://NPCs/Mobs/SomebodyElsesDungeon/slime_shell.tscn
+res://NPCs/Mobs/SomebodyElsesDungeon/tentacle_monster.tscn
+res://NPCs/Mobs/SomebodyElsesDungeon/zombie_axeman.tscn
+res://NPCs/Mobs/YouDungeon/you_blue.tscn
+res://NPCs/Mobs/YouDungeon/you_green.tscn
+res://NPCs/Mobs/YouDungeon/you_head.tscn
+res://NPCs/Mobs/YouDungeon/you_purple.tscn
+res://NPCs/Mobs/YouDungeon/you_red.tscn

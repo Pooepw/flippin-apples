@@ -54,9 +54,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TeethingMouth" type="CharacterBody2D"]
+[node name="TeethingMouth" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_o54y1")
 projectile_string = "res://NPCs/Mobs/GrossDungeon/teething_mouth_projectile.tscn"
 fire_time = 2.0

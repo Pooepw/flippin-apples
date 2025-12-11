@@ -18,7 +18,10 @@ func handle_collision(mover, collider, special_damage: int = 0):
 	# check will still apply to ranged enemies; they will simply have 0 contact 
 	# damage
 	if mover is player and collider is mob:
-		mover.current_hp -= collider.contact_damage
+		if special_damage == 0:
+			mover.current_hp -= collider.contact_damage
+		else:
+			mover.current_hp -= special_damage
 		mover.recently_damaged = true
 		mover.invincibility_timer.start(mover.invincibility_time)
 	# projectile vs. enemy - the projectile deals its damage and its knockback

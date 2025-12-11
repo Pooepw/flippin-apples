@@ -30,9 +30,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="TentacleMonster" type="CharacterBody2D"]
+[node name="TentacleMonster" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_4r7v3")
 move_time = 3.0
 health = 100
@@ -54,4 +54,5 @@ frame_progress = 0.177649
 [node name="DirectionTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

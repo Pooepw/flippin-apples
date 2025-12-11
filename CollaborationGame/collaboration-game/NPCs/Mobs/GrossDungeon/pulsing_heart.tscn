@@ -12,11 +12,12 @@ height = 46.0
 radius = 48.0
 height = 124.0
 
-[node name="PulsingHeart" type="CharacterBody2D"]
+[node name="PulsingHeart" type="Area2D"]
 collision_layer = 32
-collision_mask = 0
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_h75rx")
+health = 20
+contact_damage = 5
 move_mode = 3
 metadata/_custom_type_script = "uid://c336fxt1uogva"
 
@@ -49,3 +50,5 @@ texture = ExtResource("3_4ypst")
 
 [connection signal="timeout" from="PulseTimer" to="." method="_on_pulse_timer_timeout"]
 [connection signal="timeout" from="RecedeTimer" to="." method="_on_recede_timer_timeout"]
+[connection signal="body_entered" from="PulseArea" to="." method="_on_pulse_area_body_entered"]
+[connection signal="body_entered" from="RecedeArea" to="." method="_on_recede_area_body_entered"]

@@ -46,9 +46,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uvdl"]
 radius = 46.0109
 
-[node name="FleshCube" type="CharacterBody2D"]
+[node name="FleshCube" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_1lwgc")
 health = 10
 move_speed = 200
@@ -72,3 +72,5 @@ frame_progress = 0.31236
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_7uvdl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

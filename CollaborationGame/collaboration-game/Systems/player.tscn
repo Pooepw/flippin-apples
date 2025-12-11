@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bwfc2q7gksdmo" path="res://Systems/conceptone-Sheet.png" id="4_phl2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6cjf"]
+size = Vector2(23, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ola1w"]
 atlas = ExtResource("3_e6cjf")
@@ -112,7 +113,7 @@ motion_mode = 1
 script = ExtResource("1_nydu1")
 
 [node name="MovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(1.5, 21.5)
 shape = SubResource("RectangleShape2D_e6cjf")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,5 +1,7 @@
 extends Node
 
+enum ROOM_EFFECTS {TREASURE, NOTHING, MOBS}
+
 var dungeon_level = 0
 
 var current_dungeon = []
@@ -19,13 +21,9 @@ var east_block_off
 var west_block_off
 
 # these will be things to put into rooms
-# mob spawner node to place inside of rooms
-var mob_spawner
 var activator_node
 
-# treasure spawnable
-var weapon_pedestal_node
-var weapon_loot_node
+
 
 var fog_node
 var current_dungeon_map
@@ -36,17 +34,16 @@ var display_enter_prompt = false
 
 var spawned_treasure = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	north_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_north_block_off.tscn")
 	south_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_south_block_off.tscn")
 	east_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_east_block_off.tscn")
 	west_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_west_block_off.tscn")
-	mob_spawner = load("res://Systems/mob_spawner.tscn")
 	activator_node = load("res://LevelParts/activation_area.tscn")
 	fog_node = load("res://LevelParts/Dungeon/fog.tscn")
-	weapon_pedestal_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_pedestal.tscn")
-	weapon_loot_node = load("res://LevelParts/Dungeon/LevelComponents/weapon_loot.tscn")
+
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
@@ -54,6 +51,7 @@ func generate_dungeon(start_node, max_distance):
 	("res://LootList/AllLootList.txt"))
 	generate_grid(max_distance)
 	start_map()
+	MobGenerator.add_to_pool(GlobalRandomNumberGenerator.rng.randi_range(1,5))
 	var start = start_dungeon(start_node)
 	place_room(start, Vector2(max_distance, max_distance))
 	place_exit()
@@ -418,36 +416,27 @@ func decorate_rooms():
 				var fog_instance = fog_node.instantiate()
 				selected_room.add_child(fog_instance)
 				var attribute = select_attribute()
-				if not attribute is String:
-					selected_room.add_child(attribute)
-					attribute.position = selected_room.position
+				if not attribute == ROOM_EFFECTS.NOTHING:
 					selected_room.room_aspect = attribute
+					selected_room.set_up_room_aspect()
 					var activator = activator_node.instantiate()
 					selected_room.add_child(activator)
 
 # gives a room a thing to spawn between nothing, mobs, or treasure
 func select_attribute():
-	var choice = GlobalRandomNumberGenerator.rng.randi_range(1, 3)
-	match choice:
-		1:
-			return "nothing"
-		2:
-			var spawner = mob_spawner.instantiate()
-			spawner.num_mobs_to_spawn = GlobalRandomNumberGenerator.rng.randi_range(10, 20)
-			return "spawner"
-		3: 
-			if not spawned_treasure:
-				var loot = LootGenerator.generate_loot()
-				var weapon_loot_instance = weapon_loot_node.instantiate()
-				weapon_loot_instance.set_up_loot(loot)
-				spawned_treasure = true
-				var weapon_pedestal_instance = weapon_pedestal_node.instantiate()
-				weapon_pedestal_instance.add_child(weapon_loot_instance)
-				weapon_pedestal_instance.weapon_loot = weapon_loot_instance
-				print("spawned loot")
-				return weapon_pedestal_instance
-			else:
-				return "nothing"
+	var choice = GlobalRandomNumberGenerator.rng.randi_range(1, 100)
+	if choice < 10:
+		return ROOM_EFFECTS.NOTHING
+	if choice < 90 and choice >= 10:
+		return ROOM_EFFECTS.MOBS
+	if choice >= 90:
+		if not spawned_treasure:
+			spawned_treasure = true
+			print("spawned loot")
+			return ROOM_EFFECTS.TREASURE
+		else:
+			return ROOM_EFFECTS.NOTHING
+			
 
 # currently unused; will place doors on rooms so that the rooms cannot be 
 # escaped from before clearing the mobs
@@ -477,7 +466,10 @@ func make_map():
 		for column in size:
 			var selected_room = current_dungeon[row][column]
 			if selected_room is not int:
-				current_dungeon_map.add_node(row, column, selected_room.get_node("TextureRect"))
+				var room_square = selected_room.get_node("TextureRect")
+				var map_square = room_square.duplicate()
+				room_square.visible = false
+				current_dungeon_map.add_node(row, column, map_square)
 
 # called when a floor is finished; this means that the player has reached an
 # exit or the dungeon is being deleted (debugging)

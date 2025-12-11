@@ -20,7 +20,7 @@ func _ready() -> void:
 	map_nodes = get_node("BaseMap")
 	player_icon = get_node("BaseMap/PlayerIcon")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	player_icon.position = BASE_PLAYER_POSITION + (player_location * SPACING)
 
 func add_node(x, y, node):

@@ -4,10 +4,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mg6s"]
 
-[node name="ProjectorMob" type="CharacterBody2D"]
-motion_mode = 1
+[node name="ProjectorMob" type="Area2D"]
 script = ExtResource("1_f0ure")
 move_mode = 2
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0mg6s")

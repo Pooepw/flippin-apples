@@ -34,23 +34,28 @@ func project():
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if player_in_range:
-		if move_mode == MOVE_MODES.STILL_PROJECTOR:
-			attacking_animation_node.visible = true
-			idle_node.visible = false
-		elif move_mode == MOVE_MODES.PROJECTOR:
-			attacking_animation_node.visible = false
-			idle_node.visible = true
-			direction = Vector2(0,0)
+		activate_shooting()
 	elif not player_in_range:
-		if move_mode == MOVE_MODES.STILL_PROJECTOR:
-			idle_node.visible = true
-			attacking_animation_node.visible = false
-		elif move_mode == MOVE_MODES.PROJECTOR:
-			attacking_animation_node.visible = true
-			idle_node.visible = false
-			direction = global_position.direction_to(PlayerHandler.current_player.global_position)
-			move_and_collide(direction * current_speed * delta)
-	
+		move(delta)
+
+func activate_shooting():
+	if move_mode == MOVE_MODES.STILL_PROJECTOR:
+		attacking_animation_node.visible = true
+		idle_node.visible = false
+	elif move_mode == MOVE_MODES.PROJECTOR:
+		attacking_animation_node.visible = false
+		idle_node.visible = true
+		direction = Vector2(0,0)
+
+func move(delta):
+	if move_mode == MOVE_MODES.STILL_PROJECTOR:
+		idle_node.visible = true
+		attacking_animation_node.visible = false
+	elif move_mode == MOVE_MODES.PROJECTOR:
+		attacking_animation_node.visible = true
+		idle_node.visible = false
+		direction = global_position.direction_to(PlayerHandler.current_player.global_position)
+		global_position += direction * current_speed * delta
 
 func _on_vision_range_body_entered(body: Node2D) -> void:
 	print ("player in range")

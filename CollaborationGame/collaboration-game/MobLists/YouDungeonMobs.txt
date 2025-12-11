@@ -1,0 +1,5 @@
+res://NPCs/Mobs/YouDungeon/you_blue.tscn
+res://NPCs/Mobs/YouDungeon/you_green.tscn
+res://NPCs/Mobs/YouDungeon/you_head.tscn
+res://NPCs/Mobs/YouDungeon/you_purple.tscn
+res://NPCs/Mobs/YouDungeon/you_red.tscn

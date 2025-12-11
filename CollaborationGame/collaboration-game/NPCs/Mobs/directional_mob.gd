@@ -24,7 +24,7 @@ func _ready() -> void:
 	direction_timer.start(move_time)
 
 func special_movement(delta):
-	move_and_collide(direction * delta * current_speed)
+	global_position += direction * current_speed * delta
 
 
 func _on_direction_timer_timeout() -> void:

@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://b6gol3ipcgqlu" path="res://NPCs/Mobs/GrossDungeon/HoppingArm/HoppingArmIdle1.png" id="3_dgoqd"]
 [ext_resource type="Texture2D" uid="uid://1tljxttwjpgw" path="res://NPCs/Mobs/GrossDungeon/HoppingArm/HoppingArmIdle2.png" id="4_ynfj3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgoqd"]
-size = Vector2(32, 59)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8xmg"]
 animations = [{
 "frames": [{
@@ -22,19 +19,19 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="HoppingArm" type="CharacterBody2D"]
-motion_mode = 1
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgoqd"]
+radius = 11.0
+height = 66.0
+
+[node name="HoppingArm" type="Area2D"]
+collision_layer = 32
+input_pickable = false
 script = ExtResource("1_5ibnp")
-ordinary_move_speed = 200
-hop_time = 3
+ordinary_move_speed = 600
 health = 3
 contact_damage = 3
 move_mode = 3
 metadata/_custom_type_script = "uid://qrg7bmofy8c8"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
-shape = SubResource("RectangleShape2D_dgoqd")
 
 [node name="HopTimer" type="Timer" parent="."]
 one_shot = true
@@ -50,5 +47,10 @@ sprite_frames = SubResource("SpriteFrames_p8xmg")
 autoplay = "default"
 frame_progress = 0.892651
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_dgoqd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]
 [connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]

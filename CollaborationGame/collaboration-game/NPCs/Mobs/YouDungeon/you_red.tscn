@@ -58,16 +58,16 @@ animations = [{
 radius = 12.0
 height = 82.0
 
-[node name="YouRed" type="CharacterBody2D"]
+[node name="YouRed" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_oyvyr")
 move_time = 5.0
 health = 10
 move_speed = 200
 move_mode = 3
 mob_type = 3
-metadata/_custom_type_script = "uid://tur4i7bvr3h4"
+metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 
 [node name="EnemyBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t6qu7")

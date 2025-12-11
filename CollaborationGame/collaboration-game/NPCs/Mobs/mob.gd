@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 
 class_name mob
 
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	match move_mode:
 		MOVE_MODES.BASIC:
 			direction = global_position.direction_to(PlayerHandler.current_player.global_position)
-			move_and_collide(direction * delta * current_speed)
+			global_position += direction * current_speed * delta
 		MOVE_MODES.PROJECTOR:
 			#direction = global_position.direction_to(PlayerHandler.current_player.global_position)
 			#if global_position.distance_to(PlayerHandler.current_player.global_position) > projector_closeness:
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 func special_movement(delta):
 	# overwrite this function in a new mob class that uses mob as a base.
 	direction = global_position.direction_to(PlayerHandler.current_player.global_position)
-	move_and_collide(direction * delta * current_speed)
+	global_position += direction * current_speed * delta
 
 func project():
 	# written in projector mob but needed here too to be called
@@ -59,3 +59,8 @@ func die():
 func set_up_collision():
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(6, true)
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is player:
+		CollisionHandler.handle_collision(body, self)

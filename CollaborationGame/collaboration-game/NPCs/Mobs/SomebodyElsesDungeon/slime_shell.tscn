@@ -25,9 +25,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_al3dc"]
 radius = 389.032
 
-[node name="SlimeShell" type="CharacterBody2D"]
+[node name="SlimeShell" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_p4oke")
 projectile_string = "res://NPCs/Mobs/SomebodyElsesDungeon/slime_shell_projectile.tscn"
 fire_time = 1.0

@@ -41,9 +41,9 @@ size = Vector2(80, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_cuxk2"]
 radius = 377.26
 
-[node name="YouHead" type="CharacterBody2D"]
+[node name="YouHead" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_cuxk2")
 health = 30
 move_mode = 2

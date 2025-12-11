@@ -10,4 +10,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	health_bar.value = float(PlayerHandler.current_player.current_hp/PlayerHandler.current_player.hp) * 100
+	health_bar.value = (float(PlayerHandler.current_player.current_hp)/float(PlayerHandler.current_player.hp)) * 100

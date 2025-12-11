@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://tur4i7bvr3h4" path="res://NPCs/Mobs/directional_mob.gd" id="1_408nl"]
 
-[node name="DirectionalMob" type="CharacterBody2D"]
+[node name="DirectionalMob" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_408nl")
 move_mode = 3
 metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"

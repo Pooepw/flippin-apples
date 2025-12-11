@@ -30,9 +30,9 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="YouPurple" type="CharacterBody2D"]
+[node name="YouPurple" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_t08le")
 health = 20
 move_mode = 2

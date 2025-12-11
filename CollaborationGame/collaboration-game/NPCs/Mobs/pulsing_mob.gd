@@ -52,3 +52,12 @@ func _on_recede_timer_timeout() -> void:
 	recede_area.monitoring = true
 	recede_area.monitorable = true
 	pulse_timer.start(pulse_time)
+
+
+func _on_recede_area_body_entered(body: Node2D) -> void:
+	if body is player:
+		CollisionHandler.handle_collision(body, self)
+
+func _on_pulse_area_body_entered(body: Node2D) -> void:
+	if body is player:
+		CollisionHandler.handle_collision(body, self, contact_damage * 2)

@@ -25,9 +25,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_tohnv"]
 radius = 374.589
 
-[node name="ProjectorSphere" type="CharacterBody2D"]
+[node name="ProjectorSphere" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_6fpsh")
 projectile_string = "res://NPCs/Mobs/ShapeDungeon/projector_sphere_projectile.tscn"
 fire_time = 2.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cy7ifauuafnth"]
+[gd_scene load_steps=8 format=4 uid="uid://cy7ifauuafnth"]
 
 [ext_resource type="PackedScene" uid="uid://dqkannom0od43" path="res://LevelParts/Dungeon/TileMapLayers/Medieval/dungeon_tiles.tscn" id="1_2742y"]
 [ext_resource type="Script" uid="uid://bv70dbk5f2l4s" path="res://LevelParts/Dungeon/Rooms/Templates/room_node.gd" id="1_m1aw5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byvti5e22ye4b" path="res://Interfaces/UIAssets/MapInterface/1_way_e.png" id="4_wr8ft"]
 [ext_resource type="PackedScene" uid="uid://cihlhn5cx2b88" path="res://LevelParts/Dungeon/LevelComponents/mob_group.tscn" id="5_447j6"]
 [ext_resource type="PackedScene" uid="uid://bxdra82n5mlr3" path="res://Systems/mob_spawner.tscn" id="6_tasit"]
+[ext_resource type="PackedScene" uid="uid://cwy263d20e3o3" path="res://LevelParts/Dungeon/LevelComponents/treasure_point.tscn" id="7_1e41f"]
 
 [node name="MedievalExitRoomE" type="Node2D"]
 script = ExtResource("1_m1aw5")
@@ -23,6 +24,9 @@ position = Vector2(-847, -140)
 offset_right = 46.0
 offset_bottom = 46.0
 texture = ExtResource("4_wr8ft")
+
+[node name="TreasurePoint" parent="." instance=ExtResource("7_1e41f")]
+position = Vector2(296, -361)
 
 [node name="MobGroup" parent="." instance=ExtResource("5_447j6")]
 

@@ -34,8 +34,8 @@ func _physics_process(delta: float) -> void:
 
 func perform_attack(emitted_by, damage):
 	attack_damage = damage
-	set_up_emitter(emitted_by)
 	ProjectileHandler.add_child(self)
+	set_up_emitter(emitted_by)
 	position = PlayerHandler.current_player.global_position
 	set_up_blue()
 	set_up_red()

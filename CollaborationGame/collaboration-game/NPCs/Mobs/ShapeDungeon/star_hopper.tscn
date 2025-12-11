@@ -21,9 +21,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="StarHopper" type="CharacterBody2D"]
+[node name="StarHopper" type="Area2D"]
 collision_layer = 32
-motion_mode = 1
+input_pickable = false
 script = ExtResource("1_mbavj")
 ordinary_move_speed = 1000
 health = 60
@@ -46,5 +46,6 @@ sprite_frames = SubResource("SpriteFrames_weoxh")
 autoplay = "default"
 frame_progress = 0.522206
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HopTimer" to="." method="_on_hop_timer_timeout"]
 [connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]
