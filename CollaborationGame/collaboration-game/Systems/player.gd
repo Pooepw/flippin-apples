@@ -33,7 +33,7 @@ var speed_mult = 1.0
 
 var recently_damaged = false
 var invincibility_timer
-var invincibility_time = 0.1
+var invincibility_time = 0.5
 var one_time_invincibility_active = false
 
 # weapon stats
@@ -163,3 +163,9 @@ func equip_weapon(new_weapon):
 # away
 func _on_invincibility_frames_timeout() -> void:
 	recently_damaged = false
+	set_collision_layer_value(1, true)
+
+func handle_damage():
+	recently_damaged = true
+	invincibility_timer.start(invincibility_time)
+	set_collision_layer_value(1, false)

@@ -22,8 +22,7 @@ func handle_collision(mover, collider, special_damage: int = 0):
 			mover.current_hp -= collider.contact_damage
 		else:
 			mover.current_hp -= special_damage
-		mover.recently_damaged = true
-		mover.invincibility_timer.start(mover.invincibility_time)
+		mover.handle_damage()
 	# projectile vs. enemy - the projectile deals its damage and its knockback
 	# to the enemy. calculably, this is the damage - enemy resistance and knockback
 	# - enemy knockback resistance. also, the projectile loses one of its hits.

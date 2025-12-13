@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 	if not active and not pick_up_text == null and pick_up_text.visible:
 		pick_up_text.visible = false 
 
+# loot_item is the string to be instanced by the player when adding to inventory
 func set_up_loot(loot_item):
 	pick_up_text = get_node("PickupText")
 	pick_up_text.visible = false
