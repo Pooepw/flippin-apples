@@ -15,7 +15,7 @@ func _on_file_test_pressed() -> void:
 
 
 func _on_gen_dungeon_test_pressed() -> void:
-	DungeonGenerator.generate_dungeon("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn", 3)
+	DungeonGenerator.generate_dungeon("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn", 2)
 
 
 func _on_inventory_test_pressed() -> void:

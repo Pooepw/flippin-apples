@@ -32,6 +32,12 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 
 func toggle_pickup_active(state: bool):
 	active = state
+	InputHandler.loot_available = state
+	if state:
+		InputHandler.loot_string = loot
+		InputHandler.current_loot_pedestal = self
+	elif not state:
+		InputHandler.loot_string = ""
 
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	if body is player:

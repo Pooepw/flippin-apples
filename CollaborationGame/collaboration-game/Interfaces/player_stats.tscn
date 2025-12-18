@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://do1i8kwta3aps"]
+[gd_scene load_steps=7 format=3 uid="uid://do1i8kwta3aps"]
 
 [ext_resource type="Script" uid="uid://bns05respptnm" path="res://Interfaces/player_stats.gd" id="1_xx8t1"]
 [ext_resource type="Texture2D" uid="uid://bdloe18xstufq" path="res://Interfaces/UIAssets/HealthBarBg.png" id="2_5d3dj"]
 [ext_resource type="Texture2D" uid="uid://btugl0iono7vq" path="res://Interfaces/UIAssets/HealthBarFill.png" id="3_0ikq1"]
+[ext_resource type="Texture2D" uid="uid://bacfpnqs1yyyr" path="res://Interfaces/UIAssets/resource_bar_bg.png" id="4_ejddq"]
+[ext_resource type="Texture2D" uid="uid://d4d87wg5ctaek" path="res://Interfaces/UIAssets/stamina_bar_fill.png" id="5_fgwlj"]
+[ext_resource type="Texture2D" uid="uid://dgqj7y00bchmd" path="res://Interfaces/UIAssets/mana_bar_fill.png" id="6_f6d58"]
 
 [node name="PlayerStats" type="Control"]
 layout_mode = 3
@@ -16,3 +19,21 @@ offset_right = 700.0
 offset_bottom = 100.0
 texture_under = ExtResource("2_5d3dj")
 texture_progress = ExtResource("3_0ikq1")
+
+[node name="StaminaBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 34.6667
+offset_top = 74.6667
+offset_right = 534.667
+offset_bottom = 134.667
+texture_under = ExtResource("4_ejddq")
+texture_progress = ExtResource("5_fgwlj")
+
+[node name="ManaBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 34.6667
+offset_top = 104.0
+offset_right = 534.667
+offset_bottom = 164.0
+texture_under = ExtResource("4_ejddq")
+texture_progress = ExtResource("6_f6d58")

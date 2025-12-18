@@ -5,6 +5,9 @@ enum input_states {MOVE, UI}
 var input_state = input_states.MOVE
 
 var player_inventory
+var loot_available = false
+var loot_string
+var current_loot_pedestal
 
 func set_up_inventory_control() -> void:
 	player_inventory = PlayerHandler.current_player.get_node("PlayerInterface").get_node("InventorySystem")
@@ -35,6 +38,9 @@ func _input(event: InputEvent) -> void:
 						NpcDialogueHandler.start_dialogue()
 					elif NpcDialogueHandler.in_dialogue:
 						NpcDialogueHandler.end_line()
+					if loot_available:
+						player_inventory.add_to_inventory(loot_string)
+						current_loot_pedestal.queue_free()
 				KEY_1:
 					player_inventory.swap_weapon(0)
 				KEY_2:
