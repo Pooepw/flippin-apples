@@ -19,9 +19,8 @@ func _on_gen_dungeon_test_pressed() -> void:
 
 
 func _on_inventory_test_pressed() -> void:
-	var test_weapon = load("res://Weapons/Staves/vein_staff.tscn")
-	var test_weapon_instance = test_weapon.instantiate()
-	PlayerHandler.current_player.equip_weapon(test_weapon_instance)
+	var weapon_string = "res://Weapons/Staves/tree_branch.tscn"
+	PlayerHandler.current_player.get_node("PlayerInterface/InventorySystem").add_to_inventory(weapon_string)
 
 
 func _on_mob_spawn_test_pressed() -> void:

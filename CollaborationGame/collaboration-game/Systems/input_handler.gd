@@ -4,6 +4,11 @@ enum input_states {MOVE, UI}
 
 var input_state = input_states.MOVE
 
+var player_inventory
+
+func set_up_inventory_control() -> void:
+	player_inventory = PlayerHandler.current_player.get_node("PlayerInterface").get_node("InventorySystem")
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed:
@@ -22,7 +27,7 @@ func _input(event: InputEvent) -> void:
 					PlayerHandler.current_player.d_pressed = true
 				KEY_Z:
 					if DungeonGenerator.display_exit_prompt:
-						DungeonGenerator.clear_dungeon()
+						end_dungeon_level()
 					if DungeonGenerator.display_enter_prompt:
 						DungeonGenerator.generate_dungeon(
 							("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn"), 3)
@@ -30,7 +35,12 @@ func _input(event: InputEvent) -> void:
 						NpcDialogueHandler.start_dialogue()
 					elif NpcDialogueHandler.in_dialogue:
 						NpcDialogueHandler.end_line()
-						
+				KEY_1:
+					player_inventory.swap_weapon(0)
+				KEY_2:
+					player_inventory.swap_weapon(1)
+				KEY_3:
+					player_inventory.swap_weapon(2)
 						
 		if not event.pressed:
 			match event.keycode:
@@ -50,22 +60,23 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
 			match event.button_index:
-				1:
+				2:
 					if PlayerHandler.current_player.weapon_equipped():
 						PlayerHandler.current_player.equipped_weapon.start_attack()
 						print("fire")
 				4:
-					#insert weapon swapping (leftward)
-					pass
+					var to_slot = player_inventory.slot_number - 1 if player_inventory.slot_number - 1 >= 0 else 2
+					player_inventory.swap_weapon(to_slot)
 				5:
-					#insert weapon swapping (rightward)
-					pass
+					var to_slot = player_inventory.slot_number + 1 if player_inventory.slot_number + 1 <= 2 else 0
+					player_inventory.swap_weapon(to_slot)
 		if not event.pressed:
 			match event.button_index:
-				1:
+				2:
 					if PlayerHandler.current_player.weapon_equipped():
 						PlayerHandler.current_player.equipped_weapon.end_attack()
 						print("stop fire")
-				
-			#if PlayerHandler.current_player.direction == Vector2(0, 0):
-				#PlayerHandler.current_player.moving = false
+
+func end_dungeon_level():
+	# needs handling of going to next level
+	DungeonGenerator.clear_dungeon()

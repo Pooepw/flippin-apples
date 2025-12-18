@@ -24,17 +24,7 @@ var firing = false
 
 # sets up the weapon sprites
 func _ready() -> void:
-	weapon_icon = get_node("WeaponIcon")
-	weapon_icon.visible = true
-	
-	weapon_sprites = get_node("WeaponSprites")
-	weapon_sprites.play("Idle")
-	weapon_emission = load(weapon_emission_node)
-	if get_parent() is player:
-		weapon_owner = OWNERS.PLAYER
-	else:
-		weapon_owner = OWNERS.ENEMY
-		weapon_owner_node = get_parent()
+	set_up_basic_weapon_things()
 
 # flip the weapon's orientation depending on direction
 func _physics_process(_delta: float) -> void:
@@ -66,3 +56,16 @@ func start_attack():
 func end_attack():
 	firing = false
 	swap_sprite("Idle")
+
+func set_up_basic_weapon_things():
+	weapon_icon = get_node("WeaponIcon")
+	weapon_icon.visible = true
+	
+	weapon_sprites = get_node("WeaponSprites")
+	weapon_sprites.play("Idle")
+	weapon_emission = load(weapon_emission_node)
+	if get_parent() is player:
+		weapon_owner = OWNERS.PLAYER
+	else:
+		weapon_owner = OWNERS.ENEMY
+		weapon_owner_node = get_parent()

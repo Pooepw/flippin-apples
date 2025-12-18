@@ -66,6 +66,8 @@ func _ready() -> void:
 	hp_regen_timer = get_node("HealthRegenTimer")
 	mana_regen_timer = get_node("ManaRegenTimer")
 	stam_regen_timer = get_node("StaminaRegenTimer")
+	
+	InputHandler.set_up_inventory_control()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta) -> void:
@@ -138,26 +140,16 @@ func _can_regen_health():
 func weapon_equipped():
 	return not equipped_weapon is String
 
-# new_weapon is the instance of the weapon
-func equip_weapon(new_weapon):
-	equipped_weapon = new_weapon
-	add_child(new_weapon)
-	player_interface.set_weapon_slot(new_weapon)
-#
-#func pickup_weapon(new_weapon):
-	#if weapon_count < inventory_size:
-		#var weapon_slot = 0
-		#while weapon_inventory[weapon_slot] is weapon:
-			#weapon_slot += 1
-		#weapon_inventory[weapon_slot] = new_weapon
-		#weapon_count += 1
-	#else:
-		#drop_weapon(current_slot)
-		# need to create weapon drop code
-		#equipped_weapon = new_weapon
-#
-#func drop_weapon(inventory_slot):
-	#weapon_inventory[inventory_slot].place_weapon_on_floor()
+# swaps equipped weapon to other slot in inventory
+# if no weapon in that slot, player will be weaponless
+func swap_weapon(next_weapon):
+	if equipped_weapon is weapon2:
+		remove_child(equipped_weapon)
+	if next_weapon is weapon2:
+		equipped_weapon = next_weapon
+		add_child(equipped_weapon)
+	else:
+		equipped_weapon = "unequipped"
 
 # the player will gain invincibility from taking damage, then this will take it 
 # away
