@@ -35,5 +35,6 @@ polygon = PackedVector2Array(-7, -54, -7, -52.7, -9, -52, -11.5, -52, -14.5, -48
 scale = Vector2(2, 2)
 texture = ExtResource("2_2rbbi")
 
+[connection signal="area_entered" from="SwingArea" to="." method="_on_swing_area_area_entered"]
 [connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
 [connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]

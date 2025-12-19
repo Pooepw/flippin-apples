@@ -65,7 +65,9 @@ one_shot = true
 [node name="ShockwaveTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="area_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_area_entered"]
 [connection signal="body_entered" from="ShockwaveArea" to="." method="_on_shockwave_area_body_entered"]
+[connection signal="area_entered" from="StrikeArea" to="." method="_on_strike_area_area_entered"]
 [connection signal="body_entered" from="StrikeArea" to="." method="_on_strike_area_body_entered"]
 [connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout_shock"]
 [connection signal="timeout" from="ShockwaveTimer" to="." method="_on_shock_timer_timout_die"]

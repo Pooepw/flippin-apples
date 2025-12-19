@@ -80,6 +80,7 @@ animation = &"Drop"
 
 [node name="ShockTimer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="ShockArea" to="." method="_on_shock_area_area_entered"]
 [connection signal="body_entered" from="ShockArea" to="." method="_on_shock_area_body_entered"]
 [connection signal="animation_finished" from="ShockerFrames" to="." method="_on_shocker_frames_animation_finished"]
 [connection signal="timeout" from="ShockTimer" to="." method="_on_shock_timer_timeout"]

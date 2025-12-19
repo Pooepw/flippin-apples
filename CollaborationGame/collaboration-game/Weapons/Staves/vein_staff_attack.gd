@@ -22,13 +22,13 @@ const RED_SPEED = 300
 func _physics_process(delta: float) -> void:
 	if blue_detected and not blue_target == null:
 		blue_blood_direction = blue_blood.global_position.direction_to(blue_target.global_position)
-	if blue_target == null:
+	elif blue_target == null:
 		blue_detected = false
 	blue_blood.position += blue_blood_direction * BLUE_SPEED * delta
 	
 	if red_detected and not red_target == null:
 		red_blood_direction = red_blood.global_position.direction_to(red_target.global_position)
-	if red_target == null:
+	elif red_target == null:
 		red_detected = false
 	red_blood.position += red_blood_direction * RED_SPEED * delta
 
@@ -97,3 +97,19 @@ func _on_red_blood_detection_body_entered(body: Node2D) -> void:
 	if not red_detected:
 		red_detected = true
 		red_target = body
+
+func _on_blue_blood_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_collision(self, area, attack_damage)
+
+func _on_red_blood_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_collision(self, area, attack_damage)
+
+func _on_blue_blood_detection_area_entered(area: Area2D) -> void:
+	if not blue_detected and area is mob:
+		blue_detected = true
+		blue_target = area
+
+func _on_red_blood_detection_area_entered(area: Area2D) -> void:
+	if not red_detected and area is mob:
+		red_detected = true
+		red_target = area

@@ -30,17 +30,22 @@ func set_up_hit_area():
 		attack_area.set_collision_layer_value(5, true)
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body is mob:
-		body.current_speed = 0
-	else:
+	if body is player:
 		PlayerHandler.current_player.current_speed = 0
 
 
 func _on_attack_area_body_exited(body: Node2D) -> void:
-	if body is mob:
-		body.current_speed = body.move_speed
-	else:
+	if body is player:
 		PlayerHandler.current_player.current_speed = PlayerHandler.current_player.speed
 
 func _on_stop_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	if area is mob:
+		area.current_speed = 0
+
+func _on_attack_area_area_exited(area: Area2D) -> void:
+	if area is mob:
+		area.current_speed = area.move_speed

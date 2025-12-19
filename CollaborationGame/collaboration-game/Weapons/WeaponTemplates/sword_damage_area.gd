@@ -62,3 +62,6 @@ func _on_swing_area_body_entered(body: Node2D) -> void:
 
 func _on_slash_timer_timeout() -> void:
 	queue_free()
+
+func _on_swing_area_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_melee_strike(self, area, damage_dealt)

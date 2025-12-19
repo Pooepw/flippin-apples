@@ -53,8 +53,12 @@ shape = SubResource("CircleShape2D_wnh7a")
 
 [node name="LifeTimer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="BlueBlood" to="." method="_on_blue_blood_area_entered"]
 [connection signal="body_entered" from="BlueBlood" to="." method="_on_blue_blood_body_entered"]
+[connection signal="area_entered" from="BlueBlood/BlueBloodDetection" to="." method="_on_blue_blood_detection_area_entered"]
 [connection signal="body_entered" from="BlueBlood/BlueBloodDetection" to="." method="_on_blue_blood_detection_body_entered"]
+[connection signal="area_entered" from="RedBlood" to="." method="_on_red_blood_area_entered"]
 [connection signal="body_entered" from="RedBlood" to="." method="_on_red_blood_body_entered"]
+[connection signal="area_entered" from="RedBlood/RedBloodDetection" to="." method="_on_red_blood_detection_area_entered"]
 [connection signal="body_entered" from="RedBlood/RedBloodDetection" to="." method="_on_red_blood_detection_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

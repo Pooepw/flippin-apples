@@ -19,7 +19,7 @@ func _on_gen_dungeon_test_pressed() -> void:
 
 
 func _on_inventory_test_pressed() -> void:
-	var weapon_string = "res://Weapons/Staves/tree_branch.tscn"
+	var weapon_string = "res://Weapons/Staves/vein_staff.tscn"
 	PlayerHandler.current_player.get_node("PlayerInterface/InventorySystem").add_to_inventory(weapon_string)
 
 

@@ -35,5 +35,6 @@ color_ramp = SubResource("Gradient_r8v78")
 
 [node name="LifeTimer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

@@ -19,6 +19,8 @@ polygon = PackedVector2Array(-31, -60, -60, -31.4, -60, 31.3, -31, 59.4, -31, 60
 
 [node name="StopTimer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="StopTimer" to="." method="_on_stop_timer_timeout"]

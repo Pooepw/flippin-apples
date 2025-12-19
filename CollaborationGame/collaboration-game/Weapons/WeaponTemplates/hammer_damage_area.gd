@@ -93,9 +93,14 @@ func _on_strike_timer_timeout_shock():
 func _on_shock_timer_timout_die():
 	queue_free()
 
-
 func _on_shockwave_area_body_entered(body: Node2D) -> void:
 	CollisionHandler.handle_melee_strike(self, body, damage_dealt / 2)
 
 func _on_strike_area_body_entered(body: Node2D) -> void:
 	CollisionHandler.handle_melee_strike(self, body, damage_dealt)
+
+func _on_shockwave_area_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_melee_strike(self, area, damage_dealt / 2)
+
+func _on_strike_area_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_melee_strike(self, area, damage_dealt)

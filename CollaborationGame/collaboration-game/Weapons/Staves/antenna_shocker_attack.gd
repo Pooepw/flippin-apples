@@ -48,6 +48,10 @@ func set_up_hit_area():
 		shock_area.set_collision_layer_value(5, true)
 	shock_area.monitoring = false
 
-
+# for players
 func _on_shock_area_body_entered(body: Node2D) -> void:
 	CollisionHandler.handle_collision(self, body)
+
+# for enemies
+func _on_shock_area_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_collision(self, area)

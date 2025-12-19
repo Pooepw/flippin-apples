@@ -42,10 +42,7 @@ func fire_self(to_position, emitted_by, edited_damage: int = damage, edited_scal
 	ProjectileHandler.add_child(self)
 	get_node("LiveTimer").start()
 
-func _on_body_entered(body: Node2D):
-	CollisionHandler.handle_collision(self, body)
-		
-
+# sets up whether emitted by player or mob
 func set_up_collision(emitted_by):
 	if emitted_by is player:
 		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
@@ -64,3 +61,13 @@ func set_up_collision(emitted_by):
 		set_collision_mask_value(3, true)
 		set_collision_layer_value(5, true)
 		set_collision_layer_value(5, true)
+
+# for walls
+func _on_body_entered(body: Node2D):
+	if body is mob:
+		print ("enemy hit")
+	CollisionHandler.handle_collision(self, body, actual_damage)
+
+# for enemies
+func _on_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_collision(self, area, actual_damage)

@@ -2,6 +2,14 @@ extends Node2D
 
 var current_loot_list = []
 
+var loot_lists = {
+	1: "res://LootList/GrossDungeonLootList.txt",
+	2: "res://LootList/ShapeDungeonLootList.txt",
+	3: "res://LootList/SomebodysDungeonLootList.txt",
+	4: "res://LootList/YourDungeonLootList.txt",
+	5: "res://LootList/AllLootList.txt"
+}
+
 func add_loot_list(loot_list):
 	current_loot_list.append_array(loot_list)
 	current_loot_list.shuffle()

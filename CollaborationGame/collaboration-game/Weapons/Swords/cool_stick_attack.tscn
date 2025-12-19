@@ -31,5 +31,6 @@ polygon = PackedVector2Array(6, 0, 7, 19, 5, 30, -2, 40, -16, 46, -28, 49, -19, 
 
 [node name="SlashTimer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="SwingArea" to="." method="_on_swing_area_area_entered"]
 [connection signal="body_entered" from="SwingArea" to="." method="_on_swing_area_body_entered"]
 [connection signal="timeout" from="SlashTimer" to="." method="_on_slash_timer_timeout"]

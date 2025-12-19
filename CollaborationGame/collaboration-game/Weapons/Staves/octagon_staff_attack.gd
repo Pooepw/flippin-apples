@@ -47,3 +47,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 
 func _on_life_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	CollisionHandler.handle_collision(self, area)

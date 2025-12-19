@@ -23,8 +23,6 @@ var west_block_off
 # these will be things to put into rooms
 var activator_node
 
-
-
 var fog_node
 var current_dungeon_map
 var map_active = false
@@ -47,11 +45,12 @@ func _ready() -> void:
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
+	var dungeon_choice = GlobalRandomNumberGenerator.rng.randi_range(1,5)
+	MobGenerator.add_to_pool(dungeon_choice)
 	LootGenerator.add_loot_list(FileReader.open_and_read_file
-	("res://LootList/AllLootList.txt"))
+	(LootGenerator.loot_lists[dungeon_choice]))
 	generate_grid(max_distance)
 	start_map()
-	MobGenerator.add_to_pool(GlobalRandomNumberGenerator.rng.randi_range(1,5))
 	var start = start_dungeon(start_node)
 	place_room(start, Vector2(max_distance, max_distance))
 	place_exit()
