@@ -22,7 +22,6 @@ func _ready():
 	if not self is starting_room:
 		mob_spawner_group_node = get_node("MobGroup")
 		treasure_point_position = get_node("TreasurePoint").position
-	#get_node("TextureRect").visible = false
 
 
 func set_up_room_aspect():
@@ -62,4 +61,7 @@ func activate_doors():
 	if west_room_closed:
 		var west_door = doors_node.get_node("MedievalWestDoor")
 		west_door.visible = false
- 
+
+func deactivate_doors():
+	doors_node.process_mode = Node.PROCESS_MODE_DISABLED
+	doors_node.visible = false

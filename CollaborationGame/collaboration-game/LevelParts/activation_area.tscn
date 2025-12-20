@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://bs5tefkk76nls" path="res://LevelParts/activation_area.gd" id="1_epahb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cq4u"]
-size = Vector2(2400, 2400)
+size = Vector2(2341.5, 2198)
 
 [node name="ActivationArea" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_epahb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32.5, 0)
 shape = SubResource("RectangleShape2D_2cq4u")
 
 [node name="Timer" type="Timer" parent="."]

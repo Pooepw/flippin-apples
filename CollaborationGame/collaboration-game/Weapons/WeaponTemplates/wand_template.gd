@@ -11,10 +11,12 @@ func _physics_process(delta: float) -> void:
 			end_attack()
 
 func start_attack():
-	if weapon_owner == OWNERS.PLAYER:
-		if mana_cost < PlayerHandler.current_player.current_mana:
-			super()
-	else:
+	if weapon_owner == OWNERS.PLAYER and mana_cost < PlayerHandler.current_player.current_mana:
+		PlayerHandler.current_player.current_mana -= mana_cost
+		print(PlayerHandler.current_player.current_mana)
+		PlayerHandler.current_player.start_regen_wait("Mana")
+		super()
+	elif weapon_owner == OWNERS.ENEMY:
 		super()
 	
 
@@ -28,9 +30,6 @@ func _on_weapon_sprite_animation_end():
 			weapon_sprites.play("Firing")
 
 func emit_attack():
-	PlayerHandler.current_player.current_mana -= mana_cost
-	print(PlayerHandler.current_player.current_mana)
-	PlayerHandler.current_player.start_regen_wait("Mana")
 	var emission_instance = weapon_emission.instantiate()
 	var target_location
 	if weapon_owner == OWNERS.PLAYER:

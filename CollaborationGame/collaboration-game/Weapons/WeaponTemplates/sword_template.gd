@@ -11,7 +11,9 @@ func _physics_process(delta: float) -> void:
 		end_attack()
 
 func start_attack():
-	if energy_cost <= PlayerHandler.current_player.current_stamina:
+	if weapon_owner == OWNERS.PLAYER and energy_cost <= PlayerHandler.current_player.current_stamina:
+		super()
+	elif weapon_owner == OWNERS.ENEMY:
 		super()
 
 func _on_weapon_sprites_animation_finished() -> void:
@@ -20,8 +22,14 @@ func _on_weapon_sprites_animation_finished() -> void:
 		weapon_sprites.play("Firing")
 
 func emit_attack():
-	PlayerHandler.current_player.current_stamina -= energy_cost
-	PlayerHandler.current_player.start_regen_wait("Stamina")
+	if weapon_owner == OWNERS.PLAYER:
+		PlayerHandler.current_player.current_stamina -= energy_cost
+		PlayerHandler.current_player.start_regen_wait("Stamina")
 	var emission_instance = weapon_emission.instantiate()
-	emission_instance.project_wave(get_global_mouse_position(), projectile_reach, get_parent(), damage)
+	var target_position
+	if weapon_owner == OWNERS.PLAYER:
+		target_position = get_global_mouse_position()
+	else:
+		target_position = PlayerHandler.current_player.global_position
+	emission_instance.project_wave(target_position, projectile_reach, get_parent(), damage)
 	

@@ -7,6 +7,8 @@ var all_mobs
 var floor_bonus = 0
 var cycle_bonus = 0
 
+var mobs_left
+
 enum MOB_TYPES {GROSS, SHAPE, SOMEBODY, YOU}
 
 var mob_lists = {
@@ -25,3 +27,6 @@ func _ready() -> void:
 func add_to_pool(mob_pool: int):
 	var pool = FileReader.open_and_read_file(mob_lists[mob_pool])
 	current_mob_pool.append_array(pool)
+
+func mobs_still_left():
+	return not mobs_left == 0

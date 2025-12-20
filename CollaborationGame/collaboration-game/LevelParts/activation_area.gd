@@ -12,6 +12,8 @@ func _ready() -> void:
 # calls the function of the parent to activate the aspect of the room
 func activate_room():
 	room_parent.activate_room_aspect()
+	self.monitoring = false
+	self.monitorable = false
 
 # this class extends Area2D so this function takes advantage of that node's
 # innate signals. only players should be taken to heart with this.

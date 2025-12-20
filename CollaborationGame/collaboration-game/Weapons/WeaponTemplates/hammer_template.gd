@@ -9,7 +9,7 @@ func start_attack():
 	if weapon_owner == OWNERS.PLAYER:
 		if PlayerHandler.current_player.current_stamina >= energy_cost:
 			super()
-	else:
+	elif weapon_owner == OWNERS.ENEMY:
 		super()
 
 func emit_attack():

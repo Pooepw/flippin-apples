@@ -53,13 +53,12 @@ func project():
 
 func die():
 	if not mob_spawner_parent is int:
-		mob_spawner_parent.mob_count -= 1
+		mob_spawner_parent.mob_died()
 	queue_free()
 
 func set_up_collision():
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(6, true)
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is player:

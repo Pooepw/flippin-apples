@@ -148,6 +148,7 @@ func swap_weapon(next_weapon):
 	if next_weapon is weapon2:
 		equipped_weapon = next_weapon
 		add_child(equipped_weapon)
+		equipped_weapon.weapon_icon.visible = false
 	else:
 		equipped_weapon = "unequipped"
 

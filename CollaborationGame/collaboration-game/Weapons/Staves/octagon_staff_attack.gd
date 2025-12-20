@@ -7,11 +7,13 @@ var life_timer
 const SPEED = 800
 const LIFE_TIME = 8
 
+var damage
+
 func _physics_process(delta: float) -> void:
 	if not direction == Vector2(0,0):
 		position += direction * delta * SPEED
 
-func perform_single_attack(emitted_by, damage, new_direction):
+func perform_single_attack(emitted_by, staff_damage, new_direction):
 	if emitted_by is player:
 		emitter = CollisionHandler.EMITTER_TYPES.PLAYER
 	else: 
@@ -23,6 +25,7 @@ func perform_single_attack(emitted_by, damage, new_direction):
 	life_timer = get_node("LifeTimer")
 	set_up_hit_area()
 	ProjectileHandler.add_child(self)
+	damage = staff_damage
 	life_timer.start(LIFE_TIME)
 
 func set_up_hit_area():
