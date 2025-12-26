@@ -7,16 +7,12 @@ func _ready() -> void:
 	exit_prompt = get_node("Label")
 	exit_prompt.visible = false 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if DungeonGenerator.display_exit_prompt:
-		exit_prompt.visible = true
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is player:
-		DungeonGenerator.display_exit_prompt = true
+		exit_prompt.visible = true
+		DungeonGenerator.can_exit = true
 		
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is player:
-		DungeonGenerator.display_exit_prompt = false
+		exit_prompt.visible = false
+		DungeonGenerator.can_exit = false

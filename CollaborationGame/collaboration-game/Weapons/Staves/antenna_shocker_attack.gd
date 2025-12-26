@@ -50,8 +50,8 @@ func set_up_hit_area():
 
 # for players
 func _on_shock_area_body_entered(body: Node2D) -> void:
-	CollisionHandler.handle_collision(self, body)
+	CollisionHandler.handle_collision(self, body, attack_damage)
 
 # for enemies
 func _on_shock_area_area_entered(area: Area2D) -> void:
-	CollisionHandler.handle_collision(self, area)
+	CollisionHandler.handle_collision(self, area, attack_damage)

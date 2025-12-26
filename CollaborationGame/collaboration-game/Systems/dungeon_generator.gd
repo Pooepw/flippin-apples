@@ -27,11 +27,15 @@ var fog_node
 var current_dungeon_map
 var map_active = false
 
-var display_exit_prompt = false
+var can_exit = false
 var display_enter_prompt = false
 
 var spawned_treasure = false
 
+var num_floors = 1
+var current_floor = 0
+const MAX_FLOORS = 6
+const MIN_FLOORS = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,10 +45,12 @@ func _ready() -> void:
 	west_block_off = load("res://LevelParts/Dungeon/Rooms/Medieval/medieval_west_block_off.tscn")
 	activator_node = load("res://LevelParts/activation_area.tscn")
 	fog_node = load("res://LevelParts/Dungeon/fog.tscn")
+	num_floors = GlobalRandomNumberGenerator.rng.randi_range(MIN_FLOORS, MAX_FLOORS)
 
 
 # start_node needs to be a String passed to this system.
 func generate_dungeon(start_node, max_distance):
+	current_floor += 1
 	var dungeon_choice = GlobalRandomNumberGenerator.rng.randi_range(1,5)
 	MobGenerator.add_to_pool(dungeon_choice)
 	LootGenerator.add_loot_list(FileReader.open_and_read_file
@@ -77,6 +83,8 @@ func start_map():
 	var map_scene = load("res://Interfaces/dungeon_map.tscn")
 	current_dungeon_map = map_scene.instantiate()
 	PlayerHandler.current_player.add_child(current_dungeon_map)
+	PlayerHandler.current_player.current_map = current_dungeon_map
+	PlayerHandler.current_player.has_map = true
 
 func start_dungeon(start_node):
 	var start = load(start_node)
@@ -479,6 +487,13 @@ func clear_dungeon():
 				current_dungeon[row][column].queue_free()
 	current_dungeon.clear()
 	spawned_treasure = false
+	remove_map()
+
+func remove_map():
+	if PlayerHandler.current_player.has_map:
+		PlayerHandler.current_player.remove_current_map()
+	map_active = false
+	current_dungeon_map.queue_free()
 
 # always be tracking the player
 func _process(_delta: float) -> void:
@@ -492,4 +507,10 @@ func track_player():
 	var player_location_x = (int)(player_position.x)
 	var player_location_y = (int)(player_position.y)
 	current_dungeon_map.player_location = Vector2(player_location_x, player_location_y)
-	
+
+func go_to_next_floor():
+	if current_floor < num_floors:
+		clear_dungeon()
+		generate_dungeon("res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn", 3)
+	else:
+		PlayerHandler.end_game()

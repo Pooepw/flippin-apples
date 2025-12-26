@@ -1,20 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://eevh1wsev4jk"]
+[gd_scene load_steps=10 format=3 uid="uid://eevh1wsev4jk"]
 
 [ext_resource type="Script" uid="uid://ugjqe3i30vh7" path="res://Interfaces/start_menu.gd" id="1_daj2a"]
 [ext_resource type="Texture2D" uid="uid://7q5htk7bwr6w" path="res://Interfaces/UIAssets/StartMenu/new_game_neutral.png" id="1_g1o33"]
 [ext_resource type="Texture2D" uid="uid://diobqp8dfih7i" path="res://Interfaces/UIAssets/StartMenu/new_game_pressed.png" id="2_23ctp"]
 [ext_resource type="Texture2D" uid="uid://1686n8vbs1fk" path="res://Interfaces/UIAssets/StartMenu/new_game_hovered.png" id="3_gl47n"]
-[ext_resource type="Texture2D" uid="uid://g2pgoaeqqpa6" path="res://Interfaces/UIAssets/StartMenu/options_neutral.png" id="4_utu65"]
-[ext_resource type="Texture2D" uid="uid://dgja8eild4s4m" path="res://Interfaces/UIAssets/StartMenu/options_pressed.png" id="5_m60ml"]
-[ext_resource type="Texture2D" uid="uid://4ud70v8567ky" path="res://Interfaces/UIAssets/StartMenu/options_hovered.png" id="6_ycqas"]
 [ext_resource type="Texture2D" uid="uid://dqjnf1hfydkrt" path="res://Interfaces/UIAssets/StartMenu/quit_neutral.png" id="7_xppla"]
 [ext_resource type="Texture2D" uid="uid://bsh4af1e4msx0" path="res://Interfaces/UIAssets/StartMenu/quit_pressed.png" id="8_5e8xr"]
-[ext_resource type="Texture2D" uid="uid://b05n4ev1njgtc" path="res://Interfaces/UIAssets/StartMenu/continue_neutral.png" id="8_6vp8y"]
 [ext_resource type="Texture2D" uid="uid://bhyynhrqxebwp" path="res://Interfaces/UIAssets/StartMenu/quit_hovered.png" id="9_6x45f"]
-[ext_resource type="Texture2D" uid="uid://cmfotbpmsno2r" path="res://Interfaces/UIAssets/StartMenu/continue_pressed.png" id="9_7jl51"]
+[ext_resource type="Texture2D" uid="uid://os3ousfur2hr" path="res://Interfaces/UIAssets/StartMenu/title_sprite.png" id="9_b8lww"]
 [ext_resource type="PackedScene" uid="uid://cipixt0hef1on" path="res://Interfaces/UIAssets/StartMenu/main_menu_background.tscn" id="11_868aq"]
-[ext_resource type="Texture2D" uid="uid://vee3sswdriax" path="res://Interfaces/UIAssets/StartMenu/continue_hovered.png" id="12_t1aeq"]
-[ext_resource type="Texture2D" uid="uid://dlnececkw4vkn" path="res://Interfaces/UIAssets/StartMenu/title.png" id="15_gv0ln"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -27,52 +21,33 @@ script = ExtResource("1_daj2a")
 
 [node name="Start" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 267.0
-offset_right = 547.0
-offset_bottom = 467.0
+offset_left = 200.0
+offset_top = 370.0
+offset_right = 600.0
+offset_bottom = 570.0
 texture_normal = ExtResource("1_g1o33")
 texture_pressed = ExtResource("2_23ctp")
 texture_hover = ExtResource("3_gl47n")
 
-[node name="Options" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 147.0
-offset_top = 470.0
-offset_right = 547.0
-offset_bottom = 670.0
-texture_normal = ExtResource("4_utu65")
-texture_pressed = ExtResource("5_m60ml")
-texture_hover = ExtResource("6_ycqas")
-
 [node name="Quit" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 733.0
-offset_top = 470.0
-offset_right = 1133.0
-offset_bottom = 670.0
+offset_left = 680.0
+offset_top = 370.0
+offset_right = 1080.0
+offset_bottom = 570.0
 texture_normal = ExtResource("7_xppla")
 texture_pressed = ExtResource("8_5e8xr")
 texture_hover = ExtResource("9_6x45f")
 
-[node name="Continue" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 733.0
-offset_top = 267.0
-offset_right = 1133.0
-offset_bottom = 467.0
-texture_normal = ExtResource("8_6vp8y")
-texture_pressed = ExtResource("9_7jl51")
-texture_hover = ExtResource("12_t1aeq")
-
 [node name="MainMenuBackground" parent="." instance=ExtResource("11_868aq")]
 position = Vector2(5, -15)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(658, 132)
-texture = ExtResource("15_gv0ln")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 1040.0
+offset_bottom = 400.0
+texture = ExtResource("9_b8lww")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

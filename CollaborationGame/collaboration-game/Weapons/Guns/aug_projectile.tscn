@@ -9,7 +9,7 @@ radius = 4.0
 [node name="AUGProjectile" type="Area2D"]
 input_pickable = false
 script = ExtResource("1_eq8pl")
-speed = 10000
+speed = 2500
 projectile_health = 1
 metadata/_custom_type_script = "uid://da42yxe8ay78s"
 

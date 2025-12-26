@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Collaboration Game"
-run/main_scene="res://Systems/test_node.tscn"
+run/main_scene="uid://dr4rrn4jfd8n5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://LevelParts/Dungeon/Rooms/Templates/icon.svg"
 

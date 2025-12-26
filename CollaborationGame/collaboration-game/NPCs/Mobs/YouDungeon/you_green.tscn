@@ -9,6 +9,7 @@ radius = 12.0
 height = 90.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjg4m"]
+size = Vector2(46.2854, 38.1944)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p5h2"]
 atlas = ExtResource("2_tsvdl")
@@ -73,6 +74,7 @@ metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 shape = SubResource("CapsuleShape2D_05lyx")
 
 [node name="VisionRange" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
 scale = Vector2(16.96, 10.08)

@@ -72,6 +72,7 @@ metadata/_custom_type_script = "uid://dxjjq6v3w8ybe"
 shape = SubResource("CapsuleShape2D_05lyx")
 
 [node name="VisionRange" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
 shape = SubResource("CircleShape2D_7ejt8")

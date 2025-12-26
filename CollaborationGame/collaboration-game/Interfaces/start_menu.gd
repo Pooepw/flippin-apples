@@ -1,5 +1,6 @@
 extends Control
 
+const START_NODE = "res://LevelParts/Dungeon/Rooms/Medieval/medieval_starting_room_1.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,16 +13,8 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_options_pressed() -> void:
-	pass # Replace with function body.
-
+	PlayerHandler.set_up_player()
+	DungeonGenerator.generate_dungeon(START_NODE, 3)
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_continue_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()

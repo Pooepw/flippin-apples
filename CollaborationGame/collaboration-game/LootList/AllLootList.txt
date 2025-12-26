@@ -14,7 +14,7 @@ res://Weapons/Bow/the_triangle.tscn
 res://Weapons/Guns/two_rectangles.tscn
 res://Weapons/Hammer/jammed_cone.tscn
 res://Weapons/Staves/octagon_staff.tscn
-res://Weapons/Swords/the_intersection_attack.tscn
+res://Weapons/Swords/the_intersection.tscn
 res://Weapons/Wands/beam_square.tscn
 res://Weapons/Bow/wifi_symbol.tscn
 res://Weapons/Guns/aug.tscn

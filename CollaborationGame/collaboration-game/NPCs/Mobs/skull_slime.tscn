@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://iupw0a2c6jil"]
-
-[ext_resource type="Script" uid="uid://dopo26ikxf6py" path="res://NPCs/Mobs/skull_slime.gd" id="1_dqlkp"]
-
-[node name="SkullSlime" type="CharacterBody2D"]
-motion_mode = 1
-script = ExtResource("1_dqlkp")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cejjnved2jc78"
-path="res://.godot/imported/pin_shooter4.png-1e6b38af7514079b3b94a00e1dc06cb1.ctex"
+uid="uid://os3ousfur2hr"
+path="res://.godot/imported/title_sprite.png-01e01438215f5c176d4c0fc5c4f7496e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NPCs/Mobs/pin_shooter/pin_shooter4.png"
-dest_files=["res://.godot/imported/pin_shooter4.png-1e6b38af7514079b3b94a00e1dc06cb1.ctex"]
+source_file="res://Interfaces/UIAssets/StartMenu/title_sprite.png"
+dest_files=["res://.godot/imported/title_sprite.png-01e01438215f5c176d4c0fc5c4f7496e.ctex"]
 
 [params]
 

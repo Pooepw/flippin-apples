@@ -47,7 +47,7 @@ sprite_frames = SubResource("SpriteFrames_8ikvi")
 autoplay = "default"
 
 [node name="VisionRange" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
 shape = SubResource("CircleShape2D_tohnv")

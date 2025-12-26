@@ -29,4 +29,7 @@ func add_node(x, y, node):
 		node_array[x][y] = duplicate_node
 		map_nodes.add_child(duplicate_node)
 		node_array[x][y].position = BASE_PLAYER_POSITION + Vector2(y, x) * SPACING
-		
+
+func clear_map():
+	node_array.clear()
+	

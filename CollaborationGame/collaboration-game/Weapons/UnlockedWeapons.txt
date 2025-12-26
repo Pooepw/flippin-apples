@@ -1,0 +1,6 @@
+res://Weapons/Bow/string_with_stick.tscn
+res://Weapons/Guns/starter_sling.tscn
+res://Weapons/Hammer/big_rock.tscn
+res://Weapons/Staves/tree_branch.tscn
+res://Weapons/Swords/cool_stick.tscn
+res://Weapons/Wands/sunflower_stalk.tscn

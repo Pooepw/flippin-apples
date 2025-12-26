@@ -52,6 +52,10 @@ var d_pressed = false
 var player_sprite
 var player_interface
 
+# map stuff
+var has_map = false
+var current_map
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player_interface = get_node("PlayerInterface")
@@ -162,3 +166,9 @@ func handle_damage():
 	recently_damaged = true
 	invincibility_timer.start(invincibility_time)
 	set_collision_layer_value(1, false)
+
+func remove_current_map():
+	if has_map:
+		remove_child(current_map)
+		current_map = ""
+	

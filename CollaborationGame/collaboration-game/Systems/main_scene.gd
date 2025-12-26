@@ -4,12 +4,13 @@ var camera_node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	camera_node = get_node("Camera2D")
+	#camera_node = get_node("Camera2D")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if DungeonGenerator.dungeon_loaded:
-		camera_node.position = Vector2(DungeonGenerator.current_room.x * 
-		DungeonGenerator.ROOM_SPACING, DungeonGenerator.current_room.y * 
-		DungeonGenerator.ROOM_SPACING)
+#func _process(delta: float) -> void:
+	#if DungeonGenerator.dungeon_loaded:
+		#camera_node.position = Vector2(DungeonGenerator.current_room.x * 
+		#DungeonGenerator.ROOM_SPACING, DungeonGenerator.current_room.y * 
+		#DungeonGenerator.ROOM_SPACING)
